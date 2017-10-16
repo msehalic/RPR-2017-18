@@ -10,9 +10,19 @@ namespace MiniSah
    class Figura
     {
         public enum Potez { NaprijedzaN = 1, Naprijed = 2, KonjLijevo = 3, KonjDesno = 4 };
-        string pomjeri(int potez)
+         char pomjerislovo(int potez)
         {
+            switch(potez)
+            {
+                case 1:
+                    {
+                        for (char c = 'A'; c <= 'Z'; c++)
+                        {
+                            return c+n;
+                        }
+                    }
 
+            }
         }
     }
     class Program
