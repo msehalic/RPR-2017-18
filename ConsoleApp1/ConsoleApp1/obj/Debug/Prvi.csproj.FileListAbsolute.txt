@@ -1,0 +1,7 @@
+C:\Users\user\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\user\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\user\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\user\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\Prvi.csprojResolveAssemblyReference.cache
+C:\Users\user\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\Prvi.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\user\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
