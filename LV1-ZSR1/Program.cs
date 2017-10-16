@@ -17,6 +17,7 @@ namespace Prvi
             brzina= Convert.ToInt32(Console.ReadLine());
             rezultat = (brzina * Milje)/1000M;
             Console.WriteLine("Brzina broda u km/h je {0}", rezultat);
+            Console.ReadLine(); //da se ne gasi
         }
     }
 }
