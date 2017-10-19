@@ -1,0 +1,6 @@
+c:\users\student115\documents\visual studio 2015\Projects\ZSR1-6\ZSR1-6\bin\Debug\ZSR1-6.exe.config
+c:\users\student115\documents\visual studio 2015\Projects\ZSR1-6\ZSR1-6\obj\Debug\ZSR1-6.csprojResolveAssemblyReference.cache
+c:\users\student115\documents\visual studio 2015\Projects\ZSR1-6\ZSR1-6\bin\Debug\ZSR1-6.exe
+c:\users\student115\documents\visual studio 2015\Projects\ZSR1-6\ZSR1-6\bin\Debug\ZSR1-6.pdb
+c:\users\student115\documents\visual studio 2015\Projects\ZSR1-6\ZSR1-6\obj\Debug\ZSR1-6.exe
+c:\users\student115\documents\visual studio 2015\Projects\ZSR1-6\ZSR1-6\obj\Debug\ZSR1-6.pdb
