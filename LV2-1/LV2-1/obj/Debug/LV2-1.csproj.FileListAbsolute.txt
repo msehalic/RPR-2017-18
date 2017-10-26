@@ -1,0 +1,6 @@
+c:\users\student115\documents\visual studio 2015\Projects\LV2-1\LV2-1\bin\Debug\LV2-1.exe.config
+c:\users\student115\documents\visual studio 2015\Projects\LV2-1\LV2-1\obj\Debug\LV2-1.csprojResolveAssemblyReference.cache
+c:\users\student115\documents\visual studio 2015\Projects\LV2-1\LV2-1\bin\Debug\LV2-1.exe
+c:\users\student115\documents\visual studio 2015\Projects\LV2-1\LV2-1\bin\Debug\LV2-1.pdb
+c:\users\student115\documents\visual studio 2015\Projects\LV2-1\LV2-1\obj\Debug\LV2-1.exe
+c:\users\student115\documents\visual studio 2015\Projects\LV2-1\LV2-1\obj\Debug\LV2-1.pdb
