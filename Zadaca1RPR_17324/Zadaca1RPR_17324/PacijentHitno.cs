@@ -9,7 +9,11 @@ namespace Zadaca1RPR_17324
     class PacijentHitno : Pacijent
     {
         bool PacijentZiv { get; set; }
-        string EvidentirajPrvuPomoc(Pacijent p)
+        public PacijentHitno() //: base(MaticniBroj, ime, prezime, datumRodjenja, spol, adresaStanovanja, bracnoStanje, datumPrijema)
+        {
+            PacijentZiv = true;
+        }
+        public string EvidentirajPrvuPomoc()
         {
             string vrijemeSmrti, razlogSmrti, postupak;
             char prezivio;
@@ -18,7 +22,7 @@ namespace Zadaca1RPR_17324
             //i ovdje nekako u karton zgurati
             Console.WriteLine("Pacijent je ziv (D/N)?");
             prezivio = Convert.ToChar(Console.ReadLine());
-            PacijentZiv= (prezivio == 'D');
+            PacijentZiv = (prezivio == 'D');
             if (PacijentZiv) return ("Uspjesno obavljen postupak" + postupak);
             else
             {
@@ -31,7 +35,7 @@ namespace Zadaca1RPR_17324
             }
         }
         //AKO PACIJENT UMRE TREBALI BISMO MU OTKAZATI I PREGLEDE
-        void OtkaziPreglede (List <Pacijent> pacijenti)
+        void OtkaziPreglede(List<Pacijent> pacijenti)
         {
 
         }

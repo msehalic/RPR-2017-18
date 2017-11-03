@@ -11,9 +11,25 @@ namespace Zadaca1RPR_17324
     {
         static void Main(string[] args)
         {
-            int unos;
+            int unos, prioritet;
+            List<Pacijent> pacijenti = new List<Pacijent>();
             Console.WriteLine("Dobro došli! Odaberite jednu od opcija:\n1.Registruj / Briši pacijenta\n2.Prikaži raspored pregleda pacijenta\n3.Kreiranje kartona pacijenta\n4.Pretraga kartona pacijenta\n5.Registruj novi pregled\n6.Analiza sadržaja\n7.Naplata\n8.Izlaz");
             unos = Convert.ToInt32(Console.ReadLine());
+            switch (unos)
+            {
+                case 1:
+                    {
+                        do
+                        {
+                            Console.Write("\nMolimo odaberite prioritet pacijenta: 1-hitni 2-normalni: ");
+                            prioritet = Convert.ToInt32(Console.ReadLine());
+                            PacijentHitno p = new PacijentHitno();
+                            if (prioritet == 1) pacijenti.Add(p);
+                            p.EvidentirajPrvuPomoc();
+                         } while (prioritet < 1 || prioritet > 2);
+                        break;
+                    }
+            }
         }
     }
 }
