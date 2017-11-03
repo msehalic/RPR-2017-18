@@ -30,5 +30,10 @@ namespace Zadaca1RPR_17324
                 return ("Pacijent je nazalost preminuo u" + vrijemeSmrti + "zbog" + razlogSmrti);
             }
         }
+        //AKO PACIJENT UMRE TREBALI BISMO MU OTKAZATI I PREGLEDE
+        void OtkaziPreglede (List <Pacijent> pacijenti)
+        {
+
+        }
     }
 }
