@@ -11,7 +11,7 @@ namespace Zadaca1RPR_17324
         bool PacijentZiv { get; set; }
         public PacijentHitno() //: base(MaticniBroj, ime, prezime, datumRodjenja, spol, adresaStanovanja, bracnoStanje, datumPrijema)
         {
-            PacijentZiv = true;
+            PacijentZiv = true; //defaultni za instance
         }
         public string EvidentirajPrvuPomoc()
         {
@@ -22,7 +22,7 @@ namespace Zadaca1RPR_17324
             //i ovdje nekako u karton zgurati
             Console.WriteLine("Pacijent je ziv (D/N)?");
             prezivio = Convert.ToChar(Console.ReadLine());
-            PacijentZiv = (prezivio == 'D');
+            PacijentZiv = (prezivio == 'D') ? true : false; //OVDJE IMA NEKI PROBLEM, MRSKO MI SAD
             if (PacijentZiv) return ("Uspjesno obavljen postupak" + postupak);
             else
             {

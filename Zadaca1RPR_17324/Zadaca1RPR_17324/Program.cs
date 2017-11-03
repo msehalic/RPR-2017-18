@@ -21,12 +21,13 @@ namespace Zadaca1RPR_17324
                     {
                         do
                         {
-                            Console.Write("\nMolimo odaberite prioritet pacijenta: 1-hitni 2-normalni: ");
+                            Console.Write("Molimo odaberite prioritet pacijenta: 1-hitni 2-normalni: ");
                             prioritet = Convert.ToInt32(Console.ReadLine());
-                            PacijentHitno p = new PacijentHitno();
-                            if (prioritet == 1) pacijenti.Add(p);
-                            p.EvidentirajPrvuPomoc();
-                         } while (prioritet < 1 || prioritet > 2);
+                            if (prioritet < 1 || prioritet > 2) continue;
+                            PacijentHitno pacijent17324_1= new PacijentHitno();
+                            if (prioritet == 1) pacijenti.Add(pacijent17324_1);
+                            pacijent17324_1.EvidentirajPrvuPomoc();
+                        } while (prioritet < 1 || prioritet > 2);
                         break;
                     }
             }
