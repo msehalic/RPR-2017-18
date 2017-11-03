@@ -74,6 +74,7 @@
     <Compile Include="PacijentMetode.cs" />
     <Compile Include="PacijentKonstruktori.cs" />
     <Compile Include="PacijentHitno.cs" />
+    <Compile Include="PacijentNormal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
