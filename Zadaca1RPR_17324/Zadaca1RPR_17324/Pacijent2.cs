@@ -10,7 +10,7 @@ namespace Zadaca1RPR_17324
     {
         public Pacijent()
         {
-            maticniBroj = 1111011123456;
+            MaticniBroj = 1111011123456;
             ime = "Carl CJ";
             prezime = "Johnson";
             datumRodjenja = "11/11/2011";
@@ -21,7 +21,7 @@ namespace Zadaca1RPR_17324
         }
         public Pacijent(int maticniBroj1, string ime1, string prezime1, string datumRodjenja1, char spol1, string adresaStanovanja1, string bracnoStanje1, string datumPrijema1)
         {
-            maticniBroj = maticniBroj1;
+            MaticniBroj = maticniBroj1;
             ime = ime1;
             prezime = prezime1;
             datumRodjenja = datumRodjenja1;

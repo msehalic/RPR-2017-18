@@ -10,16 +10,17 @@ namespace Zadaca1RPR_17324
     {
         string ime, prezime, datumRodjenja, adresaStanovanja, bracnoStanje, datumPrijema;
         char spol;
-        public long maticniBroj
+        int posjetioKliniku = 0; //broji koliko je puta odredjeni pacijent bio u klinici, kada dostigne 3 idu popusti itd.
+        public long MaticniBroj
         {
             get
             {
-                return maticniBroj;
+                return MaticniBroj;
             }
             set
             {
                 var ima13Cifara = Math.Floor(Math.Log10(value) + 1) == 13; //provjera da ima 13 cifara
-                if (value>0 && ima13Cifara) maticniBroj = value;
+                if (value>0 && ima13Cifara) MaticniBroj = value;
             }
         }
 
