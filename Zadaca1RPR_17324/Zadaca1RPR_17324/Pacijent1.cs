@@ -8,8 +8,9 @@ namespace Zadaca1RPR_17324
 {
     abstract partial class Pacijent//partial dio sa metodama
     {
-        string ime, prezime, datumRodjenja, spol, adresaStanovanja, bracnoStanje, datumPrijema;
-        public int maticniBroj
+        string ime, prezime, datumRodjenja, adresaStanovanja, bracnoStanje, datumPrijema;
+        char spol;
+        public long maticniBroj
         {
             get
             {
