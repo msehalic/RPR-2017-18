@@ -15,15 +15,14 @@ namespace Zadaca1RPR_17324
         static void EvidentirajPrvuPomoc(PacijentHitno p)
         {
             Pregled hitni = new Pregled(DateTime.Now, "", p);
-            bool PacijentZiv;
             string vrijemeSmrti, razlogSmrti;
             char prezivio;
-            Console.WriteLine("Kojem postupku je podvrgnut pacijent?");
+            Console.Write("Kojem postupku je podvrgnut pacijent? ");
             hitni.postupak = Console.ReadLine();
-            Console.WriteLine("Pacijent je ziv (D/N)?");
+            Console.Write("Pacijent je ziv (D/N)? ");
             prezivio = Convert.ToChar(Console.ReadLine());
-            PacijentZiv = (prezivio == 'D') ? true : false; //OVDJE IMA NEKI PROBLEM, MRSKO MI SAD
-            if (PacijentZiv) Console.WriteLine("Uspjesno obavljen postupak " + hitni.postupak);
+            p.PacijentZiv = (prezivio == 'D') ? true : false; 
+            if (p.PacijentZiv) Console.WriteLine("Uspjesno obavljen postupak " + hitni.postupak);
             else
             {
                 Console.Write("Unesite vrijeme smrti: ");
@@ -59,6 +58,7 @@ namespace Zadaca1RPR_17324
             }
             //Debug
             foreach (Pregled p in pregledi) p.Ispisi();
+            //this is good
             Console.ReadLine(); //da se ne gasi konzola
         }
     }
