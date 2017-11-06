@@ -9,7 +9,8 @@ namespace Zadaca1RPR_17324
     abstract partial class Pacijent//partial dio sa metodama
     {
         //TREBALA BI POSTOJATI NEKA LISTA PREGLEDA U KOJU BI SE UBACIVALI KARTONI, SMRTNI STATUS I TO!
-        protected string ime, prezime, datumRodjenja, adresaStanovanja, bracnoStanje, datumPrijema;
+        public string ime, prezime, datumRodjenja, adresaStanovanja, bracnoStanje;
+         DateTime datumPrijema;
         protected char spol;
         protected int posjetioKliniku = 0; //broji koliko je puta odredjeni pacijent bio u klinici, kada dostigne 3 idu popusti itd.
         protected long MaticniBroj;
