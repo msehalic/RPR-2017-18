@@ -26,7 +26,7 @@ namespace Zadaca1RPR_17324
         }
        public void Ispisi()
         {
-            Console.WriteLine("{0}. Pacijent {1} {2} je prošao kroz proceduru {3}.", DatumVrijemePregleda.ToUniversalTime(), p.ime, p.prezime, postupak);
+            Console.WriteLine("{0}. Pacijent {1} {2} je prošao kroz proceduru {3}.", DatumVrijemePregleda.ToLocalTime(), p.ime, p.prezime, postupak);
         }
     }
 }

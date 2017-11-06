@@ -14,25 +14,26 @@ namespace Zadaca1RPR_17324
 
         static void EvidentirajPrvuPomoc(PacijentHitno p)
         {
-            Pregled hitni = new Pregled(DateTime.Now, "", p);
+            Pregled hitni17324_1 = new Pregled(DateTime.Now, "", p); //kreiramo instancu pregleda koju cemo nadopunjavati
+            p.datumPrijema = DateTime.Now; //obzirom da je hitni slucaj, datum prvog pregleda odgovara prijemu
             string vrijemeSmrti, razlogSmrti;
             char prezivio;
             Console.Write("Kojem postupku je podvrgnut pacijent? ");
-            hitni.postupak = Console.ReadLine();
+            hitni17324_1.postupak = Console.ReadLine();
             Console.Write("Pacijent je ziv (D/N)? ");
             prezivio = Convert.ToChar(Console.ReadLine());
-            p.PacijentZiv = (prezivio == 'D') ? true : false; 
-            if (p.PacijentZiv) Console.WriteLine("Uspjesno obavljen postupak " + hitni.postupak);
+            p.PacijentZiv = (prezivio == 'D') ? true : false;
+            if (p.PacijentZiv) Console.WriteLine("Uspjesno obavljen postupak " + hitni17324_1.postupak);
             else
             {
                 Console.Write("Unesite vrijeme smrti: ");
                 vrijemeSmrti = Console.ReadLine();
                 Console.Write("\nUnesite razlog smrti: ");
                 razlogSmrti = Console.ReadLine();
-                //treba ovo zapisati negdje, mozda neka klasa pregleda pa u listu da se zapisuju pregledi i komentari tj. karton pacijenta
-                Console.WriteLine("Pacijent je nazalost preminuo u" + vrijemeSmrti + "zbog" + razlogSmrti);
+                //trebaju nam i komentari tj. zabiljeziti ih u karton pacijenta
+                Console.Write("Pacijent je nazalost preminuo u" + vrijemeSmrti + "zbog" + razlogSmrti);
             }
-            pregledi.Add(hitni);
+            pregledi.Add(hitni17324_1);
         }
         static void Main(string[] args)
         {
@@ -51,7 +52,7 @@ namespace Zadaca1RPR_17324
                             if (prioritet < 1 || prioritet > 2) continue;
                             PacijentHitno pacijent17324_1 = new PacijentHitno();
                             if (prioritet == 1) pacijenti.Add(pacijent17324_1);
-                            EvidentirajPrvuPomoc(pacijent17324_1); //malo ovo doraditi da zapisuje gdje treba
+                            EvidentirajPrvuPomoc(pacijent17324_1); //should be ok
                         } while (prioritet < 1 || prioritet > 2);
                         break;
                     }
@@ -59,7 +60,11 @@ namespace Zadaca1RPR_17324
             //Debug
             foreach (Pregled p in pregledi) p.Ispisi();
             //this is good
+            //Debug2
+            foreach (Pacijent p in pacijenti) p.Ispisi();
+            //this is good
             Console.ReadLine(); //da se ne gasi konzola
+            //KAD PACIJENT PLATI TREBA INKREMENTIRATI NJEGOV BROJ DOLAZAKA U BOLNICU RADI KASNIJIH POPUSTA
         }
     }
 }

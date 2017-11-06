@@ -72,7 +72,7 @@
   <ItemGroup>
     <Compile Include="Klinika.cs" />
     <Compile Include="IGlavni.cs" />
-    <Compile Include="PacijentMetode.cs" />
+    <Compile Include="PacijentMetodeDefinicije.cs" />
     <Compile Include="PacijentKonstruktori.cs" />
     <Compile Include="PacijentHitno.cs" />
     <Compile Include="PacijentNormal.cs" />
