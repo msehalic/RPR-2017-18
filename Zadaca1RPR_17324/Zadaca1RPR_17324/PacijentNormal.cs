@@ -10,11 +10,11 @@ namespace Zadaca1RPR_17324
     {
         public PacijentNormal(int MaticniBroj, string ime, string prezime, DateTime datumRodjenja, char spol, string adresaStanovanja, string bracnoStanje, DateTime datumPrijema) : base(MaticniBroj, ime, prezime, datumRodjenja, spol, adresaStanovanja, bracnoStanje, datumPrijema)
         {
-
+            GenerisiIDPacijenta();
         }
         public PacijentNormal()
         {
-
+            GenerisiIDPacijenta();
         }
         /*TREBA PRATITI U KALENDARU STA SE DESAVA I ALOCIRATI RASPORED, MORAT CEMO NACI NEKI PRIORITY QUEUE SHIT U C# 
         I ONU GLUPOST SA APARATIMA NEKAKO, NOTE TO SELF: NEMOJ KORISTITI LISTE!

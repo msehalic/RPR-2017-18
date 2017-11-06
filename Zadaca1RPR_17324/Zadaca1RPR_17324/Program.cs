@@ -11,10 +11,10 @@ namespace Zadaca1RPR_17324
     class Program
     {
         static List<Pregled> pregledi = new List<Pregled>();
-        static void UnosPodataka (Pacijent p)
+        static void UnosPodataka(Pacijent p)
         {
             Console.Write("Unesite ime pacijenta: ");
-            p.ime=Console.ReadLine();
+            p.ime = Console.ReadLine();
             Console.Write("Unesite prezime pacijenta: ");
             p.prezime = Console.ReadLine();
             Console.Write("Unesite datum rodjenja pacijenta (DD/MM/YYYY): ");
@@ -23,7 +23,7 @@ namespace Zadaca1RPR_17324
             Console.Write("Unesite maticni broj pacijenta (13 cifara): ");
             p.MaticniBroj = Convert.ToInt64(Console.ReadLine());
             Console.Write("Unesite spol pacijenta (M/Ž): ");
-            p.spol=Convert.ToChar(Console.ReadLine());
+            p.spol = Convert.ToChar(Console.ReadLine());
             Console.Write("Unesite adresu stanovanja pacijenta: ");
             p.adresaStanovanja = Console.ReadLine();
             Console.Write("Unesite bracno stanje pacijenta: ");
@@ -53,9 +53,57 @@ namespace Zadaca1RPR_17324
             }
             pregledi.Add(hitni17324_1);
         }
+        static void RegistrujPacijenta(ref List<Pacijent> pacijenti)
+        {
+            int prioritet;
+            do
+            {
+                Console.Write("Molimo odaberite prioritet pacijenta: 1-hitni 2-normalni: ");
+                prioritet = Convert.ToInt32(Console.ReadLine());
+                if (prioritet < 1 || prioritet > 2) //minorna provjera unosa
+                {
+                    Console.WriteLine("Pogresan unos. Birajte ponovo.");
+                    continue;
+                }
+                PacijentHitno pacijent17324_1 = new PacijentHitno();
+                PacijentNormal pacijent17324_2 = new PacijentNormal();
+                if (prioritet == 1) //samo ako je hitan slucaj
+                {
+                    EvidentirajPrvuPomoc(pacijent17324_1); //should be ok
+                    pacijenti.Add(pacijent17324_1);
+                    UnosPodataka(pacijent17324_1 as Pacijent); //polimorfno
+                }
+                if (prioritet == 2)
+                {
+                    UnosPodataka(pacijent17324_2 as Pacijent);//polimorfno
+                    pacijenti.Add(pacijent17324_2);
+                }
+            } while (prioritet < 1 || prioritet > 2);
+        }
+        static void ObrisiPacijenta(List<Pacijent> pacijenti)
+        {
+            bool uspjeh = false;
+            Pacijent temp=new PacijentNormal();
+            Console.WriteLine("U sistemu postoje sljedeci pacijenti: ");
+            foreach (Pacijent p in pacijenti) p.Ispisi();
+            Console.Write("Molimo unesite redni broj pacijenta kojeg zelite obrisati: ");
+            int unos = Convert.ToInt32(Console.ReadLine());
+            foreach (Pacijent p in pacijenti)
+            {
+                if (p.idPacijenta == unos)
+                {
+                    temp = p;
+                    uspjeh = true;
+                    Console.Write("Uspjesno brisanje!");
+                    break;
+                }
+            }
+            pacijenti.Remove(temp);
+            if (!uspjeh) Console.WriteLine("Neuspjesno brisanje! Provjerite ID broj pacijenta koji ste unijeli.");
+        }
         static void Main(string[] args)
         {
-            int unos, prioritet;
+            int unos;
             List<Pacijent> pacijenti = new List<Pacijent>();
             do
             {
@@ -65,25 +113,10 @@ namespace Zadaca1RPR_17324
                 {
                     case 1:
                         {
-                            do
-                            {
-                                Console.Write("Molimo odaberite prioritet pacijenta: 1-hitni 2-normalni: ");
-                                prioritet = Convert.ToInt32(Console.ReadLine());
-                                if (prioritet < 1 || prioritet > 2) continue;
-                                PacijentHitno pacijent17324_1 = new PacijentHitno();
-                                PacijentNormal pacijent17324_2 = new PacijentNormal();
-                                if (prioritet == 1)
-                                {
-                                    EvidentirajPrvuPomoc(pacijent17324_1); //should be ok
-                                    pacijenti.Add(pacijent17324_1);
-                                    UnosPodataka(pacijent17324_2 as Pacijent);
-                                }
-                                if (prioritet== 2)
-                                {
-                                    UnosPodataka(pacijent17324_2 as Pacijent);
-                                    pacijenti.Add(pacijent17324_2);
-                                }
-                            } while (prioritet < 1 || prioritet > 2);
+                            Console.WriteLine("Izaberite opciju:\n1. Registracija pacijenta\n2. Brisanje pacijenta");
+                            unos = Convert.ToInt32(Console.ReadLine());
+                            if (unos == 1) RegistrujPacijenta(ref pacijenti);
+                            if (unos == 2) ObrisiPacijenta(pacijenti);
                             break;
                         }
                 }
@@ -95,7 +128,7 @@ namespace Zadaca1RPR_17324
             foreach (Pacijent p in pacijenti) p.Ispisi();
             //this is good
             Console.ReadLine(); //da se ne gasi konzola
-            //KAD PACIJENT PLATI TREBA INKREMENTIRATI NJEGOV BROJ DOLAZAKA U BOLNICU RADI KASNIJIH POPUSTA
+                                //KAD PACIJENT PLATI TREBA INKREMENTIRATI NJEGOV BROJ DOLAZAKA U BOLNICU RADI KASNIJIH POPUSTA
         }
     }
 }

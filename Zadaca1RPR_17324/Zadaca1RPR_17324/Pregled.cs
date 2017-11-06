@@ -11,7 +11,7 @@ namespace Zadaca1RPR_17324
        public DateTime DatumVrijemePregleda { get; set; } //dan i vrijeme pregleda
        public string postupak;
         public Pacijent p;
-        public int idPregleda=0;
+        protected int idPregleda=0;
         public Pregled(Pacijent p)
         {
             postupak = "Nije unesen";
@@ -26,7 +26,7 @@ namespace Zadaca1RPR_17324
         }
        public void Ispisi()
         {
-            Console.WriteLine("{0}. Pacijent {1} {2} je prošao kroz proceduru {3}.", DatumVrijemePregleda.ToLocalTime(), p.ime, p.prezime, postupak);
+            Console.WriteLine("U {0}. Pacijent {1} {2} je prošao kroz proceduru {3}.", DatumVrijemePregleda, p.ime, p.prezime, postupak);
         }
     }
 }

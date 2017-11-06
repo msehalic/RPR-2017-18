@@ -20,8 +20,18 @@ namespace Zadaca1RPR_17324
                 if (value>0 && ima13Cifara) MaticniBroj = value;*/
           public void Ispisi()
         {
-            Console.WriteLine("{0}. Pacijent {1} {2}, primljen je u bolnicu {3}, spola {4}, ukupno boravio u klinici {5} puta. Rodjen {6}, adresa stanovanja {7}, bracno stanje {8}", idPacijenta, ime, prezime, datumPrijema.ToLocalTime(), spol, posjetioKliniku, datumRodjenja.ToLocalTime(), adresaStanovanja, bracnoStanje);
+            Console.WriteLine("ID-{0} Pacijent {1} {2}, primljen je u bolnicu {3}, spola {4}, ukupno boravio u klinici {5} puta. Rodjen {6}, adresa stanovanja {7}, bracno stanje {8}", idPacijenta, ime, prezime, datumPrijema.ToLocalTime(), spol, posjetioKliniku, datumRodjenja.ToLocalTime(), adresaStanovanja, bracnoStanje);
         }
-
+        public void GenerisiIDPacijenta() //generise nasumican broj od 1 do 1000 da se ne peglamo sa brojacima
+        {
+            List<int> listaRandomBrojeva = new List<int>();
+            int generisaniBroj;
+            Random rand = new Random();
+                do
+                {
+                    generisaniBroj = rand.Next(1, 1000);
+                } while (listaRandomBrojeva.Contains(generisaniBroj));
+            idPacijenta = generisaniBroj;
+        }
     }
 }
