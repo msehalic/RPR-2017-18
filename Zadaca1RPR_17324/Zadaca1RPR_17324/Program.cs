@@ -28,6 +28,7 @@ namespace Zadaca1RPR_17324
             Console.Write("Unesite bracno stanje pacijenta: ");
             p.bracnoStanje = Console.ReadLine();
             p.datumPrijema = DateTime.Today;
+            Console.WriteLine("Pacijent {0} {1} uspjesno kreiran", p.ime, p.prezime);
         }
         static void EvidentirajPrvuPomoc(ref PacijentHitno p)
         {
@@ -54,7 +55,7 @@ namespace Zadaca1RPR_17324
         static void KreirajKarton (ref List<Pacijent> pacijenti)
         {
             Pacijent temp = new PacijentNormal(); //normalna procedura za dodavanje pacijenta
-            bool prekidKreiranjaKartona = false;
+            bool prekidKreiranjaKartona = true; //da je lakse u petlji opovrgnuti negaciju
             do
             {
                 Console.Write("Unesite ime pacijenta kojem kreirate karton: ");
@@ -62,24 +63,25 @@ namespace Zadaca1RPR_17324
                 Console.Write("Unesite prezime pacijenta kojem kreirate karton: ");
                 string prezime = Console.ReadLine();
                 if (!pacijenti.Exists(x => x.ime == ime))
+                {
                     Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta\n3. Odustati od kreiranja kartona");
-                else {
+                    int unos = Convert.ToInt32(Console.ReadLine());
+                    //ako je unos 1 petlja ce sama napraviti krug
+                    if (unos == 2) RegistrujPacijenta(ref pacijenti);
+                    //mozda ovdje jos dodati da ne trazi ime i prezime opet hm?
+                    else if (unos == 3) break;
+                }
+                else
+                {
                     Anamneza(pacijenti.Find(x => x.ime == ime)); //odmah napravi anamnezu
+                    prekidKreiranjaKartona = false;
                     temp = pacijenti.Find(x => x.ime == ime);
                 }
-                int unos = Convert.ToInt32(Console.ReadLine());
-                //ako je unos 1 petlja ce sama napraviti krug
-                if (unos == 2)
+                if (!prekidKreiranjaKartona)
                 {
-                    RegistrujPacijenta(ref pacijenti);
+                    Console.WriteLine("Uspjesno kreiran karton za pacijenta {0} {1}", temp.ime, temp.prezime);
                     break;
                 }
-                else if (unos == 3)
-                {
-                    prekidKreiranjaKartona = true;
-                    break;
-                }
-                if (!prekidKreiranjaKartona) Console.Write("Kreiran karton za pacijenta {0} {1}", temp.ime, temp.prezime);
             } while (true);
         }
         static void Anamneza(Pacijent p)
@@ -96,7 +98,7 @@ namespace Zadaca1RPR_17324
             p.pusac = (temp == 'D') ? true : false;
             Console.Write("Opis historije nasljednih bolesti u porodici (N/A ukoliko nije prisutna): ");
             p.historijaBolestiuPorodici = Console.ReadLine();
-            Console.Write("Alergije pacijenta (N/A) ako nisu prisutne: ");
+            Console.Write("Alergije pacijenta (N/A ako nisu prisutne): ");
             p.alergije = Console.ReadLine();
             Console.WriteLine("Anamneza uspjesna!");
         }
