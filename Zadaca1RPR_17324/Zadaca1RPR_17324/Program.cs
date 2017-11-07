@@ -10,7 +10,6 @@ namespace Zadaca1RPR_17324
 
     class Program
     {
-        static List<Pregled> pregledi = new List<Pregled>();
         static void UnosPodataka(Pacijent p)
         {
             Console.Write("Unesite ime pacijenta: ");
@@ -30,7 +29,7 @@ namespace Zadaca1RPR_17324
             p.bracnoStanje = Console.ReadLine();
             p.datumPrijema = DateTime.Today;
         }
-        static void EvidentirajPrvuPomoc(PacijentHitno p)
+        static void EvidentirajPrvuPomoc(ref PacijentHitno p)
         {
             Pregled hitni17324_1 = new Pregled(DateTime.Now, "", p); //kreiramo instancu pregleda koju cemo nadopunjavati
             p.datumPrijema = DateTime.Now; //obzirom da je hitni slucaj, datum prvog pregleda odgovara prijemu
@@ -44,14 +43,15 @@ namespace Zadaca1RPR_17324
             if (p.PacijentZiv) Console.WriteLine("Uspjesno obavljen postupak " + hitni17324_1.postupak);
             else
             {
-                Console.Write("Unesite vrijeme smrti: ");
-                vrijemeSmrti = Console.ReadLine();
+                Console.Write("Unesite vrijeme smrti (DD/MM/YYYY HH:MM:SS): ");
+                var temp = Console.ReadLine();
+                hitni17324_1.VrijemeSmrti = DateTime.Parse(temp);
                 Console.Write("\nUnesite razlog smrti: ");
-                razlogSmrti = Console.ReadLine();
+                hitni17324_1.misljenjeLjekara = Console.ReadLine();
                 //trebaju nam i komentari tj. zabiljeziti ih u karton pacijenta
                 Console.Write("Pacijent je nazalost preminuo u" + vrijemeSmrti + "zbog" + razlogSmrti);
             }
-            pregledi.Add(hitni17324_1);
+            p.karton.Add(hitni17324_1);
         }
         static void KreirajKarton (ref List<Pacijent> pacijenti)
         {
@@ -74,6 +74,10 @@ namespace Zadaca1RPR_17324
                 else if (unos == 3) break;
             } while (true);
         }
+        void Anamneza()
+        {
+
+        }
         static void RegistrujPacijenta(ref List<Pacijent> pacijenti)
         {
             int prioritet;
@@ -90,7 +94,7 @@ namespace Zadaca1RPR_17324
                 PacijentNormal pacijent17324_2 = new PacijentNormal();
                 if (prioritet == 1) //samo ako je hitan slucaj
                 {
-                    EvidentirajPrvuPomoc(pacijent17324_1); //should be ok
+                    EvidentirajPrvuPomoc(ref pacijent17324_1); //should be ok
                     pacijenti.Add(pacijent17324_1);
                     UnosPodataka(pacijent17324_1 as Pacijent); //polimorfno
                 }
@@ -143,7 +147,7 @@ namespace Zadaca1RPR_17324
                 }
             } while (unos != 8);
             //Debug
-            foreach (Pregled p in pregledi) p.Ispisi();
+           // foreach (Pregled p in pregledi) p.Ispisi();
             //this is good
             //Debug2
             foreach (Pacijent p in pacijenti) p.Ispisi();

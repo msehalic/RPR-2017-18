@@ -10,6 +10,8 @@ namespace Zadaca1RPR_17324
     { 
        public DateTime DatumVrijemePregleda { get; set; } //dan i vrijeme pregleda
        public string postupak;
+        public string misljenjeLjekara;
+        public DateTime VrijemeSmrti { get; set; }
         public Pacijent p;
         protected int idPregleda=0;
         public Pregled(Pacijent p)
