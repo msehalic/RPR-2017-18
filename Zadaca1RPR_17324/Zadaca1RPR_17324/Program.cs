@@ -54,6 +54,7 @@ namespace Zadaca1RPR_17324
         static void KreirajKarton (ref List<Pacijent> pacijenti)
         {
             Pacijent temp = new PacijentNormal(); //normalna procedura za dodavanje pacijenta
+            bool prekidKreiranjaKartona = false;
             do
             {
                 Console.Write("Unesite ime pacijenta kojem kreirate karton: ");
@@ -61,7 +62,11 @@ namespace Zadaca1RPR_17324
                 Console.Write("Unesite prezime pacijenta kojem kreirate karton: ");
                 string prezime = Console.ReadLine();
                 if (!pacijenti.Exists(x => x.ime == ime))
-                    Console.Write("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta\n3. Odustati od kreiranja kartona");
+                    Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta\n3. Odustati od kreiranja kartona");
+                else {
+                    Anamneza(pacijenti.Find(x => x.ime == ime)); //odmah napravi anamnezu
+                    temp = pacijenti.Find(x => x.ime == ime);
+                }
                 int unos = Convert.ToInt32(Console.ReadLine());
                 //ako je unos 1 petlja ce sama napraviti krug
                 if (unos == 2)
@@ -69,12 +74,31 @@ namespace Zadaca1RPR_17324
                     RegistrujPacijenta(ref pacijenti);
                     break;
                 }
-                else if (unos == 3) break;
+                else if (unos == 3)
+                {
+                    prekidKreiranjaKartona = true;
+                    break;
+                }
+                if (!prekidKreiranjaKartona) Console.Write("Kreiran karton za pacijenta {0} {1}", temp.ime, temp.prezime);
             } while (true);
         }
-        void Anamneza()
+        static void Anamneza(Pacijent p)
         {
-
+            char temp;
+            Console.WriteLine("Prije kreiranja kartona izvrsit cemo anamnezu: ");
+            Console.Write("Kako pacijent opisuje svoje tegobe: ");
+            p.opisTegobaBolesnika = Console.ReadLine();
+            Console.Write("Pacijent je aktivni pusac (D/N)? ");
+            temp = Convert.ToChar(Console.ReadLine());
+            p.pusac = (temp == 'D') ? true : false;
+            Console.Write("Pacijent konzumira alkohol (D/N)? ");
+            temp = Convert.ToChar(Console.ReadLine());
+            p.pusac = (temp == 'D') ? true : false;
+            Console.Write("Opis historije nasljednih bolesti u porodici (N/A ukoliko nije prisutna): ");
+            p.historijaBolestiuPorodici = Console.ReadLine();
+            Console.Write("Alergije pacijenta (N/A) ako nisu prisutne: ");
+            p.alergije = Console.ReadLine();
+            Console.WriteLine("Anamneza uspjesna!");
         }
         static void RegistrujPacijenta(ref List<Pacijent> pacijenti)
         {
@@ -140,6 +164,11 @@ namespace Zadaca1RPR_17324
                             unos = Convert.ToInt32(Console.ReadLine());
                             if (unos == 1) RegistrujPacijenta(ref pacijenti);
                             if (unos == 2) ObrisiPacijenta(pacijenti);
+                            break;
+                        }
+                    case 3:
+                        {
+                            KreirajKarton(ref pacijenti);
                             break;
                         }
                 }

@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace Zadaca1RPR_17324
 {
-    sealed partial class PregledAnamneza //razdvojeno da se ne gomilaju varijable
+    abstract partial class Pacijent //razdvojeno zbog obima anamneze da se ne gomilaju varijable
     {
+#pragma warning disable IDE1006 // da me ne smara Naming Styles :D
         public string opisTegobaBolesnika;
+        public string historijaBolestiuPorodici;
+        //navike
+        public bool pusac { get; set; }
+        public bool alkoholicar { get; set; }
+        public string alergije;
         //opceniti problemi
-        public bool imaSrcaneProbleme { get; set;}
+      /*  public bool imaSrcaneProbleme { get; set;}
         public bool imaKostaneProbleme { get; set; }
         public bool imaNervneProbleme { get; set; }
         public bool imaEndokrineProbleme { get; set; }
@@ -21,11 +27,10 @@ namespace Zadaca1RPR_17324
         public bool imaPlasticneProbleme { get; set; }
         public bool imaKrvneProbleme { get; set; }
         public bool imaZubneProbleme { get; set; }
-        public bool imaAlergije { get; set; }
+       
         //vakcinisanje
         public bool primioTetanus { get; set; }
         public bool primioRubeolu { get; set; }
-        public bool primioGripu { get; set; }
         public bool primioHepatitis { get; set; }
         public bool primioBCG { get; set; }
         //operacije
@@ -38,16 +43,10 @@ namespace Zadaca1RPR_17324
         public bool kasalj { get; set; }
         public bool vrtoglavica { get; set; }
         public bool povracanje { get; set; }
-        //navike
-        public bool pusac { get; set; }
-        public int brojCigareta { get; set; }
-        public bool alkoholicar { get; set; }
-        public bool opojneDroge { get; set; }
         //porodica
-        public bool slucajVisokogPritiska { get; set; }
-        public bool secernaBolest { get; set; }
-        public bool karcinomi { get; set; }
-        public bool hemofilija { get; set; }
-        public bool psihickiProblemi { get; set; }
+        public bool srcaniProblemiuPorodici { get; set; }
+        public bool secernaBolestuPorodici { get; set; }
+        public bool slucajKarcinomauPorodici { get; set; }
+        public bool psihickiProblemiuPorodici { get; set; }*/
     }
 }
