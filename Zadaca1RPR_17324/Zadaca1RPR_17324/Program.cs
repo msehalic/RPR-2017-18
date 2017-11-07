@@ -53,6 +53,27 @@ namespace Zadaca1RPR_17324
             }
             pregledi.Add(hitni17324_1);
         }
+        static void KreirajKarton (ref List<Pacijent> pacijenti)
+        {
+            Pacijent temp = new PacijentNormal(); //normalna procedura za dodavanje pacijenta
+            do
+            {
+                Console.Write("Unesite ime pacijenta kojem kreirate karton: ");
+                string ime = Console.ReadLine();
+                Console.Write("Unesite prezime pacijenta kojem kreirate karton: ");
+                string prezime = Console.ReadLine();
+                if (!pacijenti.Exists(x => x.ime == ime))
+                    Console.Write("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta\n3. Odustati od kreiranja kartona");
+                int unos = Convert.ToInt32(Console.ReadLine());
+                //ako je unos 1 petlja ce sama napraviti krug
+                if (unos == 2)
+                {
+                    RegistrujPacijenta(ref pacijenti);
+                    break;
+                }
+                else if (unos == 3) break;
+            } while (true);
+        }
         static void RegistrujPacijenta(ref List<Pacijent> pacijenti)
         {
             int prioritet;
@@ -98,8 +119,8 @@ namespace Zadaca1RPR_17324
                     break;
                 }
             }
-            pacijenti.Remove(temp);
-            if (!uspjeh) Console.WriteLine("Neuspjesno brisanje! Provjerite ID broj pacijenta koji ste unijeli.");
+            if (uspjeh) pacijenti.Remove(temp);
+            else Console.WriteLine("Neuspjesno brisanje! Provjerite ID broj pacijenta koji ste unijeli.");
         }
         static void Main(string[] args)
         {
