@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zadaca1RPR_17324", "Zadaca1RPR_17324\Zadaca1RPR_17324.csproj", "{EF83EEEC-965E-4441-A0DE-4783A7450BB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testovi_17324RPR", "Testovi_17324RPR\Testovi_17324RPR.csproj", "{5BD7D4A1-FB54-4071-A5CC-6D37473BB86E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{EF83EEEC-965E-4441-A0DE-4783A7450BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF83EEEC-965E-4441-A0DE-4783A7450BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF83EEEC-965E-4441-A0DE-4783A7450BB1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5BD7D4A1-FB54-4071-A5CC-6D37473BB86E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BD7D4A1-FB54-4071-A5CC-6D37473BB86E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BD7D4A1-FB54-4071-A5CC-6D37473BB86E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BD7D4A1-FB54-4071-A5CC-6D37473BB86E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

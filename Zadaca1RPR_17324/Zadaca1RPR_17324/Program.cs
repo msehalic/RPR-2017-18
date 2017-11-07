@@ -48,8 +48,6 @@ namespace Zadaca1RPR_17324
                 hitni17324_1.VrijemeSmrti = DateTime.Parse(temp);
                 Console.Write("\nUnesite razlog smrti: ");
                 hitni17324_1.misljenjeLjekara = Console.ReadLine();
-                //trebaju nam i komentari tj. zabiljeziti ih u karton pacijenta
-                Console.Write("Pacijent je nazalost preminuo u" + vrijemeSmrti + "zbog" + razlogSmrti);
             }
             p.karton.Add(hitni17324_1);
         }
