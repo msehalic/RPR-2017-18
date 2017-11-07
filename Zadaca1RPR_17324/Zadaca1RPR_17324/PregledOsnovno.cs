@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zadaca1RPR_17324
 {
-    sealed class Pregled
+    sealed partial class Pregled
     { 
        public DateTime DatumVrijemePregleda { get; set; } //dan i vrijeme pregleda
        public string postupak;
