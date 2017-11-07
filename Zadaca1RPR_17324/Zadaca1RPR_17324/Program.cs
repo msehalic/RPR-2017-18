@@ -175,6 +175,11 @@ namespace Zadaca1RPR_17324
                         }
                 }
             } while (unos != 8);
+
+
+            //TREBA RAZDVOJITI OVAJ MODEL OD MAINA U POSEBAN FAJL IZGLEDA? PITATI HHASIC!
+
+
             //Debug
            // foreach (Pregled p in pregledi) p.Ispisi();
             //this is good
