@@ -8,7 +8,6 @@ namespace Zadaca1RPR_17324
 {
     abstract partial class Pacijent//partial dio sa metodama
     {
-        //TREBALA BI POSTOJATI NEKA LISTA PREGLEDA U KOJU BI SE UBACIVALI KARTONI, SMRTNI STATUS I TO!
         public string ime, prezime, adresaStanovanja, bracnoStanje;
         public DateTime datumPrijema, datumRodjenja;
         public int idPacijenta = 0;
@@ -16,7 +15,7 @@ namespace Zadaca1RPR_17324
         public int posjetioKliniku = 0; //broji koliko je puta odredjeni pacijent bio u klinici, kada dostigne 3 idu popusti itd.
         public Int64 MaticniBroj;
         public List<Pregled> karton = new List<Pregled>();
-        /*var ima13Cifara = Math.Floor(Math.Log10(value) + 1) == 13; //provjera da ima 13 cifara
+        /*var ima13Cifara = Math.Floor(Math.Log10(value) + 1) == 13; //provjera da ima 13 cifara (za main mozda nekad)
         if (value>0 && ima13Cifara) MaticniBroj = value;*/
         public void Ispisi()
         {

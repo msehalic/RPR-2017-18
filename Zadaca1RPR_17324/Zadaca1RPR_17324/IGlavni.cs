@@ -8,6 +8,6 @@ namespace Zadaca1RPR_17324
 {
     interface IGlavni
     {
-        decimal IznosPlacanja();
+        decimal IznosPlacanja(); //OVO KAD BUDU KLINIKE MOZDA, POGLEDAJ TODO U MAINU AKO NISI SIGURAN!
     }
 }

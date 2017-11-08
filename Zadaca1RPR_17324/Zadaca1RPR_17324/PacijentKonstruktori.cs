@@ -8,7 +8,6 @@ namespace Zadaca1RPR_17324
 {
     abstract partial class Pacijent //dio sa konstruktorima
     {
-        //TREBALA BI POSTOJATI NEKA LISTA PREGLEDA U KOJU BI SE UBACIVALI KARTONI, SMRTNI STATUS I TO!
         public Pacijent()
         {
             MaticniBroj = 1111011123456;
