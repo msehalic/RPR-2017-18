@@ -16,13 +16,14 @@ namespace Zadaca1RPR_17324
         public DateTime VrijemeSmrti { get; set; }
         public Pacijent p;
         public int idPregleda=0;
-        public Pregled(Pacijent p)
+        public Pregled(Pacijent p1)
         {
             postupak = "Nije unesen";
             misljenjeLjekara= "Nije uneseno";
             terapija= "Nije unesena";
             DatumVrijemePregleda = DateTime.Now;
             GenerisiIDPregleda();
+            p = p1;
         }
         public Pregled (DateTime datum1, string postupak1, string misljenjeLjekara1, string terapija1, Pacijent pac)
         {

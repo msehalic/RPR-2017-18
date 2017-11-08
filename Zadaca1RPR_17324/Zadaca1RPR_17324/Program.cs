@@ -80,7 +80,7 @@ namespace Zadaca1RPR_17324
                 }
                 else
                 {
-                    Anamneza(pacijenti.Find(x => x.ime == ime)); //odmah napravi anamnezu
+                    Anamneza(pacijenti.Find (x => (x.ime == ime) && (x.prezime == prezime))); //odmah napravi anamnezu
                     prekidKreiranjaKartona = false;
                     temp = pacijenti.Find(x => x.ime == ime);
                 }
@@ -94,7 +94,7 @@ namespace Zadaca1RPR_17324
         static void PretragaKartona(ref List<Pacijent> pacijenti)
         {
             Pacijent temp = new Pacijent_NormalnaProcedura(); //normalna procedura za dodavanje pacijenta
-            bool neuspjelaPretragaKartona = true; //da je lakse u petlji opovrgnuti negaciju
+            bool neuspjelaPretragaKartona = false; //ovo nekako izbaciti kasnije
             do
             {
                 Console.Write("Unesite ime pacijenta kojem zelite pretraziti karton: ");
@@ -158,7 +158,7 @@ namespace Zadaca1RPR_17324
                                 break;
                             }
                     }
-                    //OVDJE SAD TREBA VISE OPCIJA I NACINA PRETRAGE, MOZDA KAO DRUGI PARAMETAR
+                    //MOZDA JOS KOJA OPCIJA I NACIN PRETRAGE? HMM...
                 }
                 if (!neuspjelaPretragaKartona)
                 {
@@ -185,6 +185,54 @@ namespace Zadaca1RPR_17324
             Console.Write("Alergije pacijenta (N/A ako nisu prisutne): ");
             p.alergije = Console.ReadLine();
             Console.WriteLine("Anamneza uspjesna!");
+        }
+        static void RegistracijaPregleda(ref List<Pacijent> pacijenti)
+        {
+            Console.WriteLine("Dobro dosli u modul za registraciju pregleda.");
+            bool prekidKreiranjaPregleda = true; //da je lakse u petlji opovrgnuti negaciju
+            do
+            {
+                Pacijent temp = new Pacijent_NormalnaProcedura();
+                Pregled pregled=new Pregled(DateTime.Today, "", "", "", temp); //SVAKI KONSTRUKTOR BI TREBAO OVAKO!
+                Console.Write("Unesite ime pacijenta kojem kreirate pregled: ");
+                string ime = Console.ReadLine();
+                Console.Write("Unesite prezime pacijenta kojem kreirate pregled: ");
+                string prezime = Console.ReadLine();
+                if (!pacijenti.Exists(x => x.ime == ime) && !pacijenti.Exists(x => x.prezime == prezime))
+                {
+                    Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta te njegov pripadajuci karton\n3. Odustati od kreiranja pregleda");
+                    int unos = Convert.ToInt32(Console.ReadLine());
+                    //ako je unos 1 petlja ce sama napraviti krug
+                    if (unos == 2)
+                    {
+                        RegistrujPacijenta(ref pacijenti);
+                        KreirajKarton(ref pacijenti);
+                    }
+                    //mozda ovdje jos dodati da ne trazi ime i prezime opet hm?
+                    else if (unos == 3) break;
+                }
+                else
+                {
+                    temp = pacijenti.Find(x => (x.ime == ime) && (x.prezime == prezime)); //instanciranje mozda sa indeksom?
+                    pregled = new Pregled(temp);
+                    Console.Write("Unesite datum kada je pregled obavljen (DD/MM/YYYY): ");
+                    string s = Console.ReadLine();
+                    pregled.DatumVrijemePregleda = DateTime.Parse(s);
+                    Console.Write("Koji postupak je proveden prilikom pregleda? ");
+                    pregled.postupak = Console.ReadLine();
+                    Console.Write("Kakvo je misljenje ljekara nakon pregleda? ");
+                    pregled.misljenjeLjekara = Console.ReadLine();
+                    Console.Write("Koja terapija je propisana pacijentu? ");
+                    pregled.terapija = Console.ReadLine();
+                    prekidKreiranjaPregleda = false;
+                }
+                if (!prekidKreiranjaPregleda)
+                {
+                    Console.WriteLine("Uspjesno kreiran pregled {0} za pacijenta {1} {2}.\n", pregled.postupak, temp.ime, temp.prezime);
+                    temp.karton.Add(pregled);
+                    break;
+                }
+            } while (true);
         }
         static void RegistrujPacijenta(ref List<Pacijent> pacijenti)
         {
@@ -262,11 +310,18 @@ namespace Zadaca1RPR_17324
                             PretragaKartona(ref pacijenti);
                             break;
                         }
+                    case 5:
+                        {
+                            RegistracijaPregleda(ref pacijenti);
+                            break;
+                        }
                 }
             } while (unos != 8);
 
             //TREBA LI INSTANCIRATI I U POMOCNIM METODAMA TE KLASAMA?
             //PREDNOSTI NASLJEDJIVANJA ORDINACIJA BI BILE DA SE IMPLEMENTIRA INTERFEJS, A NEDOSTACI DA SE NE BI MOGAO IMPLEMENTIRATI UNIVERZALNI RED ČEKANJA
+
+            //TODO: SPRIJECITI PONOVNO KREIRANJE KARTONA GDJE POSTOJI I NE TRAZITI PONOVNI UNOS IMENA I PREZIMENA CROSS-OPTION
 
             //TREBA RAZDVOJITI OVAJ MODEL OD MAINA U POSEBAN FAJL IZGLEDA? PITATI HHASIC!
             //TREBA LI RADITI ONO IZ BILJESKI? PITATI HHASIC!
