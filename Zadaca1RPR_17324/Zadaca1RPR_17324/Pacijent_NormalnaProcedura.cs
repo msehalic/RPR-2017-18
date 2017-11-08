@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Zadaca1RPR_17324
 {
-    class PacijentNormal:Pacijent
+    class Pacijent_NormalnaProcedura:Pacijent
     {
-        public PacijentNormal(int MaticniBroj, string ime, string prezime, DateTime datumRodjenja, char spol, string adresaStanovanja, string bracnoStanje, DateTime datumPrijema) : base(MaticniBroj, ime, prezime, datumRodjenja, spol, adresaStanovanja, bracnoStanje, datumPrijema)
+        public Pacijent_NormalnaProcedura(int MaticniBroj, string ime, string prezime, DateTime datumRodjenja, char spol, string adresaStanovanja, string bracnoStanje, DateTime datumPrijema) : base(MaticniBroj, ime, prezime, datumRodjenja, spol, adresaStanovanja, bracnoStanje, datumPrijema)
         {
             GenerisiIDPacijenta();
         }
-        public PacijentNormal()
+        public Pacijent_NormalnaProcedura()
         {
             GenerisiIDPacijenta();
         }

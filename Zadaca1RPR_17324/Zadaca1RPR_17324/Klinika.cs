@@ -8,5 +8,6 @@ namespace Zadaca1RPR_17324
 {
     class Klinika
     {
+
     }
 }

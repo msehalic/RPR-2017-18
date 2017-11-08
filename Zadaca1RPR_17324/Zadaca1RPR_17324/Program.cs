@@ -28,9 +28,9 @@ namespace Zadaca1RPR_17324
             Console.Write("Unesite bracno stanje pacijenta: ");
             p.bracnoStanje = Console.ReadLine();
             p.datumPrijema = DateTime.Today;
-            Console.WriteLine("Pacijent {0} {1} uspjesno kreiran", p.ime, p.prezime);
+            Console.WriteLine("Pacijent {0} {1} uspjesno kreiran.\n", p.ime, p.prezime);
         }
-        static void EvidentirajPrvuPomoc(ref PacijentHitno p)
+        static void EvidentirajPrvuPomoc(ref Pacijent_HitnaProcedura p)
         {
             Pregled hitni17324_1 = new Pregled(DateTime.Now, "", p); //kreiramo instancu pregleda koju cemo nadopunjavati
             p.datumPrijema = DateTime.Now; //obzirom da je hitni slucaj, datum prvog pregleda odgovara prijemu
@@ -54,7 +54,7 @@ namespace Zadaca1RPR_17324
         }
         static void KreirajKarton (ref List<Pacijent> pacijenti)
         {
-            Pacijent temp = new PacijentNormal(); //normalna procedura za dodavanje pacijenta
+            Pacijent temp = new Pacijent_NormalnaProcedura(); //normalna procedura za dodavanje pacijenta
             bool prekidKreiranjaKartona = true; //da je lakse u petlji opovrgnuti negaciju
             do
             {
@@ -79,10 +79,43 @@ namespace Zadaca1RPR_17324
                 }
                 if (!prekidKreiranjaKartona)
                 {
-                    Console.WriteLine("Uspjesno kreiran karton za pacijenta {0} {1}", temp.ime, temp.prezime);
+                    Console.WriteLine("Uspjesno kreiran karton za pacijenta {0} {1}.\n", temp.ime, temp.prezime);
                     break;
                 }
             } while (true);
+        }        
+        static void PretragaKartona(ref List<Pacijent> pacijenti)
+        {
+            Pacijent temp = new Pacijent_NormalnaProcedura(); //normalna procedura za dodavanje pacijenta
+            bool neuspjelaPretragaKartona = true; //da je lakse u petlji opovrgnuti negaciju
+            do
+            {
+                Console.Write("Unesite ime pacijenta kojem zelite pretraziti karton: ");
+                string ime = Console.ReadLine();
+                Console.Write("Unesite prezime pacijenta kojem zelite pretraziti karton: ");
+                string prezime = Console.ReadLine();
+                if (!pacijenti.Exists(x => x.ime == ime))
+                {
+                    Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen. Provjerite da li je evidentiran u sistemu te da li mu je kreiran karton.\nDa li zelite:\n1. Pokusati ponovo\n2. Odustati od pretrage kartona");
+                    int unos = Convert.ToInt32(Console.ReadLine());
+                    //ako je unos 1 petlja ce sama napraviti krug
+                    if (unos == 2) break;
+                }
+                else
+                {
+                    temp = pacijenti.Find(x => x.ime == ime);
+                    Console.WriteLine("Dobro dosli u modul za pretragu kartona pacijenta. Za pacijenta {0} {1}, evidentirani su sljedeci pregledi: ", temp.ime, temp.prezime);
+                    foreach (Pregled pr in temp.karton) pr.Ispisi();
+                    neuspjelaPretragaKartona = false;
+                    //OVDJE SAD TREBA VISE OPCIJA I NACINA PRETRAGE, MOZDA KAO DRUGI PARAMETAR
+                }
+                if (!neuspjelaPretragaKartona)
+                {
+                    Console.WriteLine("Uspjesno izvrsena pretraga kartona {0} {1}.\n", temp.ime, temp.prezime);
+                    break;
+                }
+            } while (true);
+
         }
         static void Anamneza(Pacijent p)
         {
@@ -114,8 +147,8 @@ namespace Zadaca1RPR_17324
                     Console.WriteLine("Pogresan unos. Birajte ponovo.");
                     continue;
                 }
-                PacijentHitno pacijent17324_1 = new PacijentHitno();
-                PacijentNormal pacijent17324_2 = new PacijentNormal();
+                Pacijent_HitnaProcedura pacijent17324_1 = new Pacijent_HitnaProcedura();
+                Pacijent_NormalnaProcedura pacijent17324_2 = new Pacijent_NormalnaProcedura();
                 if (prioritet == 1) //samo ako je hitan slucaj
                 {
                     EvidentirajPrvuPomoc(ref pacijent17324_1); //should be ok
@@ -132,7 +165,7 @@ namespace Zadaca1RPR_17324
         static void ObrisiPacijenta(List<Pacijent> pacijenti)
         {
             bool uspjeh = false;
-            Pacijent temp=new PacijentNormal();
+            Pacijent temp=new Pacijent_NormalnaProcedura();
             Console.WriteLine("U sistemu postoje sljedeci pacijenti: ");
             foreach (Pacijent p in pacijenti) p.Ispisi();
             Console.Write("Molimo unesite redni broj pacijenta kojeg zelite obrisati: ");
@@ -173,6 +206,11 @@ namespace Zadaca1RPR_17324
                             KreirajKarton(ref pacijenti);
                             break;
                         }
+                    case 4:
+                        {
+                            PretragaKartona(ref pacijenti);
+                            break;
+                        }
                 }
             } while (unos != 8);
 
@@ -181,6 +219,9 @@ namespace Zadaca1RPR_17324
             //TREBA LI RADITI ONO IZ BILJESKI? PITATI HHASIC!
             //KOLIKO BODOVA NOSI ZADACA? PITATI HHASIC!
             //DA LI JE BITNO KO STA RADI (NPR. MEDICINSKI TEHNiCAR I KARTONI), JER NE POSTOJE NIVOI PRISTUPA NITI LOGIN? PITATI HHASIC!
+            //KAKO UOPCE ZNATI KO KORISTI APP? PITATI HHASIC!
+            //KOJI JE SMISAO FUNKCIONALNOSTI NAPLATE KAD SE NE MOZE REALTIME VRSITI PREGLED
+            //ISTO TAKO NEMA SMISLA OVO POD 6 JER SE NE MOGU KREIRATI DOKTORI PA TAKO NI POREDITI (JEDINO DA SE HARDCODIRAJU)?
 
             //Debug
            // foreach (Pregled p in pregledi) p.Ispisi();

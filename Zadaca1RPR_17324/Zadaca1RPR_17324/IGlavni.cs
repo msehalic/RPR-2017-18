@@ -8,7 +8,6 @@ namespace Zadaca1RPR_17324
 {
     interface IGlavni
     {
-        void RegistrujPacijenta();
         decimal IznosPlacanja();
     }
 }

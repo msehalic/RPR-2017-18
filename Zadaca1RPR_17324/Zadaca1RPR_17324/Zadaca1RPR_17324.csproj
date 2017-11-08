@@ -75,8 +75,8 @@
     <Compile Include="IGlavni.cs" />
     <Compile Include="PacijentMetodeDefinicije.cs" />
     <Compile Include="PacijentKonstruktori.cs" />
-    <Compile Include="PacijentHitno.cs" />
-    <Compile Include="PacijentNormal.cs" />
+    <Compile Include="Pacijent_HitnaProcedura.cs" />
+    <Compile Include="Pacijent_NormalnaProcedura.cs" />
     <Compile Include="Pregled.cs" />
     <Compile Include="PacijentAnamneza.cs" />
     <Compile Include="Program.cs" />
