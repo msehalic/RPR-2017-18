@@ -28,7 +28,7 @@ namespace Zadaca1RPR_17324
             Console.Write("Unesite bracno stanje pacijenta: ");
             p.bracnoStanje = Console.ReadLine();
             p.datumPrijema = DateTime.Today;
-            Console.WriteLine("Pacijent {0} {1} uspjesno kreiran.\n", p.ime, p.prezime);
+            Console.WriteLine("Pacijent {0} {1} sa ID {2} uspjesno kreiran.\n", p.ime, p.prezime, p.idPacijenta);
         }
         static void EvidentirajPrvuPomoc(ref Pacijent_HitnaProcedura p)
         {
@@ -43,7 +43,7 @@ namespace Zadaca1RPR_17324
             p.PacijentZiv = (prezivio == 'D') ? true : false;
             if (p.PacijentZiv)
             {
-                Console.WriteLine("Uspjesno obavljen postupak " + hitni17324_1.postupak);
+                Console.WriteLine("Uspjesno obavljen postupak " + hitni17324_1.postupak + ", ID pregleda: ",hitni17324_1.idPregleda);
                 Console.Write("Kakvo je misljenje ljekara nakon hitne intervencije? ");
                 hitni17324_1.misljenjeLjekara = Console.ReadLine();
                 Console.Write("Kakva je terapija propisana bolesniku? ");
@@ -87,6 +87,7 @@ namespace Zadaca1RPR_17324
                 if (!prekidKreiranjaKartona)
                 {
                     Console.WriteLine("Uspjesno kreiran karton za pacijenta {0} {1}.\n", temp.ime, temp.prezime);
+                    temp.ispravanKarton = true;
                     break;
                 }
             } while (true);
@@ -154,7 +155,7 @@ namespace Zadaca1RPR_17324
                                 Console.Write("Unesite ID pregleda kojeg zelite izlistati: ");
                                 int tempID = Convert.ToInt32(Console.ReadLine());
                                 foreach (Pregled p in temp.karton) if (p.idPregleda==tempID) p.Ispisi();
-                                    else Console.WriteLine("Nije pronadjena komponenta u nazivu provedenog postupka koja odgovara zahtjevu.");
+                                    else Console.WriteLine("Nije pronadjen ID postojeceg pacijenta koji odgovara zahtjevu.");
                                 break;
                             }
                     }
@@ -211,6 +212,8 @@ namespace Zadaca1RPR_17324
                     //mozda ovdje jos dodati da ne trazi ime i prezime opet hm?
                     else if (unos == 3) break;
                 }
+                // else if (pacijenti.Exists(x => x.ime == ime) && pacijenti.Exists(x => x.prezime == prezime) && )
+                //ovdje treba slucaj kad nema karton i ponuditi da se kreira, napravio sam bool za provjeru :)
                 else
                 {
                     temp = pacijenti.Find(x => (x.ime == ime) && (x.prezime == prezime)); //instanciranje mozda sa indeksom?
@@ -228,7 +231,7 @@ namespace Zadaca1RPR_17324
                 }
                 if (!prekidKreiranjaPregleda)
                 {
-                    Console.WriteLine("Uspjesno kreiran pregled {0} za pacijenta {1} {2}.\n", pregled.postupak, temp.ime, temp.prezime);
+                    Console.WriteLine("Uspjesno kreiran pregled sa ID {0} za pacijenta {1} {2}.\n", pregled.idPregleda, temp.ime, temp.prezime);
                     temp.karton.Add(pregled);
                     break;
                 }
@@ -343,7 +346,7 @@ I ONU GLUPOST SA APARATIMA NEKAKO, NOTE TO SELF: NEMOJ KORISTITI LISTE!*/
             //Debug2
             foreach (Pacijent p in pacijenti) p.Ispisi();
             //this is good
-            Console.ReadLine(); //da se ne gasi konzola
+          //  Console.ReadLine(); //da se ne gasi konzola
                                 //KAD PACIJENT PLATI TREBA INKREMENTIRATI NJEGOV BROJ DOLAZAKA U BOLNICU RADI KASNIJIH POPUSTA
         }
     }
