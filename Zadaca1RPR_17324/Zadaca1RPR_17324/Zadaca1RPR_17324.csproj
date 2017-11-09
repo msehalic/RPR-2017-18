@@ -70,7 +70,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Doktor.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Klinika.cs" />
     <Compile Include="IGlavni.cs" />
@@ -98,6 +97,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Doktor\Doktori.csproj">
+      <Project>{00c101ee-53ad-41d2-a1f2-b0a966dad82f}</Project>
+      <Name>Doktori</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

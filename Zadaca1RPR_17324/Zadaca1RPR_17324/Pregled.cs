@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Doktori;
 namespace Zadaca1RPR_17324
 {
     sealed class Pregled
@@ -16,6 +16,7 @@ namespace Zadaca1RPR_17324
         public DateTime VrijemeSmrti { get; set; }
         public DateTime Obdukcija { get; set; }
         public Pacijent p;
+        public Doktor d=new Doktor();
         public int idPregleda=0;
         public Pregled(Pacijent p1)
         {

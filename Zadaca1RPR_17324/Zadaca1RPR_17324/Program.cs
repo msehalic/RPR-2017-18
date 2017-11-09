@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Doktori;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 
 namespace Zadaca1RPR_17324
 {
@@ -12,17 +12,38 @@ namespace Zadaca1RPR_17324
     {
         static void UnosPodataka(Pacijent p)
         {
+            string temp;
+            bool dobarUnos=true;
             Console.Write("Unesite ime pacijenta: ");
             p.ime = Console.ReadLine();
             Console.Write("Unesite prezime pacijenta: ");
             p.prezime = Console.ReadLine();
-            Console.Write("Unesite datum rodjenja pacijenta (DD/MM/YYYY): ");
-            var temp = Console.ReadLine();
-            p.datumRodjenja = DateTime.Parse(temp);
-            Console.Write("Unesite maticni broj pacijenta (13 cifara): ");
-            p.MaticniBroj = Convert.ToInt64(Console.ReadLine());
-            Console.Write("Unesite spol pacijenta (M/Ž): ");
-            p.spol = Convert.ToChar(Console.ReadLine());
+            do
+            {
+                if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                Console.Write("Unesite datum rodjenja pacijenta (DD/MM/YYYY): ");
+                temp = Console.ReadLine();
+                dobarUnos = DateTime.TryParse(temp, out p.datumRodjenja);
+            } while (!dobarUnos);
+            do
+            {
+                if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                Console.Write("Unesite maticni broj pacijenta (13 cifara): ");
+                temp = Console.ReadLine();
+                dobarUnos = UInt64.TryParse(temp, out p.MaticniBroj); //brine se da li je veci od 0 sa UInt
+                if (dobarUnos)
+                {
+                    if (!(temp.Length==13)) dobarUnos = false; //ako nema 13 cifara nije ispravan
+                }
+            } while (!dobarUnos);
+            do
+            {
+                Console.Write("Unesite spol pacijenta (M/Z): ");
+                temp = Console.ReadLine();
+                temp = temp.ToUpper();
+                dobarUnos = Char.TryParse(temp, out p.spol); //brine se da li je veci od 0 sa UInt
+                if (p.spol != 'M' && p.spol != 'Z') dobarUnos = false;
+            } while (!dobarUnos);
             Console.Write("Unesite adresu stanovanja pacijenta: ");
             p.adresaStanovanja = Console.ReadLine();
             Console.Write("Unesite bracno stanje pacijenta: ");
@@ -57,10 +78,11 @@ namespace Zadaca1RPR_17324
                 Console.Write("Unesite uzrok/razlog smrti: ");
                 hitni17324_1.misljenjeLjekara = Console.ReadLine();
                 Console.Write("Da li ce biti zakazana obdukcija (D/N)? ");
-                 char obdukcija17324_1 = Convert.ToChar(Console.ReadLine());
-                if (obdukcija17324_1 == 'D') {
+                char obdukcija17324_1 = Convert.ToChar(Console.ReadLine());
+                if (obdukcija17324_1 == 'D')
+                {
                     Console.Write("Unesite datum i vrijeme obdukcije (DD/MM/YYYY HH:MM:SS): ");
-                 var obdukcija17324_2 = Console.ReadLine();
+                    var obdukcija17324_2 = Console.ReadLine();
                     hitni17324_1.Obdukcija = DateTime.Parse(temp);
                 }
             }
@@ -194,7 +216,7 @@ namespace Zadaca1RPR_17324
             p.alergije = Console.ReadLine();
             Console.WriteLine("Anamneza uspjesna!");
         }
-        static void RegistracijaPregleda(ref List<Pacijent> pacijenti)
+        static void RegistracijaPregleda(ref List<Pacijent> pacijenti, ref List<Doktor> doktori)
         {
             Console.WriteLine("Dobro dosli u modul za registraciju pregleda.");
             bool prekidKreiranjaPregleda = true; //da je lakse u petlji opovrgnuti negaciju
@@ -242,7 +264,21 @@ namespace Zadaca1RPR_17324
                         pregled.misljenjeLjekara = Console.ReadLine();
                         Console.Write("Koja terapija je propisana pacijentu? ");
                         pregled.terapija = Console.ReadLine();
-                        prekidKreiranjaPregleda = false;
+                        do
+                        {
+                            Console.Write("Molimo unesite broj licence doktora koji propisuje terapiju: ");
+
+                            var licenca = Convert.ToInt32(Console.ReadLine());
+                            //sada provjerimo da li je validan doktor ili je prevarant :)
+                            foreach (Doktor doktor17324 in doktori)
+                                if (doktor17324.brojLicence == licenca)
+                                {
+                                    Console.WriteLine("Terapiju propisao doktor {0} {1}", doktor17324.imeDoktora, doktor17324.prezimeDoktora);
+                                    pregled.d = doktor17324;
+                                    prekidKreiranjaPregleda = false;
+                                }
+                            if (prekidKreiranjaPregleda) Console.WriteLine("Neispravna licenca. Pokusajte ponovno. ");
+                        } while (prekidKreiranjaPregleda);
                     }
                 }
                 if (!prekidKreiranjaPregleda)
@@ -305,6 +341,13 @@ namespace Zadaca1RPR_17324
         {
             int unos;
             List<Pacijent> pacijenti = new List<Pacijent>();
+            List<Doktor> doktori = new List<Doktor>();
+            Doktor doktor17324_1 = new Doktor("Ahmed", "Ahmedic", 123); //nasumice, broj licence 123
+            Doktor doktor17324_2 = new Doktor("Emina", "Tutic", 456); //nasumice, broj licence 456
+            Doktor doktor17324_3 = new Doktor("Marko", "Kikic", 789); //nasumice, broj licence 789
+            doktori.Add(doktor17324_1);
+            doktori.Add(doktor17324_2);
+            doktori.Add(doktor17324_3);
             do
             {
                 Console.WriteLine("Dobro došli! Odaberite jednu od opcija:\n1.Registruj / Briši pacijenta\n2.Prikaži raspored pregleda pacijenta\n3.Kreiranje kartona pacijenta\n4.Pretraga kartona pacijenta\n5.Registruj novi pregled\n6.Analiza sadržaja\n7.Naplata\n8.Izlaz");
@@ -331,7 +374,7 @@ namespace Zadaca1RPR_17324
                         }
                     case 5:
                         {
-                            RegistracijaPregleda(ref pacijenti);
+                            RegistracijaPregleda(ref pacijenti, ref doktori);
                             break;
                         }
                 }
@@ -347,7 +390,7 @@ namespace Zadaca1RPR_17324
 I ONU GLUPOST SA APARATIMA NEKAKO, NOTE TO SELF: NEMOJ KORISTITI LISTE!*/
             //NASLJEDITI KLINIKE IZ INTERFEJSA
             //DOKTOR TIPOVE NAPRAVITI
-            //HARDCODIRATI DOKTORE U MAINU
+            //TRYPARSE MOZDA KAO OSIGURANJE OD POGRESNOG UNOSA
             //TREBA RAZDVOJITI OVAJ MODEL OD MAINA U POSEBAN FAJL 
             //VOZACKA I PREGLEDI ZA POSAO IMPLEMENTIRATI U REGISTRACIJI PREGLEDA+DOKTORA
 

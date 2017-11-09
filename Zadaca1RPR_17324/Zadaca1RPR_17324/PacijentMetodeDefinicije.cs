@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Doktori;
 
 namespace Zadaca1RPR_17324
 {
@@ -13,7 +14,7 @@ namespace Zadaca1RPR_17324
         public int idPacijenta = 0;
         public char spol;
         public int posjetioKliniku = 0; //broji koliko je puta odredjeni pacijent bio u klinici, kada dostigne 3 idu popusti itd.
-        public Int64 MaticniBroj;
+        public UInt64 MaticniBroj;
         public List<Pregled> karton = new List<Pregled>();
 
         public bool IspravanKarton = false;
