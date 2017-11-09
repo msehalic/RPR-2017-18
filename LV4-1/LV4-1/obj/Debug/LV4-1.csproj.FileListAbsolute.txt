@@ -1,0 +1,6 @@
+c:\users\student115\documents\visual studio 2015\Projects\LV4-1\LV4-1\bin\Debug\LV4-1.exe.config
+c:\users\student115\documents\visual studio 2015\Projects\LV4-1\LV4-1\obj\Debug\LV4-1.csprojResolveAssemblyReference.cache
+c:\users\student115\documents\visual studio 2015\Projects\LV4-1\LV4-1\bin\Debug\LV4-1.exe
+c:\users\student115\documents\visual studio 2015\Projects\LV4-1\LV4-1\bin\Debug\LV4-1.pdb
+c:\users\student115\documents\visual studio 2015\Projects\LV4-1\LV4-1\obj\Debug\LV4-1.exe
+c:\users\student115\documents\visual studio 2015\Projects\LV4-1\LV4-1\obj\Debug\LV4-1.pdb
