@@ -14,6 +14,7 @@ namespace Zadaca1RPR_17324
         public string terapija; //ne zaboravi natjerati doktora da propise terapiju kod pregleda
         //TREBALI BI INSTANCIRATI DOKTORA OVDJE KAD NAPISEMO KLASU!
         public DateTime VrijemeSmrti { get; set; }
+        public DateTime Obdukcija { get; set; }
         public Pacijent p;
         public int idPregleda=0;
         public Pregled(Pacijent p1)

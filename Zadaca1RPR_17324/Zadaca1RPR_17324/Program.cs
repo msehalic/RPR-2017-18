@@ -34,7 +34,7 @@ namespace Zadaca1RPR_17324
         {
             Pregled hitni17324_1 = new Pregled(DateTime.Today, "", "", "", p); //kreiramo instancu pregleda koju cemo nadopunjavati
             p.datumPrijema = DateTime.Today; //obzirom da je hitni slucaj, datum prvog pregleda odgovara prijemu
-    
+
             char prezivio;
             Console.Write("Kojem postupku je podvrgnut pacijent? ");
             hitni17324_1.postupak = Console.ReadLine();
@@ -43,7 +43,7 @@ namespace Zadaca1RPR_17324
             p.PacijentZiv = (prezivio == 'D') ? true : false;
             if (p.PacijentZiv)
             {
-                Console.WriteLine("Uspjesno obavljen postupak " + hitni17324_1.postupak + ", ID pregleda: ",hitni17324_1.idPregleda);
+                Console.WriteLine("Uspjesno obavljen postupak " + hitni17324_1.postupak + ", ID pregleda: ", hitni17324_1.idPregleda);
                 Console.Write("Kakvo je misljenje ljekara nakon hitne intervencije? ");
                 hitni17324_1.misljenjeLjekara = Console.ReadLine();
                 Console.Write("Kakva je terapija propisana bolesniku? ");
@@ -54,12 +54,19 @@ namespace Zadaca1RPR_17324
                 Console.Write("Unesite vrijeme smrti (DD/MM/YYYY HH:MM:SS): ");
                 var temp = Console.ReadLine();
                 hitni17324_1.VrijemeSmrti = DateTime.Parse(temp);
-                Console.Write("\nUnesite razlog smrti: ");
+                Console.Write("Unesite uzrok/razlog smrti: ");
                 hitni17324_1.misljenjeLjekara = Console.ReadLine();
+                Console.Write("Da li ce biti zakazana obdukcija (D/N)? ");
+                 char obdukcija17324_1 = Convert.ToChar(Console.ReadLine());
+                if (obdukcija17324_1 == 'D') {
+                    Console.Write("Unesite datum i vrijeme obdukcije (DD/MM/YYYY HH:MM:SS): ");
+                 var obdukcija17324_2 = Console.ReadLine();
+                    hitni17324_1.Obdukcija = DateTime.Parse(temp);
+                }
             }
             p.karton.Add(hitni17324_1);
         }
-        static void KreirajKarton (ref List<Pacijent> pacijenti)
+        static void KreirajKarton(ref List<Pacijent> pacijenti)
         {
             Pacijent temp = new Pacijent_NormalnaProcedura(); //normalna procedura za dodavanje pacijenta
             bool prekidKreiranjaKartona = true; //da je lakse u petlji opovrgnuti negaciju
@@ -80,18 +87,18 @@ namespace Zadaca1RPR_17324
                 }
                 else
                 {
-                    Anamneza(pacijenti.Find (x => (x.ime == ime) && (x.prezime == prezime))); //odmah napravi anamnezu
+                    Anamneza(pacijenti.Find(x => (x.ime == ime) && (x.prezime == prezime))); //odmah napravi anamnezu
                     prekidKreiranjaKartona = false;
                     temp = pacijenti.Find(x => x.ime == ime);
                 }
                 if (!prekidKreiranjaKartona)
                 {
                     Console.WriteLine("Uspjesno kreiran karton za pacijenta {0} {1}.\n", temp.ime, temp.prezime);
-                    temp.ispravanKarton = true;
+                    temp.IspravanKarton = true;
                     break;
                 }
             } while (true);
-        }        
+        }
         static void PretragaKartona(ref List<Pacijent> pacijenti)
         {
             Pacijent temp = new Pacijent_NormalnaProcedura(); //normalna procedura za dodavanje pacijenta
@@ -114,15 +121,15 @@ namespace Zadaca1RPR_17324
                     temp = pacijenti.Find(x => x.ime == ime);
                     Console.WriteLine("Dobro dosli u modul za pretragu kartona pacijenta {0} {1}. \nIzaberite kriterij pretrage:\n1. Datum pregleda\n2. Riječ ili fraza koja je podstring propisane terapije\n3. Riječ ili fraza koja je podstring mišljenja ljekara nakon pregleda\n4. Riječ ili fraza koja je podstring provedenog postupka\n5. ID provedenog pregleda", temp.ime, temp.prezime);
                     int unos = Convert.ToInt32(Console.ReadLine());
-                    switch(unos)
+                    switch (unos)
                     {
                         case 1:
                             {
                                 Console.Write("Unesite datum za koji zelite izlistati preglede (DD/MM/YYYY): ");
                                 var tempDan = Console.ReadLine();
                                 //DateTime datum_17324 = DateTime.Parse(tempDan);
-                               //DEBUG foreach (Pregled p in temp.karton) Console.WriteLine("Hej ja sam definiran kao {0}", p.DatumVrijemePregleda.ToString("dd\\/MM\\/yyyy"));
-                                    foreach (Pregled p in temp.karton) if (temp.karton.Exists(x=>x.DatumVrijemePregleda.ToString("dd\\/MM\\/yyyy").Equals(tempDan))) p.Ispisi();
+                                //DEBUG foreach (Pregled p in temp.karton) Console.WriteLine("Hej ja sam definiran kao {0}", p.DatumVrijemePregleda.ToString("dd\\/MM\\/yyyy"));
+                                foreach (Pregled p in temp.karton) if (temp.karton.Exists(x => x.DatumVrijemePregleda.ToString("dd\\/MM\\/yyyy").Equals(tempDan))) p.Ispisi();
                                     else Console.WriteLine("Nije pronadjena komponenta pregleda na datum koji odgovara zahtjevu.");
                                 break;
                             }
@@ -154,7 +161,7 @@ namespace Zadaca1RPR_17324
                             {
                                 Console.Write("Unesite ID pregleda kojeg zelite izlistati: ");
                                 int tempID = Convert.ToInt32(Console.ReadLine());
-                                foreach (Pregled p in temp.karton) if (p.idPregleda==tempID) p.Ispisi();
+                                foreach (Pregled p in temp.karton) if (p.idPregleda == tempID) p.Ispisi();
                                     else Console.WriteLine("Nije pronadjen ID postojeceg pacijenta koji odgovara zahtjevu.");
                                 break;
                             }
@@ -194,7 +201,7 @@ namespace Zadaca1RPR_17324
             do
             {
                 Pacijent temp = new Pacijent_NormalnaProcedura();
-                Pregled pregled=new Pregled(DateTime.Today, "", "", "", temp); //SVAKI KONSTRUKTOR BI TREBAO OVAKO!
+                Pregled pregled = new Pregled(DateTime.Today, "", "", "", temp); //SVAKI KONSTRUKTOR BI TREBAO OVAKO!
                 Console.Write("Unesite ime pacijenta kojem kreirate pregled: ");
                 string ime = Console.ReadLine();
                 Console.Write("Unesite prezime pacijenta kojem kreirate pregled: ");
@@ -212,22 +219,31 @@ namespace Zadaca1RPR_17324
                     //mozda ovdje jos dodati da ne trazi ime i prezime opet hm?
                     else if (unos == 3) break;
                 }
-                // else if (pacijenti.Exists(x => x.ime == ime) && pacijenti.Exists(x => x.prezime == prezime) && )
                 //ovdje treba slucaj kad nema karton i ponuditi da se kreira, napravio sam bool za provjeru :)
                 else
                 {
                     temp = pacijenti.Find(x => (x.ime == ime) && (x.prezime == prezime)); //instanciranje mozda sa indeksom?
-                    pregled = new Pregled(temp);
-                    Console.Write("Unesite datum kada je pregled obavljen (DD/MM/YYYY): ");
-                    string s = Console.ReadLine();
-                    pregled.DatumVrijemePregleda = DateTime.Parse(s);
-                    Console.Write("Koji postupak je proveden prilikom pregleda? ");
-                    pregled.postupak = Console.ReadLine();
-                    Console.Write("Kakvo je misljenje ljekara nakon pregleda? ");
-                    pregled.misljenjeLjekara = Console.ReadLine();
-                    Console.Write("Koja terapija je propisana pacijentu? ");
-                    pregled.terapija = Console.ReadLine();
-                    prekidKreiranjaPregleda = false;
+                    if (temp.IspravanKarton == false) //ako nema karton, kreiraj
+                    {
+                        Console.WriteLine("Pacijent sa tim imenom i prezimenom je pronadjen, ali nema kreiran karton.\nDa li zelite:\n1. Kreirati karton pacijentu \n2. Odustati od kreiranja pregleda");
+                        int unos = Convert.ToInt32(Console.ReadLine());
+                        if (unos == 1) KreirajKarton(ref pacijenti);
+                        else break;
+                    }
+                    else
+                    {
+                        pregled = new Pregled(temp);
+                        Console.Write("Unesite datum kada je pregled obavljen (DD/MM/YYYY): ");
+                        string s = Console.ReadLine();
+                        pregled.DatumVrijemePregleda = DateTime.Parse(s);
+                        Console.Write("Koji postupak je proveden prilikom pregleda? ");
+                        pregled.postupak = Console.ReadLine();
+                        Console.Write("Kakvo je misljenje ljekara nakon pregleda? ");
+                        pregled.misljenjeLjekara = Console.ReadLine();
+                        Console.Write("Koja terapija je propisana pacijentu? ");
+                        pregled.terapija = Console.ReadLine();
+                        prekidKreiranjaPregleda = false;
+                    }
                 }
                 if (!prekidKreiranjaPregleda)
                 {
@@ -267,7 +283,7 @@ namespace Zadaca1RPR_17324
         static void ObrisiPacijenta(List<Pacijent> pacijenti)
         {
             bool uspjeh = false;
-            Pacijent temp=new Pacijent_NormalnaProcedura();
+            Pacijent temp = new Pacijent_NormalnaProcedura();
             Console.WriteLine("U sistemu postoje sljedeci pacijenti: ");
             foreach (Pacijent p in pacijenti) p.Ispisi();
             Console.Write("Molimo unesite redni broj pacijenta kojeg zelite obrisati: ");
@@ -329,25 +345,14 @@ namespace Zadaca1RPR_17324
             //SPRIJECITI PONOVNO KREIRANJE KARTONA GDJE POSTOJI I NE TRAZITI PONOVNI UNOS IMENA I PREZIMENA CROSS-OPTION
             /*TREBA PRATITI U KALENDARU STA SE DESAVA I ALOCIRATI RASPORED, MORAT CEMO NACI NEKI PRIORITY QUEUE SHIT U C# 
 I ONU GLUPOST SA APARATIMA NEKAKO, NOTE TO SELF: NEMOJ KORISTITI LISTE!*/
-            //TREBA I OBDUKCIJU ZAKAZATI AKO NAM PRESELI PACIJENT NA AHIRET
-            //AKO PACIJENT UMRE TREBALI BISMO MU OTKAZATI I PREGLEDE
+            //NASLJEDITI KLINIKE IZ INTERFEJSA
+            //DOKTOR TIPOVE NAPRAVITI
+            //HARDCODIRATI DOKTORE U MAINU
+            //TREBA RAZDVOJITI OVAJ MODEL OD MAINA U POSEBAN FAJL 
+            //VOZACKA I PREGLEDI ZA POSAO IMPLEMENTIRATI U REGISTRACIJI PREGLEDA+DOKTORA
 
-            //TREBA RAZDVOJITI OVAJ MODEL OD MAINA U POSEBAN FAJL IZGLEDA? PITATI HHASIC!
-            //TREBA LI RADITI ONO IZ BILJESKI? PITATI HHASIC!
-            //KOLIKO BODOVA NOSI ZADACA? PITATI HHASIC!
-            //DA LI JE BITNO KO STA RADI (NPR. MEDICINSKI TEHNiCAR I KARTONI), JER NE POSTOJE NIVOI PRISTUPA NITI LOGIN? PITATI HHASIC!
-            //KAKO UOPCE ZNATI KO KORISTI APP? PITATI HHASIC!
-            //KOJI JE SMISAO FUNKCIONALNOSTI NAPLATE KAD SE NE MOZE REALTIME VRSITI PREGLED
-            //ISTO TAKO NEMA SMISLA OVO POD 6 JER SE NE MOGU KREIRATI DOKTORI PA TAKO NI POREDITI (JEDINO DA SE HARDCODIRAJU)?
-
-            //Debug
-            // foreach (Pregled p in pregledi) p.Ispisi();
-            //this is good
-            //Debug2
-            foreach (Pacijent p in pacijenti) p.Ispisi();
-            //this is good
-          //  Console.ReadLine(); //da se ne gasi konzola
-                                //KAD PACIJENT PLATI TREBA INKREMENTIRATI NJEGOV BROJ DOLAZAKA U BOLNICU RADI KASNIJIH POPUSTA
+            //HHASIC MAIL PROVJERI
+            //KAD PACIJENT PLATI TREBA INKREMENTIRATI NJEGOV BROJ DOLAZAKA U BOLNICU RADI KASNIJIH POPUSTA
         }
     }
 }

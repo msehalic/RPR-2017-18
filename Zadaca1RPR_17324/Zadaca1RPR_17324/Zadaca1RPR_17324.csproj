@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Doktor.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Klinika.cs" />
     <Compile Include="IGlavni.cs" />
