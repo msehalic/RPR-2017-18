@@ -120,7 +120,8 @@ namespace Zadaca1RPR_17324
                 string ime = Console.ReadLine();
                 Console.Write("Unesite prezime pacijenta kojem kreirate karton: ");
                 string prezime = Console.ReadLine();
-                if (!pacijenti.Exists(x => x.ime == ime) && !pacijenti.Exists(x => x.prezime == prezime))
+                if (!pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase))) 
+                    //case insensitive provjera
                 {
                     Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta\n3. Odustati od kreiranja kartona");
                     int unos = Convert.ToInt32(Console.ReadLine());
@@ -131,9 +132,10 @@ namespace Zadaca1RPR_17324
                 }
                 else
                 {
-                    Anamneza(pacijenti.Find(x => (x.ime == ime) && (x.prezime == prezime))); //odmah napravi anamnezu
+                    Anamneza(pacijenti.Find(x => (String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && (String.Equals(x.prezime, prezime, StringComparison.OrdinalIgnoreCase)))); //odmah napravi anamnezu
+                    //case insensitive provjera
                     prekidKreiranjaKartona = false;
-                    temp = pacijenti.Find(x => x.ime == ime);
+                    temp = pacijenti.Find(x => (String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && (String.Equals(x.prezime, prezime, StringComparison.OrdinalIgnoreCase)));
                 }
                 if (!prekidKreiranjaKartona)
                 {
@@ -153,7 +155,8 @@ namespace Zadaca1RPR_17324
                 string ime = Console.ReadLine();
                 Console.Write("Unesite prezime pacijenta kojem zelite pretraziti karton: ");
                 string prezime = Console.ReadLine();
-                if (!pacijenti.Exists(x => x.ime == ime) && !pacijenti.Exists(x => x.prezime == prezime))
+                if (!pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)))
+                    //case insensitive provjera
                 {
                     Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen. Provjerite da li je evidentiran u sistemu te da li mu je kreiran karton.\nDa li zelite:\n1. Pokusati ponovo\n2. Odustati od pretrage kartona");
                     int unos = Convert.ToInt32(Console.ReadLine());
@@ -162,7 +165,8 @@ namespace Zadaca1RPR_17324
                 }
                 else
                 {
-                    temp = pacijenti.Find(x => x.ime == ime);
+                    temp = pacijenti.Find(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase) && String.Equals(x.prezime, prezime, StringComparison.OrdinalIgnoreCase));
+                    //case insensitive
                     bool sveUredu;
                     do
                     {
@@ -284,7 +288,8 @@ namespace Zadaca1RPR_17324
                 string ime = Console.ReadLine();
                 Console.Write("Unesite prezime pacijenta kojem kreirate pregled: ");
                 string prezime = Console.ReadLine();
-                if (!pacijenti.Exists(x => x.ime == ime) && !pacijenti.Exists(x => x.prezime == prezime))
+                if (!pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)))
+                    //case insensitive
                 {
                     Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta te njegov pripadajuci karton\n3. Odustati od kreiranja pregleda");
                     int unos = Convert.ToInt32(Console.ReadLine());
@@ -300,7 +305,7 @@ namespace Zadaca1RPR_17324
                 //ovdje treba slucaj kad nema karton i ponuditi da se kreira, napravio sam bool za provjeru :)
                 else
                 {
-                    temp = pacijenti.Find(x => (x.ime == ime) && (x.prezime == prezime)); //instanciranje mozda sa indeksom?
+                    temp = pacijenti.Find(x => (String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && (String.Equals(x.prezime, prezime, StringComparison.OrdinalIgnoreCase))); //instanciranje mozda sa indeksom?
                     if (temp.IspravanKarton == false) //ako nema karton, kreiraj
                     {
                         Console.WriteLine("Pacijent sa tim imenom i prezimenom je pronadjen, ali nema kreiran karton.\nDa li zelite:\n1. Kreirati karton pacijentu \n2. Odustati od kreiranja pregleda");
