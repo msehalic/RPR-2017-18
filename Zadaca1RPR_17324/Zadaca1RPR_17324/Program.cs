@@ -13,7 +13,7 @@ namespace Zadaca1RPR_17324
         static void UnosPodataka(Pacijent p)
         {
             string temp;
-            bool dobarUnos=true;
+            bool dobarUnos = true;
             Console.Write("Unesite ime pacijenta: ");
             p.ime = Console.ReadLine();
             Console.Write("Unesite prezime pacijenta: ");
@@ -33,7 +33,7 @@ namespace Zadaca1RPR_17324
                 dobarUnos = UInt64.TryParse(temp, out p.MaticniBroj); //brine se da li je veci od 0 sa UInt
                 if (dobarUnos)
                 {
-                    if (!(temp.Length==13)) dobarUnos = false; //ako nema 13 cifara nije ispravan
+                    if (!(temp.Length == 13)) dobarUnos = false; //ako nema 13 cifara nije ispravan
                 }
             } while (!dobarUnos);
             do
@@ -41,7 +41,7 @@ namespace Zadaca1RPR_17324
                 Console.Write("Unesite spol pacijenta (M/Z): ");
                 temp = Console.ReadLine();
                 temp = temp.ToUpper();
-                dobarUnos = Char.TryParse(temp, out p.spol); //brine se da li je veci od 0 sa UInt
+                dobarUnos = Char.TryParse(temp, out p.spol);
                 if (p.spol != 'M' && p.spol != 'Z') dobarUnos = false;
             } while (!dobarUnos);
             Console.Write("Unesite adresu stanovanja pacijenta: ");
@@ -55,16 +55,22 @@ namespace Zadaca1RPR_17324
         {
             Pregled hitni17324_1 = new Pregled(DateTime.Today, "", "", "", p); //kreiramo instancu pregleda koju cemo nadopunjavati
             p.datumPrijema = DateTime.Today; //obzirom da je hitni slucaj, datum prvog pregleda odgovara prijemu
-
-            char prezivio;
+            bool dobarUnos = true;
             Console.Write("Kojem postupku je podvrgnut pacijent? ");
             hitni17324_1.postupak = Console.ReadLine();
-            Console.Write("Pacijent je ziv (D/N)? ");
-            prezivio = Convert.ToChar(Console.ReadLine());
-            p.PacijentZiv = (prezivio == 'D') ? true : false;
+            do
+            {
+                if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                Console.Write("Pacijent je ziv (D/N)? ");
+                var temp = Console.ReadLine();
+                temp = temp.ToUpper();
+                dobarUnos = Char.TryParse(temp, out char prezivio);
+                p.PacijentZiv = (prezivio == 'D') ? true : false;
+                if (prezivio != 'D' && prezivio != 'N') dobarUnos = false;
+            } while (!dobarUnos);
             if (p.PacijentZiv)
             {
-                Console.WriteLine("Uspjesno obavljen postupak " + hitni17324_1.postupak + ", ID pregleda: ", hitni17324_1.idPregleda);
+                Console.WriteLine("Uspjesno obavljen postupak " + hitni17324_1.postupak + ", ID pregleda: {0}", hitni17324_1.idPregleda);
                 Console.Write("Kakvo je misljenje ljekara nakon hitne intervencije? ");
                 hitni17324_1.misljenjeLjekara = Console.ReadLine();
                 Console.Write("Kakva je terapija propisana bolesniku? ");
@@ -72,18 +78,34 @@ namespace Zadaca1RPR_17324
             }
             else
             {
-                Console.Write("Unesite vrijeme smrti (DD/MM/YYYY HH:MM:SS): ");
-                var temp = Console.ReadLine();
-                hitni17324_1.VrijemeSmrti = DateTime.Parse(temp);
+                do
+                {
+                    if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                    Console.Write("Unesite vrijeme smrti (DD/MM/YYYY): ");
+                    var temp = Console.ReadLine();
+                    dobarUnos = DateTime.TryParse(temp, out hitni17324_1.VrijemeSmrti);
+                } while (!dobarUnos);
                 Console.Write("Unesite uzrok/razlog smrti: ");
                 hitni17324_1.misljenjeLjekara = Console.ReadLine();
-                Console.Write("Da li ce biti zakazana obdukcija (D/N)? ");
-                char obdukcija17324_1 = Convert.ToChar(Console.ReadLine());
+                char obdukcija17324_1;
+                do
+                {
+                    if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                    Console.Write("Da li ce biti zakazana obdukcija (D/N)? ");
+                    var temp = Console.ReadLine();
+                    temp = temp.ToUpper();
+                    dobarUnos = Char.TryParse(temp, out obdukcija17324_1);
+                    if (obdukcija17324_1 != 'D' && obdukcija17324_1 != 'N') dobarUnos = false;
+                } while (!dobarUnos);
                 if (obdukcija17324_1 == 'D')
                 {
-                    Console.Write("Unesite datum i vrijeme obdukcije (DD/MM/YYYY HH:MM:SS): ");
-                    var obdukcija17324_2 = Console.ReadLine();
-                    hitni17324_1.Obdukcija = DateTime.Parse(temp);
+                    do
+                    {
+                        if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                        Console.Write("Unesite datum i vrijeme obdukcije (DD/MM/YYYY): ");
+                        var temp = Console.ReadLine();
+                        dobarUnos = DateTime.TryParse(temp, out hitni17324_1.Obdukcija);
+                    } while (!dobarUnos);
                 }
             }
             p.karton.Add(hitni17324_1);
@@ -141,7 +163,7 @@ namespace Zadaca1RPR_17324
                 else
                 {
                     temp = pacijenti.Find(x => x.ime == ime);
-                    Console.WriteLine("Dobro dosli u modul za pretragu kartona pacijenta {0} {1}. \nIzaberite kriterij pretrage:\n1. Datum pregleda\n2. Riječ ili fraza koja je podstring propisane terapije\n3. Riječ ili fraza koja je podstring mišljenja ljekara nakon pregleda\n4. Riječ ili fraza koja je podstring provedenog postupka\n5. ID provedenog pregleda", temp.ime, temp.prezime);
+                    Console.WriteLine("Dobro dosli u modul za pretragu kartona pacijenta {0} {1}. \nIzaberite kriterij pretrage:\n1. Datum pregleda\n2. Riječ ili fraza koja je podstring propisane terapije\n3. Riječ ili fraza koja je podstring mišljenja ljekara nakon pregleda\n4. Riječ ili fraza koja je podstring provedenog postupka\n5. ID provedenog pregleda\n6. Broj licence doktora koji je izvrsio pregled", temp.ime, temp.prezime);
                     int unos = Convert.ToInt32(Console.ReadLine());
                     switch (unos)
                     {
@@ -187,6 +209,19 @@ namespace Zadaca1RPR_17324
                                     else Console.WriteLine("Nije pronadjen ID postojeceg pacijenta koji odgovara zahtjevu.");
                                 break;
                             }
+                        case 6:
+                            {
+                                Console.Write("Unesite licencu doktora cije preglede zelite izlistati: ");
+                                int tempLicenca = Convert.ToInt32(Console.ReadLine());
+                                foreach (Pregled p in temp.karton) if (p.d.brojLicence == tempLicenca) p.Ispisi();
+                                    else Console.WriteLine("Nije pronadjen pregled sa brojem licence koji odgovara zahtjevu.");
+                                break;
+                            }
+                      /*  default:
+                            {
+                                    Console.WriteLine("Pogresan unos. Birajte ponovo.");
+                                    continue;
+                            }*/
                     }
                     //MOZDA JOS KOJA OPCIJA I NACIN PRETRAGE? HMM...
                 }
@@ -275,6 +310,7 @@ namespace Zadaca1RPR_17324
                                 {
                                     Console.WriteLine("Terapiju propisao doktor {0} {1}", doktor17324.imeDoktora, doktor17324.prezimeDoktora);
                                     pregled.d = doktor17324;
+                                    pregled.d.BrojPregledanihPacijenata++; //inkrementiramo mu brojac pacijenata
                                     prekidKreiranjaPregleda = false;
                                 }
                             if (prekidKreiranjaPregleda) Console.WriteLine("Neispravna licenca. Pokusajte ponovno. ");
@@ -375,6 +411,9 @@ namespace Zadaca1RPR_17324
                     case 5:
                         {
                             RegistracijaPregleda(ref pacijenti, ref doktori);
+                            //DEBUG
+                            Console.WriteLine("Doktor Marko Kikic je izvrsio {0} pregleda.", doktor17324_3.BrojPregledanihPacijenata);
+                            //DEBUG
                             break;
                         }
                 }
@@ -389,8 +428,7 @@ namespace Zadaca1RPR_17324
             /*TREBA PRATITI U KALENDARU STA SE DESAVA I ALOCIRATI RASPORED, MORAT CEMO NACI NEKI PRIORITY QUEUE SHIT U C# 
 I ONU GLUPOST SA APARATIMA NEKAKO, NOTE TO SELF: NEMOJ KORISTITI LISTE!*/
             //NASLJEDITI KLINIKE IZ INTERFEJSA
-            //DOKTOR TIPOVE NAPRAVITI
-            //TRYPARSE MOZDA KAO OSIGURANJE OD POGRESNOG UNOSA
+            //CASE INSENSITIVE UNOS PACIJENATA
             //TREBA RAZDVOJITI OVAJ MODEL OD MAINA U POSEBAN FAJL 
             //VOZACKA I PREGLEDI ZA POSAO IMPLEMENTIRATI U REGISTRACIJI PREGLEDA+DOKTORA
 

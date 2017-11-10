@@ -13,11 +13,11 @@ namespace Zadaca1RPR_17324
         public string misljenjeLjekara;
         public string terapija; //ne zaboravi natjerati doktora da propise terapiju kod pregleda
         //TREBALI BI INSTANCIRATI DOKTORA OVDJE KAD NAPISEMO KLASU!
-        public DateTime VrijemeSmrti { get; set; }
-        public DateTime Obdukcija { get; set; }
+        public DateTime VrijemeSmrti;
+        public DateTime Obdukcija;
         public Pacijent p;
         public Doktor d=new Doktor();
-        public int idPregleda=0;
+        public int idPregleda;
         public Pregled(Pacijent p1)
         {
             postupak = "Nije unesen";
@@ -26,6 +26,7 @@ namespace Zadaca1RPR_17324
             DatumVrijemePregleda = DateTime.Now;
             GenerisiIDPregleda();
             p = p1;
+            d.BrojPregledanihPacijenata++;
         }
         public Pregled (DateTime datum1, string postupak1, string misljenjeLjekara1, string terapija1, Pacijent pac)
         {
@@ -35,6 +36,7 @@ namespace Zadaca1RPR_17324
             terapija = terapija1;
             GenerisiIDPregleda();
             p = pac;
+            d.BrojPregledanihPacijenata++;
         }
        public void Ispisi()
         {
