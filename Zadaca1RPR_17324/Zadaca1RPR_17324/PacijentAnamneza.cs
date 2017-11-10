@@ -13,8 +13,8 @@ namespace Zadaca1RPR_17324
         public string opisTegobaBolesnika;
         public string historijaBolestiuPorodici;
         //navike
-        public bool pusac { get; set; }
-        public bool alkoholicar { get; set; }
+        public bool pusac;
+        public bool alkoholicar;
         public string alergije;
         //opceniti problemi
       /*  public bool imaSrcaneProbleme { get; set;}
