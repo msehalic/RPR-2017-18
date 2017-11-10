@@ -170,9 +170,9 @@ namespace Zadaca1RPR_17324
                     bool sveUredu;
                     do
                     {
-                        sveUredu = true;
                         Console.WriteLine("Dobro dosli u modul za pretragu kartona pacijenta {0} {1}. \nIzaberite kriterij pretrage:\n1. Datum pregleda\n2. Riječ ili fraza koja je podstring propisane terapije\n3. Riječ ili fraza koja je podstring mišljenja ljekara nakon pregleda\n4. Riječ ili fraza koja je podstring provedenog postupka\n5. ID provedenog pregleda\n6. Broj licence doktora koji je izvrsio pregled", temp.ime, temp.prezime);
-                        int unos = Convert.ToInt32(Console.ReadLine());
+                        var parse = Console.ReadLine();
+                        sveUredu = Int32.TryParse(parse, out int unos);
                         switch (unos)
                         {
                             case 1:
