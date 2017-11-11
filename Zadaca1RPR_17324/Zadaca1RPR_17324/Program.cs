@@ -401,6 +401,7 @@ namespace Zadaca1RPR_17324
         static void Main(string[] args)
         {
             int unos;
+            bool dobarUnos = true;
             List<Pacijent> pacijenti = new List<Pacijent>();
             List<Doktor> doktori = new List<Doktor>();
             Doktor doktor17324_1 = new Doktor("Ahmed", "Ahmedic", 123); //nasumice, broj licence 123
@@ -411,14 +412,25 @@ namespace Zadaca1RPR_17324
             doktori.Add(doktor17324_3);
             do
             {
-                Console.WriteLine("Dobro došli! Odaberite jednu od opcija:\n1.Registruj / Briši pacijenta\n2.Prikaži raspored pregleda pacijenta\n3.Kreiranje kartona pacijenta\n4.Pretraga kartona pacijenta\n5.Registruj novi pregled\n6.Analiza sadržaja\n7.Naplata\n8.Izlaz");
-                unos = Convert.ToInt32(Console.ReadLine());
+                do
+                {
+                    if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                    Console.WriteLine("Dobro došli! Odaberite jednu od opcija:\n1.Registruj / Briši pacijenta\n2.Prikaži raspored pregleda pacijenta\n3.Kreiranje kartona pacijenta\n4.Pretraga kartona pacijenta\n5.Registruj novi pregled\n6.Analiza sadržaja\n7.Naplata\n8.Izlaz");
+                   var temp = Console.ReadLine();
+                    dobarUnos = Int32.TryParse(temp, out unos);
+                } while (!dobarUnos);
                 switch (unos)
                 {
                     case 1:
                         {
-                            Console.WriteLine("Izaberite opciju:\n1. Registracija pacijenta\n2. Brisanje pacijenta");
-                            unos = Convert.ToInt32(Console.ReadLine());
+                            do
+                            {
+                                if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                                Console.WriteLine("Izaberite opciju:\n1. Registracija pacijenta\n2. Brisanje pacijenta");
+                                var temp = Console.ReadLine();
+                                dobarUnos = Int32.TryParse(temp, out unos);
+                                if (unos < 1 || unos > 2) dobarUnos = false;
+                            } while (!dobarUnos);
                             if (unos == 1) RegistrujPacijenta(ref pacijenti);
                             if (unos == 2) ObrisiPacijenta(pacijenti);
                             break;
@@ -438,6 +450,11 @@ namespace Zadaca1RPR_17324
                             RegistracijaPregleda(ref pacijenti, ref doktori);
                             break;
                         }
+                    default:
+                        {
+                            Console.Write("Neispravan unos. Pokusajte ponovo: ");
+                            continue;
+                        }
                 }
             } while (unos != 8);
 
@@ -446,6 +463,7 @@ namespace Zadaca1RPR_17324
             //PREDNOSTI NASLJEDJIVANJA ORDINACIJA BI BILE DA SE IMPLEMENTIRA INTERFEJS, A NEDOSTACI DA SE NE BI MOGAO IMPLEMENTIRATI UNIVERZALNI RED ČEKANJA
 
             //TODO: 
+            //OPCIJA DA DOKTOR OSLOBODI ORDINACIJU
             //POSTAVITI ACCESS MODIFIERS TJ PRIVATE, PUBLIC, PROTECTED ITD, ANAMNEZA BI MOGLA BITI STATIC JER SE NE INSTANCIRA
             //SPRIJECITI PONOVNO KREIRANJE PACIJENATA KARTONA GDJE POSTOJI I NE TRAZITI PONOVNI UNOS IMENA I PREZIMENA CROSS-OPTION
             /*TREBA PRATITI U KALENDARU STA SE DESAVA I ALOCIRATI RASPORED, MORAT CEMO NACI NEKI PRIORITY QUEUE SHIT U C# 
