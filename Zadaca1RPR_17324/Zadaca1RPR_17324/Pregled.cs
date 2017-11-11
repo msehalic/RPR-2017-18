@@ -18,6 +18,7 @@ namespace Zadaca1RPR_17324
         public Pacijent p;
         public Doktor d=new Doktor();
         public int idPregleda;
+        public bool rutinskiPregled = false; //ovo za vozacku i ono ljekarski
         public Pregled(Pacijent p1)
         {
             postupak = "Nije unesen";

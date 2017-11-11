@@ -71,8 +71,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Klinika.cs" />
-    <Compile Include="IGlavni.cs" />
+    <Compile Include="OrdinacijaDermatolog.cs" />
+    <Compile Include="OrdinacijaKardiolog.cs" />
+    <Compile Include="IOrdinacije.cs" />
+    <Compile Include="OrdinacijaOrtoped.cs" />
+    <Compile Include="OrdinacijaStomatolog.cs" />
     <Compile Include="PacijentMetodeDefinicije.cs" />
     <Compile Include="PacijentKonstruktori.cs" />
     <Compile Include="Pacijent_HitnaProcedura.cs" />
