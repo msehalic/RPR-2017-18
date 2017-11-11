@@ -398,6 +398,21 @@ namespace Zadaca1RPR_17324
             if (uspjeh) pacijenti.Remove(temp);
             else Console.WriteLine("Neuspjesno brisanje! Provjerite ID broj pacijenta koji ste unijeli.");
         }
+        static void DodajBrisi(ref List<Pacijent> pacijenti)
+        {
+            int unos;
+            bool dobarUnos = true;
+            do
+            {
+                if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                Console.WriteLine("Izaberite opciju:\n1. Registracija pacijenta\n2. Brisanje pacijenta");
+                var temp = Console.ReadLine();
+                dobarUnos = Int32.TryParse(temp, out unos);
+                if (unos < 1 || unos > 2) dobarUnos = false;
+            } while (!dobarUnos);
+            if (unos == 1) RegistrujPacijenta(ref pacijenti);
+            if (unos == 2) ObrisiPacijenta(pacijenti);
+        }
         static void Main(string[] args)
         {
             int unos;
@@ -423,16 +438,7 @@ namespace Zadaca1RPR_17324
                 {
                     case 1:
                         {
-                            do
-                            {
-                                if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
-                                Console.WriteLine("Izaberite opciju:\n1. Registracija pacijenta\n2. Brisanje pacijenta");
-                                var temp = Console.ReadLine();
-                                dobarUnos = Int32.TryParse(temp, out unos);
-                                if (unos < 1 || unos > 2) dobarUnos = false;
-                            } while (!dobarUnos);
-                            if (unos == 1) RegistrujPacijenta(ref pacijenti);
-                            if (unos == 2) ObrisiPacijenta(pacijenti);
+                            DodajBrisi(ref pacijenti);
                             break;
                         }
                     case 3:
