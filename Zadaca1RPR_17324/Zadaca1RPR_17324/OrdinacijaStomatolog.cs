@@ -13,7 +13,7 @@ namespace Zadaca1RPR_17324
         public Doktor SefKlinike { get; set; }
         public decimal IznosPlacanja(Pregled pregled17324_1)
         {
-            return pregled17324_1.rutinskiPregled ? 35.00M : 62.50M; //vraca cijenu pregleda
+            return pregled17324_1.rutinskiPregled ? 115.00M : 218.80M; //vraca cijenu pregleda
         }
         public OrdinacijaStomatolog()
         {
