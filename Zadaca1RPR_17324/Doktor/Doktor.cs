@@ -26,5 +26,10 @@ namespace Doktori
             brojLicence = brojLicence1;
             BrojPregledanihPacijenata = 0;
         }
+        int ObracunajPlatu(Doktor d) //za obracun plate doktorima (cisto da bude implementirano)
+        {
+            int bonus = BrojPregledanihPacijenata > 20 ? 20 : BrojPregledanihPacijenata; //poslije 20 pacijenata nema bonusa
+            return 2000 + 50 * BrojPregledanihPacijenata; //recimo da za svakog pacijenta doktor dobije 50KM bonusa
+        }
     }
 }
