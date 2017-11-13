@@ -342,7 +342,7 @@ namespace Zadaca1RPR_17324
             p.alergije = Console.ReadLine();
             Console.WriteLine("Anamneza uspjesna!");
         }
-        static void RegistracijaPregleda(ref List<Pacijent> pacijenti, ref List<Doktor> doktori, ref List<Ordinacija> ordinacije)
+        static void RegistracijaPregleda(ref List<Pacijent> pacijenti, ref List<Doktor> doktori, ref List<Ordinacija> ordinacije, ref List<Tuple<Pregled, decimal>> paroviRacuna)
         {
             Console.WriteLine("Dobro dosli u modul za registraciju pregleda.");
             bool prekidKreiranjaPregleda = true; //da je lakse u petlji opovrgnuti negaciju
@@ -421,9 +421,11 @@ namespace Zadaca1RPR_17324
                                                 {
                                                     if (((OrdinacijaDermatolog)o).SefKlinike.brojLicence == doktor17324.brojLicence)
                                                     {
+                                                        Console.WriteLine("Uspjesno zavrsen pregled kod dermatologa.");
                                                         ((OrdinacijaDermatolog)o).RedCekanja.Dequeue();
                                                         if (((OrdinacijaDermatolog)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
                                                         else Console.WriteLine("Iduci pacijent je: {0} {1}", ((OrdinacijaDermatolog)o).RedCekanja.Peek().p.ime, ((OrdinacijaDermatolog)o).RedCekanja.Peek().p.prezime);
+                                                        paroviRacuna.Add(Tuple.Create(pregled, ((OrdinacijaDermatolog)o).IznosPlacanja(pregled)));
                                                         izadjiIzPetljeOdmah = true;
                                                     }
                                                 }
@@ -432,8 +434,10 @@ namespace Zadaca1RPR_17324
                                                 {
                                                     if (((OrdinacijaKardiolog)o).SefKlinike.brojLicence == doktor17324.brojLicence) ((OrdinacijaKardiolog)o).RedCekanja.Dequeue();
                                                     {
+                                                        Console.WriteLine("Uspjesno zavrsen pregled kod kardiologa.");
                                                         if (((OrdinacijaKardiolog)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
                                                         else Console.WriteLine("Iduci pacijent je: {0} {1}", ((OrdinacijaKardiolog)o).RedCekanja.Peek().p.ime, ((OrdinacijaKardiolog)o).RedCekanja.Peek().p.prezime);
+                                                        paroviRacuna.Add(Tuple.Create(pregled, ((OrdinacijaKardiolog)o).IznosPlacanja(pregled)));
                                                         izadjiIzPetljeOdmah = true;
                                                     }
                                                 }
@@ -442,8 +446,10 @@ namespace Zadaca1RPR_17324
                                                 {
                                                     if (((OrdinacijaOrtoped)o).SefKlinike.brojLicence == doktor17324.brojLicence) ((OrdinacijaOrtoped)o).RedCekanja.Dequeue();
                                                     {
+                                                        Console.WriteLine("Uspjesno zavrsen pregled kod ortopeda.");
                                                         if (((OrdinacijaOrtoped)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
                                                         else Console.WriteLine("Iduci pacijent je: {0} {1}", ((OrdinacijaOrtoped)o).RedCekanja.Peek().p.ime, ((OrdinacijaOrtoped)o).RedCekanja.Peek().p.prezime);
+                                                        paroviRacuna.Add(Tuple.Create(pregled, ((OrdinacijaOrtoped)o).IznosPlacanja(pregled)));
                                                         izadjiIzPetljeOdmah = true;
                                                     }
                                                 }
@@ -452,8 +458,10 @@ namespace Zadaca1RPR_17324
                                                 {
                                                     if (((OrdinacijaStomatolog)o).SefKlinike.brojLicence == doktor17324.brojLicence) ((OrdinacijaStomatolog)o).RedCekanja.Dequeue();
                                                     {
+                                                        Console.WriteLine("Uspjesno zavrsen pregled kod stomatologa.");
                                                         if (((OrdinacijaStomatolog)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
                                                         else Console.WriteLine("Iduci pacijent je: {0} {1}", ((OrdinacijaStomatolog)o).RedCekanja.Peek().p.ime, ((OrdinacijaStomatolog)o).RedCekanja.Peek().p.prezime);
+                                                        paroviRacuna.Add(Tuple.Create(pregled, ((OrdinacijaStomatolog)o).IznosPlacanja(pregled)));
                                                         izadjiIzPetljeOdmah = true;
                                                     }
                                                 }
@@ -536,9 +544,81 @@ namespace Zadaca1RPR_17324
             if (unos == 1) RegistrujPacijenta(ref pacijenti, ref ordinacije);
             if (unos == 2) ObrisiPacijenta(pacijenti);
         }
+        static void Naplata(List<Pacijent> pacijenti, List<Tuple<Pregled, decimal>> pregledIznosNaplate)
+        {
+            decimal saldoUkupni = 0M;
+            string temp;
+            int unos;
+            bool pronadjen = false;
+            bool dobarUnos = true;
+            do
+            {
+                if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                Console.WriteLine("Dobro dosli u modul za printanje racuna. Molimo izaberite vrstu placanja: \n1. Gotovinsko placanje\n2. Placanje na rate");
+                temp = Console.ReadLine();
+                dobarUnos = Int32.TryParse(temp, out unos);
+                if (unos < 1 || unos > 2) dobarUnos = false;
+            } while (!dobarUnos);
+            do
+            {
+
+                Console.Write("Unesite ime pacijenta kojem printate racun: ");
+                string ime = Console.ReadLine();
+                Console.Write("Unesite prezime pacijenta kojem printate racun: ");
+                string prezime = Console.ReadLine();
+                if (!pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)))
+                //case insensitive
+                {
+                    Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Odustati od naplate");
+                    temp = Console.ReadLine();
+                    dobarUnos = Int32.TryParse(temp, out int unosPonovo);
+                    if (unosPonovo != 2) dobarUnos = false;
+                }
+                else
+                {
+                    var pacijent17324 = pacijenti.Find(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase) && String.Equals(x.prezime, prezime, StringComparison.OrdinalIgnoreCase));
+                    //case insensitive
+                    if (pregledIznosNaplate.Count == 0)
+                    {
+                        Console.WriteLine("Opcenito nema evidentiranih pregleda koji nisu placeni.");
+                        break;
+                    }
+                    foreach (Tuple<Pregled, decimal> t in pregledIznosNaplate)
+                    {
+                        if (t.Item1.p == pacijent17324)
+                        {
+                            Console.WriteLine("Pregled \"{0}\", iznos {1}", t.Item1.postupak, t.Item2);
+                            saldoUkupni += t.Item2;
+                            pronadjen = true;
+                        }
+                    }
+                    if (!pronadjen)
+                    {
+                        Console.WriteLine("Nema evidentiranih pregleda za placanje kod pacijenta {0} {1}.", pacijent17324.ime, pacijent17324.prezime);
+                        break;
+                    }
+                    pacijent17324.posjetioKliniku++; //inkrementacija nakon placanja;
+                    if (unos == 2 && pacijent17324.posjetioKliniku < 3)
+                    {
+                        saldoUkupni *= 1.15M; //ako novi pacijent placa na rate onda je cijena veca za 15%
+                        Console.WriteLine("Cijena je uvecana za 15% jer je pacijent platio na rate, a nije redovan u klinici.");
+                    }
+                    if (unos == 1 && pacijent17324.posjetioKliniku >= 3)
+                    {
+                        saldoUkupni *= 0.9M; //ako novi pacijent placa na rate onda je cijena veca za 15%
+                        Console.WriteLine("Cijena je smanjena za 10% jer je pacijent platio u gotovini, kao redovan u klinici.");
+                    }
+                    Console.WriteLine("\nUkupni saldo za pacijenta {0} {1} je {2} KM.", pacijent17324.ime, pacijent17324.prezime, saldoUkupni);
+                    saldoUkupni = 0; //resetujemo saldo
+                }
+
+            } while (!dobarUnos);
+
+        }
         static void Main(string[] args)
         {
             int unos;
+            List<Tuple<Pregled, decimal>> pregledIznosNaplate = new List<Tuple<Pregled, decimal>>();
             bool dobarUnos = true;
             List<Pacijent> pacijenti = new List<Pacijent>();
             List<Doktor> doktori = new List<Doktor>();
@@ -589,7 +669,12 @@ namespace Zadaca1RPR_17324
                         }
                     case 5:
                         {
-                            RegistracijaPregleda(ref pacijenti, ref doktori, ref ordinacije);
+                            RegistracijaPregleda(ref pacijenti, ref doktori, ref ordinacije, ref pregledIznosNaplate);
+                            break;
+                        }
+                    case 7:
+                        {
+                            Naplata(pacijenti, pregledIznosNaplate);
                             break;
                         }
                     default:
@@ -598,7 +683,7 @@ namespace Zadaca1RPR_17324
                             continue;
                         }
                 }
-            } while (unos != 8);
+            } while (unos != 8); //rjesava izlaz
 
             //OPCIJE:
             //TREBA LI INSTANCIRATI U OBLIKU INDEKSA I U POMOCNIM METODAMA TE KLASAMA?
@@ -607,18 +692,15 @@ namespace Zadaca1RPR_17324
             //NAPISATI
             //DOKUMENTACIJU
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //DOZVOLITI IZBOR BROJA RATA KOD NAPLATE I ISPISATI MJESECNU RATU
             //DICTIONARY I DELEGATI U MAINU ZA MENI
-            //OPCIJA DA DOKTOR OSLOBODI ORDINACIJU
             //DODATI TEHNICARE I UPRAVU
             //MOZDA DODATI OPCIJU DA SE POSTAVI ODSUSTVO DOKTORA
             //SPRIJECITI PONOVNO KREIRANJE PACIJENATA KARTONA GDJE POSTOJI I NE TRAZITI PONOVNI UNOS IMENA I PREZIMENA CROSS-OPTION
-            /*TREBA PRATITI U KALENDARU STA SE DESAVA I ALOCIRATI RASPORED, MORAT CEMO NACI NEKI PRIORITY QUEUE SHIT U C# 
-I ONU GLUPOST SA APARATIMA NEKAKO, NOTE TO SELF: NEMOJ KORISTITI LISTE!*/
             //TREBA RAZDVOJITI OVAJ MODEL OD MAINA U POSEBAN FAJL 
             //VOZACKA I PREGLEDI ZA POSAO IMPLEMENTIRATI U REGISTRACIJI PREGLEDA+DOKTORA, TREBA I AUTO KREIRATI RASPORED ONDA
 
             //HHASIC FAQ PROVJERI AKO ZAPNE
-            //KAD PACIJENT PLATI TREBA INKREMENTIRATI NJEGOV BROJ DOLAZAKA U BOLNICU RADI KASNIJIH POPUSTA
         }
     }
 }
