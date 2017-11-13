@@ -416,7 +416,7 @@ namespace Zadaca1RPR_17324
                                         dobarUnos = Char.TryParse(unos, out char krajPregleda);
                                         if (krajPregleda == 'D')
                                         {
-                                            //saznati koja je ordinacija brute force (lose ali sta ces)
+                                            //saznati koja je ordinacija brute force (lose ali sta cu)
                                             foreach (Ordinacija o in ordinacije) if (o is OrdinacijaDermatolog)
                                                 {
                                                     if (((OrdinacijaDermatolog)o).SefKlinike.brojLicence == doktor17324.brojLicence)
