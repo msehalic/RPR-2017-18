@@ -117,7 +117,46 @@ namespace Zadaca1RPR_17324
                 if (zeliPregled != 'D' && zeliPregled != 'N') dobarUnos = false;
             } while (!dobarUnos);
         }
-        static void EvidentirajPrvuPomoc(ref Pacijent_HitnaProcedura p)
+        static void GenerisiRaspored(ref List<Pacijent> pacijenti, ref List<Ordinacija> ordinacije)
+        {
+            bool dobarUnos = true;
+            List<Tuple<string, int, Doktor>> nizCekanjaOrdinacija= new List<Tuple<string, int,Doktor>>();//dinamicki ce se sortirati bez obzira koliko ima ordinacija
+            do
+            {
+
+                Console.Write("Unesite ime pacijenta kojem printate racun: ");
+                string ime = Console.ReadLine();
+                Console.Write("Unesite prezime pacijenta kojem printate racun: ");
+                string prezime = Console.ReadLine();
+                if (!pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)))
+                //case insensitive
+                {
+                    Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Odustati od prikaza rasporeda");
+                    var temp = Console.ReadLine();
+                    dobarUnos = Int32.TryParse(temp, out int unosPonovo);
+                    if (unosPonovo != 2) dobarUnos = false;
+                }
+                else
+                {
+                    var pacijent17324 = pacijenti.Find(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase) && String.Equals(x.prezime, prezime, StringComparison.OrdinalIgnoreCase));
+                    //polimorfizam lvl 9999:
+                    foreach (Ordinacija o in ordinacije) if (o is OrdinacijaStomatolog) nizCekanjaOrdinacija.Add(Tuple.Create ("stomatolog", ((OrdinacijaStomatolog)o).RedCekanja.Count, ((OrdinacijaStomatolog)o).SefKlinike));
+                    foreach (Ordinacija o in ordinacije) if (o is OrdinacijaKardiolog) nizCekanjaOrdinacija.Add(Tuple.Create("kardiolog", ((OrdinacijaKardiolog)o).RedCekanja.Count, ((OrdinacijaKardiolog)o).SefKlinike));
+                    foreach (Ordinacija o in ordinacije) if (o is OrdinacijaOrtoped) nizCekanjaOrdinacija.Add(Tuple.Create("ortoped", ((OrdinacijaOrtoped)o).RedCekanja.Count, ((OrdinacijaOrtoped)o).SefKlinike));
+                    foreach (Ordinacija o in ordinacije) if (o is OrdinacijaDermatolog) nizCekanjaOrdinacija.Add(Tuple.Create("dermatolog", ((OrdinacijaDermatolog)o).RedCekanja.Count, ((OrdinacijaDermatolog)o).SefKlinike));
+                    nizCekanjaOrdinacija.Sort(delegate (Tuple<string, int, Doktor> x, Tuple<string, int, Doktor> y)
+                    {
+                        return x.Item2.CompareTo(y.Item2); //sortira po broju ljudi u redu cekanja
+                    });
+                    Console.WriteLine("Vas raspored je sljedeci: ");
+                    foreach (Tuple<string,int,Doktor> t in nizCekanjaOrdinacija)
+                        if (t.Item2!=0) Console.WriteLine("Posjetit cete doktora {0} {1}, specijalista {2}, u cijoj ste ordinaciji {3}. u redu cekanja.", t.Item3.imeDoktora, t.Item3.prezimeDoktora, t.Item1, t.Item2);
+                    Console.Write(Environment.NewLine); //cuz it's cool 
+                    //nema potrebe ispisivati ordinacije za koje se pacijent nije ni prijavio :)
+                }
+            } while (!dobarUnos);
+            }
+                static void EvidentirajPrvuPomoc(ref Pacijent_HitnaProcedura p)
         {
             Pregled hitni17324_1 = new Pregled(DateTime.Today, "", "", "", p); //kreiramo instancu pregleda koju cemo nadopunjavati
             p.datumPrijema = DateTime.Today; //obzirom da je hitni slucaj, datum prvog pregleda odgovara prijemu
@@ -657,6 +696,11 @@ namespace Zadaca1RPR_17324
                             DodajBrisi(ref pacijenti, ref ordinacije);
                             break;
                         }
+                    case 2:
+                        {
+                            GenerisiRaspored(ref pacijenti, ref ordinacije);
+                            break;
+                        }
                     case 3:
                         {
                             KreirajKarton(ref pacijenti, ref ordinacije);
@@ -693,6 +737,7 @@ namespace Zadaca1RPR_17324
             //DOKUMENTACIJU
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             //DOZVOLITI IZBOR BROJA RATA KOD NAPLATE I ISPISATI MJESECNU RATU
+            //USAVRSITI MALO RASPORED DA TO LJEPSE IZGLEDA
             //DICTIONARY I DELEGATI U MAINU ZA MENI
             //DODATI TEHNICARE I UPRAVU
             //MOZDA DODATI OPCIJU DA SE POSTAVI ODSUSTVO DOKTORA
