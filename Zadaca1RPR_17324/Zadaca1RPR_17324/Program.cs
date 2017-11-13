@@ -64,7 +64,7 @@ namespace Zadaca1RPR_17324
                 temp = Console.ReadLine();
                 temp = temp.ToUpper();
                 dobarUnos = Char.TryParse(temp, out char zeliPregled);
-                if (zeliPregled == 'D') foreach(Ordinacija o in ordinacije) if (o is OrdinacijaDermatolog)
+                if (zeliPregled == 'D') foreach (Ordinacija o in ordinacije) if (o is OrdinacijaDermatolog)
                         {
                             ((OrdinacijaDermatolog)o).RedCekanja.Enqueue(new Pregled(p));
                             Console.WriteLine("Vi ste {0}. u redu cekanja za ordinaciju dermatologa.\n", ((OrdinacijaDermatolog)o).RedCekanja.Count); //na pocetku je dovoljno ovo za mjerenje cekanja, kasnije moramo pojedinacno naci svakog pacijenta
@@ -186,8 +186,8 @@ namespace Zadaca1RPR_17324
                 string ime = Console.ReadLine();
                 Console.Write("Unesite prezime pacijenta kojem kreirate karton: ");
                 string prezime = Console.ReadLine();
-                if (!pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase))) 
-                    //case insensitive provjera
+                if (!pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)))
+                //case insensitive provjera
                 {
                     Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta\n3. Odustati od kreiranja kartona");
                     int unos = Convert.ToInt32(Console.ReadLine());
@@ -222,7 +222,7 @@ namespace Zadaca1RPR_17324
                 Console.Write("Unesite prezime pacijenta kojem zelite pretraziti karton: ");
                 string prezime = Console.ReadLine();
                 if (!pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)))
-                    //case insensitive provjera
+                //case insensitive provjera
                 {
                     Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen. Provjerite da li je evidentiran u sistemu te da li mu je kreiran karton.\nDa li zelite:\n1. Pokusati ponovo\n2. Odustati od pretrage kartona");
                     int unos = Convert.ToInt32(Console.ReadLine());
@@ -352,10 +352,11 @@ namespace Zadaca1RPR_17324
                 Pregled pregled = new Pregled(DateTime.Today, "", "", "", temp); //SVAKI KONSTRUKTOR BI TREBAO OVAKO!
                 Console.Write("Unesite ime pacijenta kojem kreirate pregled: ");
                 string ime = Console.ReadLine();
+                bool dobarUnos = false;
                 Console.Write("Unesite prezime pacijenta kojem kreirate pregled: ");
                 string prezime = Console.ReadLine();
                 if (!pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)))
-                    //case insensitive
+                //case insensitive
                 {
                     Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta te njegov pripadajuci karton\n3. Odustati od kreiranja pregleda");
                     int unos = Convert.ToInt32(Console.ReadLine());
@@ -404,6 +405,56 @@ namespace Zadaca1RPR_17324
                                     pregled.d = doktor17324;
                                     pregled.d.BrojPregledanihPacijenata++; //inkrementiramo mu brojac pacijenata
                                     prekidKreiranjaPregleda = false;
+                                    do
+                                    {
+                                        dobarUnos = true;
+                                        if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                                        Console.Write("Zelite li zavrsiti pregled i pozvati narednog pacijenta (D/N)? ");
+                                        string unos = Console.ReadLine();
+                                        unos = unos.ToUpper();
+                                        dobarUnos = Char.TryParse(unos, out char krajPregleda);
+                                        if (krajPregleda == 'D')
+                                        {
+                                            //saznati koja je ordinacija brute force (lose ali sta ces)
+                                            foreach (Ordinacija o in ordinacije) if (o is OrdinacijaDermatolog)
+                                                {
+                                                    if (((OrdinacijaDermatolog)o).SefKlinike.brojLicence == doktor17324.brojLicence)
+                                                    {
+                                                        ((OrdinacijaDermatolog)o).RedCekanja.Dequeue();
+                                                        if (((OrdinacijaDermatolog)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
+                                                        else Console.WriteLine("Iduci pacijent je: {0} {1}", ((OrdinacijaDermatolog)o).RedCekanja.Peek().p.ime, ((OrdinacijaDermatolog)o).RedCekanja.Peek().p.prezime);
+                                                    }
+                                                }
+
+                                            foreach (Ordinacija o in ordinacije) if (o is OrdinacijaKardiolog)
+                                                {
+                                                    if (((OrdinacijaKardiolog)o).SefKlinike.brojLicence == doktor17324.brojLicence) ((OrdinacijaKardiolog)o).RedCekanja.Dequeue();
+                                                    {
+                                                        if (((OrdinacijaKardiolog)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
+                                                        else Console.WriteLine("Iduci pacijent je: {0} {1}", ((OrdinacijaKardiolog)o).RedCekanja.Peek().p.ime, ((OrdinacijaKardiolog)o).RedCekanja.Peek().p.prezime);
+                                                    }
+                                                }
+
+                                            foreach (Ordinacija o in ordinacije) if (o is OrdinacijaOrtoped)
+                                                {
+                                                    if (((OrdinacijaOrtoped)o).SefKlinike.brojLicence == doktor17324.brojLicence) ((OrdinacijaOrtoped)o).RedCekanja.Dequeue();
+                                                    {
+                                                        if (((OrdinacijaOrtoped)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
+                                                        else Console.WriteLine("Iduci pacijent je: {0} {1}", ((OrdinacijaOrtoped)o).RedCekanja.Peek().p.ime, ((OrdinacijaOrtoped)o).RedCekanja.Peek().p.prezime);
+                                                    }
+                                                }
+
+                                            foreach (Ordinacija o in ordinacije) if (o is OrdinacijaStomatolog)
+                                                {
+                                                    if (((OrdinacijaStomatolog)o).SefKlinike.brojLicence == doktor17324.brojLicence) ((OrdinacijaStomatolog)o).RedCekanja.Dequeue();
+                                                    {
+                                                        if (((OrdinacijaStomatolog)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
+                                                        else Console.WriteLine("Iduci pacijent je: {0} {1}", ((OrdinacijaStomatolog)o).RedCekanja.Peek().p.ime, ((OrdinacijaStomatolog)o).RedCekanja.Peek().p.prezime);
+                                                    }
+                                                }
+                                        }
+                                        if (krajPregleda != 'D' && krajPregleda != 'N') dobarUnos = false;
+                                    } while (!dobarUnos);
                                 }
                             if (prekidKreiranjaPregleda) Console.WriteLine("Neispravna licenca. Pokusajte ponovno. ");
                         } while (prekidKreiranjaPregleda);
@@ -510,7 +561,7 @@ namespace Zadaca1RPR_17324
                 {
                     if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
                     Console.WriteLine("Dobro došli! Odaberite jednu od opcija:\n1.Registruj / Briši pacijenta\n2.Prikaži raspored pregleda pacijenta\n3.Kreiranje kartona pacijenta\n4.Pretraga kartona pacijenta\n5.Registruj novi pregled\n6.Analiza sadržaja\n7.Naplata\n8.Izlaz");
-                   var temp = Console.ReadLine();
+                    var temp = Console.ReadLine();
                     dobarUnos = Int32.TryParse(temp, out unos);
                 } while (!dobarUnos);
                 switch (unos)
