@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Doktori;
 namespace Zadaca1RPR_17324
 {
-    class OrdinacijaOrtoped : IOrdinacije //implementira interfejs da je lakse
+    class OrdinacijaOrtoped : Ordinacija, IOrdinacije //implementira interfejs da je lakse
     {
         public Queue<Pregled> RedCekanja { get; set; }
         public string NazivKlinike { get; set; }

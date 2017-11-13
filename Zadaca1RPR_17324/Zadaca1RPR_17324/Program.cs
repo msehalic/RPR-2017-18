@@ -10,7 +10,7 @@ namespace Zadaca1RPR_17324
 
     class Program
     {
-        static void UnosPodataka(Pacijent p)
+        static void UnosPodataka(Pacijent p, ref List<Ordinacija> ordinacije)
         {
             string temp;
             bool dobarUnos = true;
@@ -34,6 +34,11 @@ namespace Zadaca1RPR_17324
                 if (dobarUnos)
                 {
                     if (!(temp.Length == 13)) dobarUnos = false; //ako nema 13 cifara nije ispravan
+                    //provjerimo sada prvi dio maticnog broja
+                    string datumUString = p.datumRodjenja.ToString("ddMMyyyy");
+                    datumUString = datumUString.Remove(4, 1); //cifra hiljadica godine rodjenja
+                    string maticniUString = temp.Substring(0, temp.Length - 6); //skratimo 6 posljednjih cifara
+                    if (datumUString.Equals(maticniUString) == false) dobarUnos = false; //provjerili prve cifre maticnog
                 }
             } while (!dobarUnos);
             do
@@ -50,6 +55,67 @@ namespace Zadaca1RPR_17324
             p.bracnoStanje = Console.ReadLine();
             p.datumPrijema = DateTime.Today;
             Console.WriteLine("Pacijent {0} {1} sa ID {2} uspjesno kreiran.\n", p.ime, p.prezime, p.idPacijenta);
+            Console.WriteLine("Molimo unesite preglede koje pacijent zeli obaviti: ");
+            //dermatolog
+            do
+            {
+                if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                Console.Write("Pacijent zeli zakazati pregled kod dermatologa (D/N)? ");
+                temp = Console.ReadLine();
+                temp = temp.ToUpper();
+                dobarUnos = Char.TryParse(temp, out char zeliPregled);
+                if (zeliPregled == 'D') foreach(Ordinacija o in ordinacije) if (o is OrdinacijaDermatolog)
+                        {
+                            ((OrdinacijaDermatolog)o).RedCekanja.Enqueue(new Pregled(p));
+                            Console.WriteLine("Vi ste {0}. u redu cekanja za ordinaciju dermatologa.\n", ((OrdinacijaDermatolog)o).RedCekanja.Count); //na pocetku je dovoljno ovo za mjerenje cekanja, kasnije moramo pojedinacno naci svakog pacijenta
+                        }
+                if (zeliPregled != 'D' && zeliPregled != 'N') dobarUnos = false;
+            } while (!dobarUnos);
+            //kardiolog
+            do
+            {
+                if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                Console.Write("Pacijent zeli zakazati pregled kod kardiologa (D/N)? ");
+                temp = Console.ReadLine();
+                temp = temp.ToUpper();
+                dobarUnos = Char.TryParse(temp, out char zeliPregled);
+                if (zeliPregled == 'D') foreach (Ordinacija o in ordinacije) if (o is OrdinacijaKardiolog)
+                        {
+                            ((OrdinacijaKardiolog)o).RedCekanja.Enqueue(new Pregled(p));
+                            Console.WriteLine("Vi ste {0}. u redu cekanja za ordinaciju kardiologa.\n", ((OrdinacijaKardiolog)o).RedCekanja.Count); //na pocetku je dovoljno ovo za mjerenje cekanja, kasnije moramo pojedinacno naci svakog pacijenta
+                        }
+                if (zeliPregled != 'D' && zeliPregled != 'N') dobarUnos = false;
+            } while (!dobarUnos);
+            //ortoped
+            do
+            {
+                if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                Console.Write("Pacijent zeli zakazati pregled kod ortopeda (D/N)? ");
+                temp = Console.ReadLine();
+                temp = temp.ToUpper();
+                dobarUnos = Char.TryParse(temp, out char zeliPregled);
+                if (zeliPregled == 'D') foreach (Ordinacija o in ordinacije) if (o is OrdinacijaOrtoped)
+                        {
+                            ((OrdinacijaOrtoped)o).RedCekanja.Enqueue(new Pregled(p));
+                            Console.WriteLine("Vi ste {0}. u redu cekanja za ordinaciju ortopeda.\n", ((OrdinacijaOrtoped)o).RedCekanja.Count); //na pocetku je dovoljno ovo za mjerenje cekanja, kasnije moramo pojedinacno naci svakog pacijenta
+                        }
+                if (zeliPregled != 'D' && zeliPregled != 'N') dobarUnos = false;
+            } while (!dobarUnos);
+            //stomatolog
+            do
+            {
+                if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                Console.Write("Pacijent zeli zakazati pregled kod stomatologa (D/N)? ");
+                temp = Console.ReadLine();
+                temp = temp.ToUpper();
+                dobarUnos = Char.TryParse(temp, out char zeliPregled);
+                if (zeliPregled == 'D') foreach (Ordinacija o in ordinacije) if (o is OrdinacijaStomatolog)
+                        {
+                            ((OrdinacijaStomatolog)o).RedCekanja.Enqueue(new Pregled(p));
+                            Console.WriteLine("Vi ste {0}. u redu cekanja za ordinaciju stomatologa.\n", ((OrdinacijaStomatolog)o).RedCekanja.Count); //na pocetku je dovoljno ovo za mjerenje cekanja, kasnije moramo pojedinacno naci svakog pacijenta
+                        }
+                if (zeliPregled != 'D' && zeliPregled != 'N') dobarUnos = false;
+            } while (!dobarUnos);
         }
         static void EvidentirajPrvuPomoc(ref Pacijent_HitnaProcedura p)
         {
@@ -110,7 +176,7 @@ namespace Zadaca1RPR_17324
             }
             p.karton.Add(hitni17324_1);
         }
-        static void KreirajKarton(ref List<Pacijent> pacijenti)
+        static void KreirajKarton(ref List<Pacijent> pacijenti, ref List<Ordinacija> ordinacije)
         {
             Pacijent temp = new Pacijent_NormalnaProcedura(); //normalna procedura za dodavanje pacijenta
             bool prekidKreiranjaKartona = true; //da je lakse u petlji opovrgnuti negaciju
@@ -126,7 +192,7 @@ namespace Zadaca1RPR_17324
                     Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta\n3. Odustati od kreiranja kartona");
                     int unos = Convert.ToInt32(Console.ReadLine());
                     //ako je unos 1 petlja ce sama napraviti krug
-                    if (unos == 2) RegistrujPacijenta(ref pacijenti);
+                    if (unos == 2) RegistrujPacijenta(ref pacijenti, ref ordinacije);
                     //mozda ovdje jos dodati da ne trazi ime i prezime opet hm?
                     else if (unos == 3) break;
                 }
@@ -276,7 +342,7 @@ namespace Zadaca1RPR_17324
             p.alergije = Console.ReadLine();
             Console.WriteLine("Anamneza uspjesna!");
         }
-        static void RegistracijaPregleda(ref List<Pacijent> pacijenti, ref List<Doktor> doktori)
+        static void RegistracijaPregleda(ref List<Pacijent> pacijenti, ref List<Doktor> doktori, ref List<Ordinacija> ordinacije)
         {
             Console.WriteLine("Dobro dosli u modul za registraciju pregleda.");
             bool prekidKreiranjaPregleda = true; //da je lakse u petlji opovrgnuti negaciju
@@ -296,8 +362,8 @@ namespace Zadaca1RPR_17324
                     //ako je unos 1 petlja ce sama napraviti krug
                     if (unos == 2)
                     {
-                        RegistrujPacijenta(ref pacijenti);
-                        KreirajKarton(ref pacijenti);
+                        RegistrujPacijenta(ref pacijenti, ref ordinacije);
+                        KreirajKarton(ref pacijenti, ref ordinacije);
                     }
                     //mozda ovdje jos dodati da ne trazi ime i prezime opet hm?
                     else if (unos == 3) break;
@@ -310,7 +376,7 @@ namespace Zadaca1RPR_17324
                     {
                         Console.WriteLine("Pacijent sa tim imenom i prezimenom je pronadjen, ali nema kreiran karton.\nDa li zelite:\n1. Kreirati karton pacijentu \n2. Odustati od kreiranja pregleda");
                         int unos = Convert.ToInt32(Console.ReadLine());
-                        if (unos == 1) KreirajKarton(ref pacijenti);
+                        if (unos == 1) KreirajKarton(ref pacijenti, ref ordinacije);
                         else break;
                     }
                     else
@@ -351,7 +417,7 @@ namespace Zadaca1RPR_17324
                 }
             } while (true);
         }
-        static void RegistrujPacijenta(ref List<Pacijent> pacijenti)
+        static void RegistrujPacijenta(ref List<Pacijent> pacijenti, ref List<Ordinacija> ordinacije)
         {
             int prioritet;
             bool dobarUnos = true;
@@ -369,11 +435,11 @@ namespace Zadaca1RPR_17324
             {
                 EvidentirajPrvuPomoc(ref pacijent17324_1); //should be ok
                 pacijenti.Add(pacijent17324_1);
-                UnosPodataka(pacijent17324_1 as Pacijent); //polimorfno as
+                UnosPodataka(pacijent17324_1 as Pacijent, ref ordinacije); //polimorfno as
             }
             if (prioritet == 2)
             {
-                UnosPodataka(pacijent17324_2 as Pacijent);//polimorfno as
+                UnosPodataka(pacijent17324_2 as Pacijent, ref ordinacije);//polimorfno as
                 pacijenti.Add(pacijent17324_2);
             }
         }
@@ -398,7 +464,7 @@ namespace Zadaca1RPR_17324
             if (uspjeh) pacijenti.Remove(temp);
             else Console.WriteLine("Neuspjesno brisanje! Provjerite ID broj pacijenta koji ste unijeli.");
         }
-        static void DodajBrisi(ref List<Pacijent> pacijenti)
+        static void DodajBrisi(ref List<Pacijent> pacijenti, ref List<Ordinacija> ordinacije)
         {
             int unos;
             bool dobarUnos = true;
@@ -410,7 +476,7 @@ namespace Zadaca1RPR_17324
                 dobarUnos = Int32.TryParse(temp, out unos);
                 if (unos < 1 || unos > 2) dobarUnos = false;
             } while (!dobarUnos);
-            if (unos == 1) RegistrujPacijenta(ref pacijenti);
+            if (unos == 1) RegistrujPacijenta(ref pacijenti, ref ordinacije);
             if (unos == 2) ObrisiPacijenta(pacijenti);
         }
         static void Main(string[] args)
@@ -419,12 +485,25 @@ namespace Zadaca1RPR_17324
             bool dobarUnos = true;
             List<Pacijent> pacijenti = new List<Pacijent>();
             List<Doktor> doktori = new List<Doktor>();
-            Doktor doktor17324_1 = new Doktor("Ahmed", "Ahmedic", 123); //nasumice, broj licence 123
-            Doktor doktor17324_2 = new Doktor("Emina", "Tutic", 456); //nasumice, broj licence 456
-            Doktor doktor17324_3 = new Doktor("Marko", "Kikic", 789); //nasumice, broj licence 789
+            List<Ordinacija> ordinacije = new List<Ordinacija>();
+            //nekoliko doktora za potrebe testiranja
+            Doktor doktor17324_1 = new Doktor("Ahmed", "Ahmedic", 123); //dermatolog, broj licence 123
+            Doktor doktor17324_2 = new Doktor("Emina", "Tutic", 456); //kardiolog, broj licence 456
+            Doktor doktor17324_3 = new Doktor("Marko", "Kikic", 789); //ortoped, broj licence 789
+            Doktor doktor17324_4 = new Doktor("Pavle", "Bisercic", 555); //stomatolog, broj licence 555
             doktori.Add(doktor17324_1);
             doktori.Add(doktor17324_2);
             doktori.Add(doktor17324_3);
+            doktori.Add(doktor17324_4);
+            //kreirajmo ordinacije i postavimo odgovarajuce sefove
+            OrdinacijaDermatolog ordinacija17324_1 = new OrdinacijaDermatolog(doktor17324_1);
+            OrdinacijaKardiolog ordinacija17324_2 = new OrdinacijaKardiolog(doktor17324_2);
+            OrdinacijaOrtoped ordinacija17324_3 = new OrdinacijaOrtoped(doktor17324_3);
+            OrdinacijaStomatolog ordinacija17324_4 = new OrdinacijaStomatolog(doktor17324_4);
+            ordinacije.Add(ordinacija17324_1);
+            ordinacije.Add(ordinacija17324_2);
+            ordinacije.Add(ordinacija17324_3);
+            ordinacije.Add(ordinacija17324_4);
             do
             {
                 do
@@ -438,12 +517,12 @@ namespace Zadaca1RPR_17324
                 {
                     case 1:
                         {
-                            DodajBrisi(ref pacijenti);
+                            DodajBrisi(ref pacijenti, ref ordinacije);
                             break;
                         }
                     case 3:
                         {
-                            KreirajKarton(ref pacijenti);
+                            KreirajKarton(ref pacijenti, ref ordinacije);
                             break;
                         }
                     case 4:
@@ -453,7 +532,7 @@ namespace Zadaca1RPR_17324
                         }
                     case 5:
                         {
-                            RegistracijaPregleda(ref pacijenti, ref doktori);
+                            RegistracijaPregleda(ref pacijenti, ref doktori, ref ordinacije);
                             break;
                         }
                     default:
@@ -466,7 +545,6 @@ namespace Zadaca1RPR_17324
 
             //OPCIJE:
             //TREBA LI INSTANCIRATI U OBLIKU INDEKSA I U POMOCNIM METODAMA TE KLASAMA?
-            //PREDNOSTI NASLJEDJIVANJA ORDINACIJA BI BILE DA SE IMPLEMENTIRA INTERFEJS, A NEDOSTACI DA SE NE BI MOGAO IMPLEMENTIRATI UNIVERZALNI RED ČEKANJA
 
             //TODO: 
             //NAPISATI
@@ -476,7 +554,6 @@ namespace Zadaca1RPR_17324
             //OPCIJA DA DOKTOR OSLOBODI ORDINACIJU
             //DODATI TEHNICARE I UPRAVU
             //MOZDA DODATI OPCIJU DA SE POSTAVI ODSUSTVO DOKTORA
-            //PROVJERITI PRVI DIO JMBG
             //SPRIJECITI PONOVNO KREIRANJE PACIJENATA KARTONA GDJE POSTOJI I NE TRAZITI PONOVNI UNOS IMENA I PREZIMENA CROSS-OPTION
             /*TREBA PRATITI U KALENDARU STA SE DESAVA I ALOCIRATI RASPORED, MORAT CEMO NACI NEKI PRIORITY QUEUE SHIT U C# 
 I ONU GLUPOST SA APARATIMA NEKAKO, NOTE TO SELF: NEMOJ KORISTITI LISTE!*/

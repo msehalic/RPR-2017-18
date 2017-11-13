@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Ordinacija.cs" />
     <Compile Include="OrdinacijaDermatolog.cs" />
     <Compile Include="OrdinacijaKardiolog.cs" />
     <Compile Include="IOrdinacije.cs" />
