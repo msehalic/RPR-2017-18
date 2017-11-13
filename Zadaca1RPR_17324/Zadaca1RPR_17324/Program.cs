@@ -353,6 +353,7 @@ namespace Zadaca1RPR_17324
                 Console.Write("Unesite ime pacijenta kojem kreirate pregled: ");
                 string ime = Console.ReadLine();
                 bool dobarUnos = false;
+                bool izadjiIzPetljeOdmah = false;
                 Console.Write("Unesite prezime pacijenta kojem kreirate pregled: ");
                 string prezime = Console.ReadLine();
                 if (!pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)))
@@ -423,35 +424,40 @@ namespace Zadaca1RPR_17324
                                                         ((OrdinacijaDermatolog)o).RedCekanja.Dequeue();
                                                         if (((OrdinacijaDermatolog)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
                                                         else Console.WriteLine("Iduci pacijent je: {0} {1}", ((OrdinacijaDermatolog)o).RedCekanja.Peek().p.ime, ((OrdinacijaDermatolog)o).RedCekanja.Peek().p.prezime);
+                                                        izadjiIzPetljeOdmah = true;
                                                     }
                                                 }
-
+                                            if (izadjiIzPetljeOdmah) break;
                                             foreach (Ordinacija o in ordinacije) if (o is OrdinacijaKardiolog)
                                                 {
                                                     if (((OrdinacijaKardiolog)o).SefKlinike.brojLicence == doktor17324.brojLicence) ((OrdinacijaKardiolog)o).RedCekanja.Dequeue();
                                                     {
                                                         if (((OrdinacijaKardiolog)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
                                                         else Console.WriteLine("Iduci pacijent je: {0} {1}", ((OrdinacijaKardiolog)o).RedCekanja.Peek().p.ime, ((OrdinacijaKardiolog)o).RedCekanja.Peek().p.prezime);
+                                                        izadjiIzPetljeOdmah = true;
                                                     }
                                                 }
-
+                                            if (izadjiIzPetljeOdmah) break;
                                             foreach (Ordinacija o in ordinacije) if (o is OrdinacijaOrtoped)
                                                 {
                                                     if (((OrdinacijaOrtoped)o).SefKlinike.brojLicence == doktor17324.brojLicence) ((OrdinacijaOrtoped)o).RedCekanja.Dequeue();
                                                     {
                                                         if (((OrdinacijaOrtoped)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
                                                         else Console.WriteLine("Iduci pacijent je: {0} {1}", ((OrdinacijaOrtoped)o).RedCekanja.Peek().p.ime, ((OrdinacijaOrtoped)o).RedCekanja.Peek().p.prezime);
+                                                        izadjiIzPetljeOdmah = true;
                                                     }
                                                 }
-
+                                            if (izadjiIzPetljeOdmah) break;
                                             foreach (Ordinacija o in ordinacije) if (o is OrdinacijaStomatolog)
                                                 {
                                                     if (((OrdinacijaStomatolog)o).SefKlinike.brojLicence == doktor17324.brojLicence) ((OrdinacijaStomatolog)o).RedCekanja.Dequeue();
                                                     {
                                                         if (((OrdinacijaStomatolog)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
                                                         else Console.WriteLine("Iduci pacijent je: {0} {1}", ((OrdinacijaStomatolog)o).RedCekanja.Peek().p.ime, ((OrdinacijaStomatolog)o).RedCekanja.Peek().p.prezime);
+                                                        izadjiIzPetljeOdmah = true;
                                                     }
                                                 }
+                                            if (izadjiIzPetljeOdmah) break;
                                         }
                                         if (krajPregleda != 'D' && krajPregleda != 'N') dobarUnos = false;
                                     } while (!dobarUnos);
