@@ -244,7 +244,7 @@ namespace Zadaca1RPR_17324
                         //ako je unos 1 petlja ce sama napraviti krug
                         if (unos == 2) RegistrujPacijenta(ref pacijenti, ref ordinacije);
                         //mozda ovdje jos dodati da ne trazi ime i prezime opet hm?
-                        else if (unos == 3) break;
+                        else if (unos == 3) prekidKreiranjaKartona = false;
                     } while (!dobarUnos);
                 }
                 else
@@ -260,7 +260,7 @@ namespace Zadaca1RPR_17324
                     temp.IspravanKarton = true;
                     break;
                 }
-            } while (true);
+            } while (prekidKreiranjaKartona);
         }
         static void PretragaKartona(ref List<Pacijent> pacijenti)
         {
@@ -304,8 +304,14 @@ namespace Zadaca1RPR_17324
                         {
                             case 1:
                                 {
-                                    Console.Write("Unesite datum za koji zelite izlistati preglede (DD/MM/YYYY): ");
-                                    var tempDan = Console.ReadLine();
+                                    string tempDan;
+                                    do
+                                    {
+                                        Console.Write("Unesite datum za koji zelite izlistati preglede (DD/MM/YYYY): ");
+                                        tempDan = Console.ReadLine();
+                                        dobarUnos = DateTime.TryParseExact(tempDan, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime nebitan);
+                                        if (!dobarUnos) Console.Write("Pogresan unos. Pokusajte ponovo.");
+                                    } while (!dobarUnos);
                                     //DateTime datum_17324 = DateTime.Parse(tempDan);
                                     //DEBUG foreach (Pregled p in temp.karton) Console.WriteLine("Hej ja sam definiran kao {0}", p.DatumVrijemePregleda.ToString("dd\\/MM\\/yyyy"));
                                     foreach (Pregled p in temp.karton) if (temp.karton.Exists(x => x.DatumVrijemePregleda.ToString("dd\\/MM\\/yyyy").Equals(tempDan))) p.Ispisi();
