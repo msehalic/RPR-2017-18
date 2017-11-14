@@ -122,7 +122,7 @@ namespace Zadaca1RPR_17324
         static void GenerisiRaspored(ref List<Pacijent> pacijenti, ref List<Ordinacija> ordinacije)
         {
             bool dobarUnos = true;
-            List<Tuple<string, int, Doktor>> nizCekanjaOrdinacija= new List<Tuple<string, int,Doktor>>();//dinamicki ce se sortirati bez obzira koliko ima ordinacija
+            List<Tuple<string, int, Doktor>> nizCekanjaOrdinacija = new List<Tuple<string, int, Doktor>>();//dinamicki ce se sortirati bez obzira koliko ima ordinacija
             do
             {
 
@@ -142,7 +142,7 @@ namespace Zadaca1RPR_17324
                 {
                     var pacijent17324 = pacijenti.Find(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase) && String.Equals(x.prezime, prezime, StringComparison.OrdinalIgnoreCase));
                     //polimorfizam lvl 9999:
-                    foreach (Ordinacija o in ordinacije) if (o is OrdinacijaStomatolog) nizCekanjaOrdinacija.Add(Tuple.Create ("stomatolog", ((OrdinacijaStomatolog)o).RedCekanja.Count, ((OrdinacijaStomatolog)o).SefKlinike));
+                    foreach (Ordinacija o in ordinacije) if (o is OrdinacijaStomatolog) nizCekanjaOrdinacija.Add(Tuple.Create("stomatolog", ((OrdinacijaStomatolog)o).RedCekanja.Count, ((OrdinacijaStomatolog)o).SefKlinike));
                     foreach (Ordinacija o in ordinacije) if (o is OrdinacijaKardiolog) nizCekanjaOrdinacija.Add(Tuple.Create("kardiolog", ((OrdinacijaKardiolog)o).RedCekanja.Count, ((OrdinacijaKardiolog)o).SefKlinike));
                     foreach (Ordinacija o in ordinacije) if (o is OrdinacijaOrtoped) nizCekanjaOrdinacija.Add(Tuple.Create("ortoped", ((OrdinacijaOrtoped)o).RedCekanja.Count, ((OrdinacijaOrtoped)o).SefKlinike));
                     foreach (Ordinacija o in ordinacije) if (o is OrdinacijaDermatolog) nizCekanjaOrdinacija.Add(Tuple.Create("dermatolog", ((OrdinacijaDermatolog)o).RedCekanja.Count, ((OrdinacijaDermatolog)o).SefKlinike));
@@ -151,14 +151,14 @@ namespace Zadaca1RPR_17324
                         return x.Item2.CompareTo(y.Item2); //sortira po broju ljudi u redu cekanja
                     });
                     Console.WriteLine("Vas raspored je sljedeci: ");
-                    foreach (Tuple<string,int,Doktor> t in nizCekanjaOrdinacija)
-                        if (t.Item2!=0) Console.WriteLine("Posjetit cete doktora {0} {1}, specijalista {2}, u cijoj ste ordinaciji {3}. u redu cekanja.", t.Item3.imeDoktora, t.Item3.prezimeDoktora, t.Item1, t.Item2);
+                    foreach (Tuple<string, int, Doktor> t in nizCekanjaOrdinacija)
+                        if (t.Item2 != 0) Console.WriteLine("Posjetit cete doktora {0} {1}, specijalista {2}, u cijoj ste ordinaciji {3}. u redu cekanja.", t.Item3.imeDoktora, t.Item3.prezimeDoktora, t.Item1, t.Item2);
                     Console.Write(Environment.NewLine); //cuz it's cool 
                     //nema potrebe ispisivati ordinacije za koje se pacijent nije ni prijavio :)
                 }
             } while (!dobarUnos);
-            }
-                static void EvidentirajPrvuPomoc(ref Pacijent_HitnaProcedura p)
+        }
+        static void EvidentirajPrvuPomoc(ref Pacijent_HitnaProcedura p)
         {
             Pregled hitni17324_1 = new Pregled(DateTime.Today, "", "", "", p); //kreiramo instancu pregleda koju cemo nadopunjavati
             p.datumPrijema = DateTime.Today; //obzirom da je hitni slucaj, datum prvog pregleda odgovara prijemu
@@ -219,6 +219,7 @@ namespace Zadaca1RPR_17324
         }
         static void KreirajKarton(ref List<Pacijent> pacijenti, ref List<Ordinacija> ordinacije)
         {
+            bool dobarUnos = false;
             Pacijent temp = new Pacijent_NormalnaProcedura(); //normalna procedura za dodavanje pacijenta
             bool prekidKreiranjaKartona = true; //da je lakse u petlji opovrgnuti negaciju
             do
@@ -230,12 +231,21 @@ namespace Zadaca1RPR_17324
                 if (!pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)))
                 //case insensitive provjera
                 {
-                    Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta\n3. Odustati od kreiranja kartona");
-                    int unos = Convert.ToInt32(Console.ReadLine());
-                    //ako je unos 1 petlja ce sama napraviti krug
-                    if (unos == 2) RegistrujPacijenta(ref pacijenti, ref ordinacije);
-                    //mozda ovdje jos dodati da ne trazi ime i prezime opet hm?
-                    else if (unos == 3) break;
+                    do
+                    {
+                        Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta\n3. Odustati od kreiranja kartona");
+                        var unosStringa = Console.ReadLine();
+                        dobarUnos = Int32.TryParse(unosStringa, out int unos);
+                        if (!dobarUnos)
+                        {
+                            Console.Write("Neispravan unos. Pokusajte ponovo");
+                            continue;
+                        }
+                        //ako je unos 1 petlja ce sama napraviti krug
+                        if (unos == 2) RegistrujPacijenta(ref pacijenti, ref ordinacije);
+                        //mozda ovdje jos dodati da ne trazi ime i prezime opet hm?
+                        else if (unos == 3) break;
+                    } while (!dobarUnos);
                 }
                 else
                 {
@@ -254,6 +264,7 @@ namespace Zadaca1RPR_17324
         }
         static void PretragaKartona(ref List<Pacijent> pacijenti)
         {
+            bool dobarUnos = false;
             Pacijent temp = new Pacijent_NormalnaProcedura(); //normalna procedura za dodavanje pacijenta
             bool neuspjelaPretragaKartona = false; //ovo nekako izbaciti kasnije
             do
@@ -265,10 +276,19 @@ namespace Zadaca1RPR_17324
                 if (!pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)))
                 //case insensitive provjera
                 {
-                    Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen. Provjerite da li je evidentiran u sistemu te da li mu je kreiran karton.\nDa li zelite:\n1. Pokusati ponovo\n2. Odustati od pretrage kartona");
-                    int unos = Convert.ToInt32(Console.ReadLine());
-                    //ako je unos 1 petlja ce sama napraviti krug
-                    if (unos == 2) break;
+                    do
+                    {
+                        Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen. Provjerite da li je evidentiran u sistemu te da li mu je kreiran karton.\nDa li zelite:\n1. Pokusati ponovo\n2. Odustati od pretrage kartona");
+                        var unosStringa = Console.ReadLine();
+                        dobarUnos = Int32.TryParse(unosStringa, out int unos);
+                        if (!dobarUnos)
+                        {
+                            Console.Write("Neispravan unos. Pokusajte ponovo. ");
+                            continue;
+                        }
+                        //ako je unos 1 petlja ce sama napraviti krug
+                        if (unos == 2) break;
+                    } while (!dobarUnos);
                 }
                 else
                 {
@@ -318,16 +338,26 @@ namespace Zadaca1RPR_17324
                                 }
                             case 5:
                                 {
-                                    Console.Write("Unesite ID pregleda kojeg zelite izlistati: ");
-                                    int tempID = Convert.ToInt32(Console.ReadLine());
+                                    int tempID;
+                                    do
+                                    {
+                                        Console.Write("Unesite ID pregleda kojeg zelite izlistati: ");
+                                        var UnosStringa = Console.ReadLine();
+                                        dobarUnos = Int32.TryParse(UnosStringa, out tempID);
+                                    } while (!dobarUnos);
                                     foreach (Pregled p in temp.karton) if (p.idPregleda == tempID) p.Ispisi();
                                         else Console.WriteLine("Nije pronadjen ID postojeceg pacijenta koji odgovara zahtjevu.");
                                     break;
                                 }
                             case 6:
                                 {
-                                    Console.Write("Unesite licencu doktora cije preglede zelite izlistati: ");
-                                    int tempLicenca = Convert.ToInt32(Console.ReadLine());
+                                    int tempLicenca;
+                                    do
+                                    {
+                                        Console.Write("Unesite licencu doktora cije preglede zelite izlistati: ");
+                                        var UnosStringa = Console.ReadLine();
+                                        dobarUnos = Int32.TryParse(UnosStringa, out tempLicenca);
+                                    } while (!dobarUnos);
                                     foreach (Pregled p in temp.karton) if (p.d.brojLicence == tempLicenca) p.Ispisi();
                                         else Console.WriteLine("Nije pronadjen pregled sa brojem licence koji odgovara zahtjevu.");
                                     break;
@@ -400,16 +430,25 @@ namespace Zadaca1RPR_17324
                 if (!pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)))
                 //case insensitive
                 {
-                    Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta te njegov pripadajuci karton\n3. Odustati od kreiranja pregleda");
-                    int unos = Convert.ToInt32(Console.ReadLine());
-                    //ako je unos 1 petlja ce sama napraviti krug
-                    if (unos == 2)
+                    do
                     {
-                        RegistrujPacijenta(ref pacijenti, ref ordinacije);
-                        KreirajKarton(ref pacijenti, ref ordinacije);
-                    }
-                    //mozda ovdje jos dodati da ne trazi ime i prezime opet hm?
-                    else if (unos == 3) break;
+                        Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Kreirati novog pacijenta te njegov pripadajuci karton\n3. Odustati od kreiranja pregleda");
+                        var unosStringa = Console.ReadLine();
+                        dobarUnos = Int32.TryParse(unosStringa, out int unos);
+                        if (!dobarUnos)
+                        {
+                            Console.Write("Neispravan unos. Pokusajte ponovo. ");
+                            continue;
+                        }
+                        //ako je unos 1 petlja ce sama napraviti krug
+                        if (unos == 2)
+                        {
+                            RegistrujPacijenta(ref pacijenti, ref ordinacije);
+                            KreirajKarton(ref pacijenti, ref ordinacije);
+                        }
+                        //mozda ovdje jos dodati da ne trazi ime i prezime opet hm?
+                        else if (unos == 3) break;
+                    } while (!dobarUnos);
                 }
                 //ovdje treba slucaj kad nema karton i ponuditi da se kreira, napravio sam bool za provjeru :)
                 else
@@ -417,17 +456,30 @@ namespace Zadaca1RPR_17324
                     temp = pacijenti.Find(x => (String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase)) && (String.Equals(x.prezime, prezime, StringComparison.OrdinalIgnoreCase))); //instanciranje mozda sa indeksom?
                     if (temp.IspravanKarton == false) //ako nema karton, kreiraj
                     {
-                        Console.WriteLine("Pacijent sa tim imenom i prezimenom je pronadjen, ali nema kreiran karton.\nDa li zelite:\n1. Kreirati karton pacijentu \n2. Odustati od kreiranja pregleda");
-                        int unos = Convert.ToInt32(Console.ReadLine());
-                        if (unos == 1) KreirajKarton(ref pacijenti, ref ordinacije);
-                        else break;
+                        do
+                        {
+                            Console.WriteLine("Pacijent sa tim imenom i prezimenom je pronadjen, ali nema kreiran karton.\nDa li zelite:\n1. Kreirati karton pacijentu \n2. Odustati od kreiranja pregleda");
+                            var unosStringa = Console.ReadLine();
+                            dobarUnos = Int32.TryParse(unosStringa, out int unos);
+                            if (!dobarUnos)
+                            {
+                                Console.Write("Neispravan unos. Pokusajte ponovo. ");
+                                continue;
+                            }
+                            if (unos == 1) KreirajKarton(ref pacijenti, ref ordinacije);
+                            else break;
+                        } while (!dobarUnos);
                     }
                     else
                     {
                         pregled = new Pregled(temp);
-                        Console.Write("Unesite datum kada je pregled obavljen (DD/MM/YYYY): ");
-                        string s = Console.ReadLine();
-                        pregled.DatumVrijemePregleda = DateTime.Parse(s);
+                        do
+                        {
+                            Console.Write("Unesite datum kada je pregled obavljen (DD/MM/YYYY): ");
+                            string s = Console.ReadLine();
+                            dobarUnos = DateTime.TryParseExact(s, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out pregled.DatumVrijemePregleda);
+                            if (!dobarUnos) Console.Write("Pogresan unos. Pokusajte ponovo.");
+                        } while (!dobarUnos);
                         Console.Write("Koji postupak je proveden prilikom pregleda? ");
                         pregled.postupak = Console.ReadLine();
                         Console.Write("Kakvo je misljenje ljekara nakon pregleda? ");
@@ -436,9 +488,13 @@ namespace Zadaca1RPR_17324
                         pregled.terapija = Console.ReadLine();
                         do
                         {
-                            Console.Write("Molimo unesite broj licence doktora koji propisuje terapiju: ");
-
-                            var licenca = Convert.ToInt32(Console.ReadLine());
+                            int licenca;
+                            do
+                            {
+                                Console.Write("Molimo unesite broj licence doktora koji propisuje terapiju: ");
+                                var unosStringa = Console.ReadLine();
+                                dobarUnos = Int32.TryParse(unosStringa, out licenca);
+                            } while (!dobarUnos);
                             //sada provjerimo da li je validan doktor ili je prevarant :)
                             foreach (Doktor doktor17324 in doktori)
                                 if (doktor17324.brojLicence == licenca)
@@ -552,11 +608,18 @@ namespace Zadaca1RPR_17324
         static void ObrisiPacijenta(List<Pacijent> pacijenti)
         {
             bool uspjeh = false;
+            bool dobarUnos = false;
+            int unos;
             Pacijent temp = new Pacijent_NormalnaProcedura();
             Console.WriteLine("U sistemu postoje sljedeci pacijenti: ");
             foreach (Pacijent p in pacijenti) p.Ispisi();
-            Console.Write("Molimo unesite redni broj pacijenta kojeg zelite obrisati: ");
-            int unos = Convert.ToInt32(Console.ReadLine());
+            do
+            {
+                Console.Write("Molimo unesite redni broj pacijenta kojeg zelite obrisati: ");
+                var unosStringa = Console.ReadLine();
+                dobarUnos = Int32.TryParse(unosStringa, out unos);
+                if (!dobarUnos) Console.Write("Pogresan unos. Pokusajte ponovo. ");
+            } while (!dobarUnos);
             foreach (Pacijent p in pacijenti)
             {
                 if (p.idPacijenta == unos)

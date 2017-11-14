@@ -7,8 +7,8 @@ using Doktori;
 namespace Zadaca1RPR_17324
 {
     sealed class Pregled
-    { 
-       public DateTime DatumVrijemePregleda { get; set; } //dan i vrijeme pregleda
+    {
+        public DateTime DatumVrijemePregleda; //dan i vrijeme pregleda
        public string postupak;
         public string misljenjeLjekara;
         public string terapija; //ne zaboravi natjerati doktora da propise terapiju kod pregleda
