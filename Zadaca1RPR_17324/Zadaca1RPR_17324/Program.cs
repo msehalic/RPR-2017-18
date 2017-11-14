@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +24,7 @@ namespace Zadaca1RPR_17324
                 if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
                 Console.Write("Unesite datum rodjenja pacijenta (DD/MM/YYYY): ");
                 temp = Console.ReadLine();
-                dobarUnos = DateTime.TryParse(temp, out p.datumRodjenja);
+                dobarUnos = DateTime.TryParseExact(temp, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out p.datumRodjenja);
             } while (!dobarUnos);
             do
             {
