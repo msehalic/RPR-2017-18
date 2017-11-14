@@ -719,6 +719,18 @@ namespace Zadaca1RPR_17324
                         Console.WriteLine("Cijena je smanjena za 10% jer je pacijent platio u gotovini, kao redovan u klinici.");
                     }
                     Console.WriteLine("\nUkupni saldo za pacijenta {0} {1} je {2} KM.", pacijent17324.ime, pacijent17324.prezime, saldoUkupni);
+                    if (unos==2) //sredjujemo broj rata
+                    {
+                        do
+                        {
+                            Console.Write("Obzirom da ste izabrali placanje na rate molimo unesite broj zeljenih rata (max 12): ");
+                            var unosBrojaRata = Console.ReadLine();
+                            dobarUnos = Int32.TryParse(unosBrojaRata, out int brojRata);
+                            if (brojRata > 12) dobarUnos = false;
+                            if (!dobarUnos) Console.Write("Pogresan unos. Pokusajte ponovo: ");
+                            else Console.Write("Mjesecna rata iznosi {0} KM, izabrali ste placanje na {1} rata. ", Decimal.Round(saldoUkupni / brojRata,2 ), brojRata); //zaokruzimo na 2 decimale
+                        } while (!dobarUnos);
+                    }
                     saldoUkupni = 0; //resetujemo saldo
                 }
 
@@ -812,7 +824,7 @@ namespace Zadaca1RPR_17324
             //DICTIONARY I DELEGATI U MAINU ZA MENI
             //DODATI TEHNICARE I UPRAVU
             //MOZDA DODATI OPCIJU DA SE POSTAVI ODSUSTVO DOKTORA
-            //SPRIJECITI PONOVNO KREIRANJE PACIJENATA KARTONA GDJE POSTOJI I NE TRAZITI PONOVNI UNOS IMENA I PREZIMENA CROSS-OPTION
+            //SPRIJECITI PONOVNO KREIRANJE PACIJENATA I KARTONA GDJE POSTOJI I NE TRAZITI PONOVNI UNOS IMENA I PREZIMENA CROSS-OPTION
             //TREBA RAZDVOJITI OVAJ MODEL OD MAINA U POSEBAN FAJL 
             //VOZACKA I PREGLEDI ZA POSAO IMPLEMENTIRATI U REGISTRACIJI PREGLEDA+DOKTORA, TREBA I AUTO KREIRATI RASPORED ONDA
 
