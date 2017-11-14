@@ -819,7 +819,6 @@ namespace Zadaca1RPR_17324
             //NAPISATI
             //DOKUMENTACIJU
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            //DOZVOLITI IZBOR BROJA RATA KOD NAPLATE I ISPISATI MJESECNU RATU
             //USAVRSITI MALO RASPORED DA TO LJEPSE IZGLEDA
             //DICTIONARY I DELEGATI U MAINU ZA MENI
             //DODATI TEHNICARE I UPRAVU
