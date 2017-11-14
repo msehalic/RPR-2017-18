@@ -24,6 +24,7 @@ namespace Zadaca1RPR_17324
                 if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
                 Console.Write("Unesite datum rodjenja pacijenta (DD/MM/YYYY): ");
                 temp = Console.ReadLine();
+                //nije radio obicni tryparse cross-platform pa zato ovo
                 dobarUnos = DateTime.TryParseExact(temp, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out p.datumRodjenja);
             } while (!dobarUnos);
             do
@@ -189,7 +190,7 @@ namespace Zadaca1RPR_17324
                     if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
                     Console.Write("Unesite vrijeme smrti (DD/MM/YYYY): ");
                     var temp = Console.ReadLine();
-                    dobarUnos = DateTime.TryParse(temp, out hitni17324_1.VrijemeSmrti);
+                    dobarUnos = DateTime.TryParseExact(temp, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out hitni17324_1.VrijemeSmrti);
                 } while (!dobarUnos);
                 Console.Write("Unesite uzrok/razlog smrti: ");
                 hitni17324_1.misljenjeLjekara = Console.ReadLine();
@@ -210,7 +211,7 @@ namespace Zadaca1RPR_17324
                         if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
                         Console.Write("Unesite datum i vrijeme obdukcije (DD/MM/YYYY): ");
                         var temp = Console.ReadLine();
-                        dobarUnos = DateTime.TryParse(temp, out hitni17324_1.Obdukcija);
+                        dobarUnos = DateTime.TryParseExact(temp, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out hitni17324_1.Obdukcija);
                     } while (!dobarUnos);
                 }
             }
