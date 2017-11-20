@@ -6,26 +6,21 @@ using System.Threading.Tasks;
 
 namespace Doktori
 {
-    public class Doktor
+    public class Doktor:Uposlenik
     {
-        public string imeDoktora;
-        public string prezimeDoktora;
-        public int brojLicence;
         public int BrojPregledanihPacijenata { get; set; }
         public Doktor()
         {
-            imeDoktora = "Dietrich";
-            prezimeDoktora = "Doktorcic";
-            brojLicence = 0;
+            ImeUposlenika = "Dietrich";
+            PrezimeUposlenika = "Doktorcic";
+            BrojLicence = 0;
             BrojPregledanihPacijenata = 0;
         }
-        public Doktor(string imeDoktora1, string prezimeDoktora1, int brojLicence1)
+
+        public Doktor(string imeUposlenika, string prezimeUposlenika, int brojLicence) : base(imeUposlenika, prezimeUposlenika, brojLicence)
         {
-            imeDoktora = imeDoktora1;
-            prezimeDoktora = prezimeDoktora1;
-            brojLicence = brojLicence1;
-            BrojPregledanihPacijenata = 0;
         }
+
         int ObracunajPlatu(Doktor d) //za obracun plate doktorima (cisto da bude implementirano)
         {
             int bonus = BrojPregledanihPacijenata > 20 ? 20 : BrojPregledanihPacijenata; //poslije 20 pacijenata nema bonusa

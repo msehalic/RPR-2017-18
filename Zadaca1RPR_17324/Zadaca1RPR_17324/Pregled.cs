@@ -12,7 +12,6 @@ namespace Zadaca1RPR_17324
        public string postupak;
         public string misljenjeLjekara;
         public string terapija; //ne zaboravi natjerati doktora da propise terapiju kod pregleda
-        //TREBALI BI INSTANCIRATI DOKTORA OVDJE KAD NAPISEMO KLASU!
         public DateTime VrijemeSmrti;
         public DateTime Obdukcija;
         public Pacijent p;
@@ -39,10 +38,10 @@ namespace Zadaca1RPR_17324
             p = pac;
             d.BrojPregledanihPacijenata++;
         }
-       public void Ispisi()
+       public override string ToString()
         {
-            if (idPregleda==0) Console.WriteLine("Pacijent trenutno nema evidentiranih izvršenih pregleda.");
-            Console.WriteLine("U {0}. Pacijent {1} {2} je prošao kroz proceduru {3}. Misljenje ljekara je {4} te je propisana terapija {5}.", DatumVrijemePregleda, p.ime, p.prezime, postupak, misljenjeLjekara, terapija);
+            if (idPregleda==0) return ("Pacijent trenutno nema evidentiranih izvršenih pregleda.");
+            return("U " + DatumVrijemePregleda + " Pacijent " + p.ime + p.prezime + " je prošao kroz proceduru " + postupak + ". Misljenje ljekara je " + misljenjeLjekara + " te je propisana terapija " + terapija + ".");
         }
         public void GenerisiIDPregleda() //generise nasumican broj od 1 do 1000 da se ne peglamo sa brojacima
         {

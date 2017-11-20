@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Zadaca1RPR_17324
 {
 
-    class Program
+   partial class Program
     {
         static void UnosPodataka(Pacijent p, ref List<Ordinacija> ordinacije)
         {
@@ -152,7 +152,7 @@ namespace Zadaca1RPR_17324
                     });
                     Console.WriteLine("Vas raspored je sljedeci: ");
                     foreach (Tuple<string, int, Doktor> t in nizCekanjaOrdinacija)
-                        if (t.Item2 != 0) Console.WriteLine("Posjetit cete doktora {0} {1}, specijalista {2}, u cijoj ste ordinaciji {3}. u redu cekanja.", t.Item3.imeDoktora, t.Item3.prezimeDoktora, t.Item1, t.Item2);
+                        if (t.Item2 != 0) Console.WriteLine("Posjetit cete doktora {0} {1}, specijalista {2}, u cijoj ste ordinaciji {3}. u redu cekanja.", t.Item3.ImeUposlenika, t.Item3.PrezimeUposlenika, t.Item1, t.Item2);
                     Console.Write(Environment.NewLine); //cuz it's cool 
                     //nema potrebe ispisivati ordinacije za koje se pacijent nije ni prijavio :)
                 }
@@ -262,10 +262,73 @@ namespace Zadaca1RPR_17324
                 }
             } while (prekidKreiranjaKartona);
         }
+        static void PretragaPoDatumu (Pacijent pacijent17324, bool dobarUnos)
+        {
+            string tempDan;
+            do
+            {
+                Console.Write("Unesite datum za koji zelite izlistati preglede (DD/MM/YYYY): ");
+                tempDan = Console.ReadLine();
+                dobarUnos = DateTime.TryParseExact(tempDan, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime nebitan);
+                if (!dobarUnos) Console.Write("Pogresan unos. Pokusajte ponovo.");
+            } while (!dobarUnos);
+            //DateTime datum_17324 = DateTime.Parse(tempDan);
+            //DEBUG foreach (Pregled p in temp.karton) Console.WriteLine("Hej ja sam definiran kao {0}", p.DatumVrijemePregleda.ToString("dd\\/MM\\/yyyy"));
+            foreach (Pregled p in pacijent17324.karton) if (pacijent17324.karton.Exists(x => x.DatumVrijemePregleda.ToString("dd\\/MM\\/yyyy").Equals(tempDan))) Console.WriteLine(p.ToString());
+                else Console.WriteLine("Nije pronadjena komponenta pregleda na datum koji odgovara zahtjevu.");
+        }
+        static void PretragaPoTerapiji(Pacijent pacijent17324, bool dobarUnos)
+        {
+            Console.Write("Unesite rijec ili frazu koju pretrazujete unutar imena terapije koju zelite izlistati: ");
+            string tempRijec = Console.ReadLine();
+            foreach (Pregled p in pacijent17324.karton) if (p.terapija.Contains(tempRijec)) Console.WriteLine(p.ToString());
+                else Console.WriteLine("Nije pronadjena komponenta u terapiji koja odgovara zahtjevu.");
+        }
+        static void PretragaPoPostupku(Pacijent pacijent17324, bool dobarUnos)
+        {
+            Console.Write("Unesite rijec ili frazu koju pretrazujete unutar naziva provedenog postupka kojeg zelite izlistati: ");
+            string tempRijec = Console.ReadLine();
+            foreach (Pregled p in pacijent17324.karton) if (p.postupak.Contains(tempRijec)) Console.WriteLine(p.ToString());
+                else Console.WriteLine("Nije pronadjena komponenta u nazivu provedenog postupka koja odgovara zahtjevu.");
+
+        }
+        static void PretragaPoMisljenju(Pacijent pacijent17324, bool dobarUnos)
+        {
+            Console.Write("Unesite rijec ili frazu koju pretrazujete unutar misljenja ljekara nakon pregleda kojeg zelite izlistati: ");
+            string tempRijec = Console.ReadLine();
+            foreach (Pregled p in pacijent17324.karton) if (p.misljenjeLjekara.Contains(tempRijec)) Console.WriteLine(p.ToString());
+                else Console.WriteLine("Nije pronadjena komponenta u misljenju ljekara koja odgovara zahtjevu.");
+        }
+        static void PretragaPoIDu(Pacijent pacijent17324, bool dobarUnos)
+        {
+            int tempID;
+            do
+            {
+                Console.Write("Unesite ID pregleda kojeg zelite izlistati: ");
+                var UnosStringa = Console.ReadLine();
+                dobarUnos = Int32.TryParse(UnosStringa, out tempID);
+            } while (!dobarUnos);
+            foreach (Pregled p in pacijent17324.karton) if (p.idPregleda == tempID) Console.WriteLine(p.ToString());
+                else Console.WriteLine("Nije pronadjen ID postojeceg pacijenta koji odgovara zahtjevu.");
+        }
+        static void PretragaPoLicenci(Pacijent pacijent17324, bool dobarUnos)
+        {
+            int tempLicenca;
+            do
+            {
+                Console.Write("Unesite licencu doktora cije preglede zelite izlistati: ");
+                var UnosStringa = Console.ReadLine();
+                dobarUnos = Int32.TryParse(UnosStringa, out tempLicenca);
+            } while (!dobarUnos);
+            foreach (Pregled p in pacijent17324.karton) if (p.d.BrojLicence == tempLicenca) Console.WriteLine(p.ToString());
+                else Console.WriteLine("Nije pronadjen pregled sa brojem licence koji odgovara zahtjevu.");
+
+        }
+        delegate void DelegatZaKriterijPretrage(Pacijent pacijent17324, bool dobarUnos);
         static void PretragaKartona(ref List<Pacijent> pacijenti)
         {
             bool dobarUnos = false;
-            Pacijent temp = new Pacijent_NormalnaProcedura(); //normalna procedura za dodavanje pacijenta
+            Pacijent pacijent17324 = new Pacijent_NormalnaProcedura(); //normalna procedura za dodavanje pacijenta
             bool neuspjelaPretragaKartona = false; //ovo nekako izbaciti kasnije
             do
             {
@@ -292,80 +355,50 @@ namespace Zadaca1RPR_17324
                 }
                 else
                 {
-                    temp = pacijenti.Find(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase) && String.Equals(x.prezime, prezime, StringComparison.OrdinalIgnoreCase));
+                    pacijent17324 = pacijenti.Find(x => String.Equals(x.ime, ime, StringComparison.OrdinalIgnoreCase) && String.Equals(x.prezime, prezime, StringComparison.OrdinalIgnoreCase));
                     //case insensitive
                     bool sveUredu;
                     do
                     {
-                        Console.WriteLine("Dobro dosli u modul za pretragu kartona pacijenta {0} {1}. \nIzaberite kriterij pretrage:\n1. Datum pregleda\n2. Riječ ili fraza koja je podstring propisane terapije\n3. Riječ ili fraza koja je podstring mišljenja ljekara nakon pregleda\n4. Riječ ili fraza koja je podstring provedenog postupka\n5. ID provedenog pregleda\n6. Broj licence doktora koji je izvrsio pregled", temp.ime, temp.prezime);
+                        Console.WriteLine("Dobro dosli u modul za pretragu kartona pacijenta {0} {1}. \nIzaberite kriterij pretrage:\n1. Datum pregleda\n2. Riječ ili fraza koja je podstring propisane terapije\n3. Riječ ili fraza koja je podstring mišljenja ljekara nakon pregleda\n4. Riječ ili fraza koja je podstring provedenog postupka\n5. ID provedenog pregleda\n6. Broj licence doktora koji je izvrsio pregled", pacijent17324.ime, pacijent17324.prezime);
                         var parse = Console.ReadLine();
                         sveUredu = Int32.TryParse(parse, out int unos);
                         switch (unos)
                         {
                             case 1:
                                 {
-                                    string tempDan;
-                                    do
-                                    {
-                                        Console.Write("Unesite datum za koji zelite izlistati preglede (DD/MM/YYYY): ");
-                                        tempDan = Console.ReadLine();
-                                        dobarUnos = DateTime.TryParseExact(tempDan, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime nebitan);
-                                        if (!dobarUnos) Console.Write("Pogresan unos. Pokusajte ponovo.");
-                                    } while (!dobarUnos);
-                                    //DateTime datum_17324 = DateTime.Parse(tempDan);
-                                    //DEBUG foreach (Pregled p in temp.karton) Console.WriteLine("Hej ja sam definiran kao {0}", p.DatumVrijemePregleda.ToString("dd\\/MM\\/yyyy"));
-                                    foreach (Pregled p in temp.karton) if (temp.karton.Exists(x => x.DatumVrijemePregleda.ToString("dd\\/MM\\/yyyy").Equals(tempDan))) p.Ispisi();
-                                        else Console.WriteLine("Nije pronadjena komponenta pregleda na datum koji odgovara zahtjevu.");
+                                    DelegatZaKriterijPretrage d17324_1 = PretragaPoDatumu;
+                                    d17324_1(pacijent17324, dobarUnos);
                                     break;
                                 }
                             case 2:
                                 {
-                                    Console.Write("Unesite rijec ili frazu koju pretrazujete unutar imena terapije koju zelite izlistati: ");
-                                    string tempRijec = Console.ReadLine();
-                                    foreach (Pregled p in temp.karton) if (p.terapija.Contains(tempRijec)) p.Ispisi();
-                                        else Console.WriteLine("Nije pronadjena komponenta u terapiji koja odgovara zahtjevu.");
+                                    DelegatZaKriterijPretrage d17324_2 = PretragaPoTerapiji;
+                                    d17324_2(pacijent17324, dobarUnos);
                                     break;
                                 }
                             case 3:
                                 {
-                                    Console.Write("Unesite rijec ili frazu koju pretrazujete unutar misljenja ljekara nakon pregleda kojeg zelite izlistati: ");
-                                    string tempRijec = Console.ReadLine();
-                                    foreach (Pregled p in temp.karton) if (p.misljenjeLjekara.Contains(tempRijec)) p.Ispisi();
-                                        else Console.WriteLine("Nije pronadjena komponenta u misljenju ljekara koja odgovara zahtjevu.");
+                                    DelegatZaKriterijPretrage d17324_3 = PretragaPoMisljenju;
+                                    d17324_3(pacijent17324, dobarUnos);
                                     break;
                                 }
                             case 4:
                                 {
-                                    Console.Write("Unesite rijec ili frazu koju pretrazujete unutar naziva provedenog postupka kojeg zelite izlistati: ");
-                                    string tempRijec = Console.ReadLine();
-                                    foreach (Pregled p in temp.karton) if (p.postupak.Contains(tempRijec)) p.Ispisi();
-                                        else Console.WriteLine("Nije pronadjena komponenta u nazivu provedenog postupka koja odgovara zahtjevu.");
+                                    DelegatZaKriterijPretrage d17324_4 = PretragaPoPostupku;
+                                    d17324_4(pacijent17324, dobarUnos);
                                     break;
                                 }
                             case 5:
                                 {
-                                    int tempID;
-                                    do
-                                    {
-                                        Console.Write("Unesite ID pregleda kojeg zelite izlistati: ");
-                                        var UnosStringa = Console.ReadLine();
-                                        dobarUnos = Int32.TryParse(UnosStringa, out tempID);
-                                    } while (!dobarUnos);
-                                    foreach (Pregled p in temp.karton) if (p.idPregleda == tempID) p.Ispisi();
-                                        else Console.WriteLine("Nije pronadjen ID postojeceg pacijenta koji odgovara zahtjevu.");
+                                    DelegatZaKriterijPretrage d17324_5 = PretragaPoIDu;
+                                    d17324_5(pacijent17324, dobarUnos);
                                     break;
                                 }
                             case 6:
                                 {
-                                    int tempLicenca;
-                                    do
-                                    {
-                                        Console.Write("Unesite licencu doktora cije preglede zelite izlistati: ");
-                                        var UnosStringa = Console.ReadLine();
-                                        dobarUnos = Int32.TryParse(UnosStringa, out tempLicenca);
-                                    } while (!dobarUnos);
-                                    foreach (Pregled p in temp.karton) if (p.d.brojLicence == tempLicenca) p.Ispisi();
-                                        else Console.WriteLine("Nije pronadjen pregled sa brojem licence koji odgovara zahtjevu.");
+                                    DelegatZaKriterijPretrage d17324_6 = PretragaPoLicenci;
+                                    d17324_6(pacijent17324, dobarUnos);
                                     break;
                                 }
 
@@ -381,7 +414,7 @@ namespace Zadaca1RPR_17324
                 }
                 if (!neuspjelaPretragaKartona)
                 {
-                    Console.WriteLine("Uspjesno izvrsena pretraga kartona {0} {1}.\n", temp.ime, temp.prezime);
+                    Console.WriteLine("Uspjesno izvrsena pretraga kartona {0} {1}.\n", pacijent17324.ime, pacijent17324.prezime);
                     break;
                 }
             } while (true);
@@ -503,9 +536,9 @@ namespace Zadaca1RPR_17324
                             } while (!dobarUnos);
                             //sada provjerimo da li je validan doktor ili je prevarant :)
                             foreach (Doktor doktor17324 in doktori)
-                                if (doktor17324.brojLicence == licenca)
+                                if (doktor17324.BrojLicence == licenca)
                                 {
-                                    Console.WriteLine("Terapiju propisao doktor {0} {1}", doktor17324.imeDoktora, doktor17324.prezimeDoktora);
+                                    Console.WriteLine("Terapiju propisao doktor {0} {1}", doktor17324.ImeUposlenika, doktor17324.PrezimeUposlenika);
                                     pregled.d = doktor17324;
                                     pregled.d.BrojPregledanihPacijenata++; //inkrementiramo mu brojac pacijenata
                                     prekidKreiranjaPregleda = false;
@@ -522,7 +555,7 @@ namespace Zadaca1RPR_17324
                                             //saznati koja je ordinacija brute force (lose ali sta cu)
                                             foreach (Ordinacija o in ordinacije) if (o is OrdinacijaDermatolog)
                                                 {
-                                                    if (((OrdinacijaDermatolog)o).SefKlinike.brojLicence == doktor17324.brojLicence)
+                                                    if (((OrdinacijaDermatolog)o).SefKlinike.BrojLicence == doktor17324.BrojLicence)
                                                     {
                                                         Console.WriteLine("Uspjesno zavrsen pregled kod dermatologa.");
                                                         ((OrdinacijaDermatolog)o).RedCekanja.Dequeue();
@@ -535,7 +568,7 @@ namespace Zadaca1RPR_17324
                                             if (izadjiIzPetljeOdmah) break;
                                             foreach (Ordinacija o in ordinacije) if (o is OrdinacijaKardiolog)
                                                 {
-                                                    if (((OrdinacijaKardiolog)o).SefKlinike.brojLicence == doktor17324.brojLicence) ((OrdinacijaKardiolog)o).RedCekanja.Dequeue();
+                                                    if (((OrdinacijaKardiolog)o).SefKlinike.BrojLicence == doktor17324.BrojLicence) ((OrdinacijaKardiolog)o).RedCekanja.Dequeue();
                                                     {
                                                         Console.WriteLine("Uspjesno zavrsen pregled kod kardiologa.");
                                                         if (((OrdinacijaKardiolog)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
@@ -547,7 +580,7 @@ namespace Zadaca1RPR_17324
                                             if (izadjiIzPetljeOdmah) break;
                                             foreach (Ordinacija o in ordinacije) if (o is OrdinacijaOrtoped)
                                                 {
-                                                    if (((OrdinacijaOrtoped)o).SefKlinike.brojLicence == doktor17324.brojLicence) ((OrdinacijaOrtoped)o).RedCekanja.Dequeue();
+                                                    if (((OrdinacijaOrtoped)o).SefKlinike.BrojLicence == doktor17324.BrojLicence) ((OrdinacijaOrtoped)o).RedCekanja.Dequeue();
                                                     {
                                                         Console.WriteLine("Uspjesno zavrsen pregled kod ortopeda.");
                                                         if (((OrdinacijaOrtoped)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
@@ -559,7 +592,7 @@ namespace Zadaca1RPR_17324
                                             if (izadjiIzPetljeOdmah) break;
                                             foreach (Ordinacija o in ordinacije) if (o is OrdinacijaStomatolog)
                                                 {
-                                                    if (((OrdinacijaStomatolog)o).SefKlinike.brojLicence == doktor17324.brojLicence) ((OrdinacijaStomatolog)o).RedCekanja.Dequeue();
+                                                    if (((OrdinacijaStomatolog)o).SefKlinike.BrojLicence == doktor17324.BrojLicence) ((OrdinacijaStomatolog)o).RedCekanja.Dequeue();
                                                     {
                                                         Console.WriteLine("Uspjesno zavrsen pregled kod stomatologa.");
                                                         if (((OrdinacijaStomatolog)o).RedCekanja.Count() == 0) Console.WriteLine("Nema vise pacijenata u redu cekanja.");
@@ -618,10 +651,10 @@ namespace Zadaca1RPR_17324
             int unos;
             Pacijent temp = new Pacijent_NormalnaProcedura();
             Console.WriteLine("U sistemu postoje sljedeci pacijenti: ");
-            foreach (Pacijent p in pacijenti) p.Ispisi();
+            foreach (Pacijent p in pacijenti) Console.WriteLine(p.ToString());
             do
             {
-                Console.Write("Molimo unesite redni broj pacijenta kojeg zelite obrisati: ");
+                Console.Write("Molimo unesite ID pacijenta kojeg zelite obrisati: ");
                 var unosStringa = Console.ReadLine();
                 dobarUnos = Int32.TryParse(unosStringa, out unos);
                 if (!dobarUnos) Console.Write("Pogresan unos. Pokusajte ponovo. ");
@@ -654,7 +687,7 @@ namespace Zadaca1RPR_17324
             if (unos == 1) RegistrujPacijenta(ref pacijenti, ref ordinacije);
             if (unos == 2) ObrisiPacijenta(pacijenti);
         }
-        static void Naplata(List<Pacijent> pacijenti, List<Tuple<Pregled, decimal>> pregledIznosNaplate)
+        static void Naplata(ref List<Pacijent> pacijenti, ref List<Tuple<Pregled, decimal>> pregledIznosNaplate, ref List <decimal> naplaceno)
         {
             decimal saldoUkupni = 0M;
             string temp;
@@ -728,105 +761,68 @@ namespace Zadaca1RPR_17324
                             dobarUnos = Int32.TryParse(unosBrojaRata, out int brojRata);
                             if (brojRata > 12) dobarUnos = false;
                             if (!dobarUnos) Console.Write("Pogresan unos. Pokusajte ponovo: ");
-                            else Console.Write("Mjesecna rata iznosi {0} KM, izabrali ste placanje na {1} rata. ", Decimal.Round(saldoUkupni / brojRata,2 ), brojRata); //zaokruzimo na 2 decimale
+                            else Console.Write("Mjesecna rata iznosi {0} KM, izabrali ste placanje na {1} rata. ", Decimal.Round(saldoUkupni / brojRata, 2), brojRata); //zaokruzimo na 2 decimale
                         } while (!dobarUnos);
                     }
+                    naplaceno.Add(saldoUkupni);
                     saldoUkupni = 0; //resetujemo saldo
                 }
 
             } while (!dobarUnos);
 
         }
-        static void Main(string[] args)
+        static void Analiza(ref List<Pacijent> pacijenti, ref List<Doktor> doktori, ref List<Ordinacija> ordinacije, ref List<decimal> naplaceno)
         {
-            int unos;
-            List<Tuple<Pregled, decimal>> pregledIznosNaplate = new List<Tuple<Pregled, decimal>>();
             bool dobarUnos = true;
-            List<Pacijent> pacijenti = new List<Pacijent>();
-            List<Doktor> doktori = new List<Doktor>();
-            List<Ordinacija> ordinacije = new List<Ordinacija>();
-            //nekoliko doktora za potrebe testiranja
-            Doktor doktor17324_1 = new Doktor("Ahmed", "Ahmedic", 123); //dermatolog, broj licence 123
-            Doktor doktor17324_2 = new Doktor("Emina", "Tutic", 456); //kardiolog, broj licence 456
-            Doktor doktor17324_3 = new Doktor("Marko", "Kikic", 789); //ortoped, broj licence 789
-            Doktor doktor17324_4 = new Doktor("Pavle", "Bisercic", 555); //stomatolog, broj licence 555
-            doktori.Add(doktor17324_1);
-            doktori.Add(doktor17324_2);
-            doktori.Add(doktor17324_3);
-            doktori.Add(doktor17324_4);
-            //kreirajmo ordinacije i postavimo odgovarajuce sefove
-            OrdinacijaDermatolog ordinacija17324_1 = new OrdinacijaDermatolog(doktor17324_1);
-            OrdinacijaKardiolog ordinacija17324_2 = new OrdinacijaKardiolog(doktor17324_2);
-            OrdinacijaOrtoped ordinacija17324_3 = new OrdinacijaOrtoped(doktor17324_3);
-            OrdinacijaStomatolog ordinacija17324_4 = new OrdinacijaStomatolog(doktor17324_4);
-            ordinacije.Add(ordinacija17324_1);
-            ordinacije.Add(ordinacija17324_2);
-            ordinacije.Add(ordinacija17324_3);
-            ordinacije.Add(ordinacija17324_4);
+            string temp;
+            int unos;
             do
             {
-                do
+                if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
+                Console.WriteLine("Dobro dosli u modul za analizu poslovanja. Molimo izaberite vrstu analize: \n1. Analiza prosječnog broja pregledanih pacijenata\n2. Analiza prosječnog iznosa računa\n3. Analiza udjela pusaca i alkoholicara medju pacijentima");
+                temp = Console.ReadLine();
+                dobarUnos = Int32.TryParse(temp, out unos);
+                if (unos < 1 || unos > 3) dobarUnos = false;
+            } while (!dobarUnos);
+            if (unos == 1)
+            {
+                double sumaPregledanih = 0;
+                if (doktori.Count == 0) Console.WriteLine("Nema registriranih doktora.");
+                else
                 {
-                    if (!dobarUnos) Console.Write("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
-                    Console.WriteLine("Dobro došli! Odaberite jednu od opcija:\n1.Registruj / Briši pacijenta\n2.Prikaži raspored pregleda pacijenta\n3.Kreiranje kartona pacijenta\n4.Pretraga kartona pacijenta\n5.Registruj novi pregled\n6.Analiza sadržaja\n7.Naplata\n8.Izlaz");
-                    var temp = Console.ReadLine();
-                    dobarUnos = Int32.TryParse(temp, out unos);
-                } while (!dobarUnos);
-                switch (unos)
-                {
-                    case 1:
-                        {
-                            DodajBrisi(ref pacijenti, ref ordinacije);
-                            break;
-                        }
-                    case 2:
-                        {
-                            GenerisiRaspored(ref pacijenti, ref ordinacije);
-                            break;
-                        }
-                    case 3:
-                        {
-                            KreirajKarton(ref pacijenti, ref ordinacije);
-                            break;
-                        }
-                    case 4:
-                        {
-                            PretragaKartona(ref pacijenti);
-                            break;
-                        }
-                    case 5:
-                        {
-                            RegistracijaPregleda(ref pacijenti, ref doktori, ref ordinacije, ref pregledIznosNaplate);
-                            break;
-                        }
-                    case 7:
-                        {
-                            Naplata(pacijenti, pregledIznosNaplate);
-                            break;
-                        }
-                    default:
-                        {
-                            Console.Write("Neispravan unos. Pokusajte ponovo: ");
-                            continue;
-                        }
+                    foreach (Doktor d in doktori) sumaPregledanih += d.BrojPregledanihPacijenata;
+                    Console.WriteLine("Prosjecan broj pregledanih pacijenata po doktoru iznosi: {0}.", sumaPregledanih / doktori.Count);
                 }
-            } while (unos != 8); //rjesava izlaz
-
-            //OPCIJE:
-            //TREBA LI INSTANCIRATI U OBLIKU INDEKSA I U POMOCNIM METODAMA TE KLASAMA?
-
-            //TODO: 
-            //NAPISATI
-            //DOKUMENTACIJU
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            //USAVRSITI MALO RASPORED DA TO LJEPSE IZGLEDA
-            //DICTIONARY I DELEGATI U MAINU ZA MENI
-            //DODATI TEHNICARE I UPRAVU
-            //SPRIJECITI PONOVNO KREIRANJE PACIJENATA I KARTONA GDJE POSTOJI I NE TRAZITI PONOVNI UNOS IMENA I PREZIMENA CROSS-OPTION
-            //TREBA RAZDVOJITI OVAJ MODEL OD MAINA U POSEBAN FAJL 
-            //VOZACKA I PREGLEDI ZA POSAO IMPLEMENTIRATI U REGISTRACIJI PREGLEDA+DOKTORA, TREBA I AUTO KREIRATI RASPORED ONDA
-
-            //HHASIC FAQ PROVJERI AKO ZAPNE
+            }
+            if (unos == 2)
+            {
+                decimal sumaRacuna = 0;
+                if (naplaceno.Count == 0) Console.WriteLine("Nema naplacenih pregleda.");
+                else
+                {
+                    foreach (decimal d in naplaceno) sumaRacuna += d;
+                    Console.WriteLine("Prosjecan iznos naplacenih pregleda iznosi: {0}.", sumaRacuna / naplaceno.Count);
+                }
+            }
+            if (unos == 3)
+            {
+                double sumaPusaca = 0;
+                double sumaAlkoholicara = 0;
+                if (pacijenti.Count == 0) Console.WriteLine("Nema evidentiranih pacijenata.");
+                else
+                {
+                    foreach (Pacijent p in pacijenti)
+                    {
+                        if (p.pusac) sumaPusaca++;
+                        if (p.alkoholicar) sumaAlkoholicara++;
+                    }
+                    sumaPusaca *= 100;
+                    sumaAlkoholicara *= 100;
+                    //pretvaranje u procente
+                    Console.WriteLine("Udio pusaca medju pacijentima iznosi {0}%, dok udio alkoholicara iznosi {1}%.", sumaPusaca/pacijenti.Count, sumaAlkoholicara/pacijenti.Count);
+                }
+            }
         }
+       
     }
 }

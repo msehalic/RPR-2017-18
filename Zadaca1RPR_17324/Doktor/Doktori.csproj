@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="Doktor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tehnicar.cs" />
+    <Compile Include="Uposlenik.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

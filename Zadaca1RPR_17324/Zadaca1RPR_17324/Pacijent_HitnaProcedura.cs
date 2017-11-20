@@ -16,10 +16,5 @@ namespace Zadaca1RPR_17324
             GenerisiIDPacijenta();
         }
       
-        //AKO PACIJENT UMRE TREBALI BISMO MU OTKAZATI I PREGLEDE
-        void OtkaziPreglede(List<Pacijent> pacijenti)
-        {
-            //da li je potrebno ili da ide u main ili da simply obrisemo pacijenta pazeci pri tome na preglede
-        }
     }
 }

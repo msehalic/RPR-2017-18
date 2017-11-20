@@ -21,9 +21,9 @@ namespace Zadaca1RPR_17324
 
         /*var ima13Cifara = Math.Floor(Math.Log10(value) + 1) == 13; //provjera da ima 13 cifara (za main mozda nekad)
 if (value>0 && ima13Cifara) MaticniBroj = value;*/
-        public void Ispisi()
+        public override string ToString()
         {
-            Console.WriteLine("ID-{0} Pacijent {1} {2}, primljen je u bolnicu {3}, spola {4}, ukupno boravio u klinici {5} puta. Rodjen {6}, adresa stanovanja {7}, bracno stanje {8}", idPacijenta, ime, prezime, datumPrijema.ToLocalTime(), spol, posjetioKliniku, datumRodjenja.ToLocalTime(), adresaStanovanja, bracnoStanje);
+            return ("ID-" + idPacijenta + ": Pacijent " + ime + " " + prezime + ", primljen je u bolnicu " + datumPrijema + ", spola " + spol + ", ukupno boravio u klinici " + posjetioKliniku + " puta. Rodjen " + datumRodjenja.ToLocalTime() + ", adresa stanovanja " + adresaStanovanja + ", bracno stanje " + bracnoStanje);
         }
         public void GenerisiIDPacijenta() //generise nasumican broj od 1 do 1000 da se ne peglamo sa brojacima
         {

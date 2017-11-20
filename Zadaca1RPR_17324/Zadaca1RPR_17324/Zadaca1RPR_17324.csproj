@@ -84,6 +84,7 @@
     <Compile Include="Pregled.cs" />
     <Compile Include="PacijentAnamneza.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
