@@ -1,0 +1,9 @@
+c:\users\student115\documents\visual studio 2015\Projects\Lv6=1\Lv6=1\bin\Debug\Lv6=1.exe.config
+c:\users\student115\documents\visual studio 2015\Projects\Lv6=1\Lv6=1\obj\Debug\Lv6=1.csprojResolveAssemblyReference.cache
+c:\users\student115\documents\visual studio 2015\Projects\Lv6=1\Lv6=1\obj\Debug\Lv6_1.Form1.resources
+c:\users\student115\documents\visual studio 2015\Projects\Lv6=1\Lv6=1\obj\Debug\Lv6_1.Properties.Resources.resources
+c:\users\student115\documents\visual studio 2015\Projects\Lv6=1\Lv6=1\obj\Debug\Lv6=1.csproj.GenerateResource.Cache
+c:\users\student115\documents\visual studio 2015\Projects\Lv6=1\Lv6=1\bin\Debug\Lv6=1.exe
+c:\users\student115\documents\visual studio 2015\Projects\Lv6=1\Lv6=1\bin\Debug\Lv6=1.pdb
+c:\users\student115\documents\visual studio 2015\Projects\Lv6=1\Lv6=1\obj\Debug\Lv6=1.exe
+c:\users\student115\documents\visual studio 2015\Projects\Lv6=1\Lv6=1\obj\Debug\Lv6=1.pdb
