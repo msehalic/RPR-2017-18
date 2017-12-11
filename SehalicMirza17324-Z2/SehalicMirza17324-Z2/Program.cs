@@ -19,4 +19,4 @@ namespace SehalicMirza17324_Z2
             Application.Run(new Klinika());
         }
     }
-}
+} 

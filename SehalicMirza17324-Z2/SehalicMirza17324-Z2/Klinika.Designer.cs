@@ -32,7 +32,6 @@
             this.textBoxUnosSifre = new System.Windows.Forms.TextBox();
             this.labelKorisnickoIme = new System.Windows.Forms.Label();
             this.labelLozinka = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.buttonPrijava = new System.Windows.Forms.Button();
             this.buttonOdustani = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -72,10 +71,6 @@
             this.labelLozinka.Text = "Lozinka: ";
             this.labelLozinka.Click += new System.EventHandler(this.label2_Click);
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
             // buttonPrijava
             // 
             this.buttonPrijava.Location = new System.Drawing.Point(284, 174);
@@ -85,6 +80,7 @@
             this.buttonPrijava.Text = "Prijavi se";
             this.buttonPrijava.UseMnemonic = false;
             this.buttonPrijava.UseVisualStyleBackColor = true;
+            this.buttonPrijava.Click += new System.EventHandler(this.buttonPrijava_Click);
             // 
             // buttonOdustani
             // 
@@ -110,7 +106,7 @@
             this.Controls.Add(this.textBoxUnosSifre);
             this.Controls.Add(this.textboxUnosImena);
             this.Name = "Klinika";
-            this.Text = "Form1";
+            this.Text = "Klinika \'Dr Sehalic\'";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.ResumeLayout(false);
@@ -124,7 +120,6 @@
         private System.Windows.Forms.TextBox textBoxUnosSifre;
         private System.Windows.Forms.Label labelKorisnickoIme;
         private System.Windows.Forms.Label labelLozinka;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button buttonPrijava;
         private System.Windows.Forms.Button buttonOdustani;
     }

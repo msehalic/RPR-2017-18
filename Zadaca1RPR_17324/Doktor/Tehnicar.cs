@@ -16,5 +16,9 @@ namespace Doktori
         public Tehnicar(string imeUposlenika, string prezimeUposlenika, int brojLicence) : base(imeUposlenika, prezimeUposlenika, brojLicence)
         {
         }
+
+        public Tehnicar(string imeUposlenika, string prezimeUposlenika, int brojLicence, string korisnickoIme, string lozinka) : base(imeUposlenika, prezimeUposlenika, brojLicence, korisnickoIme, lozinka)
+        {
+        }
     }
 }

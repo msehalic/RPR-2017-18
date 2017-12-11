@@ -21,6 +21,10 @@ namespace Doktori
         {
         }
 
+        public Doktor(string imeUposlenika, string prezimeUposlenika, int brojLicence, string korisnickoIme, string lozinka) : base(imeUposlenika, prezimeUposlenika, brojLicence, korisnickoIme, lozinka)
+        {
+        }
+
         int ObracunajPlatu(Doktor d) //za obracun plate doktorima (cisto da bude implementirano)
         {
             int bonus = BrojPregledanihPacijenata > 20 ? 20 : BrojPregledanihPacijenata; //poslije 20 pacijenata nema bonusa

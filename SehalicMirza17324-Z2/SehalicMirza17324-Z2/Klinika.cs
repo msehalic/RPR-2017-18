@@ -56,5 +56,11 @@ namespace SehalicMirza17324_Z2
             this.textboxUnosImena.Text = "";
             this.textBoxUnosSifre.Text = "";
         }
+        private void buttonPrijava_Click(object sender, EventArgs e)
+        {
+            glavniMeni17324 glavniMeni17324 = new glavniMeni17324();
+            this.Hide();
+            glavniMeni17324.Show();
+        }
     }
 }
