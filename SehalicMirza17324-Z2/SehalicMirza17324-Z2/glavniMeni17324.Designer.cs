@@ -28,10 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(glavniMeni17324));
             this.tabControlGlavniMeni = new System.Windows.Forms.TabControl();
             this.tabPageUnosPacijenata = new System.Windows.Forms.TabPage();
             this.groupBoxBrisanjePacijenata = new System.Windows.Forms.GroupBox();
             this.groupBoxUnosPacijenata = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxAdresa = new System.Windows.Forms.TextBox();
+            this.labelAdresaStanovanja = new System.Windows.Forms.Label();
+            this.groupBoxSpol = new System.Windows.Forms.GroupBox();
+            this.radioButtonZ = new System.Windows.Forms.RadioButton();
+            this.radioButtonM = new System.Windows.Forms.RadioButton();
+            this.labelMaticniBroj = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.labelDatumRodjenja = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelPrezime = new System.Windows.Forms.Label();
             this.labelIme = new System.Windows.Forms.Label();
             this.tabPageRaspored = new System.Windows.Forms.TabPage();
@@ -39,24 +53,15 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabelGlavniMeni = new System.Windows.Forms.ToolStripStatusLabel();
-            this.labelDatumRodjenja = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.labelMaticniBroj = new System.Windows.Forms.Label();
-            this.groupBoxSpol = new System.Windows.Forms.GroupBox();
-            this.radioButtonM = new System.Windows.Forms.RadioButton();
-            this.radioButtonZ = new System.Windows.Forms.RadioButton();
-            this.labelAdresaStanovanja = new System.Windows.Forms.Label();
-            this.textBoxAdresa = new System.Windows.Forms.TextBox();
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControlGlavniMeni.SuspendLayout();
             this.tabPageUnosPacijenata.SuspendLayout();
             this.groupBoxUnosPacijenata.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.groupBoxSpol.SuspendLayout();
+            this.statusStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlGlavniMeni
@@ -93,9 +98,11 @@
             this.groupBoxBrisanjePacijenata.TabIndex = 1;
             this.groupBoxBrisanjePacijenata.TabStop = false;
             this.groupBoxBrisanjePacijenata.Text = "Brisanje Pacijenata";
+            this.groupBoxBrisanjePacijenata.Enter += new System.EventHandler(this.groupBoxBrisanjePacijenata_Enter);
             // 
             // groupBoxUnosPacijenata
             // 
+            this.groupBoxUnosPacijenata.Controls.Add(this.button1);
             this.groupBoxUnosPacijenata.Controls.Add(this.textBoxAdresa);
             this.groupBoxUnosPacijenata.Controls.Add(this.labelAdresaStanovanja);
             this.groupBoxUnosPacijenata.Controls.Add(this.groupBoxSpol);
@@ -113,6 +120,120 @@
             this.groupBoxUnosPacijenata.TabIndex = 0;
             this.groupBoxUnosPacijenata.TabStop = false;
             this.groupBoxUnosPacijenata.Text = "Unos Pacijenata";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(205, 232);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Unesi!";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBoxAdresa
+            // 
+            this.textBoxAdresa.Location = new System.Drawing.Point(92, 159);
+            this.textBoxAdresa.Name = "textBoxAdresa";
+            this.textBoxAdresa.Size = new System.Drawing.Size(147, 20);
+            this.textBoxAdresa.TabIndex = 11;
+            // 
+            // labelAdresaStanovanja
+            // 
+            this.labelAdresaStanovanja.AutoSize = true;
+            this.labelAdresaStanovanja.Location = new System.Drawing.Point(36, 162);
+            this.labelAdresaStanovanja.Name = "labelAdresaStanovanja";
+            this.labelAdresaStanovanja.Size = new System.Drawing.Size(43, 13);
+            this.labelAdresaStanovanja.TabIndex = 10;
+            this.labelAdresaStanovanja.Text = "Adresa:";
+            // 
+            // groupBoxSpol
+            // 
+            this.groupBoxSpol.Controls.Add(this.radioButtonZ);
+            this.groupBoxSpol.Controls.Add(this.radioButtonM);
+            this.groupBoxSpol.Location = new System.Drawing.Point(18, 122);
+            this.groupBoxSpol.Name = "groupBoxSpol";
+            this.groupBoxSpol.Size = new System.Drawing.Size(221, 37);
+            this.groupBoxSpol.TabIndex = 9;
+            this.groupBoxSpol.TabStop = false;
+            this.groupBoxSpol.Text = "Spol";
+            // 
+            // radioButtonZ
+            // 
+            this.radioButtonZ.AutoSize = true;
+            this.radioButtonZ.Location = new System.Drawing.Point(138, 14);
+            this.radioButtonZ.Name = "radioButtonZ";
+            this.radioButtonZ.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonZ.TabIndex = 1;
+            this.radioButtonZ.Text = "Žensko";
+            this.radioButtonZ.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonM
+            // 
+            this.radioButtonM.AutoSize = true;
+            this.radioButtonM.Checked = true;
+            this.radioButtonM.Location = new System.Drawing.Point(44, 14);
+            this.radioButtonM.Name = "radioButtonM";
+            this.radioButtonM.Size = new System.Drawing.Size(57, 17);
+            this.radioButtonM.TabIndex = 0;
+            this.radioButtonM.TabStop = true;
+            this.radioButtonM.Text = "Muško";
+            this.radioButtonM.UseVisualStyleBackColor = true;
+            // 
+            // labelMaticniBroj
+            // 
+            this.labelMaticniBroj.AutoSize = true;
+            this.labelMaticniBroj.Location = new System.Drawing.Point(22, 99);
+            this.labelMaticniBroj.Name = "labelMaticniBroj";
+            this.labelMaticniBroj.Size = new System.Drawing.Size(64, 13);
+            this.labelMaticniBroj.TabIndex = 8;
+            this.labelMaticniBroj.Text = "Matični broj:";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(92, 96);
+            this.maskedTextBox1.Mask = "0000000000000";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(147, 20);
+            this.maskedTextBox1.TabIndex = 7;
+            this.maskedTextBox1.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
+            this.maskedTextBox1.TextChanged += new System.EventHandler(this.maskedTextBox1_TextChanged);
+            this.maskedTextBox1.Validating += new System.ComponentModel.CancelEventHandler(this.maskedTextBox1_Validating);
+            this.maskedTextBox1.Validated += new System.EventHandler(this.maskedTextBox1_Validated);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(92, 70);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(147, 20);
+            this.dateTimePicker1.TabIndex = 6;
+            // 
+            // labelDatumRodjenja
+            // 
+            this.labelDatumRodjenja.AutoSize = true;
+            this.labelDatumRodjenja.Location = new System.Drawing.Point(6, 76);
+            this.labelDatumRodjenja.Name = "labelDatumRodjenja";
+            this.labelDatumRodjenja.Size = new System.Drawing.Size(80, 13);
+            this.labelDatumRodjenja.TabIndex = 4;
+            this.labelDatumRodjenja.Text = "Datum rođenja:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(92, 49);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(147, 20);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.Validating += new System.ComponentModel.CancelEventHandler(this.textBox2_Validating);
+            this.textBox2.Validated += new System.EventHandler(this.textBox2_Validated);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(92, 26);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(147, 20);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
+            this.textBox1.Validated += new System.EventHandler(this.textBox1_Validated);
             // 
             // labelPrezime
             // 
@@ -182,117 +303,25 @@
             this.tabPage6.Text = "tabPage6";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // statusStrip2
             // 
-            this.textBox1.Location = new System.Drawing.Point(92, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(147, 20);
-            this.textBox1.TabIndex = 2;
+            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel2});
+            this.statusStrip2.Location = new System.Drawing.Point(0, 305);
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.Size = new System.Drawing.Size(710, 22);
+            this.statusStrip2.TabIndex = 1;
+            this.statusStrip2.Text = "statusStrip1";
+            this.statusStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
             // 
-            // textBox2
+            // toolStripStatusLabel2
             // 
-            this.textBox2.Location = new System.Drawing.Point(92, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(147, 20);
-            this.textBox2.TabIndex = 3;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 17);
             // 
-            // statusStrip1
+            // errorProvider2
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelGlavniMeni});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 305);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(710, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabelGlavniMeni
-            // 
-            this.toolStripStatusLabelGlavniMeni.Name = "toolStripStatusLabelGlavniMeni";
-            this.toolStripStatusLabelGlavniMeni.Size = new System.Drawing.Size(0, 17);
-            // 
-            // labelDatumRodjenja
-            // 
-            this.labelDatumRodjenja.AutoSize = true;
-            this.labelDatumRodjenja.Location = new System.Drawing.Point(6, 76);
-            this.labelDatumRodjenja.Name = "labelDatumRodjenja";
-            this.labelDatumRodjenja.Size = new System.Drawing.Size(80, 13);
-            this.labelDatumRodjenja.TabIndex = 4;
-            this.labelDatumRodjenja.Text = "Datum rođenja:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(92, 70);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(147, 20);
-            this.dateTimePicker1.TabIndex = 6;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(92, 96);
-            this.maskedTextBox1.Mask = "0000000000000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(147, 20);
-            this.maskedTextBox1.TabIndex = 7;
-            // 
-            // labelMaticniBroj
-            // 
-            this.labelMaticniBroj.AutoSize = true;
-            this.labelMaticniBroj.Location = new System.Drawing.Point(22, 99);
-            this.labelMaticniBroj.Name = "labelMaticniBroj";
-            this.labelMaticniBroj.Size = new System.Drawing.Size(64, 13);
-            this.labelMaticniBroj.TabIndex = 8;
-            this.labelMaticniBroj.Text = "Matični broj:";
-            // 
-            // groupBoxSpol
-            // 
-            this.groupBoxSpol.Controls.Add(this.radioButtonZ);
-            this.groupBoxSpol.Controls.Add(this.radioButtonM);
-            this.groupBoxSpol.Location = new System.Drawing.Point(18, 122);
-            this.groupBoxSpol.Name = "groupBoxSpol";
-            this.groupBoxSpol.Size = new System.Drawing.Size(221, 37);
-            this.groupBoxSpol.TabIndex = 9;
-            this.groupBoxSpol.TabStop = false;
-            this.groupBoxSpol.Text = "Spol";
-            // 
-            // radioButtonM
-            // 
-            this.radioButtonM.AutoSize = true;
-            this.radioButtonM.Checked = true;
-            this.radioButtonM.Location = new System.Drawing.Point(44, 14);
-            this.radioButtonM.Name = "radioButtonM";
-            this.radioButtonM.Size = new System.Drawing.Size(57, 17);
-            this.radioButtonM.TabIndex = 0;
-            this.radioButtonM.TabStop = true;
-            this.radioButtonM.Text = "Muško";
-            this.radioButtonM.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonZ
-            // 
-            this.radioButtonZ.AutoSize = true;
-            this.radioButtonZ.Location = new System.Drawing.Point(138, 14);
-            this.radioButtonZ.Name = "radioButtonZ";
-            this.radioButtonZ.Size = new System.Drawing.Size(61, 17);
-            this.radioButtonZ.TabIndex = 1;
-            this.radioButtonZ.TabStop = true;
-            this.radioButtonZ.Text = "Žensko";
-            this.radioButtonZ.UseVisualStyleBackColor = true;
-            // 
-            // labelAdresaStanovanja
-            // 
-            this.labelAdresaStanovanja.AutoSize = true;
-            this.labelAdresaStanovanja.Location = new System.Drawing.Point(36, 162);
-            this.labelAdresaStanovanja.Name = "labelAdresaStanovanja";
-            this.labelAdresaStanovanja.Size = new System.Drawing.Size(43, 13);
-            this.labelAdresaStanovanja.TabIndex = 10;
-            this.labelAdresaStanovanja.Text = "Adresa:";
-            // 
-            // textBoxAdresa
-            // 
-            this.textBoxAdresa.Location = new System.Drawing.Point(92, 159);
-            this.textBoxAdresa.Name = "textBoxAdresa";
-            this.textBoxAdresa.Size = new System.Drawing.Size(147, 20);
-            this.textBoxAdresa.TabIndex = 11;
+            this.errorProvider2.ContainerControl = this;
             // 
             // glavniMeni17324
             // 
@@ -301,8 +330,9 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(710, 327);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusStrip2);
             this.Controls.Add(this.tabControlGlavniMeni);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "glavniMeni17324";
             this.Text = "Klinika \'Dr Sehalic\'";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.glavniMeni17324_FormClosed);
@@ -311,10 +341,11 @@
             this.tabPageUnosPacijenata.ResumeLayout(false);
             this.groupBoxUnosPacijenata.ResumeLayout(false);
             this.groupBoxUnosPacijenata.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.groupBoxSpol.ResumeLayout(false);
             this.groupBoxSpol.PerformLayout();
+            this.statusStrip2.ResumeLayout(false);
+            this.statusStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,8 +366,7 @@
         private System.Windows.Forms.Label labelIme;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelGlavniMeni;
+        private System.Windows.Forms.StatusStrip statusStrip2;
         private System.Windows.Forms.Label labelDatumRodjenja;
         private System.Windows.Forms.Label labelMaticniBroj;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
@@ -346,5 +376,8 @@
         private System.Windows.Forms.RadioButton radioButtonM;
         private System.Windows.Forms.Label labelAdresaStanovanja;
         private System.Windows.Forms.TextBox textBoxAdresa;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Klinika));
             this.textboxUnosImena = new System.Windows.Forms.TextBox();
             this.textBoxUnosSifre = new System.Windows.Forms.TextBox();
             this.labelKorisnickoIme = new System.Windows.Forms.Label();
@@ -114,6 +115,7 @@
             this.statusStrip1.Size = new System.Drawing.Size(475, 22);
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
             // 
             // toolStripStatusLabel1
             // 
@@ -133,6 +135,7 @@
             this.Controls.Add(this.labelKorisnickoIme);
             this.Controls.Add(this.textBoxUnosSifre);
             this.Controls.Add(this.textboxUnosImena);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Klinika";
             this.Text = "Klinika \'Dr Sehalic\'";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Klinika_FormClosing);

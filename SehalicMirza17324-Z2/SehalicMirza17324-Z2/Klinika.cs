@@ -154,5 +154,10 @@ namespace SehalicMirza17324_Z2
             toolStripStatusLabel1.Text = "";
             errorProvider1.SetError(textBoxUnosSifre, "");
         }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
