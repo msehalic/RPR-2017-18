@@ -31,5 +31,10 @@ namespace SehalicMirza17324_Z2
             Klinika klinika17324 = new Klinika();
             klinika17324.Show();
         }
+
+        private void maskedTextBox2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 }
