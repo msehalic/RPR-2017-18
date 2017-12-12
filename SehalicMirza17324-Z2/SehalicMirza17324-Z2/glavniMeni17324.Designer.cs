@@ -28,59 +28,115 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.izadjiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.tabControlGlavniMeni = new System.Windows.Forms.TabControl();
+            this.tabPageUnosPacijenata = new System.Windows.Forms.TabPage();
+            this.tabPageRaspored = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabControlGlavniMeni.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // tabControlGlavniMeni
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(710, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.tabControlGlavniMeni.Controls.Add(this.tabPageUnosPacijenata);
+            this.tabControlGlavniMeni.Controls.Add(this.tabPageRaspored);
+            this.tabControlGlavniMeni.Controls.Add(this.tabPage3);
+            this.tabControlGlavniMeni.Controls.Add(this.tabPage4);
+            this.tabControlGlavniMeni.Controls.Add(this.tabPage5);
+            this.tabControlGlavniMeni.Controls.Add(this.tabPage6);
+            this.tabControlGlavniMeni.Location = new System.Drawing.Point(-3, 12);
+            this.tabControlGlavniMeni.Name = "tabControlGlavniMeni";
+            this.tabControlGlavniMeni.SelectedIndex = 0;
+            this.tabControlGlavniMeni.Size = new System.Drawing.Size(712, 308);
+            this.tabControlGlavniMeni.TabIndex = 0;
             // 
-            // fileToolStripMenuItem
+            // tabPageUnosPacijenata
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.izadjiToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.tabPageUnosPacijenata.Location = new System.Drawing.Point(4, 22);
+            this.tabPageUnosPacijenata.Name = "tabPageUnosPacijenata";
+            this.tabPageUnosPacijenata.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageUnosPacijenata.Size = new System.Drawing.Size(704, 282);
+            this.tabPageUnosPacijenata.TabIndex = 0;
+            this.tabPageUnosPacijenata.Text = "Unos Pacijenata";
+            this.tabPageUnosPacijenata.UseVisualStyleBackColor = true;
             // 
-            // izadjiToolStripMenuItem
+            // tabPageRaspored
             // 
-            this.izadjiToolStripMenuItem.Name = "izadjiToolStripMenuItem";
-            this.izadjiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.izadjiToolStripMenuItem.Text = "Izadji";
-            this.izadjiToolStripMenuItem.Click += new System.EventHandler(this.Izadji);
+            this.tabPageRaspored.Location = new System.Drawing.Point(4, 22);
+            this.tabPageRaspored.Name = "tabPageRaspored";
+            this.tabPageRaspored.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageRaspored.Size = new System.Drawing.Size(704, 282);
+            this.tabPageRaspored.TabIndex = 1;
+            this.tabPageRaspored.Text = "Raspored Pregleda";
+            this.tabPageRaspored.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(704, 282);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(704, 282);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(704, 282);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "tabPage5";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(704, 282);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "tabPage6";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // glavniMeni17324
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(710, 327);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.tabControlGlavniMeni);
             this.Name = "glavniMeni17324";
             this.Text = "Klinika \'Dr Sehalic\'";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.glavniMeni17324_FormClosed);
             this.Load += new System.EventHandler(this.glavniMeni17324_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.tabControlGlavniMeni.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem izadjiToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControlGlavniMeni;
+        private System.Windows.Forms.TabPage tabPageUnosPacijenata;
+        private System.Windows.Forms.TabPage tabPageRaspored;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabPage6;
     }
 }

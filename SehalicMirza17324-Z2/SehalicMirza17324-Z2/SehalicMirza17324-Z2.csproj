@@ -34,6 +34,7 @@
   <PropertyGroup>
     <ApplicationIcon>fallout_1_2_icon__ico_by_viskasil-d9wrfrf.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -92,6 +93,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fallout_1_2_icon__ico_by_viskasil-d9wrfrf.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Zadaca1RPR_17324\Doktor\Doktori.csproj">
+      <Project>{00c101ee-53ad-41d2-a1f2-b0a966dad82f}</Project>
+      <Name>Doktori</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SehalicMirzaZ1\Zadaca1RPR_17324.csproj">
+      <Project>{d58e78c6-c004-4941-8036-22a9aaff79ef}</Project>
+      <Name>Zadaca1RPR_17324</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
