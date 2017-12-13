@@ -66,6 +66,7 @@
             this.checkBoxStomatolog = new System.Windows.Forms.CheckBox();
             this.checkBoxKardiolog = new System.Windows.Forms.CheckBox();
             this.checkBoxDermatolog = new System.Windows.Forms.CheckBox();
+            this.userControlUnosSlike1 = new KontrolaZaUnosSlike.UserControlUnosSlike();
             this.tabControlGlavniMeni.SuspendLayout();
             this.tabPageUnosPacijenata.SuspendLayout();
             this.groupBoxUnosPacijenata.SuspendLayout();
@@ -114,6 +115,7 @@
             // 
             // groupBoxUnosPacijenata
             // 
+            this.groupBoxUnosPacijenata.Controls.Add(this.userControlUnosSlike1);
             this.groupBoxUnosPacijenata.Controls.Add(this.groupBoxIzborLjekara);
             this.groupBoxUnosPacijenata.Controls.Add(this.groupBoxBracnoStanje);
             this.groupBoxUnosPacijenata.Controls.Add(this.button1);
@@ -137,7 +139,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(257, 460);
+            this.button1.Location = new System.Drawing.Point(257, 432);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 12;
@@ -285,7 +287,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(704, 282);
+            this.tabPage3.Size = new System.Drawing.Size(959, 498);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -295,7 +297,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(704, 282);
+            this.tabPage4.Size = new System.Drawing.Size(959, 498);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -305,7 +307,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(704, 282);
+            this.tabPage5.Size = new System.Drawing.Size(959, 498);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "tabPage5";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -315,7 +317,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(704, 282);
+            this.tabPage6.Size = new System.Drawing.Size(959, 498);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "tabPage6";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -346,7 +348,7 @@
             this.groupBoxBracnoStanje.Controls.Add(this.radioButtonNeozenjen);
             this.groupBoxBracnoStanje.Controls.Add(this.radioButtonRazveden);
             this.groupBoxBracnoStanje.Controls.Add(this.radioButtonOzenjen);
-            this.groupBoxBracnoStanje.Location = new System.Drawing.Point(18, 194);
+            this.groupBoxBracnoStanje.Location = new System.Drawing.Point(18, 219);
             this.groupBoxBracnoStanje.Name = "groupBoxBracnoStanje";
             this.groupBoxBracnoStanje.Size = new System.Drawing.Size(314, 73);
             this.groupBoxBracnoStanje.TabIndex = 13;
@@ -404,7 +406,7 @@
             this.groupBoxIzborLjekara.Controls.Add(this.checkBoxKardiolog);
             this.groupBoxIzborLjekara.Controls.Add(this.checkBoxStomatolog);
             this.groupBoxIzborLjekara.Controls.Add(this.checkBoxOrtoped);
-            this.groupBoxIzborLjekara.Location = new System.Drawing.Point(18, 273);
+            this.groupBoxIzborLjekara.Location = new System.Drawing.Point(18, 310);
             this.groupBoxIzborLjekara.Name = "groupBoxIzborLjekara";
             this.groupBoxIzborLjekara.Size = new System.Drawing.Size(314, 71);
             this.groupBoxIzborLjekara.TabIndex = 14;
@@ -450,6 +452,14 @@
             this.checkBoxDermatolog.TabIndex = 3;
             this.checkBoxDermatolog.Text = "Dermatolog";
             this.checkBoxDermatolog.UseVisualStyleBackColor = true;
+            // 
+            // userControlUnosSlike1
+            // 
+            this.userControlUnosSlike1.Location = new System.Drawing.Point(245, 7);
+            this.userControlUnosSlike1.Name = "userControlUnosSlike1";
+            this.userControlUnosSlike1.Size = new System.Drawing.Size(226, 226);
+            this.userControlUnosSlike1.TabIndex = 15;
+            this.userControlUnosSlike1.Tag = "";
             // 
             // glavniMeni17324
             // 
@@ -521,5 +531,6 @@
         private System.Windows.Forms.CheckBox checkBoxKardiolog;
         private System.Windows.Forms.CheckBox checkBoxStomatolog;
         private System.Windows.Forms.CheckBox checkBoxOrtoped;
+        private KontrolaZaUnosSlike.UserControlUnosSlike userControlUnosSlike1;
     }
 }

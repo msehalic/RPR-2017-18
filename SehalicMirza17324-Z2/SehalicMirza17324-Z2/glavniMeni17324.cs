@@ -12,6 +12,7 @@ namespace SehalicMirza17324_Z2
 {
     public partial class glavniMeni17324 : Form
     {
+        Zadaca1RPR_17324.KlinikaKontejner klinika17324 = new Zadaca1RPR_17324.KlinikaKontejner();
         public glavniMeni17324()
         {
             InitializeComponent();
@@ -133,6 +134,7 @@ namespace SehalicMirza17324_Z2
             //KOJE
             //TREBA
             //VALIDIRATI!
+       // klinika17324.pacijenti.Add(new Zadaca1RPR_17324.Pacijent(textBox1.Text, textBox2.Text, textBoxAdresa.Text, groupBoxBracnoStanje.c))
         }
 
         private void groupBoxBrisanjePacijenata_Enter(object sender, EventArgs e)
@@ -166,5 +168,6 @@ namespace SehalicMirza17324_Z2
         {
 
         }
+
     }
 }

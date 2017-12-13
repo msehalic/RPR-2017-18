@@ -21,6 +21,18 @@ namespace Zadaca1RPR_17324
             datumPrijema = new DateTime(2017, 1, 1, 0, 0, 0);
             //idPacijenta++;
         }
+
+        public Pacijent(string ime, string prezime, string adresaStanovanja, string bracnoStanje, DateTime datumRodjenja, char spol, ulong maticniBroj)
+        {
+            this.ime = ime;
+            this.prezime = prezime;
+            this.adresaStanovanja = adresaStanovanja;
+            this.bracnoStanje = bracnoStanje;
+            this.datumRodjenja = datumRodjenja;
+            this.spol = spol;
+            MaticniBroj = maticniBroj;
+        }
+
         public Pacijent(UInt64 maticniBroj1, string ime1, string prezime1, DateTime datumRodjenja1, char spol1, string adresaStanovanja1, string bracnoStanje1, DateTime datumPrijema1)
         {
             MaticniBroj = maticniBroj1;

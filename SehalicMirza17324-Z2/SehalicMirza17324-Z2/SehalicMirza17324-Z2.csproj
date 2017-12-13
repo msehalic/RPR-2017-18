@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>fallout_1_2_icon__ico_by_viskasil-d9wrfrf.ico</ApplicationIcon>
+    <ApplicationIcon>hospital.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
@@ -93,11 +93,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fallout_1_2_icon__ico_by_viskasil-d9wrfrf.ico" />
+    <Content Include="hospital.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Zadaca1RPR_17324\Doktor\Doktori.csproj">
       <Project>{00c101ee-53ad-41d2-a1f2-b0a966dad82f}</Project>
       <Name>Doktori</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KontrolaZaUnosSlike\KontrolaZaUnosSlike.csproj">
+      <Project>{1B8B068A-BEF1-4D75-8BC3-0371432914A7}</Project>
+      <Name>KontrolaZaUnosSlike</Name>
     </ProjectReference>
     <ProjectReference Include="..\SehalicMirzaZ1\Zadaca1RPR_17324.csproj">
       <Project>{d58e78c6-c004-4941-8036-22a9aaff79ef}</Project>

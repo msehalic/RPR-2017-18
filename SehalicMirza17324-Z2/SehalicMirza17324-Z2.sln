@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doktori", "..\Zadaca1RPR_17
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zadaca1RPR_17324", "SehalicMirzaZ1\Zadaca1RPR_17324.csproj", "{D58E78C6-C004-4941-8036-22A9AAFF79EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KontrolaZaUnosSlike", "KontrolaZaUnosSlike\KontrolaZaUnosSlike.csproj", "{1B8B068A-BEF1-4D75-8BC3-0371432914A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{D58E78C6-C004-4941-8036-22A9AAFF79EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D58E78C6-C004-4941-8036-22A9AAFF79EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D58E78C6-C004-4941-8036-22A9AAFF79EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B8B068A-BEF1-4D75-8BC3-0371432914A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B8B068A-BEF1-4D75-8BC3-0371432914A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B8B068A-BEF1-4D75-8BC3-0371432914A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B8B068A-BEF1-4D75-8BC3-0371432914A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
