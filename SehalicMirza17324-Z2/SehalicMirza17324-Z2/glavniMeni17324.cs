@@ -126,9 +126,43 @@ namespace SehalicMirza17324_Z2
             textBox1_Validating(textBox1, new CancelEventArgs());
             textBox2_Validating(textBox2, new CancelEventArgs());
             maskedTextBox1_Validating(maskedTextBox1, new CancelEventArgs());
+            textBoxAdresa_Validating(textBoxAdresa, new CancelEventArgs());
+            //DODATI
+            //SVE
+            //KONTROLE
+            //KOJE
+            //TREBA
+            //VALIDIRATI!
         }
 
         private void groupBoxBrisanjePacijenata_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxAdresa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxAdresa_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBoxAdresa.Text.Equals(""))
+            {
+                textBoxAdresa.Select(0, textBoxAdresa.Text.Length);
+                this.errorProvider2.SetError(textBoxAdresa, "Unijeli ste praznu adresu!");
+                toolStripStatusLabel2.Text = "Unijeli ste prazno prezime!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxAdresa_Validated(object sender, EventArgs e)
+        {
+            toolStripStatusLabel2.Text = "";
+            errorProvider2.SetError(textBoxAdresa, "");
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
 
         }

@@ -56,12 +56,24 @@
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupBoxBracnoStanje = new System.Windows.Forms.GroupBox();
+            this.radioButtonOzenjen = new System.Windows.Forms.RadioButton();
+            this.radioButtonRazveden = new System.Windows.Forms.RadioButton();
+            this.radioButtonNeozenjen = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.groupBoxIzborLjekara = new System.Windows.Forms.GroupBox();
+            this.checkBoxOrtoped = new System.Windows.Forms.CheckBox();
+            this.checkBoxStomatolog = new System.Windows.Forms.CheckBox();
+            this.checkBoxKardiolog = new System.Windows.Forms.CheckBox();
+            this.checkBoxDermatolog = new System.Windows.Forms.CheckBox();
             this.tabControlGlavniMeni.SuspendLayout();
             this.tabPageUnosPacijenata.SuspendLayout();
             this.groupBoxUnosPacijenata.SuspendLayout();
             this.groupBoxSpol.SuspendLayout();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            this.groupBoxBracnoStanje.SuspendLayout();
+            this.groupBoxIzborLjekara.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlGlavniMeni
@@ -75,7 +87,7 @@
             this.tabControlGlavniMeni.Location = new System.Drawing.Point(-3, 12);
             this.tabControlGlavniMeni.Name = "tabControlGlavniMeni";
             this.tabControlGlavniMeni.SelectedIndex = 0;
-            this.tabControlGlavniMeni.Size = new System.Drawing.Size(712, 308);
+            this.tabControlGlavniMeni.Size = new System.Drawing.Size(967, 524);
             this.tabControlGlavniMeni.TabIndex = 0;
             // 
             // tabPageUnosPacijenata
@@ -85,16 +97,16 @@
             this.tabPageUnosPacijenata.Location = new System.Drawing.Point(4, 22);
             this.tabPageUnosPacijenata.Name = "tabPageUnosPacijenata";
             this.tabPageUnosPacijenata.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageUnosPacijenata.Size = new System.Drawing.Size(704, 282);
+            this.tabPageUnosPacijenata.Size = new System.Drawing.Size(959, 498);
             this.tabPageUnosPacijenata.TabIndex = 0;
             this.tabPageUnosPacijenata.Text = "Unos/Brisanje Pacijenata";
             this.tabPageUnosPacijenata.UseVisualStyleBackColor = true;
             // 
             // groupBoxBrisanjePacijenata
             // 
-            this.groupBoxBrisanjePacijenata.Location = new System.Drawing.Point(349, 6);
+            this.groupBoxBrisanjePacijenata.Location = new System.Drawing.Point(469, 3);
             this.groupBoxBrisanjePacijenata.Name = "groupBoxBrisanjePacijenata";
-            this.groupBoxBrisanjePacijenata.Size = new System.Drawing.Size(349, 275);
+            this.groupBoxBrisanjePacijenata.Size = new System.Drawing.Size(482, 492);
             this.groupBoxBrisanjePacijenata.TabIndex = 1;
             this.groupBoxBrisanjePacijenata.TabStop = false;
             this.groupBoxBrisanjePacijenata.Text = "Brisanje Pacijenata";
@@ -102,6 +114,8 @@
             // 
             // groupBoxUnosPacijenata
             // 
+            this.groupBoxUnosPacijenata.Controls.Add(this.groupBoxIzborLjekara);
+            this.groupBoxUnosPacijenata.Controls.Add(this.groupBoxBracnoStanje);
             this.groupBoxUnosPacijenata.Controls.Add(this.button1);
             this.groupBoxUnosPacijenata.Controls.Add(this.textBoxAdresa);
             this.groupBoxUnosPacijenata.Controls.Add(this.labelAdresaStanovanja);
@@ -116,14 +130,14 @@
             this.groupBoxUnosPacijenata.Controls.Add(this.labelIme);
             this.groupBoxUnosPacijenata.Location = new System.Drawing.Point(-4, 0);
             this.groupBoxUnosPacijenata.Name = "groupBoxUnosPacijenata";
-            this.groupBoxUnosPacijenata.Size = new System.Drawing.Size(347, 282);
+            this.groupBoxUnosPacijenata.Size = new System.Drawing.Size(477, 498);
             this.groupBoxUnosPacijenata.TabIndex = 0;
             this.groupBoxUnosPacijenata.TabStop = false;
             this.groupBoxUnosPacijenata.Text = "Unos Pacijenata";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(205, 232);
+            this.button1.Location = new System.Drawing.Point(257, 460);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 12;
@@ -137,6 +151,9 @@
             this.textBoxAdresa.Name = "textBoxAdresa";
             this.textBoxAdresa.Size = new System.Drawing.Size(147, 20);
             this.textBoxAdresa.TabIndex = 11;
+            this.textBoxAdresa.TextChanged += new System.EventHandler(this.textBoxAdresa_TextChanged);
+            this.textBoxAdresa.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAdresa_Validating);
+            this.textBoxAdresa.Validated += new System.EventHandler(this.textBoxAdresa_Validated);
             // 
             // labelAdresaStanovanja
             // 
@@ -258,7 +275,7 @@
             this.tabPageRaspored.Location = new System.Drawing.Point(4, 22);
             this.tabPageRaspored.Name = "tabPageRaspored";
             this.tabPageRaspored.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRaspored.Size = new System.Drawing.Size(704, 282);
+            this.tabPageRaspored.Size = new System.Drawing.Size(959, 498);
             this.tabPageRaspored.TabIndex = 1;
             this.tabPageRaspored.Text = "Raspored Pregleda";
             this.tabPageRaspored.UseVisualStyleBackColor = true;
@@ -307,9 +324,9 @@
             // 
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel2});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 305);
+            this.statusStrip2.Location = new System.Drawing.Point(0, 539);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(710, 22);
+            this.statusStrip2.Size = new System.Drawing.Size(964, 22);
             this.statusStrip2.TabIndex = 1;
             this.statusStrip2.Text = "statusStrip1";
             this.statusStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
@@ -323,13 +340,124 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
+            // groupBoxBracnoStanje
+            // 
+            this.groupBoxBracnoStanje.Controls.Add(this.radioButton4);
+            this.groupBoxBracnoStanje.Controls.Add(this.radioButtonNeozenjen);
+            this.groupBoxBracnoStanje.Controls.Add(this.radioButtonRazveden);
+            this.groupBoxBracnoStanje.Controls.Add(this.radioButtonOzenjen);
+            this.groupBoxBracnoStanje.Location = new System.Drawing.Point(18, 194);
+            this.groupBoxBracnoStanje.Name = "groupBoxBracnoStanje";
+            this.groupBoxBracnoStanje.Size = new System.Drawing.Size(314, 73);
+            this.groupBoxBracnoStanje.TabIndex = 13;
+            this.groupBoxBracnoStanje.TabStop = false;
+            this.groupBoxBracnoStanje.Text = "Bračno stanje";
+            // 
+            // radioButtonOzenjen
+            // 
+            this.radioButtonOzenjen.AutoSize = true;
+            this.radioButtonOzenjen.Location = new System.Drawing.Point(3, 19);
+            this.radioButtonOzenjen.Name = "radioButtonOzenjen";
+            this.radioButtonOzenjen.Size = new System.Drawing.Size(98, 17);
+            this.radioButtonOzenjen.TabIndex = 0;
+            this.radioButtonOzenjen.TabStop = true;
+            this.radioButtonOzenjen.Text = "Oženjen/Udata";
+            this.radioButtonOzenjen.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonRazveden
+            // 
+            this.radioButtonRazveden.AutoSize = true;
+            this.radioButtonRazveden.Location = new System.Drawing.Point(170, 20);
+            this.radioButtonRazveden.Name = "radioButtonRazveden";
+            this.radioButtonRazveden.Size = new System.Drawing.Size(86, 17);
+            this.radioButtonRazveden.TabIndex = 1;
+            this.radioButtonRazveden.TabStop = true;
+            this.radioButtonRazveden.Text = "Razveden(a)";
+            this.radioButtonRazveden.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonNeozenjen
+            // 
+            this.radioButtonNeozenjen.AutoSize = true;
+            this.radioButtonNeozenjen.Location = new System.Drawing.Point(2, 43);
+            this.radioButtonNeozenjen.Name = "radioButtonNeozenjen";
+            this.radioButtonNeozenjen.Size = new System.Drawing.Size(122, 17);
+            this.radioButtonNeozenjen.TabIndex = 2;
+            this.radioButtonNeozenjen.TabStop = true;
+            this.radioButtonNeozenjen.Text = "Neoženjen/Neudata";
+            this.radioButtonNeozenjen.UseVisualStyleBackColor = true;
+            this.radioButtonNeozenjen.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(170, 43);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(108, 17);
+            this.radioButton4.TabIndex = 3;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Udovac/Udovica";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxIzborLjekara
+            // 
+            this.groupBoxIzborLjekara.Controls.Add(this.checkBoxDermatolog);
+            this.groupBoxIzborLjekara.Controls.Add(this.checkBoxKardiolog);
+            this.groupBoxIzborLjekara.Controls.Add(this.checkBoxStomatolog);
+            this.groupBoxIzborLjekara.Controls.Add(this.checkBoxOrtoped);
+            this.groupBoxIzborLjekara.Location = new System.Drawing.Point(18, 273);
+            this.groupBoxIzborLjekara.Name = "groupBoxIzborLjekara";
+            this.groupBoxIzborLjekara.Size = new System.Drawing.Size(314, 71);
+            this.groupBoxIzborLjekara.TabIndex = 14;
+            this.groupBoxIzborLjekara.TabStop = false;
+            this.groupBoxIzborLjekara.Text = "Izbor ljekara kod kojeg vrši pregled";
+            // 
+            // checkBoxOrtoped
+            // 
+            this.checkBoxOrtoped.AutoSize = true;
+            this.checkBoxOrtoped.Location = new System.Drawing.Point(21, 19);
+            this.checkBoxOrtoped.Name = "checkBoxOrtoped";
+            this.checkBoxOrtoped.Size = new System.Drawing.Size(64, 17);
+            this.checkBoxOrtoped.TabIndex = 0;
+            this.checkBoxOrtoped.Text = "Ortoped";
+            this.checkBoxOrtoped.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxStomatolog
+            // 
+            this.checkBoxStomatolog.AutoSize = true;
+            this.checkBoxStomatolog.Location = new System.Drawing.Point(176, 19);
+            this.checkBoxStomatolog.Name = "checkBoxStomatolog";
+            this.checkBoxStomatolog.Size = new System.Drawing.Size(79, 17);
+            this.checkBoxStomatolog.TabIndex = 1;
+            this.checkBoxStomatolog.Text = "Stomatolog";
+            this.checkBoxStomatolog.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxKardiolog
+            // 
+            this.checkBoxKardiolog.AutoSize = true;
+            this.checkBoxKardiolog.Location = new System.Drawing.Point(21, 42);
+            this.checkBoxKardiolog.Name = "checkBoxKardiolog";
+            this.checkBoxKardiolog.Size = new System.Drawing.Size(70, 17);
+            this.checkBoxKardiolog.TabIndex = 2;
+            this.checkBoxKardiolog.Text = "Kardiolog";
+            this.checkBoxKardiolog.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDermatolog
+            // 
+            this.checkBoxDermatolog.AutoSize = true;
+            this.checkBoxDermatolog.Location = new System.Drawing.Point(176, 42);
+            this.checkBoxDermatolog.Name = "checkBoxDermatolog";
+            this.checkBoxDermatolog.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxDermatolog.TabIndex = 3;
+            this.checkBoxDermatolog.Text = "Dermatolog";
+            this.checkBoxDermatolog.UseVisualStyleBackColor = true;
+            // 
             // glavniMeni17324
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(710, 327);
+            this.ClientSize = new System.Drawing.Size(964, 561);
             this.Controls.Add(this.statusStrip2);
             this.Controls.Add(this.tabControlGlavniMeni);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -346,6 +474,10 @@
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            this.groupBoxBracnoStanje.ResumeLayout(false);
+            this.groupBoxBracnoStanje.PerformLayout();
+            this.groupBoxIzborLjekara.ResumeLayout(false);
+            this.groupBoxIzborLjekara.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,5 +511,15 @@
         private System.Windows.Forms.ErrorProvider errorProvider2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBoxBracnoStanje;
+        private System.Windows.Forms.RadioButton radioButtonNeozenjen;
+        private System.Windows.Forms.RadioButton radioButtonRazveden;
+        private System.Windows.Forms.RadioButton radioButtonOzenjen;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.GroupBox groupBoxIzborLjekara;
+        private System.Windows.Forms.CheckBox checkBoxDermatolog;
+        private System.Windows.Forms.CheckBox checkBoxKardiolog;
+        private System.Windows.Forms.CheckBox checkBoxStomatolog;
+        private System.Windows.Forms.CheckBox checkBoxOrtoped;
     }
 }
