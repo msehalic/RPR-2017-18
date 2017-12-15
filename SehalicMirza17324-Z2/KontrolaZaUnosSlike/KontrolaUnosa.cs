@@ -20,6 +20,13 @@ namespace KontrolaZaUnosSlike
         public PictureBox vratiSliku => pictureBox1;
         public DateTime vratiDatumSlike() => dateTimePicker1.Value.Date;
         public Control vratiDateTimePicker() => dateTimePicker1;
+        public void Resetiraj()
+        {
+            dateTimePicker1.Value = DateTime.Now;
+            pictureBox1.InitialImage = null;
+            errorProvider1.SetError(dateTimePicker1, "");
+            toolStripStatusLabel1.Text = "";
+        }
         private void dateTimePicker1_Validating(object sender, CancelEventArgs e)
         {
             if (dateTimePicker1.Value.AddMonths(6) < DateTime.Now) //ako ima preko 6 mjeseci
@@ -57,6 +64,12 @@ namespace KontrolaZaUnosSlike
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void dateTimePicker1_Validated(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(dateTimePicker1, "");
+            toolStripStatusLabel1.Text = "";
         }
     }
 }

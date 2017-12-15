@@ -49,6 +49,7 @@
             this.dateTimePicker1.TabIndex = 0;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             this.dateTimePicker1.Validating += new System.ComponentModel.CancelEventHandler(this.dateTimePicker1_Validating);
+            this.dateTimePicker1.Validated += new System.EventHandler(this.dateTimePicker1_Validated);
             // 
             // pictureBox1
             // 

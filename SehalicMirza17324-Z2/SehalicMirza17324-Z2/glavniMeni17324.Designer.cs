@@ -34,7 +34,6 @@
             this.tabPageUnosPacijenata = new System.Windows.Forms.TabPage();
             this.groupBoxBrisanjePacijenata = new System.Windows.Forms.GroupBox();
             this.groupBoxUnosPacijenata = new System.Windows.Forms.GroupBox();
-            this.userControlUnosSlike1 = new KontrolaZaUnosSlike.UserControlUnosSlike();
             this.groupBoxIzborLjekara = new System.Windows.Forms.GroupBox();
             this.checkBoxDermatolog = new System.Windows.Forms.CheckBox();
             this.checkBoxKardiolog = new System.Windows.Forms.CheckBox();
@@ -68,6 +67,8 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.textBoxInfo = new System.Windows.Forms.TextBox();
+            this.buttonOdustani = new System.Windows.Forms.Button();
+            this.userControlUnosSlike1 = new KontrolaZaUnosSlike.UserControlUnosSlike();
             this.tabControlGlavniMeni.SuspendLayout();
             this.tabPageUnosPacijenata.SuspendLayout();
             this.groupBoxUnosPacijenata.SuspendLayout();
@@ -116,6 +117,7 @@
             // 
             // groupBoxUnosPacijenata
             // 
+            this.groupBoxUnosPacijenata.Controls.Add(this.buttonOdustani);
             this.groupBoxUnosPacijenata.Controls.Add(this.textBoxInfo);
             this.groupBoxUnosPacijenata.Controls.Add(this.userControlUnosSlike1);
             this.groupBoxUnosPacijenata.Controls.Add(this.groupBoxIzborLjekara);
@@ -138,14 +140,7 @@
             this.groupBoxUnosPacijenata.TabIndex = 0;
             this.groupBoxUnosPacijenata.TabStop = false;
             this.groupBoxUnosPacijenata.Text = "Unos Pacijenata";
-            // 
-            // userControlUnosSlike1
-            // 
-            this.userControlUnosSlike1.Location = new System.Drawing.Point(245, 7);
-            this.userControlUnosSlike1.Name = "userControlUnosSlike1";
-            this.userControlUnosSlike1.Size = new System.Drawing.Size(226, 226);
-            this.userControlUnosSlike1.TabIndex = 15;
-            this.userControlUnosSlike1.Tag = "";
+            this.groupBoxUnosPacijenata.Enter += new System.EventHandler(this.groupBoxUnosPacijenata_Enter);
             // 
             // groupBoxIzborLjekara
             // 
@@ -468,8 +463,26 @@
             this.textBoxInfo.Location = new System.Drawing.Point(21, 453);
             this.textBoxInfo.Name = "textBoxInfo";
             this.textBoxInfo.ReadOnly = true;
-            this.textBoxInfo.Size = new System.Drawing.Size(311, 20);
+            this.textBoxInfo.Size = new System.Drawing.Size(415, 20);
             this.textBoxInfo.TabIndex = 16;
+            // 
+            // buttonOdustani
+            // 
+            this.buttonOdustani.Location = new System.Drawing.Point(361, 424);
+            this.buttonOdustani.Name = "buttonOdustani";
+            this.buttonOdustani.Size = new System.Drawing.Size(75, 23);
+            this.buttonOdustani.TabIndex = 17;
+            this.buttonOdustani.Text = "Odustani!";
+            this.buttonOdustani.UseVisualStyleBackColor = true;
+            this.buttonOdustani.Click += new System.EventHandler(this.buttonOdustani_Click);
+            // 
+            // userControlUnosSlike1
+            // 
+            this.userControlUnosSlike1.Location = new System.Drawing.Point(245, 7);
+            this.userControlUnosSlike1.Name = "userControlUnosSlike1";
+            this.userControlUnosSlike1.Size = new System.Drawing.Size(226, 226);
+            this.userControlUnosSlike1.TabIndex = 15;
+            this.userControlUnosSlike1.Tag = "";
             // 
             // glavniMeni17324
             // 
@@ -543,5 +556,6 @@
         private System.Windows.Forms.CheckBox checkBoxOrtoped;
         private KontrolaZaUnosSlike.UserControlUnosSlike userControlUnosSlike1;
         private System.Windows.Forms.TextBox textBoxInfo;
+        private System.Windows.Forms.Button buttonOdustani;
     }
 }

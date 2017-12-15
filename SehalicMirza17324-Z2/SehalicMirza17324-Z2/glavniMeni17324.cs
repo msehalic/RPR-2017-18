@@ -198,5 +198,30 @@ namespace SehalicMirza17324_Z2
 
         }
 
+        private void buttonOdustani_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBoxAdresa.Text = "";
+            maskedTextBox1.Text = "";
+            textBoxInfo.Text = "";
+            userControlUnosSlike1.Resetiraj();
+            checkBoxDermatolog.Checked = false;
+            checkBoxKardiolog.Checked = false;
+            checkBoxOrtoped.Checked = false;
+            checkBoxStomatolog.Checked = false;
+            dateTimePicker1.Value = DateTime.Now;
+            userControlUnosSlike1 = new KontrolaZaUnosSlike.UserControlUnosSlike();
+            errorProvider2.SetError(textBox1, "");
+            errorProvider2.SetError(textBox2, "");
+            errorProvider2.SetError(textBoxAdresa, "");
+            errorProvider2.SetError(maskedTextBox1, "");
+            errorProvider2.SetError(userControlUnosSlike1, "");
+        }
+
+        private void groupBoxUnosPacijenata_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
