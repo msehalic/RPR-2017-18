@@ -16,7 +16,10 @@ namespace KontrolaZaUnosSlike
         {
             InitializeComponent();
         }
-
+        public ErrorProvider vratiErrorProvider() => errorProvider1;
+        public PictureBox vratiSliku => pictureBox1;
+        public DateTime vratiDatumSlike() => dateTimePicker1.Value.Date;
+        public Control vratiDateTimePicker() => dateTimePicker1;
         private void dateTimePicker1_Validating(object sender, CancelEventArgs e)
         {
             if (dateTimePicker1.Value.AddMonths(6) < DateTime.Now) //ako ima preko 6 mjeseci
@@ -26,7 +29,7 @@ namespace KontrolaZaUnosSlike
                 toolStripStatusLabel1.ForeColor = Color.Red;
             }
         }
-
+        
         private void UserControlUnosSlike_Load(object sender, EventArgs e)
         {
 
@@ -47,6 +50,11 @@ namespace KontrolaZaUnosSlike
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

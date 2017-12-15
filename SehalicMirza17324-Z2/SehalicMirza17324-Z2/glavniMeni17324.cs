@@ -134,7 +134,22 @@ namespace SehalicMirza17324_Z2
             //KOJE
             //TREBA
             //VALIDIRATI!
-       // klinika17324.pacijenti.Add(new Zadaca1RPR_17324.Pacijent(textBox1.Text, textBox2.Text, textBoxAdresa.Text, groupBoxBracnoStanje.c))
+            string bracnoStanjePacijenta="";
+
+            if (radioButtonUdovac.Checked) bracnoStanjePacijenta = radioButtonUdovac.Text;
+            else if (radioButtonRazveden.Checked) bracnoStanjePacijenta = radioButtonRazveden.Text;
+            else if (radioButtonOzenjen.Checked) bracnoStanjePacijenta = radioButtonOzenjen.Text;
+            else if (radioButtonNeozenjen.Checked) bracnoStanjePacijenta = radioButtonNeozenjen.Text;
+
+           char pol='M';
+            if (radioButtonZ.Checked) pol = 'Z';
+
+            Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt32(maskedTextBox1.Text));
+            klinika17324.pacijenti.Add(p);
+            klinika17324.UnosPodataka(p, checkBoxDermatolog.Checked,checkBoxKardiolog.Checked, checkBoxOrtoped.Checked, checkBoxStomatolog.Checked);
+            //TREBA JOS U SETTERE DODATI 
+            //VALIDACIJU
+            //OBAVEZNO
         }
 
         private void groupBoxBrisanjePacijenata_Enter(object sender, EventArgs e)

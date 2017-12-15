@@ -53,7 +53,9 @@
     <Compile Include="Pacijent_HitnaProcedura.cs" />
     <Compile Include="Pacijent_NormalnaProcedura.cs" />
     <Compile Include="Pregled.cs" />
-    <Compile Include="KlinikaKontejner.cs" />
+    <Compile Include="..\..\Zadaca1RPR_17324\KlinikaKontejner.cs">
+      <Link>KlinikaKontejner.cs</Link>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
