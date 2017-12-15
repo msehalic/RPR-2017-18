@@ -142,23 +142,24 @@ namespace SehalicMirza17324_Z2
                 else if (radioButtonRazveden.Checked) bracnoStanjePacijenta = radioButtonRazveden.Text;
                 else if (radioButtonOzenjen.Checked) bracnoStanjePacijenta = radioButtonOzenjen.Text;
                 else if (radioButtonNeozenjen.Checked) bracnoStanjePacijenta = radioButtonNeozenjen.Text;
-
+                bool greska = false;
                 char pol = 'M';
                 if (radioButtonZ.Checked) pol = 'Z';
-                foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.pacijenti)
-                {
-                    if (pacijent17324.MaticniBroj == Convert.ToUInt64(maskedTextBox1.Text))
-                        textBoxInfo.Text = "Vec postoji pacijent sa identicnim JMBG kao " + pacijent17324.ime + " " + pacijent17324.prezime;
-                }
                 Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt64(maskedTextBox1.Text));
                 foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.pacijenti)
                 {
                     if (pacijent17324.MaticniBroj == Convert.ToUInt64(maskedTextBox1.Text))
                         textBoxInfo.Text = "Vec postoji pacijent sa identicnim JMBG kao " + pacijent17324.ime + " " + pacijent17324.prezime;
+                    textBoxInfo.ForeColor = Color.Red;
+                    greska = true;
                 }
-                klinika17324.pacijenti.Add(p);
-                klinika17324.UnosPodataka(p, checkBoxDermatolog.Checked, checkBoxKardiolog.Checked, checkBoxOrtoped.Checked, checkBoxStomatolog.Checked);
-                textBoxInfo.Text = "Uspjesno dodan pacijent " + p.ime + " " + p.prezime;
+                if (greska == false)
+                {
+                    klinika17324.pacijenti.Add(p);
+                    klinika17324.UnosPodataka(p, checkBoxDermatolog.Checked, checkBoxKardiolog.Checked, checkBoxOrtoped.Checked, checkBoxStomatolog.Checked);
+                    textBoxInfo.Text = "Uspjesno dodan pacijent " + p.ime + " " + p.prezime;
+                    textBoxInfo.ForeColor = Color.Green; //malo lijepog dizajna
+                }
                 //TREBA JOS U SETTERE DODATI 
                 //VALIDACIJU
                 //OBAVEZNO
@@ -181,7 +182,7 @@ namespace SehalicMirza17324_Z2
             {
                 textBoxAdresa.Select(0, textBoxAdresa.Text.Length);
                 this.errorProvider2.SetError(textBoxAdresa, "Unijeli ste praznu adresu!");
-                toolStripStatusLabel2.Text = "Unijeli ste prazno prezime!";
+                toolStripStatusLabel2.Text = "Unijeli ste praznu adresu!";
                 toolStripStatusLabel2.ForeColor = Color.Red;
             }
         }
