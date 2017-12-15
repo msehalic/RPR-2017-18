@@ -19,35 +19,34 @@ namespace Zadaca1RPR_17324
         {
             uposlenici.Add(new Uposlenik("Jovo", "Jovic", 9999, "admin", "admin"));
         }
-        public int UnosPodataka(Pacijent p, bool dermatolog, bool kardiolog, bool ortoped, bool stomatolog)
+        public Tuple<int, int, int, int> UnosPodataka(Pacijent p, bool dermatolog, bool kardiolog, bool ortoped, bool stomatolog)
         {
+            int cekanjeDermatolog = 0, cekanjeKardiolog = 0, cekanjeOrtoped = 0, cekanjeStomatolog = 0;
             //Dermatolog
             if (dermatolog) foreach (Ordinacija o in ordinacije) if (o is OrdinacijaDermatolog)
                     {
                         ((OrdinacijaDermatolog)o).RedCekanja.Enqueue(new Pregled(p));
-                        return ((OrdinacijaDermatolog)o).RedCekanja.Count; //na pocetku je dovoljno ovo za mjerenje cekanja, kasnije moramo pojedinacno naci svakog pacijenta
+                        cekanjeDermatolog = ((OrdinacijaDermatolog)o).RedCekanja.Count;
                     }
             //kardiolog
-
             if (kardiolog) foreach (Ordinacija o in ordinacije) if (o is OrdinacijaKardiolog)
                     {
                         ((OrdinacijaKardiolog)o).RedCekanja.Enqueue(new Pregled(p));
-                        return ((OrdinacijaKardiolog)o).RedCekanja.Count; //na pocetku je dovoljno ovo za mjerenje cekanja, kasnije moramo pojedinacno naci svakog pacijenta
+                        cekanjeKardiolog = ((OrdinacijaKardiolog)o).RedCekanja.Count;
                     }
             //ortoped
-
             if (ortoped) foreach (Ordinacija o in ordinacije) if (o is OrdinacijaOrtoped)
                     {
                         ((OrdinacijaOrtoped)o).RedCekanja.Enqueue(new Pregled(p));
-                        return ((OrdinacijaOrtoped)o).RedCekanja.Count; //na pocetku je dovoljno ovo za mjerenje cekanja, kasnije moramo pojedinacno naci svakog pacijenta
+                        cekanjeOrtoped = ((OrdinacijaOrtoped)o).RedCekanja.Count;
                     }
             //stomatolog
             if (stomatolog) foreach (Ordinacija o in ordinacije) if (o is OrdinacijaStomatolog)
                     {
                         ((OrdinacijaStomatolog)o).RedCekanja.Enqueue(new Pregled(p));
-                        return ((OrdinacijaStomatolog)o).RedCekanja.Count; //na pocetku je dovoljno ovo za mjerenje cekanja, kasnije moramo pojedinacno naci svakog pacijenta
+                        cekanjeStomatolog = ((OrdinacijaStomatolog)o).RedCekanja.Count;
                     }
-            return -1;
+            return Tuple.Create(cekanjeDermatolog, cekanjeKardiolog, cekanjeOrtoped, cekanjeStomatolog);
         }
         public void GenerisiRaspored(ref List<Pacijent> pacijenti, ref List<Ordinacija> ordinacije)
         {

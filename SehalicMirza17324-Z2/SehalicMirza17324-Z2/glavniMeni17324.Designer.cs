@@ -67,6 +67,7 @@
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.textBoxInfo = new System.Windows.Forms.TextBox();
             this.tabControlGlavniMeni.SuspendLayout();
             this.tabPageUnosPacijenata.SuspendLayout();
             this.groupBoxUnosPacijenata.SuspendLayout();
@@ -115,6 +116,7 @@
             // 
             // groupBoxUnosPacijenata
             // 
+            this.groupBoxUnosPacijenata.Controls.Add(this.textBoxInfo);
             this.groupBoxUnosPacijenata.Controls.Add(this.userControlUnosSlike1);
             this.groupBoxUnosPacijenata.Controls.Add(this.groupBoxIzborLjekara);
             this.groupBoxUnosPacijenata.Controls.Add(this.groupBoxBracnoStanje);
@@ -258,7 +260,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(257, 432);
+            this.button1.Location = new System.Drawing.Point(257, 424);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 12;
@@ -461,6 +463,14 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
+            // textBoxInfo
+            // 
+            this.textBoxInfo.Location = new System.Drawing.Point(21, 453);
+            this.textBoxInfo.Name = "textBoxInfo";
+            this.textBoxInfo.ReadOnly = true;
+            this.textBoxInfo.Size = new System.Drawing.Size(311, 20);
+            this.textBoxInfo.TabIndex = 16;
+            // 
             // glavniMeni17324
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -532,5 +542,6 @@
         private System.Windows.Forms.CheckBox checkBoxStomatolog;
         private System.Windows.Forms.CheckBox checkBoxOrtoped;
         private KontrolaZaUnosSlike.UserControlUnosSlike userControlUnosSlike1;
+        private System.Windows.Forms.TextBox textBoxInfo;
     }
 }

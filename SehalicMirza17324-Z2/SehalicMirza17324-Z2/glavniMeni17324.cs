@@ -134,22 +134,35 @@ namespace SehalicMirza17324_Z2
             //KOJE
             //TREBA
             //VALIDIRATI!
-            string bracnoStanjePacijenta="";
+            if (errorProvider2.GetError(textBox1) == "" && errorProvider2.GetError(textBox2) == "" && errorProvider2.GetError(maskedTextBox1) == "" && errorProvider2.GetError(textBoxAdresa) == "" && errorProvider2.GetError(userControlUnosSlike1) == "")
+            {
+                string bracnoStanjePacijenta = "";
 
-            if (radioButtonUdovac.Checked) bracnoStanjePacijenta = radioButtonUdovac.Text;
-            else if (radioButtonRazveden.Checked) bracnoStanjePacijenta = radioButtonRazveden.Text;
-            else if (radioButtonOzenjen.Checked) bracnoStanjePacijenta = radioButtonOzenjen.Text;
-            else if (radioButtonNeozenjen.Checked) bracnoStanjePacijenta = radioButtonNeozenjen.Text;
+                if (radioButtonUdovac.Checked) bracnoStanjePacijenta = radioButtonUdovac.Text;
+                else if (radioButtonRazveden.Checked) bracnoStanjePacijenta = radioButtonRazveden.Text;
+                else if (radioButtonOzenjen.Checked) bracnoStanjePacijenta = radioButtonOzenjen.Text;
+                else if (radioButtonNeozenjen.Checked) bracnoStanjePacijenta = radioButtonNeozenjen.Text;
 
-           char pol='M';
-            if (radioButtonZ.Checked) pol = 'Z';
-
-            Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt32(maskedTextBox1.Text));
-            klinika17324.pacijenti.Add(p);
-            klinika17324.UnosPodataka(p, checkBoxDermatolog.Checked,checkBoxKardiolog.Checked, checkBoxOrtoped.Checked, checkBoxStomatolog.Checked);
-            //TREBA JOS U SETTERE DODATI 
-            //VALIDACIJU
-            //OBAVEZNO
+                char pol = 'M';
+                if (radioButtonZ.Checked) pol = 'Z';
+                foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.pacijenti)
+                {
+                    if (pacijent17324.MaticniBroj == Convert.ToUInt64(maskedTextBox1.Text))
+                        textBoxInfo.Text = "Vec postoji pacijent sa identicnim JMBG kao " + pacijent17324.ime + " " + pacijent17324.prezime;
+                }
+                Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt64(maskedTextBox1.Text));
+                foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.pacijenti)
+                {
+                    if (pacijent17324.MaticniBroj == Convert.ToUInt64(maskedTextBox1.Text))
+                        textBoxInfo.Text = "Vec postoji pacijent sa identicnim JMBG kao " + pacijent17324.ime + " " + pacijent17324.prezime;
+                }
+                klinika17324.pacijenti.Add(p);
+                klinika17324.UnosPodataka(p, checkBoxDermatolog.Checked, checkBoxKardiolog.Checked, checkBoxOrtoped.Checked, checkBoxStomatolog.Checked);
+                textBoxInfo.Text = "Uspjesno dodan pacijent " + p.ime + " " + p.prezime;
+                //TREBA JOS U SETTERE DODATI 
+                //VALIDACIJU
+                //OBAVEZNO
+            }
         }
 
         private void groupBoxBrisanjePacijenata_Enter(object sender, EventArgs e)
