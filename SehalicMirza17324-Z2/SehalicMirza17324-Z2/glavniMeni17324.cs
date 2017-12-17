@@ -155,7 +155,7 @@ namespace SehalicMirza17324_Z2
                 char pol = 'M';
                 if (radioButtonZ.Checked) pol = 'Z';
                 Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt64(maskedTextBox1.Text));
-                foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.pacijenti)
+                foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.Pacijenti)
                 {
                     if (pacijent17324.MaticniBroj == Convert.ToUInt64(maskedTextBox1.Text))
                         textBoxInfo.Text = "Vec postoji pacijent sa identicnim JMBG kao " + pacijent17324.Ime + " " + pacijent17324.Prezime;
@@ -164,7 +164,7 @@ namespace SehalicMirza17324_Z2
                 }
                 if (greska == false)
                 {
-                    klinika17324.pacijenti.Add(p);
+                    klinika17324.Pacijenti.Add(p);
                     klinika17324.UnosPodataka(p, checkBoxDermatolog.Checked, checkBoxKardiolog.Checked, checkBoxOrtoped.Checked, checkBoxStomatolog.Checked);
                     textBoxInfo.Text = "Uspjesno dodan pacijent " + p.Ime + " " + p.Prezime;
                     textBoxInfo.ForeColor = Color.Green; //malo lijepog dizajna

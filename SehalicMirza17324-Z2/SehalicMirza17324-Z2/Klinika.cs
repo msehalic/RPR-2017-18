@@ -113,7 +113,7 @@ namespace SehalicMirza17324_Z2
         private void textBoxUnosSifre_Validating(object sender, CancelEventArgs e)
         {
             bool ispravan = false;
-            foreach (Uposlenik u in klinika17324.uposlenici) if (u.KorisnickoIme == textboxUnosImena.Text && VerifyMd5Hash(MD5.Create(), textBoxUnosSifre.Text, u.Lozinka))
+            foreach (Uposlenik u in klinika17324.Uposlenici) if (u.KorisnickoIme == textboxUnosImena.Text && VerifyMd5Hash(MD5.Create(), textBoxUnosSifre.Text, u.Lozinka))
                 {
                     ispravan = true;
                 }

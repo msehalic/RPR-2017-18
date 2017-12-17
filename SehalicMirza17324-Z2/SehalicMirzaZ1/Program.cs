@@ -15,24 +15,6 @@ namespace Zadaca1RPR_17324
             int unos;
             List<Tuple<Pregled, decimal>> pregledIznosNaplate = new List<Tuple<Pregled, decimal>>();
             bool dobarUnos = true;
-            //nekoliko doktora za potrebe testiranja
-            Doktor doktor17324_1 = new Doktor("Ahmed", "Ahmedic", 123, 0, "dermatolog"); //dermatolog, broj licence 123
-            Doktor doktor17324_2 = new Doktor("Emina", "Tutic", 456, 0, "kardiolog"); //kardiolog, broj licence 456
-            Doktor doktor17324_3 = new Doktor("Marko", "Kikic", 789, 0, "ortoped"); //ortoped, broj licence 789
-            Doktor doktor17324_4 = new Doktor("Pavle", "Bisercic", 555, 0, "stomatolog"); //stomatolog, broj licence 555
-            klinika17324.doktori.Add(doktor17324_1);
-            klinika17324.doktori.Add(doktor17324_2);
-            klinika17324.doktori.Add(doktor17324_3);
-            klinika17324.doktori.Add(doktor17324_4);
-            //kreirajmo klinika17324.ordinacije i postavimo odgovarajuce sefove
-            Ordinacija ordinacija17324_dermatolog = new Ordinacija(doktor17324_1);
-            Ordinacija ordinacija17324_kardiolog = new Ordinacija(doktor17324_2);
-            Ordinacija ordinacija17324_ortoped = new Ordinacija(doktor17324_3);
-            Ordinacija ordinacija17324_stomatolog = new Ordinacija(doktor17324_4);
-            klinika17324.ordinacije.Add(ordinacija17324_dermatolog);
-            klinika17324.ordinacije.Add(ordinacija17324_kardiolog);
-            klinika17324.ordinacije.Add(ordinacija17324_ortoped);
-            klinika17324.ordinacije.Add(ordinacija17324_stomatolog);
             do
             {
                 do
@@ -46,37 +28,37 @@ namespace Zadaca1RPR_17324
                 {
                     case 1:
                         {
-                            klinika17324.DodajBrisi(ref klinika17324.pacijenti, ref klinika17324.ordinacije);
+                            //   klinika17324.DodajBrisi(ref klinika17324.Pacijenti, ref klinika17324.Ordinacije);
                             break;
                         }
                     case 2:
                         {
-                            klinika17324.GenerisiRaspored(ref klinika17324.pacijenti, ref klinika17324.ordinacije);
+                            //     klinika17324.GenerisiRaspored(ref klinika17324.Pacijenti, ref klinika17324.Ordinacije);
                             break;
                         }
                     case 3:
                         {
-                            klinika17324.KreirajKarton(ref klinika17324.pacijenti, ref klinika17324.ordinacije);
+                            //  klinika17324.KreirajKarton(ref klinika17324.Pacijenti, ref klinika17324.Ordinacije);
                             break;
                         }
                     case 4:
                         {
-                            klinika17324.PretragaKartona(ref klinika17324.pacijenti);
+                            //     klinika17324.PretragaKartona(ref klinika17324.Pacijenti);
                             break;
                         }
                     case 5:
                         {
-                            klinika17324.RegistracijaPregleda(ref klinika17324.pacijenti, ref klinika17324.doktori, ref klinika17324.ordinacije, ref pregledIznosNaplate);
+                            //    klinika17324.RegistracijaPregleda(ref klinika17324.Pacijenti, ref klinika17324.Doktori, ref klinika17324.Ordinacije, ref pregledIznosNaplate);
                             break;
                         }
                     case 6:
                         {
-                            klinika17324.Analiza(ref klinika17324.pacijenti, ref klinika17324.doktori, ref klinika17324.ordinacije, ref naplaceno);
+                            //   klinika17324.Analiza(ref klinika17324.Pacijenti, ref klinika17324.Doktori, ref klinika17324.Ordinacije, ref naplaceno);
                             break;
                         }
                     case 7:
                         {
-                            klinika17324.Naplata(ref klinika17324.pacijenti, ref pregledIznosNaplate, ref naplaceno);
+                          //  klinika17324.Naplata(ref klinika17324.Pacijenti, ref pregledIznosNaplate, ref naplaceno);
                             break;
                         }
                     default:

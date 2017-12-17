@@ -11,40 +11,66 @@ namespace Zadaca1RPR_17324
 
     public class KlinikaKontejner
     {
-        public List<Pacijent> pacijenti = new List<Pacijent>();
-        public List<Doktor> doktori = new List<Doktor>();
-        public List<Ordinacija> ordinacije = new List<Ordinacija>();
-        public List<Uposlenik> uposlenici = new List<Uposlenik>();
+        private static List<Pacijent> pacijenti = new List<Pacijent>();
+        private static List<Doktor> doktori = new List<Doktor>();
+        private static List<Ordinacija> ordinacije = new List<Ordinacija>();
+        private static List<Uposlenik> uposlenici = new List<Uposlenik>();
+
+
+        public List<Pacijent> Pacijenti { get => pacijenti; set => pacijenti = value; }
+        public List<Doktor> Doktori { get => doktori; set => doktori = value; }
+        public List<Ordinacija> Ordinacije { get => ordinacije; set => ordinacije = value; }
+        public List<Uposlenik> Uposlenici { get => uposlenici; set => uposlenici = value; }
+
+        //nekoliko doktora za potrebe testiranja
+       static Doktor doktor17324_1 = new Doktor("Ahmed", "Ahmedic", 123, 0, "dermatolog"); //dermatolog, broj licence 123
+      static  Doktor doktor17324_2 = new Doktor("Emina", "Tutic", 456, 0, "kardiolog"); //kardiolog, broj licence 456
+      static  Doktor doktor17324_3 = new Doktor("Marko", "Kikic", 789, 0, "ortoped"); //ortoped, broj licence 789
+        static Doktor doktor17324_4 = new Doktor("Pavle", "Bisercic", 555, 0, "stomatolog"); //stomatolog, broj licence 555
+
+        //kreirajmo ordinacije i postavimo odgovarajuce sefove
+        Ordinacija ordinacija17324_dermatolog = new Ordinacija(doktor17324_1);
+        Ordinacija ordinacija17324_kardiolog = new Ordinacija(doktor17324_2);
+        Ordinacija ordinacija17324_ortoped = new Ordinacija(doktor17324_3);
+        Ordinacija ordinacija17324_stomatolog = new Ordinacija(doktor17324_4);
+
         public KlinikaKontejner()
         {
-            uposlenici.Add(new Uposlenik("Jovo", "Jovic", 9999, "admin", "admin"));
+          doktori.Add(doktor17324_2);
+            doktori.Add(doktor17324_3);
+            doktori.Add(doktor17324_4);
+            ordinacije.Add(ordinacija17324_dermatolog);
+            ordinacije.Add(ordinacija17324_kardiolog);
+            ordinacije.Add(ordinacija17324_ortoped);
+            ordinacije.Add(ordinacija17324_stomatolog);
+            Uposlenici.Add(new Uposlenik("Jovo", "Jovic", 9999, "admin", "admin"));
         }
         public Tuple<int, int, int, int> UnosPodataka(Pacijent p, bool dermatolog, bool kardiolog, bool ortoped, bool stomatolog)
         {
             int cekanjeDermatolog = 0, cekanjeKardiolog = 0, cekanjeOrtoped = 0, cekanjeStomatolog = 0;
             //Dermatolog
-            if (dermatolog) foreach (Ordinacija o in ordinacije) if (o.NazivKlinike=="dermatolog")
+            if (dermatolog) 
                     {
-                        o.RedCekanja.Enqueue(new Pregled(p));
-                        cekanjeDermatolog = o.RedCekanja.Count;
+                        ordinacija17324_dermatolog.RedCekanja.Enqueue(new Pregled(p));
+                        cekanjeDermatolog = ordinacija17324_dermatolog.RedCekanja.Count;
                     }
             //kardiolog
-            if (kardiolog) foreach (Ordinacija o in ordinacije) if (o.NazivKlinike=="kardiolog")
+            if (kardiolog) 
                     {
-                        o.RedCekanja.Enqueue(new Pregled(p));
-                        cekanjeKardiolog = o.RedCekanja.Count;
+                        ordinacija17324_kardiolog.RedCekanja.Enqueue(new Pregled(p));
+                        cekanjeKardiolog = ordinacija17324_kardiolog.RedCekanja.Count;
                     }
             //ortoped
-            if (ortoped) foreach (Ordinacija o in ordinacije) if (o.NazivKlinike=="ortoped")
+            if (ortoped) 
                     {
-                        o.RedCekanja.Enqueue(new Pregled(p));
-                        cekanjeOrtoped = o.RedCekanja.Count;
+                        ordinacija17324_ortoped.RedCekanja.Enqueue(new Pregled(p));
+                        cekanjeOrtoped = ordinacija17324_ortoped.RedCekanja.Count;
                     }
             //stomatolog
-            if (stomatolog) foreach (Ordinacija o in ordinacije) if (o.NazivKlinike=="stomatolog")
+            if (stomatolog) 
                     {
-                        o.RedCekanja.Enqueue(new Pregled(p));
-                        cekanjeStomatolog = o.RedCekanja.Count;
+                        ordinacija17324_stomatolog.RedCekanja.Enqueue(new Pregled(p));
+                        cekanjeStomatolog = ordinacija17324_stomatolog.RedCekanja.Count;
                     }
             return Tuple.Create(cekanjeDermatolog, cekanjeKardiolog, cekanjeOrtoped, cekanjeStomatolog);
         }
@@ -71,10 +97,10 @@ namespace Zadaca1RPR_17324
                 {
                     var pacijent17324 = pacijenti.Find(x => String.Equals(x.Ime, ime, StringComparison.OrdinalIgnoreCase) && String.Equals(x.Prezime, prezime, StringComparison.OrdinalIgnoreCase));
                     //polimorfizam lvl 9999:
-                    foreach (Ordinacija o in ordinacije) if (o.NazivKlinike=="stomatolog") nizCekanjaOrdinacija.Add(Tuple.Create("stomatolog", o.RedCekanja.Count, o.SefKlinike));
-                    foreach (Ordinacija o in ordinacije) if (o.NazivKlinike=="kardiolog") nizCekanjaOrdinacija.Add(Tuple.Create("kardiolog", o.RedCekanja.Count, o.SefKlinike));
-                    foreach (Ordinacija o in ordinacije) if (o.NazivKlinike=="ortoped") nizCekanjaOrdinacija.Add(Tuple.Create("ortoped", o.RedCekanja.Count, o.SefKlinike));
-                    foreach (Ordinacija o in ordinacije) if (o.NazivKlinike=="dermatolog") nizCekanjaOrdinacija.Add(Tuple.Create("dermatolog", o.RedCekanja.Count, o.SefKlinike));
+                    foreach (Ordinacija o in ordinacije) if (o.NazivKlinike == "stomatolog") nizCekanjaOrdinacija.Add(Tuple.Create("stomatolog", o.RedCekanja.Count, o.SefKlinike));
+                    foreach (Ordinacija o in ordinacije) if (o.NazivKlinike == "kardiolog") nizCekanjaOrdinacija.Add(Tuple.Create("kardiolog", o.RedCekanja.Count, o.SefKlinike));
+                    foreach (Ordinacija o in ordinacije) if (o.NazivKlinike == "ortoped") nizCekanjaOrdinacija.Add(Tuple.Create("ortoped", o.RedCekanja.Count, o.SefKlinike));
+                    foreach (Ordinacija o in ordinacije) if (o.NazivKlinike == "dermatolog") nizCekanjaOrdinacija.Add(Tuple.Create("dermatolog", o.RedCekanja.Count, o.SefKlinike));
                     nizCekanjaOrdinacija.Sort(delegate (Tuple<string, int, Doktor> x, Tuple<string, int, Doktor> y)
                     {
                         return x.Item2.CompareTo(y.Item2); //sortira po broju ljudi u redu cekanja
@@ -386,7 +412,7 @@ namespace Zadaca1RPR_17324
                         {
                             Console.Write("Unesite datum kada je pregled obavljen (DD/MM/YYYY): ");
                             string s = Console.ReadLine();
-                           // dobarUnos = DateTime.TryParseExact(s, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out pregled.DatumVrijemePregleda);
+                            // dobarUnos = DateTime.TryParseExact(s, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out pregled.DatumVrijemePregleda);
                             if (!dobarUnos) Console.Write("Pogresan unos. Pokusajte ponovo.");
                         } while (!dobarUnos);
                         Console.Write("Koji postupak je proveden prilikom pregleda? ");
@@ -423,7 +449,7 @@ namespace Zadaca1RPR_17324
                                         if (krajPregleda == 'D')
                                         {
                                             //saznati koja je ordinacija brute force (lose ali sta cu)
-                                            foreach (Ordinacija o in ordinacije) if (o.NazivKlinike=="dermatolog")
+                                            foreach (Ordinacija o in ordinacije) if (o.NazivKlinike == "dermatolog")
                                                 {
                                                     if (o.SefKlinike.BrojLicence == doktor17324.BrojLicence)
                                                     {
@@ -436,7 +462,7 @@ namespace Zadaca1RPR_17324
                                                     }
                                                 }
                                             if (izadjiIzPetljeOdmah) break;
-                                            foreach (Ordinacija o in ordinacije) if (o.NazivKlinike=="kardiolog")
+                                            foreach (Ordinacija o in ordinacije) if (o.NazivKlinike == "kardiolog")
                                                 {
                                                     if (o.SefKlinike.BrojLicence == doktor17324.BrojLicence) o.RedCekanja.Dequeue();
                                                     {
@@ -448,7 +474,7 @@ namespace Zadaca1RPR_17324
                                                     }
                                                 }
                                             if (izadjiIzPetljeOdmah) break;
-                                            foreach (Ordinacija o in ordinacije) if (o.NazivKlinike=="ortoped")
+                                            foreach (Ordinacija o in ordinacije) if (o.NazivKlinike == "ortoped")
                                                 {
                                                     if (o.SefKlinike.BrojLicence == doktor17324.BrojLicence) o.RedCekanja.Dequeue();
                                                     {
@@ -460,7 +486,7 @@ namespace Zadaca1RPR_17324
                                                     }
                                                 }
                                             if (izadjiIzPetljeOdmah) break;
-                                            foreach (Ordinacija o in ordinacije) if (o.NazivKlinike=="stomatolog")
+                                            foreach (Ordinacija o in ordinacije) if (o.NazivKlinike == "stomatolog")
                                                 {
                                                     if (o.SefKlinike.BrojLicence == doktor17324.BrojLicence) o.RedCekanja.Dequeue();
                                                     {
