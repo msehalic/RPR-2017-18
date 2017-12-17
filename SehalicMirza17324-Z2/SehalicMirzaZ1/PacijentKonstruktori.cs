@@ -12,37 +12,37 @@ namespace Zadaca1RPR_17324
         public Pacijent()
         {
             MaticniBroj = 1111011123456;
-            ime = "Carl CJ";
-            prezime = "Johnson";
-            datumRodjenja = new DateTime(1987, 1, 1, 0, 0, 0);
-            spol = 'M';
-            adresaStanovanja = "Trg republike 1";
-            bracnoStanje = "neozenjen";
-            datumPrijema = new DateTime(2017, 1, 1, 0, 0, 0);
+            Ime = "Carl CJ";
+            Prezime = "Johnson";
+            DatumRodjenja = new DateTime(1987, 1, 1, 0, 0, 0);
+            Spol = 'M';
+            AdresaStanovanja = "Trg republike 1";
+            BracnoStanje = "neozenjen";
+            DatumPrijema = new DateTime(2017, 1, 1, 0, 0, 0);
             //idPacijenta++;
         }
 
         public Pacijent(string ime, string prezime, string adresaStanovanja, string bracnoStanje, DateTime datumRodjenja, char spol, ulong maticniBroj)
         {
-            this.ime = ime;
-            this.prezime = prezime;
-            this.adresaStanovanja = adresaStanovanja;
-            this.bracnoStanje = bracnoStanje;
-            this.datumRodjenja = datumRodjenja;
-            this.spol = spol;
+            this.Ime = ime;
+            this.Prezime = prezime;
+            this.AdresaStanovanja = adresaStanovanja;
+            this.BracnoStanje = bracnoStanje;
+            this.DatumRodjenja = datumRodjenja;
+            this.Spol = spol;
             MaticniBroj = maticniBroj;
         }
 
         public Pacijent(UInt64 maticniBroj1, string ime1, string prezime1, DateTime datumRodjenja1, char spol1, string adresaStanovanja1, string bracnoStanje1, DateTime datumPrijema1)
         {
             MaticniBroj = maticniBroj1;
-            ime = ime1;
-            prezime = prezime1;
-            datumRodjenja = datumRodjenja1;
-            spol = spol1;
-            adresaStanovanja = adresaStanovanja1;
-            bracnoStanje = bracnoStanje1;
-            datumPrijema = datumPrijema1;
+            Ime = ime1;
+            Prezime = prezime1;
+            DatumRodjenja = datumRodjenja1;
+            Spol = spol1;
+            AdresaStanovanja = adresaStanovanja1;
+            BracnoStanje = bracnoStanje1;
+            DatumPrijema = datumPrijema1;
             //idPacijenta++;
         }
     }

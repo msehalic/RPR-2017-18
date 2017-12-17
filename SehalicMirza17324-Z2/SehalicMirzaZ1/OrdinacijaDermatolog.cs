@@ -8,12 +8,17 @@ namespace Zadaca1RPR_17324
 {
     public class OrdinacijaDermatolog : Ordinacija, IOrdinacije //implementira interfejs da je lakse
     {
-        public Queue<Pregled> RedCekanja { get; set; }
-        public string NazivKlinike { get; set; }
-        public Doktor SefKlinike { get; set; }
+        private Queue<Pregled> redCekanja;
+        private string nazivKlinike;
+        private Doktor sefKlinike;
+
+        public Queue<Pregled> RedCekanja { get => redCekanja; set => redCekanja = value; }
+        public string NazivKlinike { get => nazivKlinike; set => nazivKlinike = value; }
+        public Doktor SefKlinike { get => sefKlinike; set => sefKlinike = value; }
+
         public decimal IznosPlacanja(Pregled pregled17324_1)
         {
-            return pregled17324_1.rutinskiPregled ? 45.00M : 83.20M; //vraca cijenu pregleda
+            return pregled17324_1.RutinskiPregled ? 45.00M : 83.20M; //vraca cijenu pregleda
         }
         public OrdinacijaDermatolog()
         {

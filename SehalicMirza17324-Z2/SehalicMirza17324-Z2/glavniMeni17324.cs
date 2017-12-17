@@ -23,7 +23,9 @@ namespace SehalicMirza17324_Z2
             this.AutoSize = true;
             this.AutoSizeMode = AutoSizeMode.GrowOnly;
             this.Text = "Klinika 'Dr. Sehalic'";
-            groupBoxHitniSlucajevi.Enabled = false;
+           if (checkBoxHitanSlucaj.Checked==false) groupBoxHitniSlucajevi.Enabled = false;
+            if (radioButtonZiv.Checked == false) groupBoxZiv.Enabled = false;
+            if (radioButtonMrtav.Checked == false) groupBoxMrtav.Enabled = false;
         }
         private void Izadji(object sender, EventArgs e)
         {
@@ -156,7 +158,7 @@ namespace SehalicMirza17324_Z2
                 foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.pacijenti)
                 {
                     if (pacijent17324.MaticniBroj == Convert.ToUInt64(maskedTextBox1.Text))
-                        textBoxInfo.Text = "Vec postoji pacijent sa identicnim JMBG kao " + pacijent17324.ime + " " + pacijent17324.prezime;
+                        textBoxInfo.Text = "Vec postoji pacijent sa identicnim JMBG kao " + pacijent17324.Ime + " " + pacijent17324.Prezime;
                     textBoxInfo.ForeColor = Color.Red;
                     greska = true;
                 }
@@ -164,7 +166,7 @@ namespace SehalicMirza17324_Z2
                 {
                     klinika17324.pacijenti.Add(p);
                     klinika17324.UnosPodataka(p, checkBoxDermatolog.Checked, checkBoxKardiolog.Checked, checkBoxOrtoped.Checked, checkBoxStomatolog.Checked);
-                    textBoxInfo.Text = "Uspjesno dodan pacijent " + p.ime + " " + p.prezime;
+                    textBoxInfo.Text = "Uspjesno dodan pacijent " + p.Ime + " " + p.Prezime;
                     textBoxInfo.ForeColor = Color.Green; //malo lijepog dizajna
                 }
                 //TREBA JOS U SETTERE DODATI 
@@ -217,12 +219,17 @@ namespace SehalicMirza17324_Z2
             checkBoxKardiolog.Checked = false;
             checkBoxOrtoped.Checked = false;
             checkBoxStomatolog.Checked = false;
+            checkBoxHitanSlucaj.Checked = false;
+            textBoxUzrokSmrti.Text = "";
+            textBoxPostupak.Text = "";
+            textBoxMisljenjeDoktora.Text = "";
+            textBoxTerapija.Text = "";
+            radioButtonZiv.Checked = false;
+            radioButtonMrtav.Checked = false;
+            checkBoxObdukcija.Checked = false;
             dateTimePicker1.Value = DateTime.Now;
             userControlUnosSlike1 = new KontrolaZaUnosSlike.UserControlUnosSlike();
-            errorProvider2.SetError(textBox1, "");
-            errorProvider2.SetError(textBox2, "");
-            errorProvider2.SetError(textBoxAdresa, "");
-            errorProvider2.SetError(maskedTextBox1, "");
+            errorProvider2.Clear();
         }
 
         private void groupBoxUnosPacijenata_Enter(object sender, EventArgs e)
@@ -235,11 +242,6 @@ namespace SehalicMirza17324_Z2
             groupBoxHitniSlucajevi.Enabled = checkBoxHitanSlucaj.Checked;
         }
 
-        private void groupBoxHitniSlucajevi_Enter(object sender, EventArgs e)
-        {
-            groupBoxZiv.Enabled = false;
-            groupBoxMrtav.Enabled = false;
-        }
 
         private void checkBoxZiv_CheckedChanged(object sender, EventArgs e)
         {
@@ -325,8 +327,8 @@ namespace SehalicMirza17324_Z2
         {
             if (radioButtonZiv.Checked == true && textBoxTerapija.Text.Length == 0)
             {
-                this.errorProvider2.SetError(textBoxTerapija, "Niste unijeli detalje o postupku pregleda hitnog pacijenta!");
-                toolStripStatusLabel2.Text = "Niste unijeli detalje o postupku pregleda hitnog pacijenta!";
+                this.errorProvider2.SetError(textBoxTerapija, "Niste unijeli detalje o terapiji hitnog pacijenta!");
+                toolStripStatusLabel2.Text = "Niste unijeli detalje o terapiji hitnog pacijenta!";
                 toolStripStatusLabel2.ForeColor = Color.Red;
             }
         }
@@ -335,8 +337,8 @@ namespace SehalicMirza17324_Z2
         {
             if (radioButtonZiv.Checked == true && textBoxMisljenjeDoktora.Text.Length == 0)
             {
-                this.errorProvider2.SetError(textBoxMisljenjeDoktora, "Niste unijeli detalje o postupku pregleda hitnog pacijenta!");
-                toolStripStatusLabel2.Text = "Niste unijeli detalje o postupku pregleda hitnog pacijenta!";
+                this.errorProvider2.SetError(textBoxMisljenjeDoktora, "Niste unijeli detalje o misljenju doktora nakon pregleda hitnog pacijenta!");
+                toolStripStatusLabel2.Text = "Niste unijeli detalje o misljenju doktora nakon pregleda hitnog pacijenta!";
                 toolStripStatusLabel2.ForeColor = Color.Red;
             }
         }
@@ -351,8 +353,8 @@ namespace SehalicMirza17324_Z2
         {
             if (radioButtonMrtav.Checked == true && textBoxMisljenjeDoktora.Text.Length == 0)
             {
-                this.errorProvider2.SetError(textBoxUzrokSmrti, "Niste unijeli detalje o postupku pregleda hitnog pacijenta!");
-                toolStripStatusLabel2.Text = "Niste unijeli detalje o postupku pregleda hitnog pacijenta!";
+                this.errorProvider2.SetError(textBoxUzrokSmrti, "Niste unijeli detalje o uzroku smrti hitnog pacijenta!");
+                toolStripStatusLabel2.Text = "Niste unijeli detalje o uzroku smrti hitnog pacijenta!";
                 toolStripStatusLabel2.ForeColor = Color.Red;
             }
         }
@@ -366,11 +368,20 @@ namespace SehalicMirza17324_Z2
         private void radioButtonZiv_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxZiv.Enabled = radioButtonZiv.Checked;
+            textBoxMisljenjeDoktora_Validated(sender, e);
+            textBoxTerapija_Validated(sender, e);
+            textBoxPostupak_Validated(sender, e);
         }
 
         private void radioButtonMrtav_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxMrtav.Enabled = radioButtonMrtav.Checked;
+            textBoxUzrokSmrti_Validated(sender, e);
+        }
+
+        private void groupBoxHitniSlucajevi_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

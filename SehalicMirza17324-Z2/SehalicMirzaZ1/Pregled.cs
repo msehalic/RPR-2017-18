@@ -8,40 +8,52 @@ namespace Zadaca1RPR_17324
 {
     sealed public class Pregled
     {
-        public DateTime DatumVrijemePregleda; //dan i vrijeme pregleda
-       public string postupak;
-        public string misljenjeLjekara;
-        public string terapija; //ne zaboravi natjerati doktora da propise terapiju kod pregleda
-        public DateTime VrijemeSmrti;
-        public DateTime Obdukcija;
-        public Pacijent p;
-        public Doktor d=new Doktor();
-        public int idPregleda;
-        public bool rutinskiPregled = false; //ovo za vozacku i ono ljekarski
+        private DateTime datumVrijemePregleda; //dan i vrijeme pregleda
+        private string postupak;
+        private string misljenjeLjekara;
+        private string terapija; //ne zaboravi natjerati doktora da propise terapiju kod pregleda
+        private DateTime vrijemeSmrti;
+        private DateTime obdukcija;
+        private Pacijent p;
+        private Doktor d = new Doktor();
+        private int idPregleda;
+        private bool rutinskiPregled = false; //ovo za vozacku i ono ljekarski
+
+        public DateTime DatumVrijemePregleda { get => datumVrijemePregleda; set => datumVrijemePregleda = value; }
+        public string Postupak { get => postupak; set => postupak = value; }
+        public string MisljenjeLjekara { get => misljenjeLjekara; set => misljenjeLjekara = value; }
+        public string Terapija { get => terapija; set => terapija = value; }
+        public DateTime VrijemeSmrti { get => vrijemeSmrti; set => vrijemeSmrti = value; }
+        public DateTime Obdukcija { get => obdukcija; set => obdukcija = value; }
+        public Pacijent P { get => p; set => p = value; }
+        public Doktor D { get => d; set => d = value; }
+        public int IdPregleda { get => idPregleda; set => idPregleda = value; }
+        public bool RutinskiPregled { get => rutinskiPregled; set => rutinskiPregled = value; }
+
         public Pregled(Pacijent p1)
         {
-            postupak = "Nije unesen";
-            misljenjeLjekara= "Nije uneseno";
-            terapija= "Nije unesena";
+            Postupak = "Nije unesen";
+            MisljenjeLjekara= "Nije uneseno";
+            Terapija= "Nije unesena";
             DatumVrijemePregleda = DateTime.Now;
             GenerisiIDPregleda();
-            p = p1;
-            d.BrojPregledanihPacijenata++;
+            P = p1;
+            D.BrojPregledanihPacijenata++;
         }
         public Pregled (DateTime datum1, string postupak1, string misljenjeLjekara1, string terapija1, Pacijent pac)
         {
             DatumVrijemePregleda = datum1;
-            postupak = postupak1;
-            misljenjeLjekara = misljenjeLjekara1;
-            terapija = terapija1;
+            Postupak = postupak1;
+            MisljenjeLjekara = misljenjeLjekara1;
+            Terapija = terapija1;
             GenerisiIDPregleda();
-            p = pac;
-            d.BrojPregledanihPacijenata++;
+            P = pac;
+            D.BrojPregledanihPacijenata++;
         }
        public override string ToString()
         {
-            if (idPregleda==0) return ("Pacijent trenutno nema evidentiranih izvršenih pregleda.");
-            return("U " + DatumVrijemePregleda + " Pacijent " + p.ime + p.prezime + " je prošao kroz proceduru " + postupak + ". Misljenje ljekara je " + misljenjeLjekara + " te je propisana terapija " + terapija + ".");
+            if (IdPregleda==0) return ("Pacijent trenutno nema evidentiranih izvršenih pregleda.");
+            return("U " + DatumVrijemePregleda + " Pacijent " + P.Ime + P.Prezime + " je prošao kroz proceduru " + Postupak + ". Misljenje ljekara je " + MisljenjeLjekara + " te je propisana terapija " + Terapija + ".");
         }
         public void GenerisiIDPregleda() //generise nasumican broj od 1 do 1000 da se ne peglamo sa brojacima
         {
@@ -52,7 +64,7 @@ namespace Zadaca1RPR_17324
             {
                 generisaniBroj = rand.Next(1, 1000);
             } while (listaRandomBrojeva.Contains(generisaniBroj));
-            idPregleda = generisaniBroj;
+            IdPregleda = generisaniBroj;
         }
     }
 }

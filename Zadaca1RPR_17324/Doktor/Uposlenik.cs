@@ -29,18 +29,23 @@ namespace Doktori
 
         public Uposlenik(string imeUposlenika, string prezimeUposlenika, int brojLicence, string korisnickoIme, string lozinka) : this(imeUposlenika, prezimeUposlenika, brojLicence)
         {
-            this.korisnickoIme = korisnickoIme;
-            this.lozinka = GetMd5Hash(MD5.Create(), lozinka); //OSIGURAVA MD5 algoritam
+            this.KorisnickoIme1 = korisnickoIme;
+            this.Lozinka1 = GetMd5Hash(MD5.Create(), lozinka); //OSIGURAVA MD5 algoritam
         }
 
         public string ImeUposlenika { get => ImeUposlenika1; set => ImeUposlenika1 = value; }
         public string PrezimeUposlenika { get => PrezimeUposlenika1; set => PrezimeUposlenika1 = value; }
         public int BrojLicence { get => BrojLicence1; set => BrojLicence1 = value; }
-        public string ImeUposlenika1 { get => imeUposlenika; set => imeUposlenika = value; }
-        public string PrezimeUposlenika1 { get => prezimeUposlenika; set => prezimeUposlenika = value; }
-        public int BrojLicence1 { get => brojLicence; set => brojLicence = value; }
-        public string KorisnickoIme { get => korisnickoIme; set => korisnickoIme = value; }
-        public string Lozinka { get => lozinka; set => lozinka = value; }
+        public string ImeUposlenika1 { get => ImeUposlenika2; set => ImeUposlenika2 = value; }
+        public string PrezimeUposlenika1 { get => PrezimeUposlenika2; set => PrezimeUposlenika2 = value; }
+        public int BrojLicence1 { get => BrojLicence2; set => BrojLicence2 = value; }
+        public string KorisnickoIme { get => KorisnickoIme1; set => KorisnickoIme1 = value; }
+        public string Lozinka { get => Lozinka1; set => Lozinka1 = value; }
+        public string ImeUposlenika2 { get => imeUposlenika; set => imeUposlenika = value; }
+        public string PrezimeUposlenika2 { get => prezimeUposlenika; set => prezimeUposlenika = value; }
+        public int BrojLicence2 { get => brojLicence; set => brojLicence = value; }
+        public string KorisnickoIme1 { get => korisnickoIme; set => korisnickoIme = value; }
+        public string Lozinka1 { get => lozinka; set => lozinka = value; }
 
         static string GetMd5Hash(MD5 md5Hash, string input) //sluzbena dokumentacija
         {
