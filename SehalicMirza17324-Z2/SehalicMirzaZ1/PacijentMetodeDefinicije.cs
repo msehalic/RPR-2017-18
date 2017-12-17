@@ -35,7 +35,8 @@ namespace Zadaca1RPR_17324
 if (value>0 && ima13Cifara) MaticniBroj = value;*/
         public override string ToString()
         {
-            return ("ID-" + IdPacijenta + ": Pacijent " + Ime + " " + Prezime + ", primljen je u bolnicu " + DatumPrijema + ", spola " + Spol + ", ukupno boravio u klinici " + PosjetioKliniku + " puta. Rodjen " + DatumRodjenja.ToLocalTime() + ", adresa stanovanja " + AdresaStanovanja + ", bracno stanje " + BracnoStanje);
+            //return ("ID-" + IdPacijenta + ": Pacijent " + Ime + " " + Prezime + ", primljen je u bolnicu " + DatumPrijema + ", spola " + Spol + ", ukupno boravio u klinici " + PosjetioKliniku + " puta. Rodjen " + DatumRodjenja.ToLocalTime() + ", adresa stanovanja " + AdresaStanovanja + ", bracno stanje " + BracnoStanje);
+            return (Ime + " " + Prezime + ", JMBG: " + MaticniBroj);
         }
         public void GenerisiIDPacijenta() //generise nasumican broj od 1 do 1000 da se ne peglamo sa brojacima
         {

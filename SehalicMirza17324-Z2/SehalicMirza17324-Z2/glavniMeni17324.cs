@@ -152,16 +152,21 @@ namespace SehalicMirza17324_Z2
                 else if (radioButtonOzenjen.Checked) bracnoStanjePacijenta = radioButtonOzenjen.Text;
                 else if (radioButtonNeozenjen.Checked) bracnoStanjePacijenta = radioButtonNeozenjen.Text;
                 bool greska = false;
+                string pogresniMaticniBroj="";
                 char pol = 'M';
                 if (radioButtonZ.Checked) pol = 'Z';
                 Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt64(maskedTextBox1.Text));
                 foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.Pacijenti)
                 {
                     if (pacijent17324.MaticniBroj == Convert.ToUInt64(maskedTextBox1.Text))
-                        textBoxInfo.Text = "Vec postoji pacijent sa identicnim JMBG kao " + pacijent17324.Ime + " " + pacijent17324.Prezime;
-                    textBoxInfo.ForeColor = Color.Red;
-                    greska = true;
+                    {
+                        textBoxInfo.Text = "Vec postoji pacijent sa identicnim JMBG kao " + textBox1.Text + " " + textBox2.Text;
+                        textBoxInfo.ForeColor = Color.Red;
+                        greska = true;
+                        pogresniMaticniBroj = maskedTextBox1.Text;
+                    }
                 }
+                if (maskedTextBox1.Text!=pogresniMaticniBroj) greska = false;
                 if (greska == false)
                 {
                     klinika17324.Pacijenti.Add(p);
@@ -382,6 +387,45 @@ namespace SehalicMirza17324_Z2
         private void groupBoxHitniSlucajevi_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            listBoxPretragaImePrezime.Items.Clear();
+            if (textBoxBrisanjeImePrezime.Text.Length!=0) //ne zelimo izlistavati na prazno
+            foreach (Zadaca1RPR_17324.Pacijent p in klinika17324.Pacijenti)
+            {
+                if ((p.Ime + " " + p.Prezime).IndexOf(textBoxBrisanjeImePrezime.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    listBoxPretragaImePrezime.Items.Add(p);
+                }
+            }
+        }
+
+        private void textBoxBrisanjeJMBG_TextChanged(object sender, EventArgs e)
+        {
+            listBoxBrisanjeJMBG.Items.Clear();
+            if (textBoxBrisanjeJMBG.Text.Length != 0) //ne zelimo izlistavati na prazno
+                foreach (Zadaca1RPR_17324.Pacijent p in klinika17324.Pacijenti)
+                {
+                    if ((p.MaticniBroj).ToString().IndexOf(textBoxBrisanjeJMBG.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        listBoxBrisanjeJMBG.Items.Add(p);
+                    }
+                }
+        }
+
+        private void textBoxImeRasporedPregleda_TextChanged(object sender, EventArgs e)
+        {
+            listBoxPretragaRaspored.Items.Clear();
+            if (textBoxImeRasporedPregleda.Text.Length != 0) //ne zelimo izlistavati na prazno
+                foreach (Zadaca1RPR_17324.Pacijent p in klinika17324.Pacijenti)
+                {
+                    if ((p.Ime + " " + p.Prezime).IndexOf(textBoxImeRasporedPregleda.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        listBoxPretragaRaspored.Items.Add(p);
+                    }
+                }
         }
     }
 }

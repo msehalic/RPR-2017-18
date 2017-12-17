@@ -9,7 +9,7 @@ namespace Zadaca1RPR_17324
     public class Ordinacija : IOrdinacije
     {
         //klasa napravljena samo radi polimorfizma ostalih
-        private Queue<Pregled> redCekanja;
+        private Queue<Pregled> redCekanja=new Queue<Pregled>();
         private string nazivKlinike;
         private Doktor sefKlinike;
 
