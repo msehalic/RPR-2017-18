@@ -23,6 +23,7 @@ namespace SehalicMirza17324_Z2
             this.AutoSize = true;
             this.AutoSizeMode = AutoSizeMode.GrowOnly;
             this.Text = "Klinika 'Dr. Sehalic'";
+            groupBoxHitniSlucajevi.Enabled = false;
         }
         private void Izadji(object sender, EventArgs e)
         {
@@ -216,12 +217,144 @@ namespace SehalicMirza17324_Z2
             errorProvider2.SetError(textBox2, "");
             errorProvider2.SetError(textBoxAdresa, "");
             errorProvider2.SetError(maskedTextBox1, "");
-            errorProvider2.SetError(userControlUnosSlike1, "");
         }
 
         private void groupBoxUnosPacijenata_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBoxHitanSlucaj_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBoxHitniSlucajevi.Enabled = checkBoxHitanSlucaj.Checked;
+        }
+
+        private void groupBoxHitniSlucajevi_Enter(object sender, EventArgs e)
+        {
+            groupBoxZiv.Enabled = false;
+            groupBoxMrtav.Enabled = false;
+        }
+
+        private void checkBoxZiv_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBoxZiv.Enabled = radioButtonZiv.Checked;
+        }
+
+        private void checkBoxMrtav_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBoxMrtav.Enabled = radioButtonMrtav.Checked;
+        }
+
+        private void groupBoxMrtav_Enter(object sender, EventArgs e)
+        {
+            groupBoxObdukcija.Enabled = false;
+        }
+
+        private void checkBoxObdukcija_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBoxObdukcija.Enabled = checkBoxObdukcija.Checked;
+        }
+
+        private void groupBoxBracnoStanje_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxBracnoStanje_Validating(object sender, CancelEventArgs e)
+        {
+            if (radioButtonNeozenjen.Checked == false && radioButtonOzenjen.Checked == false && radioButtonRazveden.Checked == false && radioButtonUdovac.Checked == false)
+            {
+                this.errorProvider2.SetError(groupBoxBracnoStanje, "Niste odabrali bračno stanje!");
+                toolStripStatusLabel2.Text = "Niste odabrali bračno stanje!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void groupBoxBracnoStanje_Validated(object sender, EventArgs e)
+        {
+            toolStripStatusLabel2.Text = "";
+            errorProvider2.SetError(groupBoxBracnoStanje, "");
+        }
+
+        private void groupBoxZivMrtav_Validating(object sender, CancelEventArgs e)
+        {
+            if (radioButtonMrtav.Checked==false && radioButtonZiv.Checked==false && checkBoxHitanSlucaj.Checked==true)
+            {
+                this.errorProvider2.SetError(groupBoxZivMrtav, "Niste odabrali životni status pacijenta!");
+                toolStripStatusLabel2.Text = "Niste odabrali životni status pacijenta!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void groupBoxZivMrtav_Validated(object sender, EventArgs e)
+        {
+            toolStripStatusLabel2.Text = "";
+            errorProvider2.SetError(groupBoxZivMrtav, "");
+        }
+
+        private void textBoxPostupak_Validating(object sender, CancelEventArgs e)
+        {
+            if (radioButtonZiv.Checked==true && textBoxPostupak.Text.Length==0)
+            {
+                this.errorProvider2.SetError(textBoxPostupak, "Niste unijeli detalje o postupku pregleda hitnog pacijenta!");
+                toolStripStatusLabel2.Text = "Niste unijeli detalje o postupku pregleda hitnog pacijenta!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxPostupak_Validated(object sender, EventArgs e)
+        {
+            toolStripStatusLabel2.Text = "";
+            errorProvider2.SetError(textBoxPostupak, "");
+        }
+
+
+        private void textBoxTerapija_Validated(object sender, EventArgs e)
+        {
+            toolStripStatusLabel2.Text = "";
+            errorProvider2.SetError(textBoxTerapija, "");
+        }
+
+        private void textBoxTerapija_Validating(object sender, CancelEventArgs e)
+        {
+            if (radioButtonZiv.Checked == true && textBoxTerapija.Text.Length == 0)
+            {
+                this.errorProvider2.SetError(textBoxTerapija, "Niste unijeli detalje o postupku pregleda hitnog pacijenta!");
+                toolStripStatusLabel2.Text = "Niste unijeli detalje o postupku pregleda hitnog pacijenta!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxMisljenjeDoktora_Validating(object sender, CancelEventArgs e)
+        {
+            if (radioButtonZiv.Checked == true && textBoxMisljenjeDoktora.Text.Length == 0)
+            {
+                this.errorProvider2.SetError(textBoxMisljenjeDoktora, "Niste unijeli detalje o postupku pregleda hitnog pacijenta!");
+                toolStripStatusLabel2.Text = "Niste unijeli detalje o postupku pregleda hitnog pacijenta!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxMisljenjeDoktora_Validated(object sender, EventArgs e)
+        {
+            toolStripStatusLabel2.Text = "";
+            errorProvider2.SetError(textBoxMisljenjeDoktora, "");
+        }
+
+        private void textBoxUzrokSmrti_Validating(object sender, CancelEventArgs e)
+        {
+            if (radioButtonMrtav.Checked == true && textBoxMisljenjeDoktora.Text.Length == 0)
+            {
+                this.errorProvider2.SetError(textBoxUzrokSmrti, "Niste unijeli detalje o postupku pregleda hitnog pacijenta!");
+                toolStripStatusLabel2.Text = "Niste unijeli detalje o postupku pregleda hitnog pacijenta!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxUzrokSmrti_Validated(object sender, EventArgs e)
+        {
+            toolStripStatusLabel2.Text = "";
+            errorProvider2.SetError(textBoxUzrokSmrti, "");
         }
     }
 }
