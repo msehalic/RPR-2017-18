@@ -356,7 +356,7 @@ namespace SehalicMirza17324_Z2
 
         private void textBoxUzrokSmrti_Validating(object sender, CancelEventArgs e)
         {
-            if (radioButtonMrtav.Checked == true && textBoxMisljenjeDoktora.Text.Length == 0)
+            if (radioButtonMrtav.Checked == true && textBoxUzrokSmrti.Text.Length == 0)
             {
                 this.errorProvider2.SetError(textBoxUzrokSmrti, "Niste unijeli detalje o uzroku smrti hitnog pacijenta!");
                 toolStripStatusLabel2.Text = "Niste unijeli detalje o uzroku smrti hitnog pacijenta!";
