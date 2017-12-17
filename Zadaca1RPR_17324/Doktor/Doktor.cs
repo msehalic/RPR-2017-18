@@ -9,6 +9,7 @@ namespace Doktori
     public class Doktor:Uposlenik
     {
         private int brojPregledanihPacijenata;
+        private string specijalizacija;
         public Doktor()
         {
             ImeUposlenika = "Dietrich";
@@ -17,15 +18,21 @@ namespace Doktori
             BrojPregledanihPacijenata = 0;
         }
 
-        public Doktor(string imeUposlenika, string prezimeUposlenika, int brojLicence) : base(imeUposlenika, prezimeUposlenika, brojLicence)
+
+        public Doktor(string imeUposlenika, string prezimeUposlenika, int brojLicence, int brojPregledanihPacijenata, string specijalizacija) : base(imeUposlenika, prezimeUposlenika, brojLicence)
         {
+            BrojPregledanihPacijenata = brojPregledanihPacijenata;
+            Specijalizacija = specijalizacija;
         }
 
-        public Doktor(string imeUposlenika, string prezimeUposlenika, int brojLicence, string korisnickoIme, string lozinka) : base(imeUposlenika, prezimeUposlenika, brojLicence, korisnickoIme, lozinka)
+        public Doktor(string imeUposlenika, string prezimeUposlenika, int brojLicence, string korisnickoIme, string lozinka, int brojPregledanihPacijenata, string specijalizacija) : base(imeUposlenika, prezimeUposlenika, brojLicence, korisnickoIme, lozinka)
         {
+            BrojPregledanihPacijenata = brojPregledanihPacijenata;
+            Specijalizacija = specijalizacija;
         }
 
         public int BrojPregledanihPacijenata { get => brojPregledanihPacijenata; set => brojPregledanihPacijenata = value; }
+        public string Specijalizacija { get => specijalizacija; set => specijalizacija = value; }
 
         int ObracunajPlatu(Doktor d) //za obracun plate doktorima (cisto da bude implementirano)
         {

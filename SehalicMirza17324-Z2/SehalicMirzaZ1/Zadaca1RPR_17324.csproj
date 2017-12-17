@@ -43,10 +43,6 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IOrdinacije.cs" />
     <Compile Include="Ordinacija.cs" />
-    <Compile Include="OrdinacijaDermatolog.cs" />
-    <Compile Include="OrdinacijaKardiolog.cs" />
-    <Compile Include="OrdinacijaOrtoped.cs" />
-    <Compile Include="OrdinacijaStomatolog.cs" />
     <Compile Include="PacijentAnamneza.cs" />
     <Compile Include="PacijentKonstruktori.cs" />
     <Compile Include="PacijentMetodeDefinicije.cs" />
