@@ -133,9 +133,9 @@
             // 
             // groupBoxBrisanjePacijenata
             // 
-            this.groupBoxBrisanjePacijenata.Location = new System.Drawing.Point(469, 3);
+            this.groupBoxBrisanjePacijenata.Location = new System.Drawing.Point(574, 3);
             this.groupBoxBrisanjePacijenata.Name = "groupBoxBrisanjePacijenata";
-            this.groupBoxBrisanjePacijenata.Size = new System.Drawing.Size(482, 615);
+            this.groupBoxBrisanjePacijenata.Size = new System.Drawing.Size(578, 615);
             this.groupBoxBrisanjePacijenata.TabIndex = 1;
             this.groupBoxBrisanjePacijenata.TabStop = false;
             this.groupBoxBrisanjePacijenata.Text = "Brisanje Pacijenata";
@@ -164,7 +164,7 @@
             this.groupBoxUnosPacijenata.Controls.Add(this.labelIme);
             this.groupBoxUnosPacijenata.Location = new System.Drawing.Point(-4, 0);
             this.groupBoxUnosPacijenata.Name = "groupBoxUnosPacijenata";
-            this.groupBoxUnosPacijenata.Size = new System.Drawing.Size(467, 615);
+            this.groupBoxUnosPacijenata.Size = new System.Drawing.Size(581, 615);
             this.groupBoxUnosPacijenata.TabIndex = 0;
             this.groupBoxUnosPacijenata.TabStop = false;
             this.groupBoxUnosPacijenata.Text = "Unos Pacijenata";
@@ -177,7 +177,7 @@
             this.groupBoxHitniSlucajevi.Controls.Add(this.groupBoxZivMrtav);
             this.groupBoxHitniSlucajevi.Location = new System.Drawing.Point(17, 410);
             this.groupBoxHitniSlucajevi.Name = "groupBoxHitniSlucajevi";
-            this.groupBoxHitniSlucajevi.Size = new System.Drawing.Size(450, 150);
+            this.groupBoxHitniSlucajevi.Size = new System.Drawing.Size(507, 150);
             this.groupBoxHitniSlucajevi.TabIndex = 19;
             this.groupBoxHitniSlucajevi.TabStop = false;
             this.groupBoxHitniSlucajevi.Text = "Protokol za hitne slučajeve";
@@ -191,9 +191,9 @@
             this.groupBoxMrtav.Controls.Add(this.label2);
             this.groupBoxMrtav.Controls.Add(this.textBoxUzrokSmrti);
             this.groupBoxMrtav.Controls.Add(this.label4);
-            this.groupBoxMrtav.Location = new System.Drawing.Point(220, 18);
+            this.groupBoxMrtav.Location = new System.Drawing.Point(247, 18);
             this.groupBoxMrtav.Name = "groupBoxMrtav";
-            this.groupBoxMrtav.Size = new System.Drawing.Size(234, 132);
+            this.groupBoxMrtav.Size = new System.Drawing.Size(262, 132);
             this.groupBoxMrtav.TabIndex = 8;
             this.groupBoxMrtav.TabStop = false;
             this.groupBoxMrtav.Text = "Neuspješna intervencija";
@@ -283,7 +283,7 @@
             this.groupBoxZiv.Controls.Add(this.textBoxTerapija);
             this.groupBoxZiv.Location = new System.Drawing.Point(1, 57);
             this.groupBoxZiv.Name = "groupBoxZiv";
-            this.groupBoxZiv.Size = new System.Drawing.Size(224, 86);
+            this.groupBoxZiv.Size = new System.Drawing.Size(240, 86);
             this.groupBoxZiv.TabIndex = 7;
             this.groupBoxZiv.TabStop = false;
             this.groupBoxZiv.Text = "Uspješna intervencija";
@@ -348,7 +348,7 @@
             this.groupBoxZivMrtav.Controls.Add(this.radioButtonZiv);
             this.groupBoxZivMrtav.Location = new System.Drawing.Point(6, 18);
             this.groupBoxZivMrtav.Name = "groupBoxZivMrtav";
-            this.groupBoxZivMrtav.Size = new System.Drawing.Size(166, 33);
+            this.groupBoxZivMrtav.Size = new System.Drawing.Size(235, 33);
             this.groupBoxZivMrtav.TabIndex = 2;
             this.groupBoxZivMrtav.TabStop = false;
             this.groupBoxZivMrtav.Text = "Status Pacijenta";
@@ -358,13 +358,14 @@
             // radioButtonMrtav
             // 
             this.radioButtonMrtav.AutoSize = true;
-            this.radioButtonMrtav.Location = new System.Drawing.Point(93, 13);
+            this.radioButtonMrtav.Location = new System.Drawing.Point(165, 13);
             this.radioButtonMrtav.Name = "radioButtonMrtav";
             this.radioButtonMrtav.Size = new System.Drawing.Size(52, 17);
             this.radioButtonMrtav.TabIndex = 1;
             this.radioButtonMrtav.TabStop = true;
             this.radioButtonMrtav.Text = "Mrtav";
             this.radioButtonMrtav.UseVisualStyleBackColor = true;
+            this.radioButtonMrtav.CheckedChanged += new System.EventHandler(this.radioButtonMrtav_CheckedChanged);
             // 
             // radioButtonZiv
             // 
@@ -376,6 +377,7 @@
             this.radioButtonZiv.TabStop = true;
             this.radioButtonZiv.Text = "Živ";
             this.radioButtonZiv.UseVisualStyleBackColor = true;
+            this.radioButtonZiv.CheckedChanged += new System.EventHandler(this.radioButtonZiv_CheckedChanged);
             // 
             // checkBoxHitanSlucaj
             // 
@@ -390,7 +392,7 @@
             // 
             // buttonOdustani
             // 
-            this.buttonOdustani.Location = new System.Drawing.Point(351, 566);
+            this.buttonOdustani.Location = new System.Drawing.Point(449, 566);
             this.buttonOdustani.Name = "buttonOdustani";
             this.buttonOdustani.Size = new System.Drawing.Size(75, 23);
             this.buttonOdustani.TabIndex = 17;
@@ -403,12 +405,12 @@
             this.textBoxInfo.Location = new System.Drawing.Point(30, 595);
             this.textBoxInfo.Name = "textBoxInfo";
             this.textBoxInfo.ReadOnly = true;
-            this.textBoxInfo.Size = new System.Drawing.Size(415, 20);
+            this.textBoxInfo.Size = new System.Drawing.Size(496, 20);
             this.textBoxInfo.TabIndex = 16;
             // 
             // userControlUnosSlike1
             // 
-            this.userControlUnosSlike1.Location = new System.Drawing.Point(245, 7);
+            this.userControlUnosSlike1.Location = new System.Drawing.Point(338, 6);
             this.userControlUnosSlike1.Name = "userControlUnosSlike1";
             this.userControlUnosSlike1.Size = new System.Drawing.Size(226, 226);
             this.userControlUnosSlike1.TabIndex = 15;
@@ -530,7 +532,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(257, 566);
+            this.button1.Location = new System.Drawing.Point(358, 566);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 12;

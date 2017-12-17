@@ -129,13 +129,19 @@ namespace SehalicMirza17324_Z2
             textBox2_Validating(textBox2, new CancelEventArgs());
             maskedTextBox1_Validating(maskedTextBox1, new CancelEventArgs());
             textBoxAdresa_Validating(textBoxAdresa, new CancelEventArgs());
+            textBoxMisljenjeDoktora_Validating(textBoxMisljenjeDoktora, new CancelEventArgs());
+            textBoxPostupak_Validating(textBoxPostupak, new CancelEventArgs());
+            textBoxTerapija_Validating(textBoxTerapija, new CancelEventArgs());
+            textBoxUzrokSmrti_Validating(textBoxUzrokSmrti, new CancelEventArgs());
+            groupBoxBracnoStanje_Validating(groupBoxBracnoStanje, new CancelEventArgs());
+            groupBoxZivMrtav_Validating(groupBoxZivMrtav, new CancelEventArgs());
             //DODATI
             //SVE
             //KONTROLE
             //KOJE
             //TREBA
             //VALIDIRATI!
-            if (errorProvider2.GetError(textBox1) == "" && errorProvider2.GetError(textBox2) == "" && errorProvider2.GetError(maskedTextBox1) == "" && errorProvider2.GetError(textBoxAdresa) == "" && errorProvider2.GetError(userControlUnosSlike1) == "")
+            if (errorProvider2.GetError(textBox1) == "" && errorProvider2.GetError(textBox2) == "" && errorProvider2.GetError(maskedTextBox1) == "" && errorProvider2.GetError(textBoxAdresa) == "" && errorProvider2.GetError(textBoxUzrokSmrti)=="" && errorProvider2.GetError(textBoxMisljenjeDoktora)=="" && errorProvider2.GetError(textBoxPostupak)=="" && errorProvider2.GetError(textBoxTerapija)=="" && errorProvider2.GetError(groupBoxZivMrtav)=="")
             {
                 string bracnoStanjePacijenta = "";
 
@@ -355,6 +361,16 @@ namespace SehalicMirza17324_Z2
         {
             toolStripStatusLabel2.Text = "";
             errorProvider2.SetError(textBoxUzrokSmrti, "");
+        }
+
+        private void radioButtonZiv_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBoxZiv.Enabled = radioButtonZiv.Checked;
+        }
+
+        private void radioButtonMrtav_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBoxMrtav.Enabled = radioButtonMrtav.Checked;
         }
     }
 }
