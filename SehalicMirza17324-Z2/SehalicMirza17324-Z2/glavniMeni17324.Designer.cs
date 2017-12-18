@@ -33,6 +33,10 @@
             this.tabControlGlavniMeni = new System.Windows.Forms.TabControl();
             this.tabPageUnosPacijenata = new System.Windows.Forms.TabPage();
             this.groupBoxBrisanjePacijenata = new System.Windows.Forms.GroupBox();
+            this.groupBoxBrisanjeJMBG = new System.Windows.Forms.GroupBox();
+            this.listBoxBrisanjeJMBG = new System.Windows.Forms.ListBox();
+            this.labelBrisanjeJMBG = new System.Windows.Forms.Label();
+            this.textBoxBrisanjeJMBG = new System.Windows.Forms.TextBox();
             this.groupBoxBrisanjeImePrezime = new System.Windows.Forms.GroupBox();
             this.listBoxPretragaImePrezime = new System.Windows.Forms.ListBox();
             this.labelImePrezimeBrisanje = new System.Windows.Forms.Label();
@@ -87,25 +91,22 @@
             this.labelPrezime = new System.Windows.Forms.Label();
             this.labelIme = new System.Windows.Forms.Label();
             this.tabPageRaspored = new System.Windows.Forms.TabPage();
+            this.groupBoxPretragaRasporedPregleda = new System.Windows.Forms.GroupBox();
+            this.listBoxPretragaRaspored = new System.Windows.Forms.ListBox();
+            this.textBoxImeRasporedPregleda = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBoxBrisanjeJMBG = new System.Windows.Forms.GroupBox();
-            this.listBoxBrisanjeJMBG = new System.Windows.Forms.ListBox();
-            this.labelBrisanjeJMBG = new System.Windows.Forms.Label();
-            this.textBoxBrisanjeJMBG = new System.Windows.Forms.TextBox();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBoxPretragaRasporedPregleda = new System.Windows.Forms.GroupBox();
-            this.textBoxImeRasporedPregleda = new System.Windows.Forms.TextBox();
-            this.listBoxPretragaRaspored = new System.Windows.Forms.ListBox();
             this.tabControlGlavniMeni.SuspendLayout();
             this.tabPageUnosPacijenata.SuspendLayout();
             this.groupBoxBrisanjePacijenata.SuspendLayout();
+            this.groupBoxBrisanjeJMBG.SuspendLayout();
             this.groupBoxBrisanjeImePrezime.SuspendLayout();
             this.groupBoxUnosPacijenata.SuspendLayout();
             this.groupBoxHitniSlucajevi.SuspendLayout();
@@ -117,10 +118,9 @@
             this.groupBoxBracnoStanje.SuspendLayout();
             this.groupBoxSpol.SuspendLayout();
             this.tabPageRaspored.SuspendLayout();
+            this.groupBoxPretragaRasporedPregleda.SuspendLayout();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
-            this.groupBoxBrisanjeJMBG.SuspendLayout();
-            this.groupBoxPretragaRasporedPregleda.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlGlavniMeni
@@ -161,6 +161,43 @@
             this.groupBoxBrisanjePacijenata.TabStop = false;
             this.groupBoxBrisanjePacijenata.Text = "Brisanje Pacijenata";
             this.groupBoxBrisanjePacijenata.Enter += new System.EventHandler(this.groupBoxBrisanjePacijenata_Enter);
+            // 
+            // groupBoxBrisanjeJMBG
+            // 
+            this.groupBoxBrisanjeJMBG.Controls.Add(this.listBoxBrisanjeJMBG);
+            this.groupBoxBrisanjeJMBG.Controls.Add(this.labelBrisanjeJMBG);
+            this.groupBoxBrisanjeJMBG.Controls.Add(this.textBoxBrisanjeJMBG);
+            this.groupBoxBrisanjeJMBG.Location = new System.Drawing.Point(0, 317);
+            this.groupBoxBrisanjeJMBG.Name = "groupBoxBrisanjeJMBG";
+            this.groupBoxBrisanjeJMBG.Size = new System.Drawing.Size(578, 295);
+            this.groupBoxBrisanjeJMBG.TabIndex = 3;
+            this.groupBoxBrisanjeJMBG.TabStop = false;
+            this.groupBoxBrisanjeJMBG.Text = "Brisanje po JMBG";
+            // 
+            // listBoxBrisanjeJMBG
+            // 
+            this.listBoxBrisanjeJMBG.FormattingEnabled = true;
+            this.listBoxBrisanjeJMBG.Location = new System.Drawing.Point(84, 59);
+            this.listBoxBrisanjeJMBG.Name = "listBoxBrisanjeJMBG";
+            this.listBoxBrisanjeJMBG.Size = new System.Drawing.Size(308, 212);
+            this.listBoxBrisanjeJMBG.TabIndex = 2;
+            // 
+            // labelBrisanjeJMBG
+            // 
+            this.labelBrisanjeJMBG.AutoSize = true;
+            this.labelBrisanjeJMBG.Location = new System.Drawing.Point(81, 26);
+            this.labelBrisanjeJMBG.Name = "labelBrisanjeJMBG";
+            this.labelBrisanjeJMBG.Size = new System.Drawing.Size(39, 13);
+            this.labelBrisanjeJMBG.TabIndex = 1;
+            this.labelBrisanjeJMBG.Text = "JMBG:";
+            // 
+            // textBoxBrisanjeJMBG
+            // 
+            this.textBoxBrisanjeJMBG.Location = new System.Drawing.Point(138, 23);
+            this.textBoxBrisanjeJMBG.Name = "textBoxBrisanjeJMBG";
+            this.textBoxBrisanjeJMBG.Size = new System.Drawing.Size(254, 20);
+            this.textBoxBrisanjeJMBG.TabIndex = 0;
+            this.textBoxBrisanjeJMBG.TextChanged += new System.EventHandler(this.textBoxBrisanjeJMBG_TextChanged);
             // 
             // groupBoxBrisanjeImePrezime
             // 
@@ -734,6 +771,43 @@
             this.tabPageRaspored.Text = "Raspored Pregleda";
             this.tabPageRaspored.UseVisualStyleBackColor = true;
             // 
+            // groupBoxPretragaRasporedPregleda
+            // 
+            this.groupBoxPretragaRasporedPregleda.Controls.Add(this.listBoxPretragaRaspored);
+            this.groupBoxPretragaRasporedPregleda.Controls.Add(this.textBoxImeRasporedPregleda);
+            this.groupBoxPretragaRasporedPregleda.Controls.Add(this.label3);
+            this.groupBoxPretragaRasporedPregleda.Location = new System.Drawing.Point(11, 6);
+            this.groupBoxPretragaRasporedPregleda.Name = "groupBoxPretragaRasporedPregleda";
+            this.groupBoxPretragaRasporedPregleda.Size = new System.Drawing.Size(424, 303);
+            this.groupBoxPretragaRasporedPregleda.TabIndex = 1;
+            this.groupBoxPretragaRasporedPregleda.TabStop = false;
+            this.groupBoxPretragaRasporedPregleda.Text = "Pretraga pacijenata";
+            // 
+            // listBoxPretragaRaspored
+            // 
+            this.listBoxPretragaRaspored.FormattingEnabled = true;
+            this.listBoxPretragaRaspored.Location = new System.Drawing.Point(67, 52);
+            this.listBoxPretragaRaspored.Name = "listBoxPretragaRaspored";
+            this.listBoxPretragaRaspored.Size = new System.Drawing.Size(271, 238);
+            this.listBoxPretragaRaspored.TabIndex = 2;
+            // 
+            // textBoxImeRasporedPregleda
+            // 
+            this.textBoxImeRasporedPregleda.Location = new System.Drawing.Point(222, 26);
+            this.textBoxImeRasporedPregleda.Name = "textBoxImeRasporedPregleda";
+            this.textBoxImeRasporedPregleda.Size = new System.Drawing.Size(191, 20);
+            this.textBoxImeRasporedPregleda.TabIndex = 1;
+            this.textBoxImeRasporedPregleda.TextChanged += new System.EventHandler(this.textBoxImeRasporedPregleda_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(210, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Ime/Prezime pacijenta za prikaz rasporeda:";
+            // 
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -774,6 +848,16 @@
             this.tabPage6.Text = "Analiza";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1155, 618);
+            this.tabPage1.TabIndex = 6;
+            this.tabPage1.Text = "Naplata";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // statusStrip2
             // 
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -794,90 +878,6 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
-            // groupBoxBrisanjeJMBG
-            // 
-            this.groupBoxBrisanjeJMBG.Controls.Add(this.listBoxBrisanjeJMBG);
-            this.groupBoxBrisanjeJMBG.Controls.Add(this.labelBrisanjeJMBG);
-            this.groupBoxBrisanjeJMBG.Controls.Add(this.textBoxBrisanjeJMBG);
-            this.groupBoxBrisanjeJMBG.Location = new System.Drawing.Point(0, 317);
-            this.groupBoxBrisanjeJMBG.Name = "groupBoxBrisanjeJMBG";
-            this.groupBoxBrisanjeJMBG.Size = new System.Drawing.Size(578, 295);
-            this.groupBoxBrisanjeJMBG.TabIndex = 3;
-            this.groupBoxBrisanjeJMBG.TabStop = false;
-            this.groupBoxBrisanjeJMBG.Text = "Brisanje po JMBG";
-            // 
-            // listBoxBrisanjeJMBG
-            // 
-            this.listBoxBrisanjeJMBG.FormattingEnabled = true;
-            this.listBoxBrisanjeJMBG.Location = new System.Drawing.Point(84, 59);
-            this.listBoxBrisanjeJMBG.Name = "listBoxBrisanjeJMBG";
-            this.listBoxBrisanjeJMBG.Size = new System.Drawing.Size(308, 212);
-            this.listBoxBrisanjeJMBG.TabIndex = 2;
-            // 
-            // labelBrisanjeJMBG
-            // 
-            this.labelBrisanjeJMBG.AutoSize = true;
-            this.labelBrisanjeJMBG.Location = new System.Drawing.Point(81, 26);
-            this.labelBrisanjeJMBG.Name = "labelBrisanjeJMBG";
-            this.labelBrisanjeJMBG.Size = new System.Drawing.Size(39, 13);
-            this.labelBrisanjeJMBG.TabIndex = 1;
-            this.labelBrisanjeJMBG.Text = "JMBG:";
-            // 
-            // textBoxBrisanjeJMBG
-            // 
-            this.textBoxBrisanjeJMBG.Location = new System.Drawing.Point(138, 23);
-            this.textBoxBrisanjeJMBG.Name = "textBoxBrisanjeJMBG";
-            this.textBoxBrisanjeJMBG.Size = new System.Drawing.Size(254, 20);
-            this.textBoxBrisanjeJMBG.TabIndex = 0;
-            this.textBoxBrisanjeJMBG.TextChanged += new System.EventHandler(this.textBoxBrisanjeJMBG_TextChanged);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1155, 618);
-            this.tabPage1.TabIndex = 6;
-            this.tabPage1.Text = "Naplata";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(210, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Ime/Prezime pacijenta za prikaz rasporeda:";
-            // 
-            // groupBoxPretragaRasporedPregleda
-            // 
-            this.groupBoxPretragaRasporedPregleda.Controls.Add(this.listBoxPretragaRaspored);
-            this.groupBoxPretragaRasporedPregleda.Controls.Add(this.textBoxImeRasporedPregleda);
-            this.groupBoxPretragaRasporedPregleda.Controls.Add(this.label3);
-            this.groupBoxPretragaRasporedPregleda.Location = new System.Drawing.Point(11, 6);
-            this.groupBoxPretragaRasporedPregleda.Name = "groupBoxPretragaRasporedPregleda";
-            this.groupBoxPretragaRasporedPregleda.Size = new System.Drawing.Size(424, 303);
-            this.groupBoxPretragaRasporedPregleda.TabIndex = 1;
-            this.groupBoxPretragaRasporedPregleda.TabStop = false;
-            this.groupBoxPretragaRasporedPregleda.Text = "Pretraga pacijenata";
-            // 
-            // textBoxImeRasporedPregleda
-            // 
-            this.textBoxImeRasporedPregleda.Location = new System.Drawing.Point(222, 26);
-            this.textBoxImeRasporedPregleda.Name = "textBoxImeRasporedPregleda";
-            this.textBoxImeRasporedPregleda.Size = new System.Drawing.Size(191, 20);
-            this.textBoxImeRasporedPregleda.TabIndex = 1;
-            this.textBoxImeRasporedPregleda.TextChanged += new System.EventHandler(this.textBoxImeRasporedPregleda_TextChanged);
-            // 
-            // listBoxPretragaRaspored
-            // 
-            this.listBoxPretragaRaspored.FormattingEnabled = true;
-            this.listBoxPretragaRaspored.Location = new System.Drawing.Point(67, 52);
-            this.listBoxPretragaRaspored.Name = "listBoxPretragaRaspored";
-            this.listBoxPretragaRaspored.Size = new System.Drawing.Size(271, 238);
-            this.listBoxPretragaRaspored.TabIndex = 2;
-            // 
             // glavniMeni17324
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -894,6 +894,8 @@
             this.tabControlGlavniMeni.ResumeLayout(false);
             this.tabPageUnosPacijenata.ResumeLayout(false);
             this.groupBoxBrisanjePacijenata.ResumeLayout(false);
+            this.groupBoxBrisanjeJMBG.ResumeLayout(false);
+            this.groupBoxBrisanjeJMBG.PerformLayout();
             this.groupBoxBrisanjeImePrezime.ResumeLayout(false);
             this.groupBoxBrisanjeImePrezime.PerformLayout();
             this.groupBoxUnosPacijenata.ResumeLayout(false);
@@ -914,13 +916,11 @@
             this.groupBoxSpol.ResumeLayout(false);
             this.groupBoxSpol.PerformLayout();
             this.tabPageRaspored.ResumeLayout(false);
+            this.groupBoxPretragaRasporedPregleda.ResumeLayout(false);
+            this.groupBoxPretragaRasporedPregleda.PerformLayout();
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
-            this.groupBoxBrisanjeJMBG.ResumeLayout(false);
-            this.groupBoxBrisanjeJMBG.PerformLayout();
-            this.groupBoxPretragaRasporedPregleda.ResumeLayout(false);
-            this.groupBoxPretragaRasporedPregleda.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

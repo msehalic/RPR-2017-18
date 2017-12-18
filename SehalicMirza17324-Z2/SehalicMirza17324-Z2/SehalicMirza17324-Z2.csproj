@@ -70,6 +70,7 @@
     <Compile Include="glavniMeni17324.Designer.cs">
       <DependentUpon>glavniMeni17324.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Klinika.cs">
       <SubType>Form</SubType>
     </Compile>
