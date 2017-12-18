@@ -415,6 +415,8 @@ namespace SehalicMirza17324_Z2
                 }
         }
 
+        //OPCIJA 2
+
         private void textBoxImeRasporedPregleda_TextChanged(object sender, EventArgs e)
         {
             listBoxPretragaRaspored.Items.Clear();

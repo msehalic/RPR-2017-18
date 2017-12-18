@@ -14,7 +14,6 @@ namespace Zadaca1RPR_17324
         private string terapija; //ne zaboravi natjerati doktora da propise terapiju kod pregleda
         private DateTime vrijemeSmrti;
         private DateTime obdukcija;
-        private Pacijent p;
         private Doktor d = new Doktor();
         private int idPregleda;
         private bool rutinskiPregled = false; //ovo za vozacku i ono ljekarski
@@ -25,10 +24,12 @@ namespace Zadaca1RPR_17324
         public string Terapija { get => terapija; set => terapija = value; }
         public DateTime VrijemeSmrti { get => vrijemeSmrti; set => vrijemeSmrti = value; }
         public DateTime Obdukcija { get => obdukcija; set => obdukcija = value; }
-        public Pacijent P { get => p; set => p = value; }
         public Doktor D { get => d; set => d = value; }
         public int IdPregleda { get => idPregleda; set => idPregleda = value; }
         public bool RutinskiPregled { get => rutinskiPregled; set => rutinskiPregled = value; }
+        public Pacijent P { get => p; set => p = value; }
+
+        private Pacijent p;
 
         public Pregled(Pacijent p1)
         {

@@ -23,20 +23,20 @@ namespace Zadaca1RPR_17324
         public List<Uposlenik> Uposlenici { get => uposlenici; set => uposlenici = value; }
 
         //nekoliko doktora za potrebe testiranja
-       static Doktor doktor17324_1 = new Doktor("Ahmed", "Ahmedic", 123, 0, "dermatolog"); //dermatolog, broj licence 123
-      static  Doktor doktor17324_2 = new Doktor("Emina", "Tutic", 456, 0, "kardiolog"); //kardiolog, broj licence 456
-      static  Doktor doktor17324_3 = new Doktor("Marko", "Kikic", 789, 0, "ortoped"); //ortoped, broj licence 789
+        static Doktor doktor17324_1 = new Doktor("Ahmed", "Ahmedic", 123, 0, "dermatolog"); //dermatolog, broj licence 123
+        static Doktor doktor17324_2 = new Doktor("Emina", "Tutic", 456, 0, "kardiolog"); //kardiolog, broj licence 456
+        static Doktor doktor17324_3 = new Doktor("Marko", "Kikic", 789, 0, "ortoped"); //ortoped, broj licence 789
         static Doktor doktor17324_4 = new Doktor("Pavle", "Bisercic", 555, 0, "stomatolog"); //stomatolog, broj licence 555
 
         //kreirajmo ordinacije i postavimo odgovarajuce sefove
-        Ordinacija ordinacija17324_dermatolog = new Ordinacija(doktor17324_1);
-        Ordinacija ordinacija17324_kardiolog = new Ordinacija(doktor17324_2);
-        Ordinacija ordinacija17324_ortoped = new Ordinacija(doktor17324_3);
-        Ordinacija ordinacija17324_stomatolog = new Ordinacija(doktor17324_4);
+        Ordinacija ordinacija17324_dermatolog = new Ordinacija("dermatolog", doktor17324_1);
+        Ordinacija ordinacija17324_kardiolog = new Ordinacija("kardiolog", doktor17324_2);
+        Ordinacija ordinacija17324_ortoped = new Ordinacija("ortoped", doktor17324_3);
+        Ordinacija ordinacija17324_stomatolog = new Ordinacija("stomatolog", doktor17324_4);
 
         public KlinikaKontejner()
         {
-          doktori.Add(doktor17324_2);
+            doktori.Add(doktor17324_2);
             doktori.Add(doktor17324_3);
             doktori.Add(doktor17324_4);
             ordinacije.Add(ordinacija17324_dermatolog);
@@ -49,70 +49,70 @@ namespace Zadaca1RPR_17324
         {
             int cekanjeDermatolog = 0, cekanjeKardiolog = 0, cekanjeOrtoped = 0, cekanjeStomatolog = 0;
             //Dermatolog
-            if (dermatolog) 
-                    {
-                        ordinacija17324_dermatolog.RedCekanja.Enqueue(new Pregled(p));
-                        cekanjeDermatolog = ordinacija17324_dermatolog.RedCekanja.Count;
-                    }
+            if (dermatolog)
+            {
+                ordinacija17324_dermatolog.RedCekanja.Enqueue(new Pregled(p));
+                cekanjeDermatolog = ordinacija17324_dermatolog.RedCekanja.Count;
+            }
             //kardiolog
-            if (kardiolog) 
-                    {
-                        ordinacija17324_kardiolog.RedCekanja.Enqueue(new Pregled(p));
-                        cekanjeKardiolog = ordinacija17324_kardiolog.RedCekanja.Count;
-                    }
+            if (kardiolog)
+            {
+                ordinacija17324_kardiolog.RedCekanja.Enqueue(new Pregled(p));
+                cekanjeKardiolog = ordinacija17324_kardiolog.RedCekanja.Count;
+            }
             //ortoped
-            if (ortoped) 
-                    {
-                        ordinacija17324_ortoped.RedCekanja.Enqueue(new Pregled(p));
-                        cekanjeOrtoped = ordinacija17324_ortoped.RedCekanja.Count;
-                    }
+            if (ortoped)
+            {
+                ordinacija17324_ortoped.RedCekanja.Enqueue(new Pregled(p));
+                cekanjeOrtoped = ordinacija17324_ortoped.RedCekanja.Count;
+            }
             //stomatolog
-            if (stomatolog) 
-                    {
-                        ordinacija17324_stomatolog.RedCekanja.Enqueue(new Pregled(p));
-                        cekanjeStomatolog = ordinacija17324_stomatolog.RedCekanja.Count;
-                    }
+            if (stomatolog)
+            {
+                ordinacija17324_stomatolog.RedCekanja.Enqueue(new Pregled(p));
+                cekanjeStomatolog = ordinacija17324_stomatolog.RedCekanja.Count;
+            }
             return Tuple.Create(cekanjeDermatolog, cekanjeKardiolog, cekanjeOrtoped, cekanjeStomatolog);
         }
-        public void GenerisiRaspored(ref List<Pacijent> pacijenti, ref List<Ordinacija> ordinacije)
+        public List<string> GenerisiRaspored(Pacijent p)
         {
-            bool dobarUnos = true;
+            int dermatolog = 0, kardiolog = 0, ortoped = 0, stomatolog = 0;
+            List<string> povratniDoktori = new List<string>();
             List<Tuple<string, int, Doktor>> nizCekanjaOrdinacija = new List<Tuple<string, int, Doktor>>();//dinamicki ce se sortirati bez obzira koliko ima ordinacija
-            do
+            foreach (Pregled pregled17324 in ordinacija17324_dermatolog.RedCekanja) if (pregled17324.P == p) dermatolog = ordinacija17324_dermatolog.RedCekanja.ToList().IndexOf(pregled17324);
+            //Dermatolog
+            if (dermatolog>0)
             {
+                nizCekanjaOrdinacija.Add(Tuple.Create("dermatolog", dermatolog, ordinacija17324_dermatolog.SefKlinike));
+            }
+            //kardiolog
+            if (kardiolog>0)
+            {
+                nizCekanjaOrdinacija.Add(Tuple.Create("kardiolog", kardiolog, ordinacija17324_kardiolog.SefKlinike));
 
-                Console.Write("Unesite ime pacijenta kojem printate racun: ");
-                string ime = Console.ReadLine();
-                Console.Write("Unesite prezime pacijenta kojem printate racun: ");
-                string prezime = Console.ReadLine();
-                if (!pacijenti.Exists(x => String.Equals(x.Ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.Ime, ime, StringComparison.OrdinalIgnoreCase)))
-                //case insensitive
-                {
-                    Console.WriteLine("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Odustati od prikaza rasporeda");
-                    var temp = Console.ReadLine();
-                    dobarUnos = Int32.TryParse(temp, out int unosPonovo);
-                    if (unosPonovo != 2) dobarUnos = false;
-                }
-                else
-                {
-                    var pacijent17324 = pacijenti.Find(x => String.Equals(x.Ime, ime, StringComparison.OrdinalIgnoreCase) && String.Equals(x.Prezime, prezime, StringComparison.OrdinalIgnoreCase));
-                    //polimorfizam lvl 9999:
-                    foreach (Ordinacija o in ordinacije) if (o.NazivKlinike == "stomatolog") nizCekanjaOrdinacija.Add(Tuple.Create("stomatolog", o.RedCekanja.Count, o.SefKlinike));
-                    foreach (Ordinacija o in ordinacije) if (o.NazivKlinike == "kardiolog") nizCekanjaOrdinacija.Add(Tuple.Create("kardiolog", o.RedCekanja.Count, o.SefKlinike));
-                    foreach (Ordinacija o in ordinacije) if (o.NazivKlinike == "ortoped") nizCekanjaOrdinacija.Add(Tuple.Create("ortoped", o.RedCekanja.Count, o.SefKlinike));
-                    foreach (Ordinacija o in ordinacije) if (o.NazivKlinike == "dermatolog") nizCekanjaOrdinacija.Add(Tuple.Create("dermatolog", o.RedCekanja.Count, o.SefKlinike));
-                    nizCekanjaOrdinacija.Sort(delegate (Tuple<string, int, Doktor> x, Tuple<string, int, Doktor> y)
+            }
+            //ortoped
+            if (ortoped>0)
+            {
+                nizCekanjaOrdinacija.Add(Tuple.Create("ortoped", ortoped, ordinacija17324_ortoped.SefKlinike));
+
+            }
+            //stomatolog
+            if (stomatolog>0)
+            {
+                nizCekanjaOrdinacija.Add(Tuple.Create("stomatolog", stomatolog, ordinacija17324_stomatolog.SefKlinike));
+
+            }
+            nizCekanjaOrdinacija.Sort(delegate (Tuple<string, int, Doktor> x, Tuple<string, int, Doktor> y)
                     {
                         return x.Item2.CompareTo(y.Item2); //sortira po broju ljudi u redu cekanja
                     });
-                    Console.WriteLine("Vas raspored je sljedeci: ");
-                    foreach (Tuple<string, int, Doktor> t in nizCekanjaOrdinacija)
-                        if (t.Item2 != 0) Console.WriteLine("Posjetit cete doktora {0} {1}, specijalista {2}, u cijoj ste ordinaciji {3}. u redu cekanja.", t.Item3.ImeUposlenika, t.Item3.PrezimeUposlenika, t.Item1, t.Item2);
-                    Console.Write(Environment.NewLine); //cuz it's cool 
-                    //nema potrebe ispisivati ordinacije za koje se pacijent nije ni prijavio :)
-                }
-            } while (!dobarUnos);
+            Console.WriteLine("Vas raspored je sljedeci: ");
+            foreach (Tuple<string, int, Doktor> t in nizCekanjaOrdinacija)
+                povratniDoktori.Add(t.Item1);
+            return povratniDoktori;
         }
+
         public void KreirajKarton(ref List<Pacijent> pacijenti, ref List<Ordinacija> ordinacije)
         {
             bool dobarUnos = false;

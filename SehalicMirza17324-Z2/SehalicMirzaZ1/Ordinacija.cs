@@ -22,6 +22,12 @@ namespace Zadaca1RPR_17324
             this.sefKlinike = sefKlinike;
         }
 
+        public Ordinacija(string nazivKlinike, Doktor sefKlinike)
+        {
+            NazivKlinike = nazivKlinike;
+            SefKlinike = sefKlinike;
+        }
+
         public Ordinacija(Queue<Pregled> redCekanja, string nazivKlinike, Doktor sefKlinike)
         {
             RedCekanja = redCekanja;
