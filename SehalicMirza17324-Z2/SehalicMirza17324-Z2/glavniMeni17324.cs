@@ -702,7 +702,7 @@ namespace SehalicMirza17324_Z2
 
         private void tabPageRegistracijaPregleda_Click(object sender, EventArgs e)
         {
-
+            //treba validirati citav tab onaj...
         }
         private void NacrtajGrafikPusaciAlkoholicari()
         {
