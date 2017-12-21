@@ -132,6 +132,18 @@
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.labelDatumPregleda = new System.Windows.Forms.Label();
             this.labelOpisPostupka = new System.Windows.Forms.Label();
+            this.richTextBoxOpisPostupka = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxMisljenjeLjekara = new System.Windows.Forms.RichTextBox();
+            this.labelMisljenjeLjekara = new System.Windows.Forms.Label();
+            this.labelTerapijaPreporuka = new System.Windows.Forms.Label();
+            this.richTextBoxTerapija = new System.Windows.Forms.RichTextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.checkBoxUspjesanPregled = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.buttonRegistrujPregled = new System.Windows.Forms.Button();
+            this.buttonPonistiPregled = new System.Windows.Forms.Button();
+            this.labelKorisnikIme = new System.Windows.Forms.Label();
+            this.labelGreskaUPristupu = new System.Windows.Forms.Label();
             this.tabControlGlavniMeni.SuspendLayout();
             this.tabPageUnosPacijenata.SuspendLayout();
             this.groupBoxBrisanjePacijenata.SuspendLayout();
@@ -155,6 +167,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.groupBoxPusac.SuspendLayout();
             this.groupBoxAlkoholicar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlGlavniMeni
@@ -868,6 +881,17 @@
             // 
             // tabPageRegistracijaPregleda
             // 
+            this.tabPageRegistracijaPregleda.Controls.Add(this.labelGreskaUPristupu);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.buttonPonistiPregled);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.buttonRegistrujPregled);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.label10);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.checkBoxUspjesanPregled);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.numericUpDown1);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.richTextBoxMisljenjeLjekara);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.labelMisljenjeLjekara);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.richTextBoxTerapija);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.richTextBoxOpisPostupka);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.labelTerapijaPreporuka);
             this.tabPageRegistracijaPregleda.Controls.Add(this.labelOpisPostupka);
             this.tabPageRegistracijaPregleda.Controls.Add(this.labelDatumPregleda);
             this.tabPageRegistracijaPregleda.Controls.Add(this.dateTimePicker3);
@@ -882,6 +906,7 @@
             this.tabPageRegistracijaPregleda.TabIndex = 4;
             this.tabPageRegistracijaPregleda.Text = "Registracija Pregleda";
             this.tabPageRegistracijaPregleda.UseVisualStyleBackColor = true;
+            this.tabPageRegistracijaPregleda.Click += new System.EventHandler(this.tabPageRegistracijaPregleda_Click);
             // 
             // tabPageAnaliza
             // 
@@ -1174,7 +1199,7 @@
             this.listBoxRegistracijaPregleda.FormattingEnabled = true;
             this.listBoxRegistracijaPregleda.Location = new System.Drawing.Point(13, 63);
             this.listBoxRegistracijaPregleda.Name = "listBoxRegistracijaPregleda";
-            this.listBoxRegistracijaPregleda.Size = new System.Drawing.Size(308, 277);
+            this.listBoxRegistracijaPregleda.Size = new System.Drawing.Size(308, 290);
             this.listBoxRegistracijaPregleda.TabIndex = 12;
             // 
             // label8
@@ -1207,7 +1232,7 @@
             // 
             // dateTimePicker3
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(570, 57);
+            this.dateTimePicker3.Location = new System.Drawing.Point(573, 51);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker3.TabIndex = 13;
@@ -1215,7 +1240,7 @@
             // labelDatumPregleda
             // 
             this.labelDatumPregleda.AutoSize = true;
-            this.labelDatumPregleda.Location = new System.Drawing.Point(479, 63);
+            this.labelDatumPregleda.Location = new System.Drawing.Point(466, 57);
             this.labelDatumPregleda.Name = "labelDatumPregleda";
             this.labelDatumPregleda.Size = new System.Drawing.Size(85, 13);
             this.labelDatumPregleda.TabIndex = 14;
@@ -1224,11 +1249,126 @@
             // labelOpisPostupka
             // 
             this.labelOpisPostupka.AutoSize = true;
-            this.labelOpisPostupka.Location = new System.Drawing.Point(486, 90);
+            this.labelOpisPostupka.Location = new System.Drawing.Point(352, 90);
             this.labelOpisPostupka.Name = "labelOpisPostupka";
             this.labelOpisPostupka.Size = new System.Drawing.Size(78, 13);
             this.labelOpisPostupka.TabIndex = 15;
             this.labelOpisPostupka.Text = "Opis postupka:";
+            // 
+            // richTextBoxOpisPostupka
+            // 
+            this.richTextBoxOpisPostupka.Location = new System.Drawing.Point(456, 90);
+            this.richTextBoxOpisPostupka.Name = "richTextBoxOpisPostupka";
+            this.richTextBoxOpisPostupka.Size = new System.Drawing.Size(200, 123);
+            this.richTextBoxOpisPostupka.TabIndex = 16;
+            this.richTextBoxOpisPostupka.Text = "";
+            // 
+            // richTextBoxMisljenjeLjekara
+            // 
+            this.richTextBoxMisljenjeLjekara.Location = new System.Drawing.Point(793, 90);
+            this.richTextBoxMisljenjeLjekara.Name = "richTextBoxMisljenjeLjekara";
+            this.richTextBoxMisljenjeLjekara.Size = new System.Drawing.Size(200, 123);
+            this.richTextBoxMisljenjeLjekara.TabIndex = 18;
+            this.richTextBoxMisljenjeLjekara.Text = "";
+            // 
+            // labelMisljenjeLjekara
+            // 
+            this.labelMisljenjeLjekara.AutoSize = true;
+            this.labelMisljenjeLjekara.Location = new System.Drawing.Point(689, 90);
+            this.labelMisljenjeLjekara.Name = "labelMisljenjeLjekara";
+            this.labelMisljenjeLjekara.Size = new System.Drawing.Size(84, 13);
+            this.labelMisljenjeLjekara.TabIndex = 17;
+            this.labelMisljenjeLjekara.Text = "Mišljenje ljekara:";
+            // 
+            // labelTerapijaPreporuka
+            // 
+            this.labelTerapijaPreporuka.AutoSize = true;
+            this.labelTerapijaPreporuka.Location = new System.Drawing.Point(327, 242);
+            this.labelTerapijaPreporuka.Name = "labelTerapijaPreporuka";
+            this.labelTerapijaPreporuka.Size = new System.Drawing.Size(108, 13);
+            this.labelTerapijaPreporuka.TabIndex = 15;
+            this.labelTerapijaPreporuka.Text = "Preporučena terapija:";
+            // 
+            // richTextBoxTerapija
+            // 
+            this.richTextBoxTerapija.Location = new System.Drawing.Point(456, 239);
+            this.richTextBoxTerapija.Name = "richTextBoxTerapija";
+            this.richTextBoxTerapija.Size = new System.Drawing.Size(200, 123);
+            this.richTextBoxTerapija.TabIndex = 16;
+            this.richTextBoxTerapija.Text = "";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(835, 287);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 19;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // checkBoxUspjesanPregled
+            // 
+            this.checkBoxUspjesanPregled.AutoSize = true;
+            this.checkBoxUspjesanPregled.Location = new System.Drawing.Point(835, 326);
+            this.checkBoxUspjesanPregled.Name = "checkBoxUspjesanPregled";
+            this.checkBoxUspjesanPregled.Size = new System.Drawing.Size(108, 17);
+            this.checkBoxUspjesanPregled.TabIndex = 20;
+            this.checkBoxUspjesanPregled.Text = "Uspješan pregled";
+            this.checkBoxUspjesanPregled.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(715, 289);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(104, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Broj licence doktora:";
+            // 
+            // buttonRegistrujPregled
+            // 
+            this.buttonRegistrujPregled.Location = new System.Drawing.Point(699, 372);
+            this.buttonRegistrujPregled.Name = "buttonRegistrujPregled";
+            this.buttonRegistrujPregled.Size = new System.Drawing.Size(120, 23);
+            this.buttonRegistrujPregled.TabIndex = 22;
+            this.buttonRegistrujPregled.Text = "Registruj pregled!";
+            this.buttonRegistrujPregled.UseVisualStyleBackColor = true;
+            // 
+            // buttonPonistiPregled
+            // 
+            this.buttonPonistiPregled.Location = new System.Drawing.Point(835, 372);
+            this.buttonPonistiPregled.Name = "buttonPonistiPregled";
+            this.buttonPonistiPregled.Size = new System.Drawing.Size(120, 23);
+            this.buttonPonistiPregled.TabIndex = 23;
+            this.buttonPonistiPregled.Text = "Poništi pregled!";
+            this.buttonPonistiPregled.UseVisualStyleBackColor = true;
+            // 
+            // labelKorisnikIme
+            // 
+            this.labelKorisnikIme.AutoSize = true;
+            this.labelKorisnikIme.Font = new System.Drawing.Font("Bauhaus 93", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelKorisnikIme.Location = new System.Drawing.Point(707, 9);
+            this.labelKorisnikIme.Name = "labelKorisnikIme";
+            this.labelKorisnikIme.Size = new System.Drawing.Size(0, 24);
+            this.labelKorisnikIme.TabIndex = 2;
+            // 
+            // labelGreskaUPristupu
+            // 
+            this.labelGreskaUPristupu.AutoSize = true;
+            this.labelGreskaUPristupu.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelGreskaUPristupu.ForeColor = System.Drawing.Color.Red;
+            this.labelGreskaUPristupu.Location = new System.Drawing.Point(101, 484);
+            this.labelGreskaUPristupu.Name = "labelGreskaUPristupu";
+            this.labelGreskaUPristupu.Size = new System.Drawing.Size(0, 55);
+            this.labelGreskaUPristupu.TabIndex = 24;
             // 
             // glavniMeni17324
             // 
@@ -1236,6 +1376,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1160, 681);
+            this.Controls.Add(this.labelKorisnikIme);
             this.Controls.Add(this.statusStrip2);
             this.Controls.Add(this.tabControlGlavniMeni);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1284,6 +1425,7 @@
             this.groupBoxPusac.PerformLayout();
             this.groupBoxAlkoholicar.ResumeLayout(false);
             this.groupBoxAlkoholicar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1393,5 +1535,17 @@
         private System.Windows.Forms.Label labelDatumPregleda;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.Label labelOpisPostupka;
+        private System.Windows.Forms.RichTextBox richTextBoxOpisPostupka;
+        private System.Windows.Forms.RichTextBox richTextBoxMisljenjeLjekara;
+        private System.Windows.Forms.Label labelMisljenjeLjekara;
+        private System.Windows.Forms.RichTextBox richTextBoxTerapija;
+        private System.Windows.Forms.Label labelTerapijaPreporuka;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.CheckBox checkBoxUspjesanPregled;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button buttonPonistiPregled;
+        private System.Windows.Forms.Button buttonRegistrujPregled;
+        private System.Windows.Forms.Label labelKorisnikIme;
+        private System.Windows.Forms.Label labelGreskaUPristupu;
     }
 }

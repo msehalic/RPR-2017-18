@@ -7,15 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Doktori;
 namespace SehalicMirza17324_Z2
 {
     public partial class glavniMeni17324 : Form
     {
         Zadaca1RPR_17324.KlinikaKontejner klinika17324 = new Zadaca1RPR_17324.KlinikaKontejner();
-        public glavniMeni17324()
+        Uposlenik uposlenik17324_1 = new Uposlenik();
+        public glavniMeni17324(Uposlenik u)
         {
+            uposlenik17324_1 = u;
             InitializeComponent();
+            labelKorisnikIme.Text = "Dobro došli " + u.ImeUposlenika + " " + u.PrezimeUposlenika;
+            if (u is Tehnicar)
+            {
+                ((Control)this.tabPageRegistracijaPregleda).Enabled = false; //tehnicari ne smiju moci registrovati preglede
+                labelGreskaUPristupu.Text = "Nemate privilegije za pristup ovom modulu!";
+            }
         }
 
         private void glavniMeni17324_Load(object sender, EventArgs e)
@@ -690,6 +698,15 @@ namespace SehalicMirza17324_Z2
                         listBoxRegistracijaPregleda.Items.Add(p);
                     }
                 }
+        }
+
+        private void tabPageRegistracijaPregleda_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void NacrtajGrafikPusaciAlkoholicari()
+        {
+            //nesto http://www.c-sharpcorner.com/uploadfile/dbeniwal321/drawing-a-pie-chart-in-gdi/
         }
     }
 }

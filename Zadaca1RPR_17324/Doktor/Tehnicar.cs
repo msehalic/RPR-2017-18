@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Doktori
 {
-    class Tehnicar : Uposlenik
+    public class Tehnicar : Uposlenik
     {
         //cisto da postoji funkcionalnost
         public Tehnicar()

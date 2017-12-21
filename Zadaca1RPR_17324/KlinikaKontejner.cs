@@ -44,6 +44,7 @@ namespace Zadaca1RPR_17324
             ordinacije.Add(ordinacija17324_ortoped);
             ordinacije.Add(ordinacija17324_stomatolog);
             Uposlenici.Add(new Uposlenik("Jovo", "Jovic", 9999, "admin", "admin"));
+            Uposlenici.Add(new Tehnicar("Samir", "Samirovic", 1000, "samir", "samir1"));
         }
         public Tuple<int, int, int, int> UnosPodataka(Pacijent p, bool dermatolog, bool kardiolog, bool ortoped, bool stomatolog)
         {

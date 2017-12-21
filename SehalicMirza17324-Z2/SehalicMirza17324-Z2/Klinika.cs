@@ -16,6 +16,7 @@ namespace SehalicMirza17324_Z2
     public partial class Klinika : Form
     {
         Zadaca1RPR_17324.KlinikaKontejner klinika17324 = new Zadaca1RPR_17324.KlinikaKontejner();
+        Uposlenik uposlenik17324_1 = new Uposlenik();
         public Klinika()
         {
             InitializeComponent();
@@ -66,7 +67,7 @@ namespace SehalicMirza17324_Z2
         {
             if (errorProvider1.GetError(textBoxUnosSifre) == "")
             {
-                glavniMeni17324 glavniMeni17324 = new glavniMeni17324();
+                glavniMeni17324 glavniMeni17324 = new glavniMeni17324(uposlenik17324_1);
                 this.Hide();
                 glavniMeni17324.Show();
             }
@@ -115,6 +116,7 @@ namespace SehalicMirza17324_Z2
             bool ispravan = false;
             foreach (Uposlenik u in klinika17324.Uposlenici) if (u.KorisnickoIme == textboxUnosImena.Text && VerifyMd5Hash(MD5.Create(), textBoxUnosSifre.Text, u.Lozinka))
                 {
+                    uposlenik17324_1 = u;
                     ispravan = true;
                 }
             if (textBoxUnosSifre.Text == "") ispravan = false; // prazan string
