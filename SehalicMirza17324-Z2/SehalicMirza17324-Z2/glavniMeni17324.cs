@@ -23,7 +23,7 @@ namespace SehalicMirza17324_Z2
             this.AutoSize = true;
             this.AutoSizeMode = AutoSizeMode.GrowOnly;
             this.Text = "Klinika 'Dr. Sehalic'";
-           if (checkBoxHitanSlucaj.Checked==false) groupBoxHitniSlucajevi.Enabled = false;
+            if (checkBoxHitanSlucaj.Checked == false) groupBoxHitniSlucajevi.Enabled = false;
             if (radioButtonZiv.Checked == false) groupBoxZiv.Enabled = false;
             if (radioButtonMrtav.Checked == false) groupBoxMrtav.Enabled = false;
         }
@@ -129,6 +129,7 @@ namespace SehalicMirza17324_Z2
         {
             textBox1_Validating(textBox1, new CancelEventArgs());
             textBox2_Validating(textBox2, new CancelEventArgs());
+            userControlUnosSlike1_Validating(userControlUnosSlike1, new CancelEventArgs());
             maskedTextBox1_Validating(maskedTextBox1, new CancelEventArgs());
             textBoxAdresa_Validating(textBoxAdresa, new CancelEventArgs());
             textBoxMisljenjeDoktora_Validating(textBoxMisljenjeDoktora, new CancelEventArgs());
@@ -143,7 +144,7 @@ namespace SehalicMirza17324_Z2
             //KOJE
             //TREBA
             //VALIDIRATI!
-            if (errorProvider2.GetError(textBox1) == "" && errorProvider2.GetError(textBox2) == "" && errorProvider2.GetError(maskedTextBox1) == "" && errorProvider2.GetError(textBoxAdresa) == "" && errorProvider2.GetError(textBoxUzrokSmrti)=="" && errorProvider2.GetError(textBoxMisljenjeDoktora)=="" && errorProvider2.GetError(textBoxPostupak)=="" && errorProvider2.GetError(textBoxTerapija)=="" && errorProvider2.GetError(groupBoxZivMrtav)=="")
+            if (errorProvider2.GetError(userControlUnosSlike1)=="" && errorProvider2.GetError(textBox1) == "" && errorProvider2.GetError(textBox2) == "" && errorProvider2.GetError(maskedTextBox1) == "" && errorProvider2.GetError(textBoxAdresa) == "" && errorProvider2.GetError(textBoxUzrokSmrti) == "" && errorProvider2.GetError(textBoxMisljenjeDoktora) == "" && errorProvider2.GetError(textBoxPostupak) == "" && errorProvider2.GetError(textBoxTerapija) == "" && errorProvider2.GetError(groupBoxZivMrtav) == "")
             {
                 string bracnoStanjePacijenta = "";
 
@@ -152,7 +153,7 @@ namespace SehalicMirza17324_Z2
                 else if (radioButtonOzenjen.Checked) bracnoStanjePacijenta = radioButtonOzenjen.Text;
                 else if (radioButtonNeozenjen.Checked) bracnoStanjePacijenta = radioButtonNeozenjen.Text;
                 bool greska = false;
-                string pogresniMaticniBroj="";
+                string pogresniMaticniBroj = "";
                 char pol = 'M';
                 if (radioButtonZ.Checked) pol = 'Z';
                 Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt64(maskedTextBox1.Text));
@@ -160,19 +161,19 @@ namespace SehalicMirza17324_Z2
                 {
                     if (pacijent17324.MaticniBroj == Convert.ToUInt64(maskedTextBox1.Text))
                     {
-                        textBoxInfo.Text = "Vec postoji pacijent sa identicnim JMBG kao " + textBox1.Text + " " + textBox2.Text;
-                        textBoxInfo.ForeColor = Color.Red;
+                        toolStripStatusLabel2.Text = "Vec postoji pacijent sa identicnim JMBG kao " + textBox1.Text + " " + textBox2.Text;
+                        toolStripStatusLabel2.ForeColor = Color.Red;
                         greska = true;
                         pogresniMaticniBroj = maskedTextBox1.Text;
                     }
                 }
-                if (maskedTextBox1.Text!=pogresniMaticniBroj) greska = false;
+                if (maskedTextBox1.Text != pogresniMaticniBroj) greska = false;
                 if (greska == false)
                 {
                     klinika17324.Pacijenti.Add(p);
                     klinika17324.UnosPodataka(p, checkBoxDermatolog.Checked, checkBoxKardiolog.Checked, checkBoxOrtoped.Checked, checkBoxStomatolog.Checked);
-                    textBoxInfo.Text = "Uspjesno dodan pacijent " + p.Ime + " " + p.Prezime;
-                    textBoxInfo.ForeColor = Color.Green; //malo lijepog dizajna
+                    toolStripStatusLabel2.Text = "Uspjesno dodan pacijent " + p.Ime + " " + p.Prezime;
+                    toolStripStatusLabel2.ForeColor = Color.Green; //malo lijepog dizajna
                 }
                 //TREBA JOS U SETTERE DODATI 
                 //VALIDACIJU
@@ -218,7 +219,7 @@ namespace SehalicMirza17324_Z2
             textBox2.Text = "";
             textBoxAdresa.Text = "";
             maskedTextBox1.Text = "";
-            textBoxInfo.Text = "";
+            toolStripStatusLabel2.Text = "";
             userControlUnosSlike1.Resetiraj();
             checkBoxDermatolog.Checked = false;
             checkBoxKardiolog.Checked = false;
@@ -291,7 +292,7 @@ namespace SehalicMirza17324_Z2
 
         private void groupBoxZivMrtav_Validating(object sender, CancelEventArgs e)
         {
-            if (radioButtonMrtav.Checked==false && radioButtonZiv.Checked==false && checkBoxHitanSlucaj.Checked==true)
+            if (radioButtonMrtav.Checked == false && radioButtonZiv.Checked == false && checkBoxHitanSlucaj.Checked == true)
             {
                 this.errorProvider2.SetError(groupBoxZivMrtav, "Niste odabrali životni status pacijenta!");
                 toolStripStatusLabel2.Text = "Niste odabrali životni status pacijenta!";
@@ -307,7 +308,7 @@ namespace SehalicMirza17324_Z2
 
         private void textBoxPostupak_Validating(object sender, CancelEventArgs e)
         {
-            if (radioButtonZiv.Checked==true && textBoxPostupak.Text.Length==0)
+            if (radioButtonZiv.Checked == true && textBoxPostupak.Text.Length == 0)
             {
                 this.errorProvider2.SetError(textBoxPostupak, "Niste unijeli detalje o postupku pregleda hitnog pacijenta!");
                 toolStripStatusLabel2.Text = "Niste unijeli detalje o postupku pregleda hitnog pacijenta!";
@@ -392,14 +393,14 @@ namespace SehalicMirza17324_Z2
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             listBoxPretragaImePrezime.Items.Clear();
-            if (textBoxBrisanjeImePrezime.Text.Length!=0) //ne zelimo izlistavati na prazno
-            foreach (Zadaca1RPR_17324.Pacijent p in klinika17324.Pacijenti)
-            {
-                if ((p.Ime + " " + p.Prezime).IndexOf(textBoxBrisanjeImePrezime.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+            if (textBoxBrisanjeImePrezime.Text.Length != 0) //ne zelimo izlistavati na prazno
+                foreach (Zadaca1RPR_17324.Pacijent p in klinika17324.Pacijenti)
                 {
-                    listBoxPretragaImePrezime.Items.Add(p);
+                    if ((p.Ime + " " + p.Prezime).IndexOf(textBoxBrisanjeImePrezime.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        listBoxPretragaImePrezime.Items.Add(p);
+                    }
                 }
-            }
         }
 
         private void textBoxBrisanjeJMBG_TextChanged(object sender, EventArgs e)
@@ -426,6 +427,267 @@ namespace SehalicMirza17324_Z2
                     if ((p.Ime + " " + p.Prezime).IndexOf(textBoxImeRasporedPregleda.Text, StringComparison.OrdinalIgnoreCase) >= 0)
                     {
                         listBoxPretragaRaspored.Items.Add(p);
+                    }
+                }
+        }
+
+        private void listBoxPretragaRaspored_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBoxPretragaRaspored_SelectedValueChanged(object sender, EventArgs e)
+        {
+            labelDermatolog.Text = "";
+            labelOrtoped.Text = "";
+            labelStomatolog.Text = "";
+            labelKardiolog.Text = "";
+            foreach (Zadaca1RPR_17324.Ordinacija o in klinika17324.Ordinacije)
+            {
+                foreach (Zadaca1RPR_17324.Pregled pr in o.RedCekanja)
+                {
+                    if (pr.P == listBoxPretragaRaspored.SelectedItem)
+                    {
+                        //stomatolog
+                        if (o.NazivKlinike == "stomatolog")
+                        {
+                            labelStomatolog.Text = "Pacijent " + pr.P.ToString() + " \n" + "U ordinaciji stomatologa je " + (o.RedCekanja.ToList().IndexOf(pr) + 1) + "/" + o.RedCekanja.Count + " u redu cekanja.";
+                            if (o.RedCekanja.ToList().IndexOf(pr) == 0) labelStomatolog.Text += " Doktor je spreman da primi pacijenta.";                        //ortoped
+                        }
+                        //ortoped
+                        if (o.NazivKlinike == "ortoped")
+                        {
+                            labelOrtoped.Text = "Pacijent " + pr.P.ToString() + " \n" + "U ordinaciji ortopeda je " + (o.RedCekanja.ToList().IndexOf(pr)+1) + "/" + o.RedCekanja.Count + " u redu cekanja.";
+                            if (o.RedCekanja.ToList().IndexOf(pr) == 0) labelOrtoped.Text += " Doktor je spreman da primi pacijenta.";                        //kardiolog
+                        }
+                        //kardiolog
+                        if (o.NazivKlinike == "kardiolog")
+                        {
+                            labelKardiolog.Text = "Pacijent " + pr.P.ToString() + " \n" + "U ordinaciji kardiologa je " + (o.RedCekanja.ToList().IndexOf(pr) + 1) + "/" + o.RedCekanja.Count + " u redu cekanja.";
+                            if (o.RedCekanja.ToList().IndexOf(pr) == 0) labelKardiolog.Text += " Doktor je spreman da primi pacijenta.";                        //dermatolog
+                        }
+                        //ortoped
+                        if (o.NazivKlinike == "dermatolog")
+                        {
+                            labelDermatolog.Text = "Pacijent " + pr.P.ToString() + " \n" + "U ordinaciji dermatologa je " + (o.RedCekanja.ToList().IndexOf(pr) + 1) + "/" + o.RedCekanja.Count + " u redu cekanja.";
+                            if (o.RedCekanja.ToList().IndexOf(pr) == 0) labelDermatolog.Text += " Doktor je spreman da primi pacijenta.";
+                        }
+                    }
+                }
+            }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBoxKarton_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxKreiranjeKartona_TextChanged(object sender, EventArgs e)
+        {
+                listBoxKarton.Items.Clear();
+                if (textBoxKreiranjeKartona.Text.Length != 0) //ne zelimo izlistavati na prazno
+                    foreach (Zadaca1RPR_17324.Pacijent p in klinika17324.Pacijenti)
+                    {
+                        if ((p.Ime + " " + p.Prezime).IndexOf(textBoxKreiranjeKartona.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            listBoxKarton.Items.Add(p);
+                        }
+                    }
+            
+        }
+
+        private void buttonPonisti_Click(object sender, EventArgs e)
+        {
+            textBoxKreiranjeKartona.Text = "";
+            radioButtonPusac.Checked = false;
+            radioButtonNepusac.Checked = false;
+            radioButtonNealkoholicar.Checked = false;
+            radioButtonAlkoholicar.Checked = false;
+            richTextBox1.Text = "";
+            richTextBox2.Text = "";
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_Validating(object sender, CancelEventArgs e)
+        {
+            if (richTextBox1.Text == "")
+            {
+                this.errorProvider2.SetError(richTextBox1, "Niste unijeli detalje o nasljednim bolestima u porodici!");
+                toolStripStatusLabel2.Text = "Niste unijeli detalje o nasljednim bolestima u porodici!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void richTextBox2_Validating(object sender, CancelEventArgs e)
+        {
+            if (richTextBox2.Text == "")
+            {
+                this.errorProvider2.SetError(richTextBox2, "Niste unijeli detalje o alergijama!");
+                toolStripStatusLabel2.Text = "Niste unijeli detalje o alergijama!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void richTextBox1_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(richTextBox1, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void richTextBox2_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(richTextBox2, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonKreiraj_Click(object sender, EventArgs e)
+        {
+            richTextBox1_Validating(sender, new CancelEventArgs());
+            richTextBox2_Validating(sender, new CancelEventArgs());
+            textBoxKreiranjeKartona_Validating(sender, new CancelEventArgs());
+            groupBoxAlkoholicar_Validating(sender, new CancelEventArgs());
+            groupBoxPusac_Validating(sender, new CancelEventArgs());
+            listBoxKarton_Validating(sender, new CancelEventArgs());
+            if (errorProvider2.GetError(richTextBox1)=="" && errorProvider2.GetError(richTextBox2) == "" && errorProvider2.GetError(groupBoxAlkoholicar) == "" && errorProvider2.GetError(groupBoxPusac) == "" && errorProvider2.GetError(listBoxKarton) == "" && errorProvider2.GetError(textBoxKreiranjeKartona) == "")
+            {
+                Zadaca1RPR_17324.Pacijent pacijent17324_1 = (Zadaca1RPR_17324.Pacijent) listBoxKarton.SelectedItem;
+                this.errorProvider2.SetError(listBoxKarton, "");
+                toolStripStatusLabel2.Text = "Karton pacijenta " + pacijent17324_1.Ime + " " + pacijent17324_1.Prezime + " uspjesno kreiran!";
+                toolStripStatusLabel2.ForeColor = Color.Green;
+                pacijent17324_1.alergije = richTextBox2.Text;
+                pacijent17324_1.historijaBolestiuPorodici = richTextBox1.Text;
+                pacijent17324_1.IspravanKarton = true;
+                pacijent17324_1.alkoholicar = (radioButtonAlkoholicar.Checked);
+                pacijent17324_1.pusac = (radioButtonPusac.Checked);
+            }
+
+        }
+
+        private void textBoxKreiranjeKartona_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBoxKreiranjeKartona.Text=="")
+            {
+                this.errorProvider2.SetError(textBoxKreiranjeKartona, "Niste unijeli ime i prezime pacijenta kojem se kreira karton!");
+                toolStripStatusLabel2.Text = "Niste unijeli ime i prezime pacijenta kojem se kreira karton!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxKreiranjeKartona_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(textBoxKreiranjeKartona, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void groupBoxPusac_Validating(object sender, CancelEventArgs e)
+        {
+            if (radioButtonPusac.Checked==false && radioButtonNepusac.Checked==false)
+            {
+                this.errorProvider2.SetError(groupBoxPusac, "Niste odabrali da li je pacijent pusac!");
+                toolStripStatusLabel2.Text = "Niste odabrali da li je pacijent pusac!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void groupBoxAlkoholicar_Validating(object sender, CancelEventArgs e)
+        {
+            if (radioButtonAlkoholicar.Checked == false && radioButtonNealkoholicar.Checked==false)
+            {
+                this.errorProvider2.SetError(groupBoxAlkoholicar, "Niste odabrali da li je pacijent alkoholicar!");
+                toolStripStatusLabel2.Text = "Niste odabrali da li je pacijent alkoholicar!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void listBoxKarton_Validating(object sender, CancelEventArgs e)
+        {
+            if (listBoxKarton.SelectedIndex == -1)
+            {
+                this.errorProvider2.SetError(listBoxKarton, "Niste izabrali pacijenta iz liste!");
+                toolStripStatusLabel2.Text = "Niste izabrali pacijenta iz liste!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        
+        }
+
+        private void listBoxKarton_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(listBoxKarton, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void groupBoxPusac_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(groupBoxPusac, "");
+            toolStripStatusLabel2.Text = "";
+
+        }
+
+        private void groupBoxAlkoholicar_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(groupBoxAlkoholicar, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void userControlUnosSlike1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void userControlUnosSlike1_Validating(object sender, CancelEventArgs e)
+        {
+            if (!userControlUnosSlike1.ispravanDatum)
+            {
+                this.errorProvider2.SetError(userControlUnosSlike1, "Datum slike ne smije biti stariji od 6 mjeseci!");
+                toolStripStatusLabel2.Text = "Datum slike ne smije biti stariji od 6 mjeseci!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void userControlUnosSlike1_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(userControlUnosSlike1, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void textBox3_TextChanged_1(object sender, EventArgs e)
+        {
+            listBoxPretraga.Items.Clear();
+            if (textBoxPretragaKartona.Text.Length != 0) //ne zelimo izlistavati na prazno
+                foreach (Zadaca1RPR_17324.Pacijent p in klinika17324.Pacijenti)
+                {
+                    //izlistaj akko ima ispravan karton
+                    if (p.IspravanKarton==true && (p.Ime + " " + p.Prezime).IndexOf(textBoxPretragaKartona.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        listBoxPretraga.Items.Add(p);
+                    }
+                }
+        }
+
+        private void textBoxRegistracijaPregleda_TextChanged(object sender, EventArgs e)
+        {
+            listBoxRegistracijaPregleda.Items.Clear();
+            if (textBoxRegistracijaPregleda.Text.Length != 0) //ne zelimo izlistavati na prazno
+                foreach (Zadaca1RPR_17324.Pacijent p in klinika17324.Pacijenti)
+                {
+                    //izlistaj akko ima ispravan karton
+                    if (p.IspravanKarton == true && (p.Ime + " " + p.Prezime).IndexOf(textBoxRegistracijaPregleda.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        listBoxRegistracijaPregleda.Items.Add(p);
                     }
                 }
         }
