@@ -15,12 +15,13 @@ namespace Zadaca1RPR_17324
         private static List<Doktor> doktori = new List<Doktor>();
         private static List<Ordinacija> ordinacije = new List<Ordinacija>();
         private static List<Uposlenik> uposlenici = new List<Uposlenik>();
-
+        List<Tuple<Pregled, decimal>> pregledIznosNaplate = new List<Tuple<Pregled, decimal>>();
 
         public List<Pacijent> Pacijenti { get => pacijenti; set => pacijenti = value; }
         public List<Doktor> Doktori { get => doktori; set => doktori = value; }
         public List<Ordinacija> Ordinacije { get => ordinacije; set => ordinacije = value; }
         public List<Uposlenik> Uposlenici { get => uposlenici; set => uposlenici = value; }
+        public List<Tuple<Pregled, decimal>> PregledIznosNaplate { get => pregledIznosNaplate; set => pregledIznosNaplate = value; }
 
         //nekoliko doktora za potrebe testiranja
         static Doktor doktor17324_1 = new Doktor("Ahmed", "Ahmedic", 123, 0, "dermatolog"); //dermatolog, broj licence 123

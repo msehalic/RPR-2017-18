@@ -158,6 +158,11 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.labelKorisnikIme = new System.Windows.Forms.Label();
+            this.listBoxNaplata = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxImePrezimeNaplata = new System.Windows.Forms.TextBox();
+            this.labelPoruka = new System.Windows.Forms.Label();
+            this.listBoxRacun = new System.Windows.Forms.ListBox();
             this.tabControlGlavniMeni.SuspendLayout();
             this.tabPageUnosPacijenata.SuspendLayout();
             this.groupBoxBrisanjePacijenata.SuspendLayout();
@@ -187,6 +192,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxZelenaNepusac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCrvenaPusac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPageNaplata.SuspendLayout();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
@@ -1202,6 +1208,7 @@
             this.buttonRegistrujPregled.TabIndex = 22;
             this.buttonRegistrujPregled.Text = "Registruj pregled!";
             this.buttonRegistrujPregled.UseVisualStyleBackColor = true;
+            this.buttonRegistrujPregled.Click += new System.EventHandler(this.buttonRegistrujPregled_Click);
             // 
             // label10
             // 
@@ -1265,6 +1272,8 @@
             this.richTextBoxTerapija.Size = new System.Drawing.Size(200, 123);
             this.richTextBoxTerapija.TabIndex = 16;
             this.richTextBoxTerapija.Text = "";
+            this.richTextBoxTerapija.Validating += new System.ComponentModel.CancelEventHandler(this.richTextBoxTerapija_Validating);
+            this.richTextBoxTerapija.Validated += new System.EventHandler(this.richTextBoxTerapija_Validated);
             // 
             // richTextBoxOpisPostupka
             // 
@@ -1504,6 +1513,11 @@
             // 
             // tabPageNaplata
             // 
+            this.tabPageNaplata.Controls.Add(this.listBoxRacun);
+            this.tabPageNaplata.Controls.Add(this.listBoxNaplata);
+            this.tabPageNaplata.Controls.Add(this.label9);
+            this.tabPageNaplata.Controls.Add(this.textBoxImePrezimeNaplata);
+            this.tabPageNaplata.Controls.Add(this.labelPoruka);
             this.tabPageNaplata.Location = new System.Drawing.Point(4, 22);
             this.tabPageNaplata.Name = "tabPageNaplata";
             this.tabPageNaplata.Padding = new System.Windows.Forms.Padding(3);
@@ -1511,6 +1525,7 @@
             this.tabPageNaplata.TabIndex = 6;
             this.tabPageNaplata.Text = "Naplata";
             this.tabPageNaplata.UseVisualStyleBackColor = true;
+            this.tabPageNaplata.Click += new System.EventHandler(this.tabPageNaplata_Click);
             // 
             // statusStrip2
             // 
@@ -1540,6 +1555,57 @@
             this.labelKorisnikIme.Name = "labelKorisnikIme";
             this.labelKorisnikIme.Size = new System.Drawing.Size(0, 24);
             this.labelKorisnikIme.TabIndex = 2;
+            // 
+            // listBoxNaplata
+            // 
+            this.listBoxNaplata.FormattingEnabled = true;
+            this.listBoxNaplata.Location = new System.Drawing.Point(12, 68);
+            this.listBoxNaplata.Name = "listBoxNaplata";
+            this.listBoxNaplata.Size = new System.Drawing.Size(308, 277);
+            this.listBoxNaplata.TabIndex = 12;
+            this.listBoxNaplata.SelectedIndexChanged += new System.EventHandler(this.listBoxNaplata_SelectedIndexChanged);
+            this.listBoxNaplata.Validating += new System.ComponentModel.CancelEventHandler(this.listBoxNaplata_Validating);
+            this.listBoxNaplata.Validated += new System.EventHandler(this.listBoxNaplata_Validated);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(9, 35);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(69, 13);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Ime/Prezime:";
+            // 
+            // textBoxImePrezimeNaplata
+            // 
+            this.textBoxImePrezimeNaplata.Location = new System.Drawing.Point(100, 32);
+            this.textBoxImePrezimeNaplata.Name = "textBoxImePrezimeNaplata";
+            this.textBoxImePrezimeNaplata.Size = new System.Drawing.Size(220, 20);
+            this.textBoxImePrezimeNaplata.TabIndex = 10;
+            this.textBoxImePrezimeNaplata.TextChanged += new System.EventHandler(this.textBoxImePrezimeNaplata_TextChanged);
+            this.textBoxImePrezimeNaplata.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxImePrezimeNaplata_Validating);
+            this.textBoxImePrezimeNaplata.Validated += new System.EventHandler(this.textBoxImePrezimeNaplata_Validated);
+            // 
+            // labelPoruka
+            // 
+            this.labelPoruka.AutoSize = true;
+            this.labelPoruka.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelPoruka.Location = new System.Drawing.Point(9, 12);
+            this.labelPoruka.Name = "labelPoruka";
+            this.labelPoruka.Size = new System.Drawing.Size(474, 13);
+            this.labelPoruka.TabIndex = 9;
+            this.labelPoruka.Text = "Ukoliko pacijentu nije kreiran karton, on neće biti vidljiv u listi za izbor paci" +
+    "jenata!";
+            // 
+            // listBoxRacun
+            // 
+            this.listBoxRacun.ColumnWidth = 130;
+            this.listBoxRacun.FormattingEnabled = true;
+            this.listBoxRacun.Location = new System.Drawing.Point(509, 68);
+            this.listBoxRacun.Name = "listBoxRacun";
+            this.listBoxRacun.Size = new System.Drawing.Size(308, 277);
+            this.listBoxRacun.TabIndex = 13;
+            this.listBoxRacun.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // glavniMeni17324
             // 
@@ -1602,6 +1668,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxZelenaNepusac)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCrvenaPusac)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPageNaplata.ResumeLayout(false);
+            this.tabPageNaplata.PerformLayout();
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
@@ -1740,5 +1808,10 @@
         private System.Windows.Forms.Label labelBrojPacijenata;
         private System.Windows.Forms.Label labelProcenatAlkoholicara;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.ListBox listBoxNaplata;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBoxImePrezimeNaplata;
+        private System.Windows.Forms.Label labelPoruka;
+        private System.Windows.Forms.ListBox listBoxRacun;
     }
 }

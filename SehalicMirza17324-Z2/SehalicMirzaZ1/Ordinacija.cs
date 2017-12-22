@@ -41,7 +41,7 @@ namespace Zadaca1RPR_17324
 
         public decimal IznosPlacanja(Pregled pregled17324_1)
         {
-            return pregled17324_1.RutinskiPregled ? 45.00M : 83.20M; //vraca cijenu pregleda
+            return pregled17324_1.RutinskiPregled ? 45.00M : 90.00M; //vraca cijenu pregleda
         }
     }
 }

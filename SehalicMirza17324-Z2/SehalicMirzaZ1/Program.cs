@@ -13,7 +13,7 @@ namespace Zadaca1RPR_17324
             KlinikaKontejner klinika17324 = new KlinikaKontejner();
             List<decimal> naplaceno = new List<decimal>();
             int unos;
-            List<Tuple<Pregled, decimal>> pregledIznosNaplate = new List<Tuple<Pregled, decimal>>();
+
             bool dobarUnos = true;
             do
             {
