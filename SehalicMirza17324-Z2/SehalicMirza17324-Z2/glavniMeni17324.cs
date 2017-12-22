@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Doktori;
+using System.Collections;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+
 namespace SehalicMirza17324_Z2
 {
     public partial class glavniMeni17324 : Form
@@ -702,11 +706,160 @@ namespace SehalicMirza17324_Z2
 
         private void tabPageRegistracijaPregleda_Click(object sender, EventArgs e)
         {
-            //treba validirati citav tab onaj...
+            
         }
-        private void NacrtajGrafikPusaciAlkoholicari()
+
+        private void tabPageAnaliza_Paint(object sender, PaintEventArgs e)
         {
-            //nesto http://www.c-sharpcorner.com/uploadfile/dbeniwal321/drawing-a-pie-chart-in-gdi/
+            //pusaci
+            int sumaPusaca = 0;
+                var procenatPusaca = 0;
+                foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.Pacijenti)
+                {
+                        if (pacijent17324.pusac) sumaPusaca++;
+                }
+                sumaPusaca *= 100;
+                if (klinika17324.Pacijenti.Count != 0)
+                {
+                    procenatPusaca = sumaPusaca / klinika17324.Pacijenti.Count;
+                }
+                    labelUkupnoPacijenata.Text = "Ukupno pacijenata: " + klinika17324.Pacijenti.Count;
+                    labelPusaci.Text = "Pušača: " + sumaPusaca / 100 + " (" + procenatPusaca + "%)";
+                    labelNepusaci.Text = "Nepušača: " + (klinika17324.Pacijenti.Count - sumaPusaca / 100) + " (" + (100 - procenatPusaca) + "%)";
+                Rectangle rect = new Rectangle(250, 150, 200, 200);
+                ArrayList sliceList = new ArrayList();
+                Color curClr = Color.Black;
+                int[] valArray = {procenatPusaca, 100-procenatPusaca};
+                Color[] clrArray = { Color.Red, Color.Green, Color.Yellow, Color.Pink, Color.Aqua };
+                int total = 0;
+                Bitmap curBitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                Graphics g = Graphics.FromImage(curBitmap);
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                float angle = 0;
+                float sweep = 0;
+                //Total
+                for (int i = 0; i < valArray.Length; i++)
+                {
+                    total += valArray[i];
+                }
+                for (int i = 0; i < valArray.Length; i++)
+                {
+                    int val = valArray[i];
+                    Color clr = clrArray[i];
+                    sweep = 360f * val / total;
+
+                    SolidBrush brush = new SolidBrush(clr);
+                    g.FillPie(brush, 20.0f, 20.0f, 200, 200, angle, sweep);
+                    angle += sweep;
+                }
+                pictureBox1.Image = curBitmap;
+  
+        }
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            //alkoholicari
+            int sumaAlkoholicara = 0;
+            var procenatAlkoholicara = 0;
+            foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.Pacijenti)
+            {
+                if (pacijent17324.alkoholicar) sumaAlkoholicara++;
+            }
+            sumaAlkoholicara *= 100;
+            if (klinika17324.Pacijenti.Count != 0)
+            {
+                procenatAlkoholicara = sumaAlkoholicara / klinika17324.Pacijenti.Count;
+            }
+            labelBrojPacijenata.Text = "Ukupno pacijenata: " + klinika17324.Pacijenti.Count;
+            labelAlkoholicar.Text = "Alkoholičara: " + sumaAlkoholicara / 100 + " (" + procenatAlkoholicara + "%)";
+            labelNealkoholicar.Text = "Nealkoholičara: " + (klinika17324.Pacijenti.Count - sumaAlkoholicara / 100) + " (" + (100 - procenatAlkoholicara) + "%)";
+            int[] valArray1 = { procenatAlkoholicara, 100 - procenatAlkoholicara };
+            int total1 = 0;
+            Color[] clrArray = { Color.Red, Color.Green, Color.Yellow, Color.Pink, Color.Aqua };
+            Bitmap curBitmap1 = new Bitmap(pictureBox4.Width, pictureBox4.Height);
+            Graphics g = Graphics.FromImage(curBitmap1);
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            float angle1 = 0;
+            float sweep1 = 0;
+            //Total
+            for (int i = 0; i < valArray1.Length; i++)
+            {
+                total1 += valArray1[i];
+            }
+            for (int i = 0; i < valArray1.Length; i++)
+            {
+                int val = valArray1[i];
+                Color clr = clrArray[i];
+                sweep1 = 360f * val / total1;
+
+                SolidBrush brush1 = new SolidBrush(clr);
+                g.FillPie(brush1, 20.0f, 20.0f, 200, 200, angle1, sweep1);
+                angle1 += sweep1;
+            }
+            pictureBox4.Image = curBitmap1;
+        }
+
+        private void textBoxRegistracijaPregleda_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBoxRegistracijaPregleda.Text=="")
+            {
+                this.errorProvider2.SetError(textBoxRegistracijaPregleda, "Niste unijeli ime/prezime pacijenta kojem registrujete pregled!");
+                toolStripStatusLabel2.Text = "Niste unijeli ime/prezime pacijenta kojem registrujete pregled!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxRegistracijaPregleda_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(textBoxRegistracijaPregleda, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void listBoxRegistracijaPregleda_Validating(object sender, CancelEventArgs e)
+        {
+            if (listBoxRegistracijaPregleda.SelectedIndex == -1)
+            {
+                this.errorProvider2.SetError(listBoxRegistracijaPregleda, "Niste izabrali pacijenta iz liste!");
+                toolStripStatusLabel2.Text = "Niste izabrali pacijenta iz liste!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void listBoxRegistracijaPregleda_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(listBoxRegistracijaPregleda, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void richTextBoxOpisPostupka_Validating(object sender, CancelEventArgs e)
+        {
+            if (richTextBoxOpisPostupka.Text == "")
+            {
+                this.errorProvider2.SetError(richTextBoxOpisPostupka, "Niste unijeli opis provedenog postupka!");
+                toolStripStatusLabel2.Text = "Niste unijeli opis provedenog postupka!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void richTextBoxOpisPostupka_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(richTextBoxOpisPostupka, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void richTextBoxMisljenjeLjekara_Validating(object sender, CancelEventArgs e)
+        {
+            if (richTextBoxMisljenjeLjekara.Text == "")
+            {
+                this.errorProvider2.SetError(richTextBoxMisljenjeLjekara, "Niste unijeli misljenje ljekara nakon provedenog postupka!");
+                toolStripStatusLabel2.Text = "Niste unijeli misljenje ljekara nakon provedenog postupka!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void richTextBoxMisljenjeLjekara_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(richTextBoxMisljenjeLjekara, "");
+            toolStripStatusLabel2.Text = "";
         }
     }
 }

@@ -64,6 +64,7 @@
             this.radioButtonZiv = new System.Windows.Forms.RadioButton();
             this.checkBoxHitanSlucaj = new System.Windows.Forms.CheckBox();
             this.buttonOdustani = new System.Windows.Forms.Button();
+            this.userControlUnosSlike1 = new KontrolaZaUnosSlike.UserControlUnosSlike();
             this.groupBoxIzborLjekara = new System.Windows.Forms.GroupBox();
             this.checkBoxDermatolog = new System.Windows.Forms.CheckBox();
             this.checkBoxKardiolog = new System.Windows.Forms.CheckBox();
@@ -89,61 +90,74 @@
             this.labelPrezime = new System.Windows.Forms.Label();
             this.labelIme = new System.Windows.Forms.Label();
             this.tabPageRaspored = new System.Windows.Forms.TabPage();
+            this.labelKardiolog = new System.Windows.Forms.Label();
+            this.labelDermatolog = new System.Windows.Forms.Label();
+            this.labelStomatolog = new System.Windows.Forms.Label();
+            this.labelOrtoped = new System.Windows.Forms.Label();
             this.groupBoxPretragaRasporedPregleda = new System.Windows.Forms.GroupBox();
             this.listBoxPretragaRaspored = new System.Windows.Forms.ListBox();
             this.textBoxImeRasporedPregleda = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPageKreiranjeKartona = new System.Windows.Forms.TabPage();
-            this.tabPagePretragaKartona = new System.Windows.Forms.TabPage();
-            this.tabPageRegistracijaPregleda = new System.Windows.Forms.TabPage();
-            this.tabPageAnaliza = new System.Windows.Forms.TabPage();
-            this.tabPageNaplata = new System.Windows.Forms.TabPage();
-            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.labelOrtoped = new System.Windows.Forms.Label();
-            this.labelStomatolog = new System.Windows.Forms.Label();
-            this.labelDermatolog = new System.Windows.Forms.Label();
-            this.labelKardiolog = new System.Windows.Forms.Label();
+            this.buttonPonisti = new System.Windows.Forms.Button();
+            this.buttonKreiraj = new System.Windows.Forms.Button();
+            this.labelAlergije = new System.Windows.Forms.Label();
+            this.labelNasljedneBolesti = new System.Windows.Forms.Label();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.groupBoxAlkoholicar = new System.Windows.Forms.GroupBox();
+            this.radioButtonNealkoholicar = new System.Windows.Forms.RadioButton();
+            this.radioButtonAlkoholicar = new System.Windows.Forms.RadioButton();
+            this.groupBoxPusac = new System.Windows.Forms.GroupBox();
+            this.radioButtonNepusac = new System.Windows.Forms.RadioButton();
+            this.radioButtonPusac = new System.Windows.Forms.RadioButton();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.listBoxKarton = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxKreiranjeKartona = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.groupBoxPusac = new System.Windows.Forms.GroupBox();
-            this.groupBoxAlkoholicar = new System.Windows.Forms.GroupBox();
-            this.radioButtonPusac = new System.Windows.Forms.RadioButton();
-            this.radioButtonNepusac = new System.Windows.Forms.RadioButton();
-            this.radioButtonAlkoholicar = new System.Windows.Forms.RadioButton();
-            this.radioButtonNealkoholicar = new System.Windows.Forms.RadioButton();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.labelNasljedneBolesti = new System.Windows.Forms.Label();
-            this.labelAlergije = new System.Windows.Forms.Label();
-            this.buttonKreiraj = new System.Windows.Forms.Button();
-            this.buttonPonisti = new System.Windows.Forms.Button();
-            this.userControlUnosSlike1 = new KontrolaZaUnosSlike.UserControlUnosSlike();
-            this.label6 = new System.Windows.Forms.Label();
+            this.tabPagePretragaKartona = new System.Windows.Forms.TabPage();
             this.listBoxPretraga = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxPretragaKartona = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tabPageRegistracijaPregleda = new System.Windows.Forms.TabPage();
+            this.labelGreskaUPristupu = new System.Windows.Forms.Label();
+            this.buttonPonistiPregled = new System.Windows.Forms.Button();
+            this.buttonRegistrujPregled = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.checkBoxUspjesanPregled = new System.Windows.Forms.CheckBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.richTextBoxMisljenjeLjekara = new System.Windows.Forms.RichTextBox();
+            this.labelMisljenjeLjekara = new System.Windows.Forms.Label();
+            this.richTextBoxTerapija = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxOpisPostupka = new System.Windows.Forms.RichTextBox();
+            this.labelTerapijaPreporuka = new System.Windows.Forms.Label();
+            this.labelOpisPostupka = new System.Windows.Forms.Label();
+            this.labelDatumPregleda = new System.Windows.Forms.Label();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.listBoxRegistracijaPregleda = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxRegistracijaPregleda = new System.Windows.Forms.TextBox();
             this.labelRegistracijaPregleda = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.labelDatumPregleda = new System.Windows.Forms.Label();
-            this.labelOpisPostupka = new System.Windows.Forms.Label();
-            this.richTextBoxOpisPostupka = new System.Windows.Forms.RichTextBox();
-            this.richTextBoxMisljenjeLjekara = new System.Windows.Forms.RichTextBox();
-            this.labelMisljenjeLjekara = new System.Windows.Forms.Label();
-            this.labelTerapijaPreporuka = new System.Windows.Forms.Label();
-            this.richTextBoxTerapija = new System.Windows.Forms.RichTextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.checkBoxUspjesanPregled = new System.Windows.Forms.CheckBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.buttonRegistrujPregled = new System.Windows.Forms.Button();
-            this.buttonPonistiPregled = new System.Windows.Forms.Button();
+            this.tabPageAnaliza = new System.Windows.Forms.TabPage();
+            this.pictureBoxZelenaNealkoholicar = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCrvenaAlkoholicar = new System.Windows.Forms.PictureBox();
+            this.labelNealkoholicar = new System.Windows.Forms.Label();
+            this.labelAlkoholicar = new System.Windows.Forms.Label();
+            this.labelBrojPacijenata = new System.Windows.Forms.Label();
+            this.labelProcenatAlkoholicara = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxZelenaNepusac = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCrvenaPusac = new System.Windows.Forms.PictureBox();
+            this.labelNepusaci = new System.Windows.Forms.Label();
+            this.labelPusaci = new System.Windows.Forms.Label();
+            this.labelUkupnoPacijenata = new System.Windows.Forms.Label();
+            this.labelProcenatPusaca = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tabPageNaplata = new System.Windows.Forms.TabPage();
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.labelKorisnikIme = new System.Windows.Forms.Label();
-            this.labelGreskaUPristupu = new System.Windows.Forms.Label();
             this.tabControlGlavniMeni.SuspendLayout();
             this.tabPageUnosPacijenata.SuspendLayout();
             this.groupBoxBrisanjePacijenata.SuspendLayout();
@@ -161,13 +175,20 @@
             this.tabPageRaspored.SuspendLayout();
             this.groupBoxPretragaRasporedPregleda.SuspendLayout();
             this.tabPageKreiranjeKartona.SuspendLayout();
+            this.groupBoxAlkoholicar.SuspendLayout();
+            this.groupBoxPusac.SuspendLayout();
             this.tabPagePretragaKartona.SuspendLayout();
             this.tabPageRegistracijaPregleda.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.tabPageAnaliza.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxZelenaNealkoholicar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCrvenaAlkoholicar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxZelenaNepusac)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCrvenaPusac)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
-            this.groupBoxPusac.SuspendLayout();
-            this.groupBoxAlkoholicar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlGlavniMeni
@@ -541,6 +562,17 @@
             this.buttonOdustani.UseVisualStyleBackColor = true;
             this.buttonOdustani.Click += new System.EventHandler(this.buttonOdustani_Click);
             // 
+            // userControlUnosSlike1
+            // 
+            this.userControlUnosSlike1.Location = new System.Drawing.Point(338, 6);
+            this.userControlUnosSlike1.Name = "userControlUnosSlike1";
+            this.userControlUnosSlike1.Size = new System.Drawing.Size(226, 226);
+            this.userControlUnosSlike1.TabIndex = 15;
+            this.userControlUnosSlike1.Tag = "";
+            this.userControlUnosSlike1.Load += new System.EventHandler(this.userControlUnosSlike1_Load);
+            this.userControlUnosSlike1.Validating += new System.ComponentModel.CancelEventHandler(this.userControlUnosSlike1_Validating);
+            this.userControlUnosSlike1.Validated += new System.EventHandler(this.userControlUnosSlike1_Validated);
+            // 
             // groupBoxIzborLjekara
             // 
             this.groupBoxIzborLjekara.Controls.Add(this.checkBoxDermatolog);
@@ -805,6 +837,42 @@
             this.tabPageRaspored.Text = "Raspored Pregleda";
             this.tabPageRaspored.UseVisualStyleBackColor = true;
             // 
+            // labelKardiolog
+            // 
+            this.labelKardiolog.AutoSize = true;
+            this.labelKardiolog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelKardiolog.Location = new System.Drawing.Point(481, 188);
+            this.labelKardiolog.Name = "labelKardiolog";
+            this.labelKardiolog.Size = new System.Drawing.Size(0, 13);
+            this.labelKardiolog.TabIndex = 8;
+            // 
+            // labelDermatolog
+            // 
+            this.labelDermatolog.AutoSize = true;
+            this.labelDermatolog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDermatolog.Location = new System.Drawing.Point(471, 140);
+            this.labelDermatolog.Name = "labelDermatolog";
+            this.labelDermatolog.Size = new System.Drawing.Size(0, 13);
+            this.labelDermatolog.TabIndex = 7;
+            // 
+            // labelStomatolog
+            // 
+            this.labelStomatolog.AutoSize = true;
+            this.labelStomatolog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStomatolog.Location = new System.Drawing.Point(472, 95);
+            this.labelStomatolog.Name = "labelStomatolog";
+            this.labelStomatolog.Size = new System.Drawing.Size(0, 13);
+            this.labelStomatolog.TabIndex = 6;
+            // 
+            // labelOrtoped
+            // 
+            this.labelOrtoped.AutoSize = true;
+            this.labelOrtoped.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOrtoped.Location = new System.Drawing.Point(490, 49);
+            this.labelOrtoped.Name = "labelOrtoped";
+            this.labelOrtoped.Size = new System.Drawing.Size(0, 13);
+            this.labelOrtoped.TabIndex = 2;
+            // 
             // groupBoxPretragaRasporedPregleda
             // 
             this.groupBoxPretragaRasporedPregleda.Controls.Add(this.listBoxPretragaRaspored);
@@ -865,124 +933,138 @@
             this.tabPageKreiranjeKartona.Text = "Kreiranje Kartona";
             this.tabPageKreiranjeKartona.UseVisualStyleBackColor = true;
             // 
-            // tabPagePretragaKartona
+            // buttonPonisti
             // 
-            this.tabPagePretragaKartona.Controls.Add(this.listBoxPretraga);
-            this.tabPagePretragaKartona.Controls.Add(this.label7);
-            this.tabPagePretragaKartona.Controls.Add(this.textBoxPretragaKartona);
-            this.tabPagePretragaKartona.Controls.Add(this.label6);
-            this.tabPagePretragaKartona.Location = new System.Drawing.Point(4, 22);
-            this.tabPagePretragaKartona.Name = "tabPagePretragaKartona";
-            this.tabPagePretragaKartona.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePretragaKartona.Size = new System.Drawing.Size(1155, 618);
-            this.tabPagePretragaKartona.TabIndex = 3;
-            this.tabPagePretragaKartona.Text = "Pretraga Kartona";
-            this.tabPagePretragaKartona.UseVisualStyleBackColor = true;
+            this.buttonPonisti.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.buttonPonisti.Location = new System.Drawing.Point(717, 375);
+            this.buttonPonisti.Name = "buttonPonisti";
+            this.buttonPonisti.Size = new System.Drawing.Size(110, 44);
+            this.buttonPonisti.TabIndex = 13;
+            this.buttonPonisti.Text = "Poništi!";
+            this.buttonPonisti.UseVisualStyleBackColor = true;
+            this.buttonPonisti.Click += new System.EventHandler(this.buttonPonisti_Click);
             // 
-            // tabPageRegistracijaPregleda
+            // buttonKreiraj
             // 
-            this.tabPageRegistracijaPregleda.Controls.Add(this.labelGreskaUPristupu);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.buttonPonistiPregled);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.buttonRegistrujPregled);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.label10);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.checkBoxUspjesanPregled);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.numericUpDown1);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.richTextBoxMisljenjeLjekara);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.labelMisljenjeLjekara);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.richTextBoxTerapija);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.richTextBoxOpisPostupka);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.labelTerapijaPreporuka);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.labelOpisPostupka);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.labelDatumPregleda);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.dateTimePicker3);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.listBoxRegistracijaPregleda);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.label8);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.textBoxRegistracijaPregleda);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.labelRegistracijaPregleda);
-            this.tabPageRegistracijaPregleda.Location = new System.Drawing.Point(4, 22);
-            this.tabPageRegistracijaPregleda.Name = "tabPageRegistracijaPregleda";
-            this.tabPageRegistracijaPregleda.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRegistracijaPregleda.Size = new System.Drawing.Size(1155, 618);
-            this.tabPageRegistracijaPregleda.TabIndex = 4;
-            this.tabPageRegistracijaPregleda.Text = "Registracija Pregleda";
-            this.tabPageRegistracijaPregleda.UseVisualStyleBackColor = true;
-            this.tabPageRegistracijaPregleda.Click += new System.EventHandler(this.tabPageRegistracijaPregleda_Click);
+            this.buttonKreiraj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.buttonKreiraj.Location = new System.Drawing.Point(558, 375);
+            this.buttonKreiraj.Name = "buttonKreiraj";
+            this.buttonKreiraj.Size = new System.Drawing.Size(110, 44);
+            this.buttonKreiraj.TabIndex = 12;
+            this.buttonKreiraj.Text = "Kreiraj karton!";
+            this.buttonKreiraj.UseVisualStyleBackColor = true;
+            this.buttonKreiraj.Click += new System.EventHandler(this.buttonKreiraj_Click);
             // 
-            // tabPageAnaliza
+            // labelAlergije
             // 
-            this.tabPageAnaliza.Location = new System.Drawing.Point(4, 22);
-            this.tabPageAnaliza.Name = "tabPageAnaliza";
-            this.tabPageAnaliza.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAnaliza.Size = new System.Drawing.Size(1155, 618);
-            this.tabPageAnaliza.TabIndex = 5;
-            this.tabPageAnaliza.Text = "Analiza";
-            this.tabPageAnaliza.UseVisualStyleBackColor = true;
+            this.labelAlergije.AutoSize = true;
+            this.labelAlergije.Location = new System.Drawing.Point(651, 127);
+            this.labelAlergije.Name = "labelAlergije";
+            this.labelAlergije.Size = new System.Drawing.Size(44, 13);
+            this.labelAlergije.TabIndex = 11;
+            this.labelAlergije.Text = "Alergije:";
             // 
-            // tabPageNaplata
+            // labelNasljedneBolesti
             // 
-            this.tabPageNaplata.Location = new System.Drawing.Point(4, 22);
-            this.tabPageNaplata.Name = "tabPageNaplata";
-            this.tabPageNaplata.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageNaplata.Size = new System.Drawing.Size(1155, 618);
-            this.tabPageNaplata.TabIndex = 6;
-            this.tabPageNaplata.Text = "Naplata";
-            this.tabPageNaplata.UseVisualStyleBackColor = true;
+            this.labelNasljedneBolesti.AutoSize = true;
+            this.labelNasljedneBolesti.Location = new System.Drawing.Point(393, 127);
+            this.labelNasljedneBolesti.Name = "labelNasljedneBolesti";
+            this.labelNasljedneBolesti.Size = new System.Drawing.Size(139, 13);
+            this.labelNasljedneBolesti.TabIndex = 10;
+            this.labelNasljedneBolesti.Text = "Nasljedne bolesti u porodici:";
             // 
-            // statusStrip2
+            // richTextBox2
             // 
-            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel2});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 659);
-            this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(1160, 22);
-            this.statusStrip2.TabIndex = 1;
-            this.statusStrip2.Text = "statusStrip1";
-            this.statusStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
+            this.richTextBox2.Location = new System.Drawing.Point(654, 153);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(220, 185);
+            this.richTextBox2.TabIndex = 9;
+            this.richTextBox2.Text = "";
+            this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
+            this.richTextBox2.Validating += new System.ComponentModel.CancelEventHandler(this.richTextBox2_Validating);
+            this.richTextBox2.Validated += new System.EventHandler(this.richTextBox2_Validated);
             // 
-            // toolStripStatusLabel2
+            // groupBoxAlkoholicar
             // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 17);
+            this.groupBoxAlkoholicar.Controls.Add(this.radioButtonNealkoholicar);
+            this.groupBoxAlkoholicar.Controls.Add(this.radioButtonAlkoholicar);
+            this.groupBoxAlkoholicar.Location = new System.Drawing.Point(654, 32);
+            this.groupBoxAlkoholicar.Name = "groupBoxAlkoholicar";
+            this.groupBoxAlkoholicar.Size = new System.Drawing.Size(200, 71);
+            this.groupBoxAlkoholicar.TabIndex = 8;
+            this.groupBoxAlkoholicar.TabStop = false;
+            this.groupBoxAlkoholicar.Text = "Alkoholičar";
+            this.groupBoxAlkoholicar.Validating += new System.ComponentModel.CancelEventHandler(this.groupBoxAlkoholicar_Validating);
+            this.groupBoxAlkoholicar.Validated += new System.EventHandler(this.groupBoxAlkoholicar_Validated);
             // 
-            // errorProvider2
+            // radioButtonNealkoholicar
             // 
-            this.errorProvider2.ContainerControl = this;
+            this.radioButtonNealkoholicar.AutoSize = true;
+            this.radioButtonNealkoholicar.Location = new System.Drawing.Point(112, 42);
+            this.radioButtonNealkoholicar.Name = "radioButtonNealkoholicar";
+            this.radioButtonNealkoholicar.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonNealkoholicar.TabIndex = 2;
+            this.radioButtonNealkoholicar.TabStop = true;
+            this.radioButtonNealkoholicar.Text = "Ne";
+            this.radioButtonNealkoholicar.UseVisualStyleBackColor = true;
             // 
-            // labelOrtoped
+            // radioButtonAlkoholicar
             // 
-            this.labelOrtoped.AutoSize = true;
-            this.labelOrtoped.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOrtoped.Location = new System.Drawing.Point(490, 49);
-            this.labelOrtoped.Name = "labelOrtoped";
-            this.labelOrtoped.Size = new System.Drawing.Size(0, 13);
-            this.labelOrtoped.TabIndex = 2;
+            this.radioButtonAlkoholicar.AutoSize = true;
+            this.radioButtonAlkoholicar.Location = new System.Drawing.Point(17, 42);
+            this.radioButtonAlkoholicar.Name = "radioButtonAlkoholicar";
+            this.radioButtonAlkoholicar.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonAlkoholicar.TabIndex = 2;
+            this.radioButtonAlkoholicar.TabStop = true;
+            this.radioButtonAlkoholicar.Text = "Da";
+            this.radioButtonAlkoholicar.UseVisualStyleBackColor = true;
+            this.radioButtonAlkoholicar.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // labelStomatolog
+            // groupBoxPusac
             // 
-            this.labelStomatolog.AutoSize = true;
-            this.labelStomatolog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStomatolog.Location = new System.Drawing.Point(472, 95);
-            this.labelStomatolog.Name = "labelStomatolog";
-            this.labelStomatolog.Size = new System.Drawing.Size(0, 13);
-            this.labelStomatolog.TabIndex = 6;
+            this.groupBoxPusac.Controls.Add(this.radioButtonNepusac);
+            this.groupBoxPusac.Controls.Add(this.radioButtonPusac);
+            this.groupBoxPusac.Location = new System.Drawing.Point(396, 32);
+            this.groupBoxPusac.Name = "groupBoxPusac";
+            this.groupBoxPusac.Size = new System.Drawing.Size(194, 71);
+            this.groupBoxPusac.TabIndex = 7;
+            this.groupBoxPusac.TabStop = false;
+            this.groupBoxPusac.Text = "Pušač";
+            this.groupBoxPusac.Validating += new System.ComponentModel.CancelEventHandler(this.groupBoxPusac_Validating);
+            this.groupBoxPusac.Validated += new System.EventHandler(this.groupBoxPusac_Validated);
             // 
-            // labelDermatolog
+            // radioButtonNepusac
             // 
-            this.labelDermatolog.AutoSize = true;
-            this.labelDermatolog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDermatolog.Location = new System.Drawing.Point(471, 140);
-            this.labelDermatolog.Name = "labelDermatolog";
-            this.labelDermatolog.Size = new System.Drawing.Size(0, 13);
-            this.labelDermatolog.TabIndex = 7;
+            this.radioButtonNepusac.AutoSize = true;
+            this.radioButtonNepusac.Location = new System.Drawing.Point(110, 42);
+            this.radioButtonNepusac.Name = "radioButtonNepusac";
+            this.radioButtonNepusac.Size = new System.Drawing.Size(68, 17);
+            this.radioButtonNepusac.TabIndex = 1;
+            this.radioButtonNepusac.TabStop = true;
+            this.radioButtonNepusac.Text = "Nepušač";
+            this.radioButtonNepusac.UseVisualStyleBackColor = true;
             // 
-            // labelKardiolog
+            // radioButtonPusac
             // 
-            this.labelKardiolog.AutoSize = true;
-            this.labelKardiolog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelKardiolog.Location = new System.Drawing.Point(481, 188);
-            this.labelKardiolog.Name = "labelKardiolog";
-            this.labelKardiolog.Size = new System.Drawing.Size(0, 13);
-            this.labelKardiolog.TabIndex = 8;
+            this.radioButtonPusac.AutoSize = true;
+            this.radioButtonPusac.Location = new System.Drawing.Point(18, 42);
+            this.radioButtonPusac.Name = "radioButtonPusac";
+            this.radioButtonPusac.Size = new System.Drawing.Size(55, 17);
+            this.radioButtonPusac.TabIndex = 0;
+            this.radioButtonPusac.TabStop = true;
+            this.radioButtonPusac.Text = "Pušač";
+            this.radioButtonPusac.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(396, 153);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(220, 185);
+            this.richTextBox1.TabIndex = 6;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.richTextBox1.Validating += new System.ComponentModel.CancelEventHandler(this.richTextBox1_Validating);
+            this.richTextBox1.Validated += new System.EventHandler(this.richTextBox1_Validated);
             // 
             // listBoxKarton
             // 
@@ -1014,160 +1096,19 @@
             this.textBoxKreiranjeKartona.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxKreiranjeKartona_Validating);
             this.textBoxKreiranjeKartona.Validated += new System.EventHandler(this.textBoxKreiranjeKartona_Validated);
             // 
-            // richTextBox1
+            // tabPagePretragaKartona
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(396, 153);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(220, 185);
-            this.richTextBox1.TabIndex = 6;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            this.richTextBox1.Validating += new System.ComponentModel.CancelEventHandler(this.richTextBox1_Validating);
-            this.richTextBox1.Validated += new System.EventHandler(this.richTextBox1_Validated);
-            // 
-            // groupBoxPusac
-            // 
-            this.groupBoxPusac.Controls.Add(this.radioButtonNepusac);
-            this.groupBoxPusac.Controls.Add(this.radioButtonPusac);
-            this.groupBoxPusac.Location = new System.Drawing.Point(396, 32);
-            this.groupBoxPusac.Name = "groupBoxPusac";
-            this.groupBoxPusac.Size = new System.Drawing.Size(194, 71);
-            this.groupBoxPusac.TabIndex = 7;
-            this.groupBoxPusac.TabStop = false;
-            this.groupBoxPusac.Text = "Pušač";
-            this.groupBoxPusac.Validating += new System.ComponentModel.CancelEventHandler(this.groupBoxPusac_Validating);
-            this.groupBoxPusac.Validated += new System.EventHandler(this.groupBoxPusac_Validated);
-            // 
-            // groupBoxAlkoholicar
-            // 
-            this.groupBoxAlkoholicar.Controls.Add(this.radioButtonNealkoholicar);
-            this.groupBoxAlkoholicar.Controls.Add(this.radioButtonAlkoholicar);
-            this.groupBoxAlkoholicar.Location = new System.Drawing.Point(654, 32);
-            this.groupBoxAlkoholicar.Name = "groupBoxAlkoholicar";
-            this.groupBoxAlkoholicar.Size = new System.Drawing.Size(200, 71);
-            this.groupBoxAlkoholicar.TabIndex = 8;
-            this.groupBoxAlkoholicar.TabStop = false;
-            this.groupBoxAlkoholicar.Text = "Alkoholičar";
-            this.groupBoxAlkoholicar.Validating += new System.ComponentModel.CancelEventHandler(this.groupBoxAlkoholicar_Validating);
-            this.groupBoxAlkoholicar.Validated += new System.EventHandler(this.groupBoxAlkoholicar_Validated);
-            // 
-            // radioButtonPusac
-            // 
-            this.radioButtonPusac.AutoSize = true;
-            this.radioButtonPusac.Location = new System.Drawing.Point(18, 42);
-            this.radioButtonPusac.Name = "radioButtonPusac";
-            this.radioButtonPusac.Size = new System.Drawing.Size(55, 17);
-            this.radioButtonPusac.TabIndex = 0;
-            this.radioButtonPusac.TabStop = true;
-            this.radioButtonPusac.Text = "Pušač";
-            this.radioButtonPusac.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonNepusac
-            // 
-            this.radioButtonNepusac.AutoSize = true;
-            this.radioButtonNepusac.Location = new System.Drawing.Point(110, 42);
-            this.radioButtonNepusac.Name = "radioButtonNepusac";
-            this.radioButtonNepusac.Size = new System.Drawing.Size(68, 17);
-            this.radioButtonNepusac.TabIndex = 1;
-            this.radioButtonNepusac.TabStop = true;
-            this.radioButtonNepusac.Text = "Nepušač";
-            this.radioButtonNepusac.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAlkoholicar
-            // 
-            this.radioButtonAlkoholicar.AutoSize = true;
-            this.radioButtonAlkoholicar.Location = new System.Drawing.Point(17, 42);
-            this.radioButtonAlkoholicar.Name = "radioButtonAlkoholicar";
-            this.radioButtonAlkoholicar.Size = new System.Drawing.Size(39, 17);
-            this.radioButtonAlkoholicar.TabIndex = 2;
-            this.radioButtonAlkoholicar.TabStop = true;
-            this.radioButtonAlkoholicar.Text = "Da";
-            this.radioButtonAlkoholicar.UseVisualStyleBackColor = true;
-            this.radioButtonAlkoholicar.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // radioButtonNealkoholicar
-            // 
-            this.radioButtonNealkoholicar.AutoSize = true;
-            this.radioButtonNealkoholicar.Location = new System.Drawing.Point(112, 42);
-            this.radioButtonNealkoholicar.Name = "radioButtonNealkoholicar";
-            this.radioButtonNealkoholicar.Size = new System.Drawing.Size(39, 17);
-            this.radioButtonNealkoholicar.TabIndex = 2;
-            this.radioButtonNealkoholicar.TabStop = true;
-            this.radioButtonNealkoholicar.Text = "Ne";
-            this.radioButtonNealkoholicar.UseVisualStyleBackColor = true;
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Location = new System.Drawing.Point(654, 153);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(220, 185);
-            this.richTextBox2.TabIndex = 9;
-            this.richTextBox2.Text = "";
-            this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
-            this.richTextBox2.Validating += new System.ComponentModel.CancelEventHandler(this.richTextBox2_Validating);
-            this.richTextBox2.Validated += new System.EventHandler(this.richTextBox2_Validated);
-            // 
-            // labelNasljedneBolesti
-            // 
-            this.labelNasljedneBolesti.AutoSize = true;
-            this.labelNasljedneBolesti.Location = new System.Drawing.Point(393, 127);
-            this.labelNasljedneBolesti.Name = "labelNasljedneBolesti";
-            this.labelNasljedneBolesti.Size = new System.Drawing.Size(139, 13);
-            this.labelNasljedneBolesti.TabIndex = 10;
-            this.labelNasljedneBolesti.Text = "Nasljedne bolesti u porodici:";
-            // 
-            // labelAlergije
-            // 
-            this.labelAlergije.AutoSize = true;
-            this.labelAlergije.Location = new System.Drawing.Point(651, 127);
-            this.labelAlergije.Name = "labelAlergije";
-            this.labelAlergije.Size = new System.Drawing.Size(44, 13);
-            this.labelAlergije.TabIndex = 11;
-            this.labelAlergije.Text = "Alergije:";
-            // 
-            // buttonKreiraj
-            // 
-            this.buttonKreiraj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.buttonKreiraj.Location = new System.Drawing.Point(558, 375);
-            this.buttonKreiraj.Name = "buttonKreiraj";
-            this.buttonKreiraj.Size = new System.Drawing.Size(110, 44);
-            this.buttonKreiraj.TabIndex = 12;
-            this.buttonKreiraj.Text = "Kreiraj karton!";
-            this.buttonKreiraj.UseVisualStyleBackColor = true;
-            this.buttonKreiraj.Click += new System.EventHandler(this.buttonKreiraj_Click);
-            // 
-            // buttonPonisti
-            // 
-            this.buttonPonisti.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.buttonPonisti.Location = new System.Drawing.Point(717, 375);
-            this.buttonPonisti.Name = "buttonPonisti";
-            this.buttonPonisti.Size = new System.Drawing.Size(110, 44);
-            this.buttonPonisti.TabIndex = 13;
-            this.buttonPonisti.Text = "Poništi!";
-            this.buttonPonisti.UseVisualStyleBackColor = true;
-            this.buttonPonisti.Click += new System.EventHandler(this.buttonPonisti_Click);
-            // 
-            // userControlUnosSlike1
-            // 
-            this.userControlUnosSlike1.Location = new System.Drawing.Point(338, 6);
-            this.userControlUnosSlike1.Name = "userControlUnosSlike1";
-            this.userControlUnosSlike1.Size = new System.Drawing.Size(226, 226);
-            this.userControlUnosSlike1.TabIndex = 15;
-            this.userControlUnosSlike1.Tag = "";
-            this.userControlUnosSlike1.Load += new System.EventHandler(this.userControlUnosSlike1_Load);
-            this.userControlUnosSlike1.Validating += new System.ComponentModel.CancelEventHandler(this.userControlUnosSlike1_Validating);
-            this.userControlUnosSlike1.Validated += new System.EventHandler(this.userControlUnosSlike1_Validated);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(11, 13);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(474, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Ukoliko pacijentu nije kreiran karton, on neće biti vidljiv u listi za izbor paci" +
-    "jenata!";
+            this.tabPagePretragaKartona.Controls.Add(this.listBoxPretraga);
+            this.tabPagePretragaKartona.Controls.Add(this.label7);
+            this.tabPagePretragaKartona.Controls.Add(this.textBoxPretragaKartona);
+            this.tabPagePretragaKartona.Controls.Add(this.label6);
+            this.tabPagePretragaKartona.Location = new System.Drawing.Point(4, 22);
+            this.tabPagePretragaKartona.Name = "tabPagePretragaKartona";
+            this.tabPagePretragaKartona.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePretragaKartona.Size = new System.Drawing.Size(1155, 618);
+            this.tabPagePretragaKartona.TabIndex = 3;
+            this.tabPagePretragaKartona.Text = "Pretraga Kartona";
+            this.tabPagePretragaKartona.UseVisualStyleBackColor = true;
             // 
             // listBoxPretraga
             // 
@@ -1194,108 +1135,92 @@
             this.textBoxPretragaKartona.TabIndex = 6;
             this.textBoxPretragaKartona.TextChanged += new System.EventHandler(this.textBox3_TextChanged_1);
             // 
-            // listBoxRegistracijaPregleda
+            // label6
             // 
-            this.listBoxRegistracijaPregleda.FormattingEnabled = true;
-            this.listBoxRegistracijaPregleda.Location = new System.Drawing.Point(13, 63);
-            this.listBoxRegistracijaPregleda.Name = "listBoxRegistracijaPregleda";
-            this.listBoxRegistracijaPregleda.Size = new System.Drawing.Size(308, 290);
-            this.listBoxRegistracijaPregleda.TabIndex = 12;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 30);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Ime/Prezime:";
-            // 
-            // textBoxRegistracijaPregleda
-            // 
-            this.textBoxRegistracijaPregleda.Location = new System.Drawing.Point(101, 27);
-            this.textBoxRegistracijaPregleda.Name = "textBoxRegistracijaPregleda";
-            this.textBoxRegistracijaPregleda.Size = new System.Drawing.Size(220, 20);
-            this.textBoxRegistracijaPregleda.TabIndex = 10;
-            this.textBoxRegistracijaPregleda.TextChanged += new System.EventHandler(this.textBoxRegistracijaPregleda_TextChanged);
-            // 
-            // labelRegistracijaPregleda
-            // 
-            this.labelRegistracijaPregleda.AutoSize = true;
-            this.labelRegistracijaPregleda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelRegistracijaPregleda.Location = new System.Drawing.Point(10, 7);
-            this.labelRegistracijaPregleda.Name = "labelRegistracijaPregleda";
-            this.labelRegistracijaPregleda.Size = new System.Drawing.Size(474, 13);
-            this.labelRegistracijaPregleda.TabIndex = 9;
-            this.labelRegistracijaPregleda.Text = "Ukoliko pacijentu nije kreiran karton, on neće biti vidljiv u listi za izbor paci" +
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.Location = new System.Drawing.Point(11, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(474, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Ukoliko pacijentu nije kreiran karton, on neće biti vidljiv u listi za izbor paci" +
     "jenata!";
             // 
-            // dateTimePicker3
+            // tabPageRegistracijaPregleda
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(573, 51);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker3.TabIndex = 13;
+            this.tabPageRegistracijaPregleda.Controls.Add(this.labelGreskaUPristupu);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.buttonPonistiPregled);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.buttonRegistrujPregled);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.label10);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.checkBoxUspjesanPregled);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.numericUpDown1);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.richTextBoxMisljenjeLjekara);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.labelMisljenjeLjekara);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.richTextBoxTerapija);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.richTextBoxOpisPostupka);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.labelTerapijaPreporuka);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.labelOpisPostupka);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.labelDatumPregleda);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.dateTimePicker3);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.listBoxRegistracijaPregleda);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.label8);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.textBoxRegistracijaPregleda);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.labelRegistracijaPregleda);
+            this.tabPageRegistracijaPregleda.Location = new System.Drawing.Point(4, 22);
+            this.tabPageRegistracijaPregleda.Name = "tabPageRegistracijaPregleda";
+            this.tabPageRegistracijaPregleda.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageRegistracijaPregleda.Size = new System.Drawing.Size(1155, 618);
+            this.tabPageRegistracijaPregleda.TabIndex = 4;
+            this.tabPageRegistracijaPregleda.Text = "Registracija Pregleda";
+            this.tabPageRegistracijaPregleda.UseVisualStyleBackColor = true;
+            this.tabPageRegistracijaPregleda.Click += new System.EventHandler(this.tabPageRegistracijaPregleda_Click);
             // 
-            // labelDatumPregleda
+            // labelGreskaUPristupu
             // 
-            this.labelDatumPregleda.AutoSize = true;
-            this.labelDatumPregleda.Location = new System.Drawing.Point(466, 57);
-            this.labelDatumPregleda.Name = "labelDatumPregleda";
-            this.labelDatumPregleda.Size = new System.Drawing.Size(85, 13);
-            this.labelDatumPregleda.TabIndex = 14;
-            this.labelDatumPregleda.Text = "Datum pregleda:";
+            this.labelGreskaUPristupu.AutoSize = true;
+            this.labelGreskaUPristupu.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelGreskaUPristupu.ForeColor = System.Drawing.Color.Red;
+            this.labelGreskaUPristupu.Location = new System.Drawing.Point(101, 484);
+            this.labelGreskaUPristupu.Name = "labelGreskaUPristupu";
+            this.labelGreskaUPristupu.Size = new System.Drawing.Size(0, 55);
+            this.labelGreskaUPristupu.TabIndex = 24;
             // 
-            // labelOpisPostupka
+            // buttonPonistiPregled
             // 
-            this.labelOpisPostupka.AutoSize = true;
-            this.labelOpisPostupka.Location = new System.Drawing.Point(352, 90);
-            this.labelOpisPostupka.Name = "labelOpisPostupka";
-            this.labelOpisPostupka.Size = new System.Drawing.Size(78, 13);
-            this.labelOpisPostupka.TabIndex = 15;
-            this.labelOpisPostupka.Text = "Opis postupka:";
+            this.buttonPonistiPregled.Location = new System.Drawing.Point(835, 372);
+            this.buttonPonistiPregled.Name = "buttonPonistiPregled";
+            this.buttonPonistiPregled.Size = new System.Drawing.Size(120, 23);
+            this.buttonPonistiPregled.TabIndex = 23;
+            this.buttonPonistiPregled.Text = "Poništi pregled!";
+            this.buttonPonistiPregled.UseVisualStyleBackColor = true;
             // 
-            // richTextBoxOpisPostupka
+            // buttonRegistrujPregled
             // 
-            this.richTextBoxOpisPostupka.Location = new System.Drawing.Point(456, 90);
-            this.richTextBoxOpisPostupka.Name = "richTextBoxOpisPostupka";
-            this.richTextBoxOpisPostupka.Size = new System.Drawing.Size(200, 123);
-            this.richTextBoxOpisPostupka.TabIndex = 16;
-            this.richTextBoxOpisPostupka.Text = "";
+            this.buttonRegistrujPregled.Location = new System.Drawing.Point(699, 372);
+            this.buttonRegistrujPregled.Name = "buttonRegistrujPregled";
+            this.buttonRegistrujPregled.Size = new System.Drawing.Size(120, 23);
+            this.buttonRegistrujPregled.TabIndex = 22;
+            this.buttonRegistrujPregled.Text = "Registruj pregled!";
+            this.buttonRegistrujPregled.UseVisualStyleBackColor = true;
             // 
-            // richTextBoxMisljenjeLjekara
+            // label10
             // 
-            this.richTextBoxMisljenjeLjekara.Location = new System.Drawing.Point(793, 90);
-            this.richTextBoxMisljenjeLjekara.Name = "richTextBoxMisljenjeLjekara";
-            this.richTextBoxMisljenjeLjekara.Size = new System.Drawing.Size(200, 123);
-            this.richTextBoxMisljenjeLjekara.TabIndex = 18;
-            this.richTextBoxMisljenjeLjekara.Text = "";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(715, 289);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(104, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Broj licence doktora:";
             // 
-            // labelMisljenjeLjekara
+            // checkBoxUspjesanPregled
             // 
-            this.labelMisljenjeLjekara.AutoSize = true;
-            this.labelMisljenjeLjekara.Location = new System.Drawing.Point(689, 90);
-            this.labelMisljenjeLjekara.Name = "labelMisljenjeLjekara";
-            this.labelMisljenjeLjekara.Size = new System.Drawing.Size(84, 13);
-            this.labelMisljenjeLjekara.TabIndex = 17;
-            this.labelMisljenjeLjekara.Text = "Mišljenje ljekara:";
-            // 
-            // labelTerapijaPreporuka
-            // 
-            this.labelTerapijaPreporuka.AutoSize = true;
-            this.labelTerapijaPreporuka.Location = new System.Drawing.Point(327, 242);
-            this.labelTerapijaPreporuka.Name = "labelTerapijaPreporuka";
-            this.labelTerapijaPreporuka.Size = new System.Drawing.Size(108, 13);
-            this.labelTerapijaPreporuka.TabIndex = 15;
-            this.labelTerapijaPreporuka.Text = "Preporučena terapija:";
-            // 
-            // richTextBoxTerapija
-            // 
-            this.richTextBoxTerapija.Location = new System.Drawing.Point(456, 239);
-            this.richTextBoxTerapija.Name = "richTextBoxTerapija";
-            this.richTextBoxTerapija.Size = new System.Drawing.Size(200, 123);
-            this.richTextBoxTerapija.TabIndex = 16;
-            this.richTextBoxTerapija.Text = "";
+            this.checkBoxUspjesanPregled.AutoSize = true;
+            this.checkBoxUspjesanPregled.Location = new System.Drawing.Point(835, 326);
+            this.checkBoxUspjesanPregled.Name = "checkBoxUspjesanPregled";
+            this.checkBoxUspjesanPregled.Size = new System.Drawing.Size(108, 17);
+            this.checkBoxUspjesanPregled.TabIndex = 20;
+            this.checkBoxUspjesanPregled.Text = "Uspješan pregled";
+            this.checkBoxUspjesanPregled.UseVisualStyleBackColor = true;
             // 
             // numericUpDown1
             // 
@@ -1314,42 +1239,298 @@
             0,
             0});
             // 
-            // checkBoxUspjesanPregled
+            // richTextBoxMisljenjeLjekara
             // 
-            this.checkBoxUspjesanPregled.AutoSize = true;
-            this.checkBoxUspjesanPregled.Location = new System.Drawing.Point(835, 326);
-            this.checkBoxUspjesanPregled.Name = "checkBoxUspjesanPregled";
-            this.checkBoxUspjesanPregled.Size = new System.Drawing.Size(108, 17);
-            this.checkBoxUspjesanPregled.TabIndex = 20;
-            this.checkBoxUspjesanPregled.Text = "Uspješan pregled";
-            this.checkBoxUspjesanPregled.UseVisualStyleBackColor = true;
+            this.richTextBoxMisljenjeLjekara.Location = new System.Drawing.Point(793, 90);
+            this.richTextBoxMisljenjeLjekara.Name = "richTextBoxMisljenjeLjekara";
+            this.richTextBoxMisljenjeLjekara.Size = new System.Drawing.Size(200, 123);
+            this.richTextBoxMisljenjeLjekara.TabIndex = 18;
+            this.richTextBoxMisljenjeLjekara.Text = "";
+            this.richTextBoxMisljenjeLjekara.Validating += new System.ComponentModel.CancelEventHandler(this.richTextBoxMisljenjeLjekara_Validating);
+            this.richTextBoxMisljenjeLjekara.Validated += new System.EventHandler(this.richTextBoxMisljenjeLjekara_Validated);
             // 
-            // label10
+            // labelMisljenjeLjekara
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(715, 289);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 13);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Broj licence doktora:";
+            this.labelMisljenjeLjekara.AutoSize = true;
+            this.labelMisljenjeLjekara.Location = new System.Drawing.Point(689, 90);
+            this.labelMisljenjeLjekara.Name = "labelMisljenjeLjekara";
+            this.labelMisljenjeLjekara.Size = new System.Drawing.Size(84, 13);
+            this.labelMisljenjeLjekara.TabIndex = 17;
+            this.labelMisljenjeLjekara.Text = "Mišljenje ljekara:";
             // 
-            // buttonRegistrujPregled
+            // richTextBoxTerapija
             // 
-            this.buttonRegistrujPregled.Location = new System.Drawing.Point(699, 372);
-            this.buttonRegistrujPregled.Name = "buttonRegistrujPregled";
-            this.buttonRegistrujPregled.Size = new System.Drawing.Size(120, 23);
-            this.buttonRegistrujPregled.TabIndex = 22;
-            this.buttonRegistrujPregled.Text = "Registruj pregled!";
-            this.buttonRegistrujPregled.UseVisualStyleBackColor = true;
+            this.richTextBoxTerapija.Location = new System.Drawing.Point(456, 239);
+            this.richTextBoxTerapija.Name = "richTextBoxTerapija";
+            this.richTextBoxTerapija.Size = new System.Drawing.Size(200, 123);
+            this.richTextBoxTerapija.TabIndex = 16;
+            this.richTextBoxTerapija.Text = "";
             // 
-            // buttonPonistiPregled
+            // richTextBoxOpisPostupka
             // 
-            this.buttonPonistiPregled.Location = new System.Drawing.Point(835, 372);
-            this.buttonPonistiPregled.Name = "buttonPonistiPregled";
-            this.buttonPonistiPregled.Size = new System.Drawing.Size(120, 23);
-            this.buttonPonistiPregled.TabIndex = 23;
-            this.buttonPonistiPregled.Text = "Poništi pregled!";
-            this.buttonPonistiPregled.UseVisualStyleBackColor = true;
+            this.richTextBoxOpisPostupka.Location = new System.Drawing.Point(456, 90);
+            this.richTextBoxOpisPostupka.Name = "richTextBoxOpisPostupka";
+            this.richTextBoxOpisPostupka.Size = new System.Drawing.Size(200, 123);
+            this.richTextBoxOpisPostupka.TabIndex = 16;
+            this.richTextBoxOpisPostupka.Text = "";
+            this.richTextBoxOpisPostupka.Validating += new System.ComponentModel.CancelEventHandler(this.richTextBoxOpisPostupka_Validating);
+            this.richTextBoxOpisPostupka.Validated += new System.EventHandler(this.richTextBoxOpisPostupka_Validated);
+            // 
+            // labelTerapijaPreporuka
+            // 
+            this.labelTerapijaPreporuka.AutoSize = true;
+            this.labelTerapijaPreporuka.Location = new System.Drawing.Point(327, 242);
+            this.labelTerapijaPreporuka.Name = "labelTerapijaPreporuka";
+            this.labelTerapijaPreporuka.Size = new System.Drawing.Size(108, 13);
+            this.labelTerapijaPreporuka.TabIndex = 15;
+            this.labelTerapijaPreporuka.Text = "Preporučena terapija:";
+            // 
+            // labelOpisPostupka
+            // 
+            this.labelOpisPostupka.AutoSize = true;
+            this.labelOpisPostupka.Location = new System.Drawing.Point(352, 90);
+            this.labelOpisPostupka.Name = "labelOpisPostupka";
+            this.labelOpisPostupka.Size = new System.Drawing.Size(78, 13);
+            this.labelOpisPostupka.TabIndex = 15;
+            this.labelOpisPostupka.Text = "Opis postupka:";
+            // 
+            // labelDatumPregleda
+            // 
+            this.labelDatumPregleda.AutoSize = true;
+            this.labelDatumPregleda.Location = new System.Drawing.Point(466, 57);
+            this.labelDatumPregleda.Name = "labelDatumPregleda";
+            this.labelDatumPregleda.Size = new System.Drawing.Size(85, 13);
+            this.labelDatumPregleda.TabIndex = 14;
+            this.labelDatumPregleda.Text = "Datum pregleda:";
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Location = new System.Drawing.Point(573, 51);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker3.TabIndex = 13;
+            // 
+            // listBoxRegistracijaPregleda
+            // 
+            this.listBoxRegistracijaPregleda.FormattingEnabled = true;
+            this.listBoxRegistracijaPregleda.Location = new System.Drawing.Point(13, 63);
+            this.listBoxRegistracijaPregleda.Name = "listBoxRegistracijaPregleda";
+            this.listBoxRegistracijaPregleda.Size = new System.Drawing.Size(308, 290);
+            this.listBoxRegistracijaPregleda.TabIndex = 12;
+            this.listBoxRegistracijaPregleda.Validating += new System.ComponentModel.CancelEventHandler(this.listBoxRegistracijaPregleda_Validating);
+            this.listBoxRegistracijaPregleda.Validated += new System.EventHandler(this.listBoxRegistracijaPregleda_Validated);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 30);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Ime/Prezime:";
+            // 
+            // textBoxRegistracijaPregleda
+            // 
+            this.textBoxRegistracijaPregleda.Location = new System.Drawing.Point(101, 27);
+            this.textBoxRegistracijaPregleda.Name = "textBoxRegistracijaPregleda";
+            this.textBoxRegistracijaPregleda.Size = new System.Drawing.Size(220, 20);
+            this.textBoxRegistracijaPregleda.TabIndex = 10;
+            this.textBoxRegistracijaPregleda.TextChanged += new System.EventHandler(this.textBoxRegistracijaPregleda_TextChanged);
+            this.textBoxRegistracijaPregleda.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxRegistracijaPregleda_Validating);
+            this.textBoxRegistracijaPregleda.Validated += new System.EventHandler(this.textBoxRegistracijaPregleda_Validated);
+            // 
+            // labelRegistracijaPregleda
+            // 
+            this.labelRegistracijaPregleda.AutoSize = true;
+            this.labelRegistracijaPregleda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelRegistracijaPregleda.Location = new System.Drawing.Point(10, 7);
+            this.labelRegistracijaPregleda.Name = "labelRegistracijaPregleda";
+            this.labelRegistracijaPregleda.Size = new System.Drawing.Size(474, 13);
+            this.labelRegistracijaPregleda.TabIndex = 9;
+            this.labelRegistracijaPregleda.Text = "Ukoliko pacijentu nije kreiran karton, on neće biti vidljiv u listi za izbor paci" +
+    "jenata!";
+            // 
+            // tabPageAnaliza
+            // 
+            this.tabPageAnaliza.Controls.Add(this.pictureBoxZelenaNealkoholicar);
+            this.tabPageAnaliza.Controls.Add(this.pictureBoxCrvenaAlkoholicar);
+            this.tabPageAnaliza.Controls.Add(this.labelNealkoholicar);
+            this.tabPageAnaliza.Controls.Add(this.labelAlkoholicar);
+            this.tabPageAnaliza.Controls.Add(this.labelBrojPacijenata);
+            this.tabPageAnaliza.Controls.Add(this.labelProcenatAlkoholicara);
+            this.tabPageAnaliza.Controls.Add(this.pictureBox4);
+            this.tabPageAnaliza.Controls.Add(this.pictureBoxZelenaNepusac);
+            this.tabPageAnaliza.Controls.Add(this.pictureBoxCrvenaPusac);
+            this.tabPageAnaliza.Controls.Add(this.labelNepusaci);
+            this.tabPageAnaliza.Controls.Add(this.labelPusaci);
+            this.tabPageAnaliza.Controls.Add(this.labelUkupnoPacijenata);
+            this.tabPageAnaliza.Controls.Add(this.labelProcenatPusaca);
+            this.tabPageAnaliza.Controls.Add(this.pictureBox1);
+            this.tabPageAnaliza.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tabPageAnaliza.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAnaliza.Name = "tabPageAnaliza";
+            this.tabPageAnaliza.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAnaliza.Size = new System.Drawing.Size(1155, 618);
+            this.tabPageAnaliza.TabIndex = 5;
+            this.tabPageAnaliza.Text = "Analiza";
+            this.tabPageAnaliza.UseVisualStyleBackColor = true;
+            this.tabPageAnaliza.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPageAnaliza_Paint);
+            // 
+            // pictureBoxZelenaNealkoholicar
+            // 
+            this.pictureBoxZelenaNealkoholicar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.pictureBoxZelenaNealkoholicar.Location = new System.Drawing.Point(585, 96);
+            this.pictureBoxZelenaNealkoholicar.Name = "pictureBoxZelenaNealkoholicar";
+            this.pictureBoxZelenaNealkoholicar.Size = new System.Drawing.Size(15, 15);
+            this.pictureBoxZelenaNealkoholicar.TabIndex = 16;
+            this.pictureBoxZelenaNealkoholicar.TabStop = false;
+            // 
+            // pictureBoxCrvenaAlkoholicar
+            // 
+            this.pictureBoxCrvenaAlkoholicar.BackColor = System.Drawing.Color.Red;
+            this.pictureBoxCrvenaAlkoholicar.Location = new System.Drawing.Point(585, 65);
+            this.pictureBoxCrvenaAlkoholicar.Name = "pictureBoxCrvenaAlkoholicar";
+            this.pictureBoxCrvenaAlkoholicar.Size = new System.Drawing.Size(15, 15);
+            this.pictureBoxCrvenaAlkoholicar.TabIndex = 15;
+            this.pictureBoxCrvenaAlkoholicar.TabStop = false;
+            // 
+            // labelNealkoholicar
+            // 
+            this.labelNealkoholicar.AutoSize = true;
+            this.labelNealkoholicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelNealkoholicar.Location = new System.Drawing.Point(606, 91);
+            this.labelNealkoholicar.Name = "labelNealkoholicar";
+            this.labelNealkoholicar.Size = new System.Drawing.Size(0, 20);
+            this.labelNealkoholicar.TabIndex = 14;
+            // 
+            // labelAlkoholicar
+            // 
+            this.labelAlkoholicar.AutoSize = true;
+            this.labelAlkoholicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelAlkoholicar.Location = new System.Drawing.Point(606, 60);
+            this.labelAlkoholicar.Name = "labelAlkoholicar";
+            this.labelAlkoholicar.Size = new System.Drawing.Size(0, 20);
+            this.labelAlkoholicar.TabIndex = 13;
+            // 
+            // labelBrojPacijenata
+            // 
+            this.labelBrojPacijenata.AutoSize = true;
+            this.labelBrojPacijenata.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelBrojPacijenata.Location = new System.Drawing.Point(606, 30);
+            this.labelBrojPacijenata.Name = "labelBrojPacijenata";
+            this.labelBrojPacijenata.Size = new System.Drawing.Size(0, 20);
+            this.labelBrojPacijenata.TabIndex = 12;
+            // 
+            // labelProcenatAlkoholicara
+            // 
+            this.labelProcenatAlkoholicara.AutoSize = true;
+            this.labelProcenatAlkoholicara.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelProcenatAlkoholicara.Location = new System.Drawing.Point(802, 12);
+            this.labelProcenatAlkoholicara.Name = "labelProcenatAlkoholicara";
+            this.labelProcenatAlkoholicara.Size = new System.Drawing.Size(344, 15);
+            this.labelProcenatAlkoholicara.TabIndex = 11;
+            this.labelProcenatAlkoholicara.Text = "Graf 2: Procenat alkoholičara u populaciji pacijenata";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Location = new System.Drawing.Point(805, 30);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(350, 250);
+            this.pictureBox4.TabIndex = 10;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBoxZelenaNepusac
+            // 
+            this.pictureBoxZelenaNepusac.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.pictureBoxZelenaNepusac.Location = new System.Drawing.Point(5, 96);
+            this.pictureBoxZelenaNepusac.Name = "pictureBoxZelenaNepusac";
+            this.pictureBoxZelenaNepusac.Size = new System.Drawing.Size(15, 15);
+            this.pictureBoxZelenaNepusac.TabIndex = 9;
+            this.pictureBoxZelenaNepusac.TabStop = false;
+            // 
+            // pictureBoxCrvenaPusac
+            // 
+            this.pictureBoxCrvenaPusac.BackColor = System.Drawing.Color.Red;
+            this.pictureBoxCrvenaPusac.Location = new System.Drawing.Point(5, 65);
+            this.pictureBoxCrvenaPusac.Name = "pictureBoxCrvenaPusac";
+            this.pictureBoxCrvenaPusac.Size = new System.Drawing.Size(15, 15);
+            this.pictureBoxCrvenaPusac.TabIndex = 5;
+            this.pictureBoxCrvenaPusac.TabStop = false;
+            // 
+            // labelNepusaci
+            // 
+            this.labelNepusaci.AutoSize = true;
+            this.labelNepusaci.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelNepusaci.Location = new System.Drawing.Point(26, 91);
+            this.labelNepusaci.Name = "labelNepusaci";
+            this.labelNepusaci.Size = new System.Drawing.Size(0, 20);
+            this.labelNepusaci.TabIndex = 4;
+            // 
+            // labelPusaci
+            // 
+            this.labelPusaci.AutoSize = true;
+            this.labelPusaci.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelPusaci.Location = new System.Drawing.Point(26, 60);
+            this.labelPusaci.Name = "labelPusaci";
+            this.labelPusaci.Size = new System.Drawing.Size(0, 20);
+            this.labelPusaci.TabIndex = 3;
+            // 
+            // labelUkupnoPacijenata
+            // 
+            this.labelUkupnoPacijenata.AutoSize = true;
+            this.labelUkupnoPacijenata.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelUkupnoPacijenata.Location = new System.Drawing.Point(26, 30);
+            this.labelUkupnoPacijenata.Name = "labelUkupnoPacijenata";
+            this.labelUkupnoPacijenata.Size = new System.Drawing.Size(0, 20);
+            this.labelUkupnoPacijenata.TabIndex = 2;
+            // 
+            // labelProcenatPusaca
+            // 
+            this.labelProcenatPusaca.AutoSize = true;
+            this.labelProcenatPusaca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelProcenatPusaca.Location = new System.Drawing.Point(222, 12);
+            this.labelProcenatPusaca.Name = "labelProcenatPusaca";
+            this.labelProcenatPusaca.Size = new System.Drawing.Size(311, 15);
+            this.labelProcenatPusaca.TabIndex = 1;
+            this.labelProcenatPusaca.Text = "Graf 1: Procenat pušača u populaciji pacijenata";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(225, 30);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(350, 250);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // tabPageNaplata
+            // 
+            this.tabPageNaplata.Location = new System.Drawing.Point(4, 22);
+            this.tabPageNaplata.Name = "tabPageNaplata";
+            this.tabPageNaplata.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageNaplata.Size = new System.Drawing.Size(1155, 618);
+            this.tabPageNaplata.TabIndex = 6;
+            this.tabPageNaplata.Text = "Naplata";
+            this.tabPageNaplata.UseVisualStyleBackColor = true;
+            // 
+            // statusStrip2
+            // 
+            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel2});
+            this.statusStrip2.Location = new System.Drawing.Point(0, 659);
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.Size = new System.Drawing.Size(1160, 22);
+            this.statusStrip2.TabIndex = 1;
+            this.statusStrip2.Text = "statusStrip1";
+            this.statusStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 17);
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
             // 
             // labelKorisnikIme
             // 
@@ -1359,16 +1540,6 @@
             this.labelKorisnikIme.Name = "labelKorisnikIme";
             this.labelKorisnikIme.Size = new System.Drawing.Size(0, 24);
             this.labelKorisnikIme.TabIndex = 2;
-            // 
-            // labelGreskaUPristupu
-            // 
-            this.labelGreskaUPristupu.AutoSize = true;
-            this.labelGreskaUPristupu.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelGreskaUPristupu.ForeColor = System.Drawing.Color.Red;
-            this.labelGreskaUPristupu.Location = new System.Drawing.Point(101, 484);
-            this.labelGreskaUPristupu.Name = "labelGreskaUPristupu";
-            this.labelGreskaUPristupu.Size = new System.Drawing.Size(0, 55);
-            this.labelGreskaUPristupu.TabIndex = 24;
             // 
             // glavniMeni17324
             // 
@@ -1414,18 +1585,26 @@
             this.groupBoxPretragaRasporedPregleda.PerformLayout();
             this.tabPageKreiranjeKartona.ResumeLayout(false);
             this.tabPageKreiranjeKartona.PerformLayout();
+            this.groupBoxAlkoholicar.ResumeLayout(false);
+            this.groupBoxAlkoholicar.PerformLayout();
+            this.groupBoxPusac.ResumeLayout(false);
+            this.groupBoxPusac.PerformLayout();
             this.tabPagePretragaKartona.ResumeLayout(false);
             this.tabPagePretragaKartona.PerformLayout();
             this.tabPageRegistracijaPregleda.ResumeLayout(false);
             this.tabPageRegistracijaPregleda.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.tabPageAnaliza.ResumeLayout(false);
+            this.tabPageAnaliza.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxZelenaNealkoholicar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCrvenaAlkoholicar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxZelenaNepusac)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCrvenaPusac)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
-            this.groupBoxPusac.ResumeLayout(false);
-            this.groupBoxPusac.PerformLayout();
-            this.groupBoxAlkoholicar.ResumeLayout(false);
-            this.groupBoxAlkoholicar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1547,5 +1726,19 @@
         private System.Windows.Forms.Button buttonRegistrujPregled;
         private System.Windows.Forms.Label labelKorisnikIme;
         private System.Windows.Forms.Label labelGreskaUPristupu;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label labelProcenatPusaca;
+        private System.Windows.Forms.Label labelUkupnoPacijenata;
+        private System.Windows.Forms.Label labelNepusaci;
+        private System.Windows.Forms.Label labelPusaci;
+        private System.Windows.Forms.PictureBox pictureBoxCrvenaPusac;
+        private System.Windows.Forms.PictureBox pictureBoxZelenaNepusac;
+        private System.Windows.Forms.PictureBox pictureBoxZelenaNealkoholicar;
+        private System.Windows.Forms.PictureBox pictureBoxCrvenaAlkoholicar;
+        private System.Windows.Forms.Label labelNealkoholicar;
+        private System.Windows.Forms.Label labelAlkoholicar;
+        private System.Windows.Forms.Label labelBrojPacijenata;
+        private System.Windows.Forms.Label labelProcenatAlkoholicara;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
