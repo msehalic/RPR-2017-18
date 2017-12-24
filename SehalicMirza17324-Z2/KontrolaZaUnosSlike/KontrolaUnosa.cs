@@ -71,5 +71,32 @@ namespace KontrolaZaUnosSlike
             errorProvider1.SetError(dateTimePicker1, "");
             toolStripStatusLabel1.Text = "";
         }
+
+        private void promijeniSlikuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "Open Image";
+                dlg.Filter = "jpg files (*.jpg)|*.jpg";
+
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    pictureBox1.Image = new Bitmap(dlg.FileName);
+                }
+            }
+        }
+
+        private void izbrišiSlikuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = null;
+        }
+
+        private void UserControlUnosSlike_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button==MouseButtons.Right)
+            {
+                contextMenuStripSlika.Show(Cursor.Position);
+            }
+        }
     }
 }

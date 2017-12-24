@@ -36,9 +36,13 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.contextMenuStripSlika = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.promijeniSlikuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.izbrišiSlikuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            this.contextMenuStripSlika.SuspendLayout();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -99,6 +103,28 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
+            // contextMenuStripSlika
+            // 
+            this.contextMenuStripSlika.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.promijeniSlikuToolStripMenuItem,
+            this.izbrišiSlikuToolStripMenuItem});
+            this.contextMenuStripSlika.Name = "contextMenuStrip1";
+            this.contextMenuStripSlika.Size = new System.Drawing.Size(162, 48);
+            // 
+            // promijeniSlikuToolStripMenuItem
+            // 
+            this.promijeniSlikuToolStripMenuItem.Name = "promijeniSlikuToolStripMenuItem";
+            this.promijeniSlikuToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.promijeniSlikuToolStripMenuItem.Text = "Promijeni sliku...";
+            this.promijeniSlikuToolStripMenuItem.Click += new System.EventHandler(this.promijeniSlikuToolStripMenuItem_Click);
+            // 
+            // izbrišiSlikuToolStripMenuItem
+            // 
+            this.izbrišiSlikuToolStripMenuItem.Name = "izbrišiSlikuToolStripMenuItem";
+            this.izbrišiSlikuToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.izbrišiSlikuToolStripMenuItem.Text = "Izbriši sliku...";
+            this.izbrišiSlikuToolStripMenuItem.Click += new System.EventHandler(this.izbrišiSlikuToolStripMenuItem_Click);
+            // 
             // UserControlUnosSlike
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,10 +138,12 @@
             this.Size = new System.Drawing.Size(203, 224);
             this.Tag = "";
             this.Load += new System.EventHandler(this.UserControlUnosSlike_Load);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UserControlUnosSlike_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.contextMenuStripSlika.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +158,8 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripMenuItem promijeniSlikuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem izbrišiSlikuToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripSlika;
     }
 }

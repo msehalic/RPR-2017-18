@@ -1007,53 +1007,91 @@ namespace SehalicMirza17324_Z2
 
         private void comboBoxKriterijPretrage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dateTimePickerPretraga.Enabled = false;
-            Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent) listBoxPretraga.SelectedValue;
-            if (comboBoxKriterijPretrage.SelectedValue.Equals("Pretraga po datumu pregleda"))
+            listBoxPretraga_Validating(listBoxPretraga, new CancelEventArgs());
+            if (comboBoxKriterijPretrage.SelectedIndex==0)
             {
                 dateTimePickerPretraga.Enabled = true;
-                listBoxRezultatPretrage.Items.Clear();
+                textBoxSadrzajPretrage.Enabled = false;
+            }
+            else
+            {
+                dateTimePickerPretraga.Enabled = false;
+                textBoxSadrzajPretrage.Enabled = true;
+            }
+        }
+
+        private void textBoxSadrzajPretrage_TextChanged(object sender, EventArgs e)
+        {
+            Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxPretraga.SelectedItem;
+            listBoxRezultatPretrage.Items.Clear();
+            if (textBoxSadrzajPretrage.Text.Length != 0 && errorProvider2.GetError(listBoxPretraga)=="")
+            {
+                if (comboBoxKriterijPretrage.SelectedIndex == 1)
+                {
+                    listBoxRezultatPretrage.Items.Clear();
                     foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
                     {
-                        if (p.DatumVrijemePregleda==dateTimePickerPretraga.Value.Date)
+                        if (p.MisljenjeLjekara.Contains(textBoxSadrzajPretrage.Text))
                         {
                             listBoxRezultatPretrage.Items.Add(p.ToString());
                         }
                     }
+                }
+                else if (comboBoxKriterijPretrage.SelectedIndex == 2)
+                {
+                    listBoxRezultatPretrage.Items.Clear();
+                    foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
+                    {
+                        if (p.Terapija.Contains(textBoxSadrzajPretrage.Text))
+                        {
+                            listBoxRezultatPretrage.Items.Add(p.ToString());
+                        }
+                    }
+                }
+                else if (comboBoxKriterijPretrage.SelectedIndex == 3)
+                {
+                    listBoxRezultatPretrage.Items.Clear();
+                    foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
+                    {
+                        if (p.Postupak.Contains(textBoxSadrzajPretrage.Text))
+                        {
+                            listBoxRezultatPretrage.Items.Add(p.ToString());
+                        }
+                    }
+                }
             }
-           else if (comboBoxKriterijPretrage.SelectedValue.Equals("Pretraga po mišljenju doktora"))
+        }
+
+        private void dateTimePickerPretraga_ValueChanged(object sender, EventArgs e)
+        {
+            Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxPretraga.SelectedItem;
+            if (comboBoxKriterijPretrage.SelectedText.Equals("Pretraga po datumu pregleda"))
             {
                 listBoxRezultatPretrage.Items.Clear();
                 foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
                 {
-                    if (p.MisljenjeLjekara.Contains(textBoxSadrzajPretrage.Text))
+                    if (p.DatumVrijemePregleda.Date == dateTimePickerPretraga.Value.Date)
                     {
                         listBoxRezultatPretrage.Items.Add(p.ToString());
                     }
                 }
             }
-            else if (comboBoxKriterijPretrage.SelectedValue.Equals("Pretraga po propisanoj terapiji"))
+        }
+
+        private void listBoxPretraga_Validating(object sender, CancelEventArgs e)
+        {
+            if (listBoxPretraga.SelectedIndex == -1)
             {
-                listBoxRezultatPretrage.Items.Clear();
-                foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
-                {
-                    if (p.Terapija.Contains(textBoxSadrzajPretrage.Text))
-                    {
-                        listBoxRezultatPretrage.Items.Add(p.ToString());
-                    }
-                }
+                this.errorProvider2.SetError(listBoxPretraga, "Niste izabrali pacijenta iz liste!");
+                toolStripStatusLabel2.Text = "Niste izabrali pacijenta iz liste!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
             }
-            else if (comboBoxKriterijPretrage.SelectedValue.Equals("Pretraga po provedenom postupku"))
-            {
-                listBoxRezultatPretrage.Items.Clear();
-                foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
-                {
-                    if (p.Postupak.Contains(textBoxSadrzajPretrage.Text))
-                    {
-                        listBoxRezultatPretrage.Items.Add(p.ToString());
-                    }
-                }
-            }
+        }
+
+        private void listBoxPretraga_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(listBoxPretraga, "");
+            toolStripStatusLabel2.Text = "";
         }
     }
 }

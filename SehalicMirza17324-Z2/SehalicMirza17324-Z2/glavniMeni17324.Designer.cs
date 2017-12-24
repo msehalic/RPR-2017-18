@@ -761,6 +761,8 @@
             this.listBoxPretraga.Name = "listBoxPretraga";
             this.listBoxPretraga.Size = new System.Drawing.Size(308, 277);
             this.listBoxPretraga.TabIndex = 8;
+            this.listBoxPretraga.Validating += new System.ComponentModel.CancelEventHandler(this.listBoxPretraga_Validating);
+            this.listBoxPretraga.Validated += new System.EventHandler(this.listBoxPretraga_Validated);
             // 
             // label7
             // 
@@ -1701,6 +1703,7 @@
             this.textBoxSadrzajPretrage.Name = "textBoxSadrzajPretrage";
             this.textBoxSadrzajPretrage.Size = new System.Drawing.Size(276, 20);
             this.textBoxSadrzajPretrage.TabIndex = 12;
+            this.textBoxSadrzajPretrage.TextChanged += new System.EventHandler(this.textBoxSadrzajPretrage_TextChanged);
             // 
             // dateTimePickerPretraga
             // 
@@ -1708,6 +1711,7 @@
             this.dateTimePickerPretraga.Name = "dateTimePickerPretraga";
             this.dateTimePickerPretraga.Size = new System.Drawing.Size(276, 20);
             this.dateTimePickerPretraga.TabIndex = 13;
+            this.dateTimePickerPretraga.ValueChanged += new System.EventHandler(this.dateTimePickerPretraga_ValueChanged);
             // 
             // label11
             // 
