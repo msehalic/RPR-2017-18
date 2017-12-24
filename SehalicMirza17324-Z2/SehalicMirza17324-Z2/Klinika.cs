@@ -11,6 +11,8 @@ using System.Drawing.Drawing2D;
 using System.Security.Cryptography;
 using Zadaca1RPR_17324;
 using Doktori;
+using System.Drawing.Text;
+
 namespace SehalicMirza17324_Z2
 {
     public partial class Klinika : Form
@@ -31,15 +33,22 @@ namespace SehalicMirza17324_Z2
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            //logo
             Graphics g = e.Graphics;
-            Rectangle rect = new Rectangle(40, 80, 100, 100);
-            Pen pen = new Pen(Color.RosyBrown, 40);
-            g.DrawEllipse(pen, rect);
+            g.SmoothingMode=SmoothingMode.AntiAlias; //da bude ljepse
+            Rectangle rect = new Rectangle(60, 40, 60, 100);
+            Rectangle rect1 = new Rectangle(40, 60, 100, 60);
+            Pen pen = new Pen(Color.White, 40);
+            g.DrawEllipse(pen, rect1);
+            g.DrawArc(pen, 50, 50, 80, 80, 90, 360);
+            HatchBrush myHatchBrush = new HatchBrush(HatchStyle.LargeConfetti, Color.White, Color.Red);
             LinearGradientBrush lBrush = new LinearGradientBrush(rect, Color.Red, Color.MintCream, LinearGradientMode.BackwardDiagonal);
-            g.FillRectangle(lBrush, rect);
-            Font fnt = new Font("Verdana", 12);
-            g.DrawString("Klinika", fnt, new SolidBrush(Color.GhostWhite), 57, 110);
-            g.DrawString("Dr 'Šehalić'", fnt, new SolidBrush(Color.GhostWhite), 42, 130);
+            g.FillRectangle(myHatchBrush, rect);
+            g.FillRectangle(myHatchBrush, rect1);
+            Font fnt = new Font("Book Antiqua", 12);
+            g.TextRenderingHint = TextRenderingHint.AntiAlias; //da bude ljepse
+            g.DrawString("Klinika", fnt, new SolidBrush(Color.IndianRed), 57, 150);
+            g.DrawString("Dr 'Šehalić'", fnt, new SolidBrush(Color.IndianRed), 42, 170);
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -128,7 +137,7 @@ namespace SehalicMirza17324_Z2
                 toolStripStatusLabel1.Text = "Neispravna sifra!";
                 toolStripStatusLabel1.ForeColor = Color.Red;
             }
-           // if (buttonOdustani_Click) e.Cancel = false;
+            // if (buttonOdustani_Click) e.Cancel = false;
         }
         private void textBox1_Validated(object sender, EventArgs e)
         {
