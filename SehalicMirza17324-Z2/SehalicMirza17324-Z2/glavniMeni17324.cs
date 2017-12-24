@@ -939,6 +939,7 @@ namespace SehalicMirza17324_Z2
 
         private void listBoxNaplata_SelectedIndexChanged(object sender, EventArgs e)
         {
+            listBoxNaplata.Items.Clear();
             bool pronadjen = false;
             decimal saldoUkupni = 0M;
             foreach (Tuple<Zadaca1RPR_17324.Pregled, decimal> t in klinika17324.PregledIznosNaplate)
@@ -1002,5 +1003,57 @@ namespace SehalicMirza17324_Z2
             }
         }
 
+
+
+        private void comboBoxKriterijPretrage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dateTimePickerPretraga.Enabled = false;
+            Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent) listBoxPretraga.SelectedValue;
+            if (comboBoxKriterijPretrage.SelectedValue.Equals("Pretraga po datumu pregleda"))
+            {
+                dateTimePickerPretraga.Enabled = true;
+                listBoxRezultatPretrage.Items.Clear();
+                    foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
+                    {
+                        if (p.DatumVrijemePregleda==dateTimePickerPretraga.Value.Date)
+                        {
+                            listBoxRezultatPretrage.Items.Add(p.ToString());
+                        }
+                    }
+            }
+           else if (comboBoxKriterijPretrage.SelectedValue.Equals("Pretraga po mišljenju doktora"))
+            {
+                listBoxRezultatPretrage.Items.Clear();
+                foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
+                {
+                    if (p.MisljenjeLjekara.Contains(textBoxSadrzajPretrage.Text))
+                    {
+                        listBoxRezultatPretrage.Items.Add(p.ToString());
+                    }
+                }
+            }
+            else if (comboBoxKriterijPretrage.SelectedValue.Equals("Pretraga po propisanoj terapiji"))
+            {
+                listBoxRezultatPretrage.Items.Clear();
+                foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
+                {
+                    if (p.Terapija.Contains(textBoxSadrzajPretrage.Text))
+                    {
+                        listBoxRezultatPretrage.Items.Add(p.ToString());
+                    }
+                }
+            }
+            else if (comboBoxKriterijPretrage.SelectedValue.Equals("Pretraga po provedenom postupku"))
+            {
+                listBoxRezultatPretrage.Items.Clear();
+                foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
+                {
+                    if (p.Postupak.Contains(textBoxSadrzajPretrage.Text))
+                    {
+                        listBoxRezultatPretrage.Items.Add(p.ToString());
+                    }
+                }
+            }
+        }
     }
 }

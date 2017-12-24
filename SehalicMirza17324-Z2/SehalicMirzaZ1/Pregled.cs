@@ -54,7 +54,7 @@ namespace Zadaca1RPR_17324
        public override string ToString()
         {
             if (IdPregleda==0) return ("Pacijent trenutno nema evidentiranih izvršenih pregleda.");
-            return("U " + DatumVrijemePregleda + " Pacijent " + P.Ime + P.Prezime + " je prošao kroz proceduru " + Postupak + ". Misljenje ljekara je " + MisljenjeLjekara + " te je propisana terapija " + Terapija + ".");
+            return(DatumVrijemePregleda + " Pacijent " + P.Ime + P.Prezime + ", procedura: " + Postupak + ". Misljenje ljekara je " + MisljenjeLjekara + ", propisana terapija: " + Terapija + ".");
         }
         public void GenerisiIDPregleda() //generise nasumican broj od 1 do 1000 da se ne peglamo sa brojacima
         {
