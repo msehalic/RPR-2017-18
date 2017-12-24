@@ -22,7 +22,7 @@ namespace SehalicMirza17324_Z2
         {
             uposlenik17324_1 = u;
             InitializeComponent();
-            labelKorisnikIme.Text = "Dobro došli " + u.ImeUposlenika + " " + u.PrezimeUposlenika;
+          //  toolStripStatusLabel1.Text = "Dobro došli " + u.ImeUposlenika + " " + u.PrezimeUposlenika;
             if (u is Tehnicar)
             {
                 ((Control)this.tabPageRegistracijaPregleda).Enabled = false; //tehnicari ne smiju moci registrovati preglede
@@ -124,6 +124,13 @@ namespace SehalicMirza17324_Z2
                 toolStripStatusLabel2.Text = "Unijeli ste prazno ime!";
                 toolStripStatusLabel2.ForeColor = Color.Red;
             }
+            else if (textBox1.Text.Any(char.IsDigit))
+            {
+                textBox1.Select(0, textBox1.Text.Length);
+                this.errorProvider2.SetError(textBox1, "Unijeli ste broj u polje za ime!");
+                toolStripStatusLabel2.Text = "Unijeli ste broj u polje za ime!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
         }
 
         private void textBox2_Validating(object sender, CancelEventArgs e)
@@ -133,6 +140,13 @@ namespace SehalicMirza17324_Z2
                 textBox2.Select(0, textBox2.Text.Length);
                 this.errorProvider2.SetError(textBox2, "Unijeli ste prazno prezime!");
                 toolStripStatusLabel2.Text = "Unijeli ste prazno prezime!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+            else if (textBox2.Text.Any(char.IsDigit))
+            {
+                textBox2.Select(0, textBox2.Text.Length);
+                this.errorProvider2.SetError(textBox2, "Unijeli ste broj u polje za prezime!");
+                toolStripStatusLabel2.Text = "Unijeli ste broj u polje za prezime!";
                 toolStripStatusLabel2.ForeColor = Color.Red;
             }
         }
@@ -668,6 +682,12 @@ namespace SehalicMirza17324_Z2
                 toolStripStatusLabel2.Text = "Datum slike ne smije biti stariji od 6 mjeseci!";
                 toolStripStatusLabel2.ForeColor = Color.Red;
             }
+            if (userControlUnosSlike1.vratiSliku.Image == null)
+            {
+                this.errorProvider2.SetError(userControlUnosSlike1, "Niste odabrali sliku!");
+                toolStripStatusLabel2.Text = "Niste odabrali sliku!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
         }
 
         private void userControlUnosSlike1_Validated(object sender, EventArgs e)
@@ -966,5 +986,21 @@ namespace SehalicMirza17324_Z2
             this.errorProvider2.SetError(richTextBoxTerapija, "");
             toolStripStatusLabel2.Text = "";
         }
+
+        private void izadjiIzAplikacijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Izadji(sender, e);
+        }
+
+
+        private void podešavanjeFontaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FontDialog fontDialog = new FontDialog();
+            if (fontDialog.ShowDialog() == DialogResult.OK)
+            {
+                tabControlGlavniMeni.Font = fontDialog.Font;
+            }
+        }
+
     }
 }
