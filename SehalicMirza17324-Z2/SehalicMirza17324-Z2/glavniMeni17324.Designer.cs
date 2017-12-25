@@ -64,7 +64,7 @@
             this.labelGreskaUPristupu = new System.Windows.Forms.Label();
             this.buttonPonistiPregled = new System.Windows.Forms.Button();
             this.buttonRegistrujPregled = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
+            this.labelUnosLicence = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.richTextBoxMisljenjeLjekara = new System.Windows.Forms.RichTextBox();
             this.richTextBoxTerapija = new System.Windows.Forms.RichTextBox();
@@ -512,7 +512,7 @@
             this.tabPageRegistracijaPregleda.Controls.Add(this.labelGreskaUPristupu);
             this.tabPageRegistracijaPregleda.Controls.Add(this.buttonPonistiPregled);
             this.tabPageRegistracijaPregleda.Controls.Add(this.buttonRegistrujPregled);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.label10);
+            this.tabPageRegistracijaPregleda.Controls.Add(this.labelUnosLicence);
             this.tabPageRegistracijaPregleda.Controls.Add(this.numericUpDown1);
             this.tabPageRegistracijaPregleda.Controls.Add(this.richTextBoxMisljenjeLjekara);
             this.tabPageRegistracijaPregleda.Controls.Add(this.richTextBoxTerapija);
@@ -564,14 +564,14 @@
             this.buttonRegistrujPregled.UseVisualStyleBackColor = true;
             this.buttonRegistrujPregled.Click += new System.EventHandler(this.buttonRegistrujPregled_Click);
             // 
-            // label10
+            // labelUnosLicence
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(715, 289);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 13);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Broj licence doktora:";
+            this.labelUnosLicence.AutoSize = true;
+            this.labelUnosLicence.Location = new System.Drawing.Point(715, 289);
+            this.labelUnosLicence.Name = "labelUnosLicence";
+            this.labelUnosLicence.Size = new System.Drawing.Size(104, 13);
+            this.labelUnosLicence.TabIndex = 21;
+            this.labelUnosLicence.Text = "Broj licence doktora:";
             // 
             // numericUpDown1
             // 
@@ -589,6 +589,8 @@
             0,
             0,
             0});
+            this.numericUpDown1.Validating += new System.ComponentModel.CancelEventHandler(this.numericUpDown1_Validating);
+            this.numericUpDown1.Validated += new System.EventHandler(this.numericUpDown1_Validated);
             // 
             // richTextBoxMisljenjeLjekara
             // 
@@ -1959,7 +1961,7 @@
         private System.Windows.Forms.Label labelGreskaUPristupu;
         private System.Windows.Forms.Button buttonPonistiPregled;
         private System.Windows.Forms.Button buttonRegistrujPregled;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelUnosLicence;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.RichTextBox richTextBoxMisljenjeLjekara;
         private System.Windows.Forms.RichTextBox richTextBoxTerapija;

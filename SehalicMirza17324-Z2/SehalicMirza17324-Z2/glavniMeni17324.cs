@@ -965,7 +965,8 @@ namespace SehalicMirza17324_Z2
             richTextBoxOpisPostupka_Validating(richTextBoxOpisPostupka, new CancelEventArgs());
             richTextBoxMisljenjeLjekara_Validating(richTextBoxMisljenjeLjekara, new CancelEventArgs());
             richTextBoxTerapija_Validating(richTextBoxTerapija, new CancelEventArgs());
-            if (errorProvider2.GetError(richTextBoxTerapija) == "" && errorProvider2.GetError(richTextBoxMisljenjeLjekara) == "" && errorProvider2.GetError(richTextBoxOpisPostupka) == "")
+            numericUpDown1_Validating(numericUpDown1, new CancelEventArgs());
+            if (errorProvider2.GetError(numericUpDown1)=="" && errorProvider2.GetError(richTextBoxTerapija) == "" && errorProvider2.GetError(richTextBoxMisljenjeLjekara) == "" && errorProvider2.GetError(richTextBoxOpisPostupka) == "")
             {
 
                 Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxRegistracijaPregleda.SelectedItem;
@@ -1129,6 +1130,22 @@ namespace SehalicMirza17324_Z2
                labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: " + originalnaVrijednost + " KM";
                 if (pacijent17324.PosjetioKliniku < 2) labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: " + (Convert.ToDouble(label12.Text) * 1.15) + " KM";
             }
+        }
+
+        private void numericUpDown1_Validating(object sender, CancelEventArgs e)
+        {
+            if (numericUpDown1.Value!=uposlenik17324_1.BrojLicence)
+            {
+                this.errorProvider2.SetError(numericUpDown1, "Licenca koju ste unijeli nije vasa!");
+                toolStripStatusLabel2.Text = "Licenca koju ste unijeli nije vasa!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void numericUpDown1_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(numericUpDown1, "");
+            toolStripStatusLabel2.Text = "";
         }
     }
 }
