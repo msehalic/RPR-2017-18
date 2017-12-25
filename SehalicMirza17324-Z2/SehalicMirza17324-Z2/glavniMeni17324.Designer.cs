@@ -65,7 +65,6 @@
             this.buttonPonistiPregled = new System.Windows.Forms.Button();
             this.buttonRegistrujPregled = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.checkBoxUspjesanPregled = new System.Windows.Forms.CheckBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.richTextBoxMisljenjeLjekara = new System.Windows.Forms.RichTextBox();
             this.richTextBoxTerapija = new System.Windows.Forms.RichTextBox();
@@ -80,6 +79,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.labelRegistracijaPregleda = new System.Windows.Forms.Label();
             this.tabPagePretragaKartona = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dateTimePickerPretraga = new System.Windows.Forms.DateTimePicker();
+            this.textBoxSadrzajPretrage = new System.Windows.Forms.TextBox();
             this.listBoxRezultatPretrage = new System.Windows.Forms.ListBox();
             this.labelKriterijPretrage = new System.Windows.Forms.Label();
             this.comboBoxKriterijPretrage = new System.Windows.Forms.ComboBox();
@@ -171,9 +173,12 @@
             this.labelPrezime = new System.Windows.Forms.Label();
             this.labelIme = new System.Windows.Forms.Label();
             this.tabControlGlavniMeni = new System.Windows.Forms.TabControl();
-            this.textBoxSadrzajPretrage = new System.Windows.Forms.TextBox();
-            this.dateTimePickerPretraga = new System.Windows.Forms.DateTimePicker();
-            this.label11 = new System.Windows.Forms.Label();
+            this.buttonNaplati = new System.Windows.Forms.Button();
+            this.labelUkupnaCijenaPregleda = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.groupBoxPlacanje = new System.Windows.Forms.GroupBox();
+            this.radioButtonRate = new System.Windows.Forms.RadioButton();
+            this.radioButtonGotovina = new System.Windows.Forms.RadioButton();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -207,6 +212,7 @@
             this.groupBoxBracnoStanje.SuspendLayout();
             this.groupBoxSpol.SuspendLayout();
             this.tabControlGlavniMeni.SuspendLayout();
+            this.groupBoxPlacanje.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip2
@@ -276,9 +282,14 @@
             this.menuStrip1.Size = new System.Drawing.Size(1160, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // tabPageNaplata
             // 
+            this.tabPageNaplata.Controls.Add(this.groupBoxPlacanje);
+            this.tabPageNaplata.Controls.Add(this.label12);
+            this.tabPageNaplata.Controls.Add(this.labelUkupnaCijenaPregleda);
+            this.tabPageNaplata.Controls.Add(this.buttonNaplati);
             this.tabPageNaplata.Controls.Add(this.listBoxRacun);
             this.tabPageNaplata.Controls.Add(this.listBoxNaplata);
             this.tabPageNaplata.Controls.Add(this.label9);
@@ -502,7 +513,6 @@
             this.tabPageRegistracijaPregleda.Controls.Add(this.buttonPonistiPregled);
             this.tabPageRegistracijaPregleda.Controls.Add(this.buttonRegistrujPregled);
             this.tabPageRegistracijaPregleda.Controls.Add(this.label10);
-            this.tabPageRegistracijaPregleda.Controls.Add(this.checkBoxUspjesanPregled);
             this.tabPageRegistracijaPregleda.Controls.Add(this.numericUpDown1);
             this.tabPageRegistracijaPregleda.Controls.Add(this.richTextBoxMisljenjeLjekara);
             this.tabPageRegistracijaPregleda.Controls.Add(this.richTextBoxTerapija);
@@ -562,16 +572,6 @@
             this.label10.Size = new System.Drawing.Size(104, 13);
             this.label10.TabIndex = 21;
             this.label10.Text = "Broj licence doktora:";
-            // 
-            // checkBoxUspjesanPregled
-            // 
-            this.checkBoxUspjesanPregled.AutoSize = true;
-            this.checkBoxUspjesanPregled.Location = new System.Drawing.Point(835, 326);
-            this.checkBoxUspjesanPregled.Name = "checkBoxUspjesanPregled";
-            this.checkBoxUspjesanPregled.Size = new System.Drawing.Size(108, 17);
-            this.checkBoxUspjesanPregled.TabIndex = 20;
-            this.checkBoxUspjesanPregled.Text = "Uspješan pregled";
-            this.checkBoxUspjesanPregled.UseVisualStyleBackColor = true;
             // 
             // numericUpDown1
             // 
@@ -722,6 +722,31 @@
             this.tabPagePretragaKartona.TabIndex = 3;
             this.tabPagePretragaKartona.Text = "Pretraga Kartona";
             this.tabPagePretragaKartona.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(540, 86);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(87, 13);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Sadržaj pretrage:";
+            // 
+            // dateTimePickerPretraga
+            // 
+            this.dateTimePickerPretraga.Location = new System.Drawing.Point(634, 96);
+            this.dateTimePickerPretraga.Name = "dateTimePickerPretraga";
+            this.dateTimePickerPretraga.Size = new System.Drawing.Size(276, 20);
+            this.dateTimePickerPretraga.TabIndex = 13;
+            this.dateTimePickerPretraga.ValueChanged += new System.EventHandler(this.dateTimePickerPretraga_ValueChanged);
+            // 
+            // textBoxSadrzajPretrage
+            // 
+            this.textBoxSadrzajPretrage.Location = new System.Drawing.Point(634, 69);
+            this.textBoxSadrzajPretrage.Name = "textBoxSadrzajPretrage";
+            this.textBoxSadrzajPretrage.Size = new System.Drawing.Size(276, 20);
+            this.textBoxSadrzajPretrage.TabIndex = 12;
+            this.textBoxSadrzajPretrage.TextChanged += new System.EventHandler(this.textBoxSadrzajPretrage_TextChanged);
             // 
             // listBoxRezultatPretrage
             // 
@@ -1697,30 +1722,68 @@
             this.tabControlGlavniMeni.Size = new System.Drawing.Size(1163, 644);
             this.tabControlGlavniMeni.TabIndex = 0;
             // 
-            // textBoxSadrzajPretrage
+            // buttonNaplati
             // 
-            this.textBoxSadrzajPretrage.Location = new System.Drawing.Point(634, 69);
-            this.textBoxSadrzajPretrage.Name = "textBoxSadrzajPretrage";
-            this.textBoxSadrzajPretrage.Size = new System.Drawing.Size(276, 20);
-            this.textBoxSadrzajPretrage.TabIndex = 12;
-            this.textBoxSadrzajPretrage.TextChanged += new System.EventHandler(this.textBoxSadrzajPretrage_TextChanged);
+            this.buttonNaplati.Location = new System.Drawing.Point(729, 437);
+            this.buttonNaplati.Name = "buttonNaplati";
+            this.buttonNaplati.Size = new System.Drawing.Size(75, 23);
+            this.buttonNaplati.TabIndex = 14;
+            this.buttonNaplati.Text = "Naplati!";
+            this.buttonNaplati.UseVisualStyleBackColor = true;
+            this.buttonNaplati.Click += new System.EventHandler(this.buttonNaplati_Click);
             // 
-            // dateTimePickerPretraga
+            // labelUkupnaCijenaPregleda
             // 
-            this.dateTimePickerPretraga.Location = new System.Drawing.Point(634, 96);
-            this.dateTimePickerPretraga.Name = "dateTimePickerPretraga";
-            this.dateTimePickerPretraga.Size = new System.Drawing.Size(276, 20);
-            this.dateTimePickerPretraga.TabIndex = 13;
-            this.dateTimePickerPretraga.ValueChanged += new System.EventHandler(this.dateTimePickerPretraga_ValueChanged);
+            this.labelUkupnaCijenaPregleda.AutoSize = true;
+            this.labelUkupnaCijenaPregleda.Location = new System.Drawing.Point(616, 410);
+            this.labelUkupnaCijenaPregleda.Name = "labelUkupnaCijenaPregleda";
+            this.labelUkupnaCijenaPregleda.Size = new System.Drawing.Size(126, 13);
+            this.labelUkupnaCijenaPregleda.TabIndex = 15;
+            this.labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: ";
             // 
-            // label11
+            // label12
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(540, 86);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(87, 13);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "Sadržaj pretrage:";
+            this.label12.AutoSize = true;
+            this.label12.Enabled = false;
+            this.label12.Location = new System.Drawing.Point(821, 437);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(0, 13);
+            this.label12.TabIndex = 16;
+            this.label12.Visible = false;
+            // 
+            // groupBoxPlacanje
+            // 
+            this.groupBoxPlacanje.Controls.Add(this.radioButtonGotovina);
+            this.groupBoxPlacanje.Controls.Add(this.radioButtonRate);
+            this.groupBoxPlacanje.Location = new System.Drawing.Point(509, 350);
+            this.groupBoxPlacanje.Name = "groupBoxPlacanje";
+            this.groupBoxPlacanje.Size = new System.Drawing.Size(308, 46);
+            this.groupBoxPlacanje.TabIndex = 17;
+            this.groupBoxPlacanje.TabStop = false;
+            this.groupBoxPlacanje.Text = "Placanje";
+            // 
+            // radioButtonRate
+            // 
+            this.radioButtonRate.AutoSize = true;
+            this.radioButtonRate.Location = new System.Drawing.Point(58, 19);
+            this.radioButtonRate.Name = "radioButtonRate";
+            this.radioButtonRate.Size = new System.Drawing.Size(102, 17);
+            this.radioButtonRate.TabIndex = 0;
+            this.radioButtonRate.Text = "Plaćanje na rate";
+            this.radioButtonRate.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonGotovina
+            // 
+            this.radioButtonGotovina.AutoSize = true;
+            this.radioButtonGotovina.Checked = true;
+            this.radioButtonGotovina.Location = new System.Drawing.Point(177, 19);
+            this.radioButtonGotovina.Name = "radioButtonGotovina";
+            this.radioButtonGotovina.Size = new System.Drawing.Size(118, 17);
+            this.radioButtonGotovina.TabIndex = 1;
+            this.radioButtonGotovina.TabStop = true;
+            this.radioButtonGotovina.Text = "Plaćanje gotovinom";
+            this.radioButtonGotovina.UseVisualStyleBackColor = true;
+            this.radioButtonGotovina.CheckedChanged += new System.EventHandler(this.radioButtonGotovina_CheckedChanged);
             // 
             // glavniMeni17324
             // 
@@ -1792,6 +1855,8 @@
             this.groupBoxSpol.ResumeLayout(false);
             this.groupBoxSpol.PerformLayout();
             this.tabControlGlavniMeni.ResumeLayout(false);
+            this.groupBoxPlacanje.ResumeLayout(false);
+            this.groupBoxPlacanje.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1895,7 +1960,6 @@
         private System.Windows.Forms.Button buttonPonistiPregled;
         private System.Windows.Forms.Button buttonRegistrujPregled;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox checkBoxUspjesanPregled;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.RichTextBox richTextBoxMisljenjeLjekara;
         private System.Windows.Forms.RichTextBox richTextBoxTerapija;
@@ -1942,5 +2006,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker dateTimePickerPretraga;
         private System.Windows.Forms.TextBox textBoxSadrzajPretrage;
+        private System.Windows.Forms.Button buttonNaplati;
+        private System.Windows.Forms.Label labelUkupnaCijenaPregleda;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBoxPlacanje;
+        private System.Windows.Forms.RadioButton radioButtonGotovina;
+        private System.Windows.Forms.RadioButton radioButtonRate;
     }
 }

@@ -26,6 +26,11 @@ namespace SehalicMirza17324_Z2
             if (u is Tehnicar)
             {
                 ((Control)this.tabPageRegistracijaPregleda).Enabled = false; //tehnicari ne smiju moci registrovati preglede
+                this.tabPageRegistracijaPregleda.Dispose();
+                labelGreskaUPristupu.Text = "Nemate privilegije za pristup ovom modulu!";
+
+                ((Control)this.tabPagePretragaKartona).Enabled = false; //tehnicari ne smiju moci pretrazivati karton
+                this.tabPagePretragaKartona.Dispose();
                 labelGreskaUPristupu.Text = "Nemate privilegije za pristup ovom modulu!";
             }
         }
@@ -939,19 +944,19 @@ namespace SehalicMirza17324_Z2
 
         private void listBoxNaplata_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBoxNaplata.Items.Clear();
-            bool pronadjen = false;
-            decimal saldoUkupni = 0M;
-            foreach (Tuple<Zadaca1RPR_17324.Pregled, decimal> t in klinika17324.PregledIznosNaplate)
+            Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent) listBoxNaplata.SelectedItem;
+            double saldoUkupni = 0;
+            if (pacijent17324.Karton.Count==0) listBoxRacun.Items.AddRange(new object[] { "Nema registrovanih pregleda za placanje kod pacijenta" });
+            else foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
             {
-                if (t.Item1.P == listBoxNaplata.SelectedItem)
-                {
-                    listBoxRacun.Items.Add(Tuple.Create(t.Item1.Postupak, t.Item2));
-                    saldoUkupni += t.Item2;
-                    pronadjen = true;
-                }
+                labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: ";
+                listBoxRacun.Items.Add("Pregled " + p.Postupak + " datuma " + p.DatumVrijemePregleda.ToShortDateString() + " cijena 45 KM.");
+                    saldoUkupni += 45;
+                    labelUkupnaCijenaPregleda.Text += saldoUkupni.ToString() + " KM";
+                label12.Text = saldoUkupni.ToString();
+                
             }
-            if (!pronadjen) listBoxRacun.Items.AddRange(new object[] { "Nema registrovanih pregleda za placanje kod pacijenta" });
+            if (pacijent17324.PosjetioKliniku >= 2) labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: " + (Convert.ToDouble(label12.Text) * 0.9) + " KM";//ovo ce mu biti barem treca posjeta-10% popusta
             // listBoxRacun.Items.Add
         }
 
@@ -966,7 +971,6 @@ namespace SehalicMirza17324_Z2
                 Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxRegistracijaPregleda.SelectedItem;
                 Zadaca1RPR_17324.Pregled pregled17324 = new Zadaca1RPR_17324.Pregled(dateTimePicker3.Value.Date, richTextBoxOpisPostupka.Text, richTextBoxMisljenjeLjekara.Text, richTextBoxTerapija.Text, pacijent17324);
                 pacijent17324.Karton.Add(pregled17324);
-                klinika17324.PregledIznosNaplate.Add(Tuple.Create(pregled17324, 45M)); //treba doraditi malo
                 toolStripStatusLabel2.Text = "Uspjesno dodan pregled!";
                 toolStripStatusLabel2.ForeColor = Color.Green;
             }
@@ -1092,6 +1096,39 @@ namespace SehalicMirza17324_Z2
         {
             this.errorProvider2.SetError(listBoxPretraga, "");
             toolStripStatusLabel2.Text = "";
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void buttonNaplati_Click(object sender, EventArgs e)
+        {
+            Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxNaplata.SelectedItem;
+            listBoxNaplata_Validating(listBoxNaplata, new CancelEventArgs());
+            textBoxImePrezimeNaplata_Validating(textBoxImePrezimeNaplata, new CancelEventArgs());
+            if (errorProvider2.GetError(listBoxNaplata)=="" && errorProvider2.GetError(textBoxImePrezimeNaplata)=="")
+            {
+                pacijent17324.PosjetioKliniku++;
+                klinika17324.Naplaceno.Add(Convert.ToDouble(label12.Text));
+            }
+        }
+
+        private void radioButtonGotovina_CheckedChanged(object sender, EventArgs e)
+        {
+            Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxNaplata.SelectedItem;
+            double originalnaVrijednost = Convert.ToDouble(label12.Text);
+            if (radioButtonGotovina.Checked == true)
+            {
+                labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: " + originalnaVrijednost + " KM";
+                if (pacijent17324.PosjetioKliniku >= 2) labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: " + (Convert.ToDouble(label12.Text) * 0.9) + " KM";//ovo ce mu biti barem treca posjeta-10% popusta
+            }
+            else
+            {
+               labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: " + originalnaVrijednost + " KM";
+                if (pacijent17324.PosjetioKliniku < 2) labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: " + (Convert.ToDouble(label12.Text) * 1.15) + " KM";
+            }
         }
     }
 }

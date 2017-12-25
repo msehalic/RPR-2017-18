@@ -19,6 +19,7 @@ namespace Zadaca1RPR_17324
             AdresaStanovanja = "Trg republike 1";
             BracnoStanje = "neozenjen";
             DatumPrijema = new DateTime(2017, 1, 1, 0, 0, 0);
+            Karton = new List<Pregled>();
             //idPacijenta++;
         }
 

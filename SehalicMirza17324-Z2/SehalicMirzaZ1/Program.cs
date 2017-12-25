@@ -11,7 +11,6 @@ namespace Zadaca1RPR_17324
         static void Main(string[] args)
         {
             KlinikaKontejner klinika17324 = new KlinikaKontejner();
-            List<decimal> naplaceno = new List<decimal>();
             int unos;
 
             bool dobarUnos = true;
