@@ -945,19 +945,27 @@ namespace SehalicMirza17324_Z2
         private void listBoxNaplata_SelectedIndexChanged(object sender, EventArgs e)
         {
             Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent) listBoxNaplata.SelectedItem;
-            double saldoUkupni = 0;
-            if (pacijent17324.Karton.Count==0) listBoxRacun.Items.AddRange(new object[] { "Nema registrovanih pregleda za placanje kod pacijenta" });
-            else foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
+            if (listBoxNaplata.SelectedIndex != -1)
             {
-                labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: ";
-                listBoxRacun.Items.Add("Pregled " + p.Postupak + " datuma " + p.DatumVrijemePregleda.ToShortDateString() + " cijena 45 KM.");
-                    saldoUkupni += 45;
-                    labelUkupnaCijenaPregleda.Text += saldoUkupni.ToString() + " KM";
-                label12.Text = saldoUkupni.ToString();
-                
+                double saldoUkupni = 0;
+                int brojac = 0;
+                if (pacijent17324.Karton.Count == 0) listBoxRacun.Items.AddRange(new object[] { "Nema registrovanih pregleda za placanje kod pacijenta" });
+                else foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
+                    {
+                        labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: ";
+                        if (p.NaplacenPregled == false)
+                        {
+                            listBoxRacun.Items.Add("Pregled " + p.Postupak + " datuma " + p.DatumVrijemePregleda.ToShortDateString() + " cijena 45 KM.");
+                            saldoUkupni += 45;
+                            labelUkupnaCijenaPregleda.Text += saldoUkupni.ToString() + " KM";
+                            label12.Text = saldoUkupni.ToString();
+                            brojac++;
+                        }
+                    }
+                if (brojac == 0) listBoxRacun.Items.AddRange(new object[] { "Nema registrovanih pregleda za placanje kod pacijenta" });
+                if (pacijent17324.PosjetioKliniku >= 2) labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: " + (Convert.ToDouble(label12.Text) * 0.9) + " KM";//ovo ce mu biti barem treca posjeta-10% popusta
+                                                                                                                                                                     // listBoxRacun.Items.Add
             }
-            if (pacijent17324.PosjetioKliniku >= 2) labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: " + (Convert.ToDouble(label12.Text) * 0.9) + " KM";//ovo ce mu biti barem treca posjeta-10% popusta
-            // listBoxRacun.Items.Add
         }
 
         private void buttonRegistrujPregled_Click(object sender, EventArgs e)
@@ -1114,6 +1122,13 @@ namespace SehalicMirza17324_Z2
                 pacijent17324.PosjetioKliniku++;
                 klinika17324.Naplaceno.Add(Convert.ToDouble(label12.Text));
             }
+            foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
+            {
+                p.NaplacenPregled = true;
+            }
+            label12.Text = "0";
+            labelUkupnaCijenaPregleda.Text = "";
+            listBoxRacun.Items.Clear();
         }
 
         private void radioButtonGotovina_CheckedChanged(object sender, EventArgs e)

@@ -16,6 +16,7 @@ namespace Zadaca1RPR_17324
         private DateTime obdukcija;
         private Doktor d = new Doktor();
         private int idPregleda;
+        private bool naplacenPregled = false;
         private bool rutinskiPregled = false; //ovo za vozacku i ono ljekarski
 
         public DateTime DatumVrijemePregleda { get => datumVrijemePregleda; set => datumVrijemePregleda = value; }
@@ -28,6 +29,7 @@ namespace Zadaca1RPR_17324
         public int IdPregleda { get => idPregleda; set => idPregleda = value; }
         public bool RutinskiPregled { get => rutinskiPregled; set => rutinskiPregled = value; }
         public Pacijent P { get => p; set => p = value; }
+        public bool NaplacenPregled { get => naplacenPregled; set => naplacenPregled = value; }
 
         private Pacijent p;
 

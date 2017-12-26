@@ -35,17 +35,18 @@ namespace Zadaca1RPR_17324
         {
             get => ime; set
             {
-
-                if (ime.Length == 0) throw new Exception("Uneseno prazno ime");
                 ime = value;
+                if (ime.Length == 0) throw new Exception("Uneseno prazno ime");
+
             }
         }
         public string Prezime
         {
             get => prezime; set
             {
-                if (prezime.Length == 0) throw new Exception("Uneseno prazno prezime");
                 prezime = value;
+                if (prezime.Length == 0) throw new Exception("Uneseno prazno prezime");
+               
             }
         }
         public string AdresaStanovanja { get => adresaStanovanja; set => adresaStanovanja = value; }
