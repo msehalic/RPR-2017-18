@@ -15,7 +15,7 @@ namespace Zadaca1RPR_17324
         private static List<Doktor> doktori = new List<Doktor>();
         private static List<Ordinacija> ordinacije = new List<Ordinacija>();
         private static List<Uposlenik> uposlenici = new List<Uposlenik>();
-        List<double> naplaceno = new List<double>();
+        List<double> naplaceno = new List<double>(); 
 
         public List<Pacijent> Pacijenti { get => pacijenti; set => pacijenti = value; }
         public List<Doktor> Doktori { get => doktori; set => doktori = value; }
@@ -35,8 +35,9 @@ namespace Zadaca1RPR_17324
         Ordinacija ordinacija17324_ortoped = new Ordinacija("ortoped", doktor17324_3);
         Ordinacija ordinacija17324_stomatolog = new Ordinacija("stomatolog", doktor17324_4);
 
-        public KlinikaKontejner()
+        public KlinikaKontejner() 
         {
+            doktori.Add(doktor17324_1);
             doktori.Add(doktor17324_2);
             doktori.Add(doktor17324_3);
             doktori.Add(doktor17324_4);
