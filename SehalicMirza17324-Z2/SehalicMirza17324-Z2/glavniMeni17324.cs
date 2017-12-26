@@ -33,6 +33,11 @@ namespace SehalicMirza17324_Z2
                 this.tabPagePretragaKartona.Dispose();
                 labelGreskaUPristupu.Text = "Nemate privilegije za pristup ovom modulu!";
             }
+            if (!(u is Administrator)) //samo admini vide dio za administraciju
+            {
+                ((Control)this.tabPageAdministracija).Enabled = false;
+                this.tabPageAdministracija.Dispose();
+            }
         }
         private void DodajCvorove()
         {
