@@ -22,7 +22,7 @@ namespace SehalicMirza17324_Z2
         {
             uposlenik17324_1 = u;
             InitializeComponent();
-          //  toolStripStatusLabel1.Text = "Dobro došli " + u.ImeUposlenika + " " + u.PrezimeUposlenika;
+            //  toolStripStatusLabel1.Text = "Dobro došli " + u.ImeUposlenika + " " + u.PrezimeUposlenika;
             if (u is Tehnicar)
             {
                 ((Control)this.tabPageRegistracijaPregleda).Enabled = false; //tehnicari ne smiju moci registrovati preglede
@@ -34,7 +34,39 @@ namespace SehalicMirza17324_Z2
                 labelGreskaUPristupu.Text = "Nemate privilegije za pristup ovom modulu!";
             }
         }
+        private void DodajCvorove()
+        {
+            treeView1.Nodes.Clear();
+            TreeNode doktori = new TreeNode("Doktori");
+            TreeNode tehnicari = new TreeNode("Tehnicari");
+            TreeNode pacijenti = new TreeNode("Pacijenti");
+            TreeNode admin = new TreeNode("Administratori");
+            treeView1.Nodes.Add(admin);
+            treeView1.Nodes.Add(doktori);
+            treeView1.Nodes.Add(tehnicari);
+            treeView1.Nodes.Add(pacijenti);
+            if (klinika17324.Uposlenici.Count != 0) //dodaje vec postojece iz kontejnerske
+            {
+                doktori.Nodes.Clear();
+                tehnicari.Nodes.Clear();
+                pacijenti.Nodes.Clear();
+                admin.Nodes.Clear();
+                foreach (Uposlenik u in klinika17324.Uposlenici)
+                {
+                    if (u is Tehnicar) tehnicari.Nodes.Add(new TreeNode(u.ImeUposlenika + " " + u.PrezimeUposlenika));
+                    if (u is Doktor) doktori.Nodes.Add(new TreeNode(u.ImeUposlenika + " " + u.PrezimeUposlenika));
+                    if (u is Administrator) admin.Nodes.Add(new TreeNode(u.ImeUposlenika + " " + u.PrezimeUposlenika));
+                }
 
+            }
+            if (klinika17324.Pacijenti.Count != 0)
+            {
+                foreach (Zadaca1RPR_17324.Pacijent p in klinika17324.Pacijenti)
+                {
+                    pacijenti.Nodes.Add(new TreeNode(p.Ime + " " + p.Prezime));
+                }
+            }
+        }
         private void glavniMeni17324_Load(object sender, EventArgs e)
         {
             this.AutoSize = true;
@@ -43,6 +75,8 @@ namespace SehalicMirza17324_Z2
             if (checkBoxHitanSlucaj.Checked == false) groupBoxHitniSlucajevi.Enabled = false;
             if (radioButtonZiv.Checked == false) groupBoxZiv.Enabled = false;
             if (radioButtonMrtav.Checked == false) groupBoxMrtav.Enabled = false;
+            DodajCvorove();
+
         }
         private void Izadji(object sender, EventArgs e)
         {
@@ -205,6 +239,7 @@ namespace SehalicMirza17324_Z2
                     klinika17324.UnosPodataka(p, checkBoxDermatolog.Checked, checkBoxKardiolog.Checked, checkBoxOrtoped.Checked, checkBoxStomatolog.Checked);
                     toolStripStatusLabel2.Text = "Uspjesno dodan pacijent " + p.Ime + " " + p.Prezime;
                     toolStripStatusLabel2.ForeColor = Color.Green; //malo lijepog dizajna
+                    DodajCvorove();
                 }
                 //TREBA JOS U SETTERE DODATI 
                 //VALIDACIJU
@@ -944,7 +979,7 @@ namespace SehalicMirza17324_Z2
 
         private void listBoxNaplata_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent) listBoxNaplata.SelectedItem;
+            Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxNaplata.SelectedItem;
             if (listBoxNaplata.SelectedIndex != -1)
             {
                 double saldoUkupni = 0;
@@ -974,7 +1009,7 @@ namespace SehalicMirza17324_Z2
             richTextBoxMisljenjeLjekara_Validating(richTextBoxMisljenjeLjekara, new CancelEventArgs());
             richTextBoxTerapija_Validating(richTextBoxTerapija, new CancelEventArgs());
             numericUpDown1_Validating(numericUpDown1, new CancelEventArgs());
-            if (errorProvider2.GetError(numericUpDown1)=="" && errorProvider2.GetError(richTextBoxTerapija) == "" && errorProvider2.GetError(richTextBoxMisljenjeLjekara) == "" && errorProvider2.GetError(richTextBoxOpisPostupka) == "")
+            if (errorProvider2.GetError(numericUpDown1) == "" && errorProvider2.GetError(richTextBoxTerapija) == "" && errorProvider2.GetError(richTextBoxMisljenjeLjekara) == "" && errorProvider2.GetError(richTextBoxOpisPostupka) == "")
             {
 
                 Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxRegistracijaPregleda.SelectedItem;
@@ -1021,7 +1056,7 @@ namespace SehalicMirza17324_Z2
         private void comboBoxKriterijPretrage_SelectedIndexChanged(object sender, EventArgs e)
         {
             listBoxPretraga_Validating(listBoxPretraga, new CancelEventArgs());
-            if (comboBoxKriterijPretrage.SelectedIndex==0)
+            if (comboBoxKriterijPretrage.SelectedIndex == 0)
             {
                 dateTimePickerPretraga.Enabled = true;
                 textBoxSadrzajPretrage.Enabled = false;
@@ -1037,7 +1072,7 @@ namespace SehalicMirza17324_Z2
         {
             Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxPretraga.SelectedItem;
             listBoxRezultatPretrage.Items.Clear();
-            if (textBoxSadrzajPretrage.Text.Length != 0 && errorProvider2.GetError(listBoxPretraga)=="")
+            if (textBoxSadrzajPretrage.Text.Length != 0 && errorProvider2.GetError(listBoxPretraga) == "")
             {
                 if (comboBoxKriterijPretrage.SelectedIndex == 1)
                 {
@@ -1117,7 +1152,7 @@ namespace SehalicMirza17324_Z2
             Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxNaplata.SelectedItem;
             listBoxNaplata_Validating(listBoxNaplata, new CancelEventArgs());
             textBoxImePrezimeNaplata_Validating(textBoxImePrezimeNaplata, new CancelEventArgs());
-            if (errorProvider2.GetError(listBoxNaplata)=="" && errorProvider2.GetError(textBoxImePrezimeNaplata)=="")
+            if (errorProvider2.GetError(listBoxNaplata) == "" && errorProvider2.GetError(textBoxImePrezimeNaplata) == "")
             {
                 pacijent17324.PosjetioKliniku++;
                 klinika17324.Naplaceno.Add(Convert.ToDouble(label12.Text));
@@ -1142,14 +1177,14 @@ namespace SehalicMirza17324_Z2
             }
             else
             {
-               labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: " + originalnaVrijednost + " KM";
+                labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: " + originalnaVrijednost + " KM";
                 if (pacijent17324.PosjetioKliniku < 2) labelUkupnaCijenaPregleda.Text = "Ukupna cijena pregleda: " + (Convert.ToDouble(label12.Text) * 1.15) + " KM";
             }
         }
 
         private void numericUpDown1_Validating(object sender, CancelEventArgs e)
         {
-            if (numericUpDown1.Value!=uposlenik17324_1.BrojLicence)
+            if (numericUpDown1.Value != uposlenik17324_1.BrojLicence)
             {
                 this.errorProvider2.SetError(numericUpDown1, "Licenca koju ste unijeli nije vasa!");
                 toolStripStatusLabel2.Text = "Licenca koju ste unijeli nije vasa!";
@@ -1161,6 +1196,11 @@ namespace SehalicMirza17324_Z2
         {
             this.errorProvider2.SetError(numericUpDown1, "");
             toolStripStatusLabel2.Text = "";
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
         }
     }
 }
