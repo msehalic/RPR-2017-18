@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace Zadaca1RPR_17324
             //idPacijenta++;
         }
 
-        public Pacijent(string ime, string prezime, string adresaStanovanja, string bracnoStanje, DateTime datumRodjenja, char spol, ulong maticniBroj)
+        public Pacijent(string ime, string prezime, string adresaStanovanja, string bracnoStanje, DateTime datumRodjenja, char spol, ulong maticniBroj, Image slika)
         {
             this.Ime = ime;
             this.Prezime = prezime;
@@ -31,6 +32,7 @@ namespace Zadaca1RPR_17324
             this.BracnoStanje = bracnoStanje;
             this.DatumRodjenja = datumRodjenja;
             this.Spol = spol;
+            SlikaPacijenta = slikaPacijenta;
             MaticniBroj = maticniBroj;
         }
 

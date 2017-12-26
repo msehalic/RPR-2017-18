@@ -5,7 +5,7 @@ using System.Linq;
 using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Drawing;
 namespace Zadaca1RPR_17324
 {
 
@@ -44,9 +44,9 @@ namespace Zadaca1RPR_17324
             ordinacije.Add(ordinacija17324_kardiolog);
             ordinacije.Add(ordinacija17324_ortoped);
             ordinacije.Add(ordinacija17324_stomatolog);
-            Uposlenici.Add(new Administrator("Klinika", "Admin", 9999, "admin", "admin"));
-            Uposlenici.Add(new Tehnicar("Samir", "Samirovic", 1000, "samir", "samir1"));
-            Uposlenici.Add(new Doktor("Doktor", "Doktorcic", 2000, "doktor", "doktor1", 0, "dermatolog"));
+            Uposlenici.Add(new Administrator("Klinika", "Admin", null, 9999, "admin", "admin"));
+            Uposlenici.Add(new Tehnicar("Samir", "Samirovic", null, 1000, "samir", "samir1"));
+            Uposlenici.Add(new Doktor("Doktor", "Doktorcic", null, 2000, "doktor", "doktor1", 0, "dermatolog"));
         }
         public Tuple<int, int, int, int> UnosPodataka(Pacijent p, bool dermatolog, bool kardiolog, bool ortoped, bool stomatolog)
         {

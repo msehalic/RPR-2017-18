@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 
 namespace Zadaca1RPR_17324
@@ -11,6 +12,7 @@ namespace Zadaca1RPR_17324
         private string bracnoStanje;
         private DateTime datumPrijema;
         private DateTime datumRodjenja;
+        private Image slikaPacijenta;
         private int idPacijenta = 0;
         private char spol;
         private int posjetioKliniku = 0; //broji koliko je puta odredjeni pacijent bio u klinici, kada dostigne 3 idu popusti itd.
@@ -53,6 +55,7 @@ namespace Zadaca1RPR_17324
         public string BracnoStanje { get => bracnoStanje; set => bracnoStanje = value; }
         public DateTime DatumPrijema { get => datumPrijema; set => datumPrijema = value; }
         public DateTime DatumRodjenja { get => datumRodjenja; set => datumRodjenja = value; }
+        public Image SlikaPacijenta { get => slikaPacijenta; set => slikaPacijenta = value; }
 
         public override string ToString()
         {

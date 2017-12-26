@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Drawing;
 namespace Doktori
 {
     public class Doktor:Uposlenik
@@ -25,7 +25,7 @@ namespace Doktori
             Specijalizacija = specijalizacija;
         }
 
-        public Doktor(string imeUposlenika, string prezimeUposlenika, int brojLicence, string korisnickoIme, string lozinka, int brojPregledanihPacijenata, string specijalizacija) : base(imeUposlenika, prezimeUposlenika, brojLicence, korisnickoIme, lozinka)
+        public Doktor(string imeUposlenika, string prezimeUposlenika, Image slikaUposlenika, int brojLicence, string korisnickoIme, string lozinka, int brojPregledanihPacijenata, string specijalizacija) : base(imeUposlenika, prezimeUposlenika, slikaUposlenika, brojLicence, korisnickoIme, lozinka)
         {
             BrojPregledanihPacijenata = brojPregledanihPacijenata;
             Specijalizacija = specijalizacija;

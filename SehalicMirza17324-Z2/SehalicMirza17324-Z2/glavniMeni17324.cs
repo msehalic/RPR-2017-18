@@ -75,6 +75,7 @@ namespace SehalicMirza17324_Z2
             if (checkBoxHitanSlucaj.Checked == false) groupBoxHitniSlucajevi.Enabled = false;
             if (radioButtonZiv.Checked == false) groupBoxZiv.Enabled = false;
             if (radioButtonMrtav.Checked == false) groupBoxMrtav.Enabled = false;
+            if (radioButtonDoktor.Checked == false) textBoxSpecijalizacija.Enabled = false;
             DodajCvorove();
 
         }
@@ -221,7 +222,7 @@ namespace SehalicMirza17324_Z2
                 string pogresniMaticniBroj = "";
                 char pol = 'M';
                 if (radioButtonZ.Checked) pol = 'Z';
-                Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt64(maskedTextBox1.Text));
+                Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt64(maskedTextBox1.Text), userControlUnosSlike1.vratiSliku.Image);
                 foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.Pacijenti)
                 {
                     if (pacijent17324.MaticniBroj == Convert.ToUInt64(maskedTextBox1.Text))
@@ -1201,6 +1202,186 @@ namespace SehalicMirza17324_Z2
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
+        }
+
+        private void textBoxImeUposlenik_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBoxImeUposlenik.Text.Length==0)
+            {
+                errorProvider2.SetError(textBoxImeUposlenik, "Niste unijeli ime uposlenika!");
+                toolStripStatusLabel2.Text = "Niste unijeli ime uposlenika!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+            if (textBoxImeUposlenik.Text.Any(char.IsDigit))
+            {
+                errorProvider2.SetError(textBoxImeUposlenik, "Unijeli ste broj u polje za ime uposlenika!");
+                toolStripStatusLabel2.Text = "Unijeli ste broj u polje za ime uposlenika!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxImeUposlenik_Validated(object sender, EventArgs e)
+        {
+            errorProvider2.SetError(textBoxImeUposlenik, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void textBoxPrezimeUposlenik_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBoxPrezimeUposlenik.Text.Length == 0)
+            {
+                errorProvider2.SetError(textBoxPrezimeUposlenik, "Niste unijeli prezime uposlenika!");
+                toolStripStatusLabel2.Text = "Niste unijeli prezime uposlenika!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+            if (textBoxPrezimeUposlenik.Text.Any(char.IsDigit))
+            {
+                errorProvider2.SetError(textBoxPrezimeUposlenik, "Unijeli ste broj u polje za prezime uposlenika!");
+                toolStripStatusLabel2.Text = "Unijeli ste broj u polje za prezime uposlenika!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxPrezimeUposlenik_Validated(object sender, EventArgs e)
+        {
+            errorProvider2.SetError(textBoxPrezimeUposlenik, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void textBoxKorisnickoImeUposlenik_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBoxKorisnickoImeUposlenik.Text.Length == 0)
+            {
+                errorProvider2.SetError(textBoxKorisnickoImeUposlenik, "Niste unijeli korisnicko ime uposlenika!");
+                toolStripStatusLabel2.Text = "Niste unijeli korisnicko ime uposlenika!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxKorisnickoImeUposlenik_Validated(object sender, EventArgs e)
+        {
+            errorProvider2.SetError(textBoxKorisnickoImeUposlenik, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void textBoxLozinkaUposlenik_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBoxLozinkaUposlenik.Text.Length == 0)
+            {
+                errorProvider2.SetError(textBoxLozinkaUposlenik, "Niste unijeli lozinku uposlenika!");
+                toolStripStatusLabel2.Text = "Niste unijeli lozinku uposlenika!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxLozinkaUposlenik_Validated(object sender, EventArgs e)
+        {
+            errorProvider2.SetError(textBoxLozinkaUposlenik, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void textBoxPotvrdaLozinkeUposlenik_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBoxLozinkaUposlenik.Text!=textBoxPotvrdaLozinkeUposlenik.Text)
+            {
+                errorProvider2.SetError(textBoxPotvrdaLozinkeUposlenik, "Lozinke se ne podudaraju!");
+                toolStripStatusLabel2.Text = "Lozinke se ne podudaraju!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxPotvrdaLozinkeUposlenik_Validated(object sender, EventArgs e)
+        {
+            errorProvider2.SetError(textBoxPotvrdaLozinkeUposlenik, "");
+            toolStripStatusLabel2.Text = "";
+        }
+        private void userControlUnosSlikeUposlenik_Validating(object sender, CancelEventArgs e)
+        {
+            if (!userControlUnosSlikeUposlenik.ispravanDatum)
+            {
+                this.errorProvider2.SetError(userControlUnosSlikeUposlenik, "Datum slike ne smije biti stariji od 6 mjeseci!");
+                toolStripStatusLabel2.Text = "Datum slike ne smije biti stariji od 6 mjeseci!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+            if (userControlUnosSlikeUposlenik.vratiSliku.Image == null)
+            {
+                this.errorProvider2.SetError(userControlUnosSlikeUposlenik, "Niste odabrali sliku!");
+                toolStripStatusLabel2.Text = "Niste odabrali sliku!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void userControlUnosSlikeUposlenik_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(userControlUnosSlikeUposlenik, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void buttonOdustaniUposlenik_Click(object sender, EventArgs e)
+        {
+            textBoxPotvrdaLozinkeUposlenik.Text = "";
+            textBoxLozinkaUposlenik.Text = "";
+            textBoxImeUposlenik.Text = "";
+            textBoxPrezimeUposlenik.Text = "";
+            numericUpDownLicenca.Value = 100;
+            userControlUnosSlikeUposlenik.Resetiraj();
+        }
+
+        private void buttonUnesiUposlenika_Click(object sender, EventArgs e)
+        {
+            textBoxImeUposlenik_Validating(textBoxImeUposlenik, new CancelEventArgs());
+            textBoxPrezimeUposlenik_Validating(textBoxPrezimeUposlenik, new CancelEventArgs());
+            textBoxKorisnickoImeUposlenik_Validating(textBoxKorisnickoImeUposlenik, new CancelEventArgs());
+            textBoxLozinkaUposlenik_Validating(textBoxLozinkaUposlenik, new CancelEventArgs());
+            textBoxPotvrdaLozinkeUposlenik_Validating(textBoxPotvrdaLozinkeUposlenik, new CancelEventArgs());
+            userControlUnosSlikeUposlenik_Validating(userControlUnosSlikeUposlenik, new CancelEventArgs());
+            textBoxSpecijalizacija_Validating(textBoxSpecijalizacija, new CancelEventArgs());
+            if (errorProvider2.GetError(textBoxSpecijalizacija)=="" && errorProvider2.GetError(textBoxImeUposlenik)=="" && errorProvider2.GetError(textBoxPotvrdaLozinkeUposlenik)=="" && errorProvider2.GetError(textBoxLozinkaUposlenik)=="" && errorProvider2.GetError(textBoxPrezimeUposlenik)=="" && errorProvider2.GetError(userControlUnosSlikeUposlenik)=="")
+            {
+                if (radioButtonTehnicar.Checked)
+                {
+                    klinika17324.Uposlenici.Add(new Tehnicar(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku.Image, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text));
+                    DodajCvorove();
+                    toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
+                    toolStripStatusLabel2.ForeColor = Color.Green;
+                }
+                else if (radioButtonAdmin.Checked)
+                {
+                    klinika17324.Uposlenici.Add(new Administrator(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku.Image, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text));
+                    DodajCvorove();
+                    toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
+                    toolStripStatusLabel2.ForeColor = Color.Green;
+                }
+                else if (radioButtonDoktor.Checked)
+                {
+                    klinika17324.Uposlenici.Add(new Doktor(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku.Image, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text, 0, textBoxSpecijalizacija.Text));
+                    DodajCvorove();
+                    toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
+                    toolStripStatusLabel2.ForeColor = Color.Green;
+                }
+            }
+        }
+
+        private void textBoxSpecijalizacija_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBoxSpecijalizacija.Text.Length==0 && radioButtonDoktor.Enabled==true)
+            {
+                this.errorProvider2.SetError(textBoxSpecijalizacija, "Niste unijeli specijalizaciju doktora!");
+                toolStripStatusLabel2.Text = "Niste unijeli specijalizaciju doktora!";
+                toolStripStatusLabel2.ForeColor = Color.Red;
+            }
+        }
+
+        private void textBoxSpecijalizacija_Validated(object sender, EventArgs e)
+        {
+            this.errorProvider2.SetError(textBoxSpecijalizacija, "");
+            toolStripStatusLabel2.Text = "";
+        }
+
+        private void radioButtonDoktor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonDoktor.Checked == true) textBoxSpecijalizacija.Enabled = true;
+            else textBoxSpecijalizacija.Enabled = false;
         }
     }
 }

@@ -153,7 +153,6 @@
             this.radioButtonZiv = new System.Windows.Forms.RadioButton();
             this.checkBoxHitanSlucaj = new System.Windows.Forms.CheckBox();
             this.buttonOdustani = new System.Windows.Forms.Button();
-            this.userControlUnosSlike1 = new KontrolaZaUnosSlike.UserControlUnosSlike();
             this.groupBoxIzborLjekara = new System.Windows.Forms.GroupBox();
             this.checkBoxDermatolog = new System.Windows.Forms.CheckBox();
             this.checkBoxKardiolog = new System.Windows.Forms.CheckBox();
@@ -190,53 +189,29 @@
             this.label13 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.groupBoxUnosOsoblja = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.label21 = new System.Windows.Forms.Label();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
-            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
-            this.label22 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.buttonOdustaniUposlenik = new System.Windows.Forms.Button();
+            this.buttonUnesiUposlenika = new System.Windows.Forms.Button();
+            this.textBoxPotvrdaLozinkeUposlenik = new System.Windows.Forms.TextBox();
+            this.labelPotvrdaLozinke = new System.Windows.Forms.Label();
+            this.labelBrojLicence = new System.Windows.Forms.Label();
+            this.textBoxPrezimeUposlenik = new System.Windows.Forms.TextBox();
+            this.textBoxImeUposlenik = new System.Windows.Forms.TextBox();
+            this.labelPrezimeUposlenika = new System.Windows.Forms.Label();
+            this.labelImeUposlenika = new System.Windows.Forms.Label();
+            this.numericUpDownLicenca = new System.Windows.Forms.NumericUpDown();
+            this.textBoxLozinkaUposlenik = new System.Windows.Forms.TextBox();
+            this.labelLozinka = new System.Windows.Forms.Label();
+            this.textBoxKorisnickoImeUposlenik = new System.Windows.Forms.TextBox();
+            this.labelKorisnickoImeUposlenik = new System.Windows.Forms.Label();
+            this.userControlUnosSlike1 = new KontrolaZaUnosSlike.UserControlUnosSlike();
+            this.userControlUnosSlikeUposlenik = new KontrolaZaUnosSlike.UserControlUnosSlike();
+            this.groupBoxTipUposlenika = new System.Windows.Forms.GroupBox();
+            this.radioButtonTehnicar = new System.Windows.Forms.RadioButton();
+            this.radioButtonDoktor = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdmin = new System.Windows.Forms.RadioButton();
+            this.textBoxSpecijalizacija = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -276,14 +251,8 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBoxUnosOsoblja.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            this.groupBox12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLicenca)).BeginInit();
+            this.groupBoxTipUposlenika.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip2
@@ -1583,17 +1552,6 @@
             this.buttonOdustani.UseVisualStyleBackColor = true;
             this.buttonOdustani.Click += new System.EventHandler(this.buttonOdustani_Click);
             // 
-            // userControlUnosSlike1
-            // 
-            this.userControlUnosSlike1.Location = new System.Drawing.Point(338, 6);
-            this.userControlUnosSlike1.Name = "userControlUnosSlike1";
-            this.userControlUnosSlike1.Size = new System.Drawing.Size(226, 226);
-            this.userControlUnosSlike1.TabIndex = 15;
-            this.userControlUnosSlike1.Tag = "";
-            this.userControlUnosSlike1.Load += new System.EventHandler(this.userControlUnosSlike1_Load);
-            this.userControlUnosSlike1.Validating += new System.ComponentModel.CancelEventHandler(this.userControlUnosSlike1_Validating);
-            this.userControlUnosSlike1.Validated += new System.EventHandler(this.userControlUnosSlike1_Validated);
-            // 
             // groupBoxIzborLjekara
             // 
             this.groupBoxIzborLjekara.Controls.Add(this.checkBoxDermatolog);
@@ -1956,484 +1914,261 @@
             // 
             // groupBoxUnosOsoblja
             // 
+            this.groupBoxUnosOsoblja.Controls.Add(this.label14);
+            this.groupBoxUnosOsoblja.Controls.Add(this.textBoxSpecijalizacija);
+            this.groupBoxUnosOsoblja.Controls.Add(this.groupBoxTipUposlenika);
+            this.groupBoxUnosOsoblja.Controls.Add(this.userControlUnosSlikeUposlenik);
+            this.groupBoxUnosOsoblja.Controls.Add(this.textBoxKorisnickoImeUposlenik);
+            this.groupBoxUnosOsoblja.Controls.Add(this.labelKorisnickoImeUposlenik);
+            this.groupBoxUnosOsoblja.Controls.Add(this.textBoxLozinkaUposlenik);
+            this.groupBoxUnosOsoblja.Controls.Add(this.labelLozinka);
+            this.groupBoxUnosOsoblja.Controls.Add(this.numericUpDownLicenca);
             this.groupBoxUnosOsoblja.Controls.Add(this.treeView1);
-            this.groupBoxUnosOsoblja.Controls.Add(this.groupBox5);
-            this.groupBoxUnosOsoblja.Controls.Add(this.checkBox2);
-            this.groupBoxUnosOsoblja.Controls.Add(this.button2);
-            this.groupBoxUnosOsoblja.Controls.Add(this.groupBox10);
-            this.groupBoxUnosOsoblja.Controls.Add(this.groupBox11);
-            this.groupBoxUnosOsoblja.Controls.Add(this.button3);
-            this.groupBoxUnosOsoblja.Controls.Add(this.textBox9);
-            this.groupBoxUnosOsoblja.Controls.Add(this.label20);
-            this.groupBoxUnosOsoblja.Controls.Add(this.groupBox12);
-            this.groupBoxUnosOsoblja.Controls.Add(this.label21);
-            this.groupBoxUnosOsoblja.Controls.Add(this.maskedTextBox3);
-            this.groupBoxUnosOsoblja.Controls.Add(this.dateTimePicker5);
-            this.groupBoxUnosOsoblja.Controls.Add(this.label22);
-            this.groupBoxUnosOsoblja.Controls.Add(this.textBox10);
-            this.groupBoxUnosOsoblja.Controls.Add(this.textBox11);
-            this.groupBoxUnosOsoblja.Controls.Add(this.label23);
-            this.groupBoxUnosOsoblja.Controls.Add(this.label24);
+            this.groupBoxUnosOsoblja.Controls.Add(this.buttonOdustaniUposlenik);
+            this.groupBoxUnosOsoblja.Controls.Add(this.buttonUnesiUposlenika);
+            this.groupBoxUnosOsoblja.Controls.Add(this.textBoxPotvrdaLozinkeUposlenik);
+            this.groupBoxUnosOsoblja.Controls.Add(this.labelPotvrdaLozinke);
+            this.groupBoxUnosOsoblja.Controls.Add(this.labelBrojLicence);
+            this.groupBoxUnosOsoblja.Controls.Add(this.textBoxPrezimeUposlenik);
+            this.groupBoxUnosOsoblja.Controls.Add(this.textBoxImeUposlenik);
+            this.groupBoxUnosOsoblja.Controls.Add(this.labelPrezimeUposlenika);
+            this.groupBoxUnosOsoblja.Controls.Add(this.labelImeUposlenika);
             this.groupBoxUnosOsoblja.Location = new System.Drawing.Point(-1, 0);
             this.groupBoxUnosOsoblja.Name = "groupBoxUnosOsoblja";
             this.groupBoxUnosOsoblja.Size = new System.Drawing.Size(581, 615);
             this.groupBoxUnosOsoblja.TabIndex = 2;
             this.groupBoxUnosOsoblja.TabStop = false;
-            this.groupBoxUnosOsoblja.Text = "Unos Pacijenata";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.groupBox6);
-            this.groupBox5.Controls.Add(this.groupBox8);
-            this.groupBox5.Controls.Add(this.groupBox9);
-            this.groupBox5.Location = new System.Drawing.Point(17, 410);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(507, 150);
-            this.groupBox5.TabIndex = 19;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Protokol za hitne slučajeve";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.groupBox7);
-            this.groupBox6.Controls.Add(this.checkBox1);
-            this.groupBox6.Controls.Add(this.maskedTextBox2);
-            this.groupBox6.Controls.Add(this.label15);
-            this.groupBox6.Controls.Add(this.textBox5);
-            this.groupBox6.Controls.Add(this.label16);
-            this.groupBox6.Location = new System.Drawing.Point(247, 18);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(262, 132);
-            this.groupBox6.TabIndex = 8;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Neuspješna intervencija";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.label14);
-            this.groupBox7.Controls.Add(this.dateTimePicker4);
-            this.groupBox7.Location = new System.Drawing.Point(1, 88);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(229, 38);
-            this.groupBox7.TabIndex = 9;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Obdukcija";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 24);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(90, 13);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "Datum obdukcije:";
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Location = new System.Drawing.Point(102, 18);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(120, 20);
-            this.dateTimePicker4.TabIndex = 0;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(0, 65);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(118, 17);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Potrebna obdukcija";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // maskedTextBox2
-            // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(114, 39);
-            this.maskedTextBox2.Mask = "00/00/0000 90:00";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox2.TabIndex = 7;
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(42, 16);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 13);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Uzrok smrti: ";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(114, 13);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 3;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(1, 42);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(106, 13);
-            this.label16.TabIndex = 5;
-            this.label16.Text = "Datum i vrijeme smrti:";
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.label17);
-            this.groupBox8.Controls.Add(this.label18);
-            this.groupBox8.Controls.Add(this.textBox6);
-            this.groupBox8.Controls.Add(this.label19);
-            this.groupBox8.Controls.Add(this.textBox7);
-            this.groupBox8.Controls.Add(this.textBox8);
-            this.groupBox8.Location = new System.Drawing.Point(1, 57);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(240, 86);
-            this.groupBox8.TabIndex = 7;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Uspješna intervencija";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(2, 16);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(105, 13);
-            this.label17.TabIndex = 1;
-            this.label17.Text = "Provedeni postupak:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(18, 67);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(92, 13);
-            this.label18.TabIndex = 6;
-            this.label18.Text = "Mišljenje doktora: ";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(114, 13);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 3;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(13, 41);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(94, 13);
-            this.label19.TabIndex = 5;
-            this.label19.Text = "Propisana terapija:";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(113, 64);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(101, 20);
-            this.textBox7.TabIndex = 0;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(113, 38);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 4;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.radioButton1);
-            this.groupBox9.Controls.Add(this.radioButton2);
-            this.groupBox9.Location = new System.Drawing.Point(6, 18);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(235, 33);
-            this.groupBox9.TabIndex = 2;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Status Pacijenta";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(165, 13);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(52, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Mrtav";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(11, 13);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(40, 17);
-            this.radioButton2.TabIndex = 0;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Živ";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(18, 387);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(81, 17);
-            this.checkBox2.TabIndex = 18;
-            this.checkBox2.Text = "Hitan slučaj";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(449, 566);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Odustani!";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.checkBox3);
-            this.groupBox10.Controls.Add(this.checkBox4);
-            this.groupBox10.Controls.Add(this.checkBox5);
-            this.groupBox10.Controls.Add(this.checkBox6);
-            this.groupBox10.Location = new System.Drawing.Point(18, 310);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(314, 71);
-            this.groupBox10.TabIndex = 14;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Izbor ljekara kod kojeg vrši pregled";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(176, 42);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(80, 17);
-            this.checkBox3.TabIndex = 3;
-            this.checkBox3.Text = "Dermatolog";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(21, 42);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(70, 17);
-            this.checkBox4.TabIndex = 2;
-            this.checkBox4.Text = "Kardiolog";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(176, 19);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(79, 17);
-            this.checkBox5.TabIndex = 1;
-            this.checkBox5.Text = "Stomatolog";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(21, 19);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(64, 17);
-            this.checkBox6.TabIndex = 0;
-            this.checkBox6.Text = "Ortoped";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.radioButton3);
-            this.groupBox11.Controls.Add(this.radioButton4);
-            this.groupBox11.Controls.Add(this.radioButton5);
-            this.groupBox11.Controls.Add(this.radioButton6);
-            this.groupBox11.Location = new System.Drawing.Point(18, 219);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(314, 73);
-            this.groupBox11.TabIndex = 13;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Bračno stanje";
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(170, 43);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(108, 17);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Udovac/Udovica";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(2, 43);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(122, 17);
-            this.radioButton4.TabIndex = 2;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Neoženjen/Neudata";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(170, 20);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(86, 17);
-            this.radioButton5.TabIndex = 1;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Razveden(a)";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(3, 19);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(98, 17);
-            this.radioButton6.TabIndex = 0;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Oženjen/Udata";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(358, 566);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Unesi!";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(92, 159);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(147, 20);
-            this.textBox9.TabIndex = 11;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(36, 162);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(43, 13);
-            this.label20.TabIndex = 10;
-            this.label20.Text = "Adresa:";
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.radioButton7);
-            this.groupBox12.Controls.Add(this.radioButton8);
-            this.groupBox12.Location = new System.Drawing.Point(18, 122);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(221, 37);
-            this.groupBox12.TabIndex = 9;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Spol";
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(138, 14);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(61, 17);
-            this.radioButton7.TabIndex = 1;
-            this.radioButton7.Text = "Žensko";
-            this.radioButton7.UseVisualStyleBackColor = true;
-            // 
-            // radioButton8
-            // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Checked = true;
-            this.radioButton8.Location = new System.Drawing.Point(44, 14);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(57, 17);
-            this.radioButton8.TabIndex = 0;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "Muško";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(22, 99);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(64, 13);
-            this.label21.TabIndex = 8;
-            this.label21.Text = "Matični broj:";
-            // 
-            // maskedTextBox3
-            // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(92, 96);
-            this.maskedTextBox3.Mask = "0000000000000";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(147, 20);
-            this.maskedTextBox3.TabIndex = 7;
-            // 
-            // dateTimePicker5
-            // 
-            this.dateTimePicker5.Location = new System.Drawing.Point(92, 70);
-            this.dateTimePicker5.Name = "dateTimePicker5";
-            this.dateTimePicker5.Size = new System.Drawing.Size(147, 20);
-            this.dateTimePicker5.TabIndex = 6;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 76);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(80, 13);
-            this.label22.TabIndex = 4;
-            this.label22.Text = "Datum rođenja:";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(92, 49);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(147, 20);
-            this.textBox10.TabIndex = 3;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(92, 26);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(147, 20);
-            this.textBox11.TabIndex = 2;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(39, 52);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(47, 13);
-            this.label23.TabIndex = 1;
-            this.label23.Text = "Prezime:";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(59, 29);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(27, 13);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "Ime:";
+            this.groupBoxUnosOsoblja.Text = "Unos Osoblja";
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(342, 26);
+            this.treeView1.Location = new System.Drawing.Point(184, 343);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(182, 133);
             this.treeView1.TabIndex = 20;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            // 
+            // buttonOdustaniUposlenik
+            // 
+            this.buttonOdustaniUposlenik.Location = new System.Drawing.Point(266, 251);
+            this.buttonOdustaniUposlenik.Name = "buttonOdustaniUposlenik";
+            this.buttonOdustaniUposlenik.Size = new System.Drawing.Size(75, 23);
+            this.buttonOdustaniUposlenik.TabIndex = 17;
+            this.buttonOdustaniUposlenik.Text = "Odustani!";
+            this.buttonOdustaniUposlenik.UseVisualStyleBackColor = true;
+            this.buttonOdustaniUposlenik.Click += new System.EventHandler(this.buttonOdustaniUposlenik_Click);
+            // 
+            // buttonUnesiUposlenika
+            // 
+            this.buttonUnesiUposlenika.Location = new System.Drawing.Point(184, 251);
+            this.buttonUnesiUposlenika.Name = "buttonUnesiUposlenika";
+            this.buttonUnesiUposlenika.Size = new System.Drawing.Size(75, 23);
+            this.buttonUnesiUposlenika.TabIndex = 12;
+            this.buttonUnesiUposlenika.Text = "Unesi!";
+            this.buttonUnesiUposlenika.UseVisualStyleBackColor = true;
+            this.buttonUnesiUposlenika.Click += new System.EventHandler(this.buttonUnesiUposlenika_Click);
+            // 
+            // textBoxPotvrdaLozinkeUposlenik
+            // 
+            this.textBoxPotvrdaLozinkeUposlenik.Location = new System.Drawing.Point(92, 159);
+            this.textBoxPotvrdaLozinkeUposlenik.Name = "textBoxPotvrdaLozinkeUposlenik";
+            this.textBoxPotvrdaLozinkeUposlenik.PasswordChar = '*';
+            this.textBoxPotvrdaLozinkeUposlenik.Size = new System.Drawing.Size(147, 20);
+            this.textBoxPotvrdaLozinkeUposlenik.TabIndex = 11;
+            this.textBoxPotvrdaLozinkeUposlenik.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPotvrdaLozinkeUposlenik_Validating);
+            this.textBoxPotvrdaLozinkeUposlenik.Validated += new System.EventHandler(this.textBoxPotvrdaLozinkeUposlenik_Validated);
+            // 
+            // labelPotvrdaLozinke
+            // 
+            this.labelPotvrdaLozinke.AutoSize = true;
+            this.labelPotvrdaLozinke.Location = new System.Drawing.Point(3, 162);
+            this.labelPotvrdaLozinke.Name = "labelPotvrdaLozinke";
+            this.labelPotvrdaLozinke.Size = new System.Drawing.Size(83, 13);
+            this.labelPotvrdaLozinke.TabIndex = 10;
+            this.labelPotvrdaLozinke.Text = "Potvrda lozinke:";
+            // 
+            // labelBrojLicence
+            // 
+            this.labelBrojLicence.AutoSize = true;
+            this.labelBrojLicence.Location = new System.Drawing.Point(21, 76);
+            this.labelBrojLicence.Name = "labelBrojLicence";
+            this.labelBrojLicence.Size = new System.Drawing.Size(65, 13);
+            this.labelBrojLicence.TabIndex = 4;
+            this.labelBrojLicence.Text = "Broj licence:";
+            // 
+            // textBoxPrezimeUposlenik
+            // 
+            this.textBoxPrezimeUposlenik.Location = new System.Drawing.Point(92, 49);
+            this.textBoxPrezimeUposlenik.Name = "textBoxPrezimeUposlenik";
+            this.textBoxPrezimeUposlenik.Size = new System.Drawing.Size(147, 20);
+            this.textBoxPrezimeUposlenik.TabIndex = 3;
+            this.textBoxPrezimeUposlenik.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPrezimeUposlenik_Validating);
+            this.textBoxPrezimeUposlenik.Validated += new System.EventHandler(this.textBoxPrezimeUposlenik_Validated);
+            // 
+            // textBoxImeUposlenik
+            // 
+            this.textBoxImeUposlenik.Location = new System.Drawing.Point(92, 26);
+            this.textBoxImeUposlenik.Name = "textBoxImeUposlenik";
+            this.textBoxImeUposlenik.Size = new System.Drawing.Size(147, 20);
+            this.textBoxImeUposlenik.TabIndex = 2;
+            this.textBoxImeUposlenik.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxImeUposlenik_Validating);
+            this.textBoxImeUposlenik.Validated += new System.EventHandler(this.textBoxImeUposlenik_Validated);
+            // 
+            // labelPrezimeUposlenika
+            // 
+            this.labelPrezimeUposlenika.AutoSize = true;
+            this.labelPrezimeUposlenika.Location = new System.Drawing.Point(39, 52);
+            this.labelPrezimeUposlenika.Name = "labelPrezimeUposlenika";
+            this.labelPrezimeUposlenika.Size = new System.Drawing.Size(47, 13);
+            this.labelPrezimeUposlenika.TabIndex = 1;
+            this.labelPrezimeUposlenika.Text = "Prezime:";
+            // 
+            // labelImeUposlenika
+            // 
+            this.labelImeUposlenika.AutoSize = true;
+            this.labelImeUposlenika.Location = new System.Drawing.Point(59, 29);
+            this.labelImeUposlenika.Name = "labelImeUposlenika";
+            this.labelImeUposlenika.Size = new System.Drawing.Size(27, 13);
+            this.labelImeUposlenika.TabIndex = 0;
+            this.labelImeUposlenika.Text = "Ime:";
+            // 
+            // numericUpDownLicenca
+            // 
+            this.numericUpDownLicenca.Location = new System.Drawing.Point(92, 74);
+            this.numericUpDownLicenca.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownLicenca.Name = "numericUpDownLicenca";
+            this.numericUpDownLicenca.Size = new System.Drawing.Size(147, 20);
+            this.numericUpDownLicenca.TabIndex = 21;
+            this.numericUpDownLicenca.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // textBoxLozinkaUposlenik
+            // 
+            this.textBoxLozinkaUposlenik.Location = new System.Drawing.Point(92, 133);
+            this.textBoxLozinkaUposlenik.Name = "textBoxLozinkaUposlenik";
+            this.textBoxLozinkaUposlenik.PasswordChar = '*';
+            this.textBoxLozinkaUposlenik.Size = new System.Drawing.Size(147, 20);
+            this.textBoxLozinkaUposlenik.TabIndex = 23;
+            this.textBoxLozinkaUposlenik.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxLozinkaUposlenik_Validating);
+            this.textBoxLozinkaUposlenik.Validated += new System.EventHandler(this.textBoxLozinkaUposlenik_Validated);
+            // 
+            // labelLozinka
+            // 
+            this.labelLozinka.AutoSize = true;
+            this.labelLozinka.Location = new System.Drawing.Point(39, 136);
+            this.labelLozinka.Name = "labelLozinka";
+            this.labelLozinka.Size = new System.Drawing.Size(47, 13);
+            this.labelLozinka.TabIndex = 22;
+            this.labelLozinka.Text = "Lozinka:";
+            // 
+            // textBoxKorisnickoImeUposlenik
+            // 
+            this.textBoxKorisnickoImeUposlenik.Location = new System.Drawing.Point(92, 107);
+            this.textBoxKorisnickoImeUposlenik.Name = "textBoxKorisnickoImeUposlenik";
+            this.textBoxKorisnickoImeUposlenik.Size = new System.Drawing.Size(147, 20);
+            this.textBoxKorisnickoImeUposlenik.TabIndex = 25;
+            this.textBoxKorisnickoImeUposlenik.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxKorisnickoImeUposlenik_Validating);
+            this.textBoxKorisnickoImeUposlenik.Validated += new System.EventHandler(this.textBoxKorisnickoImeUposlenik_Validated);
+            // 
+            // labelKorisnickoImeUposlenik
+            // 
+            this.labelKorisnickoImeUposlenik.AutoSize = true;
+            this.labelKorisnickoImeUposlenik.Location = new System.Drawing.Point(8, 110);
+            this.labelKorisnickoImeUposlenik.Name = "labelKorisnickoImeUposlenik";
+            this.labelKorisnickoImeUposlenik.Size = new System.Drawing.Size(78, 13);
+            this.labelKorisnickoImeUposlenik.TabIndex = 24;
+            this.labelKorisnickoImeUposlenik.Text = "Korisničko ime:";
+            // 
+            // userControlUnosSlike1
+            // 
+            this.userControlUnosSlike1.Location = new System.Drawing.Point(338, 6);
+            this.userControlUnosSlike1.Name = "userControlUnosSlike1";
+            this.userControlUnosSlike1.Size = new System.Drawing.Size(226, 226);
+            this.userControlUnosSlike1.TabIndex = 15;
+            this.userControlUnosSlike1.Tag = "";
+            this.userControlUnosSlike1.Load += new System.EventHandler(this.userControlUnosSlike1_Load);
+            this.userControlUnosSlike1.Validating += new System.ComponentModel.CancelEventHandler(this.userControlUnosSlike1_Validating);
+            this.userControlUnosSlike1.Validated += new System.EventHandler(this.userControlUnosSlike1_Validated);
+            // 
+            // userControlUnosSlikeUposlenik
+            // 
+            this.userControlUnosSlikeUposlenik.Location = new System.Drawing.Point(279, -1);
+            this.userControlUnosSlikeUposlenik.Name = "userControlUnosSlikeUposlenik";
+            this.userControlUnosSlikeUposlenik.Size = new System.Drawing.Size(203, 204);
+            this.userControlUnosSlikeUposlenik.TabIndex = 26;
+            this.userControlUnosSlikeUposlenik.Tag = "";
+            this.userControlUnosSlikeUposlenik.Validating += new System.ComponentModel.CancelEventHandler(this.userControlUnosSlikeUposlenik_Validating);
+            this.userControlUnosSlikeUposlenik.Validated += new System.EventHandler(this.userControlUnosSlikeUposlenik_Validated);
+            // 
+            // groupBoxTipUposlenika
+            // 
+            this.groupBoxTipUposlenika.Controls.Add(this.radioButtonAdmin);
+            this.groupBoxTipUposlenika.Controls.Add(this.radioButtonDoktor);
+            this.groupBoxTipUposlenika.Controls.Add(this.radioButtonTehnicar);
+            this.groupBoxTipUposlenika.Location = new System.Drawing.Point(11, 185);
+            this.groupBoxTipUposlenika.Name = "groupBoxTipUposlenika";
+            this.groupBoxTipUposlenika.Size = new System.Drawing.Size(295, 38);
+            this.groupBoxTipUposlenika.TabIndex = 27;
+            this.groupBoxTipUposlenika.TabStop = false;
+            this.groupBoxTipUposlenika.Text = "Tip uposlenika";
+            // 
+            // radioButtonTehnicar
+            // 
+            this.radioButtonTehnicar.AutoSize = true;
+            this.radioButtonTehnicar.Checked = true;
+            this.radioButtonTehnicar.Location = new System.Drawing.Point(13, 15);
+            this.radioButtonTehnicar.Name = "radioButtonTehnicar";
+            this.radioButtonTehnicar.Size = new System.Drawing.Size(67, 17);
+            this.radioButtonTehnicar.TabIndex = 0;
+            this.radioButtonTehnicar.TabStop = true;
+            this.radioButtonTehnicar.Text = "Tehničar";
+            this.radioButtonTehnicar.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDoktor
+            // 
+            this.radioButtonDoktor.AutoSize = true;
+            this.radioButtonDoktor.Location = new System.Drawing.Point(106, 15);
+            this.radioButtonDoktor.Name = "radioButtonDoktor";
+            this.radioButtonDoktor.Size = new System.Drawing.Size(57, 17);
+            this.radioButtonDoktor.TabIndex = 1;
+            this.radioButtonDoktor.Text = "Doktor";
+            this.radioButtonDoktor.UseVisualStyleBackColor = true;
+            this.radioButtonDoktor.CheckedChanged += new System.EventHandler(this.radioButtonDoktor_CheckedChanged);
+            // 
+            // radioButtonAdmin
+            // 
+            this.radioButtonAdmin.AutoSize = true;
+            this.radioButtonAdmin.Location = new System.Drawing.Point(195, 15);
+            this.radioButtonAdmin.Name = "radioButtonAdmin";
+            this.radioButtonAdmin.Size = new System.Drawing.Size(85, 17);
+            this.radioButtonAdmin.TabIndex = 2;
+            this.radioButtonAdmin.Text = "Administrator";
+            this.radioButtonAdmin.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSpecijalizacija
+            // 
+            this.textBoxSpecijalizacija.Location = new System.Drawing.Point(92, 223);
+            this.textBoxSpecijalizacija.Name = "textBoxSpecijalizacija";
+            this.textBoxSpecijalizacija.Size = new System.Drawing.Size(147, 20);
+            this.textBoxSpecijalizacija.TabIndex = 28;
+            this.textBoxSpecijalizacija.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxSpecijalizacija_Validating);
+            this.textBoxSpecijalizacija.Validated += new System.EventHandler(this.textBoxSpecijalizacija_Validated);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(7, 226);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(79, 13);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "Specijalizacija: ";
             // 
             // glavniMeni17324
             // 
@@ -2515,21 +2250,9 @@
             this.groupBox3.PerformLayout();
             this.groupBoxUnosOsoblja.ResumeLayout(false);
             this.groupBoxUnosOsoblja.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLicenca)).EndInit();
+            this.groupBoxTipUposlenika.ResumeLayout(false);
+            this.groupBoxTipUposlenika.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2696,52 +2419,27 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.GroupBox groupBoxUnosOsoblja;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker5;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button buttonOdustaniUposlenik;
+        private System.Windows.Forms.Button buttonUnesiUposlenika;
+        private System.Windows.Forms.TextBox textBoxPotvrdaLozinkeUposlenik;
+        private System.Windows.Forms.Label labelPotvrdaLozinke;
+        private System.Windows.Forms.Label labelBrojLicence;
+        private System.Windows.Forms.TextBox textBoxPrezimeUposlenik;
+        private System.Windows.Forms.TextBox textBoxImeUposlenik;
+        private System.Windows.Forms.Label labelPrezimeUposlenika;
+        private System.Windows.Forms.Label labelImeUposlenika;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.NumericUpDown numericUpDownLicenca;
+        private System.Windows.Forms.TextBox textBoxLozinkaUposlenik;
+        private System.Windows.Forms.Label labelLozinka;
+        private System.Windows.Forms.TextBox textBoxKorisnickoImeUposlenik;
+        private System.Windows.Forms.Label labelKorisnickoImeUposlenik;
+        private KontrolaZaUnosSlike.UserControlUnosSlike userControlUnosSlikeUposlenik;
+        private System.Windows.Forms.GroupBox groupBoxTipUposlenika;
+        private System.Windows.Forms.RadioButton radioButtonAdmin;
+        private System.Windows.Forms.RadioButton radioButtonDoktor;
+        private System.Windows.Forms.RadioButton radioButtonTehnicar;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBoxSpecijalizacija;
     }
 }

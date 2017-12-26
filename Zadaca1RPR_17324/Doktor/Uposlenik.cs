@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Drawing;
+
 namespace Doktori
 {
 
@@ -12,6 +14,7 @@ namespace Doktori
         string imeUposlenika;
         string prezimeUposlenika;
         int brojLicence;
+        Image slikaUposlenika;
         string korisnickoIme;
         string lozinka;
         public Uposlenik()
@@ -27,9 +30,10 @@ namespace Doktori
             this.BrojLicence = brojLicence;
         }
 
-        public Uposlenik(string imeUposlenika, string prezimeUposlenika, int brojLicence, string korisnickoIme, string lozinka) : this(imeUposlenika, prezimeUposlenika, brojLicence)
+        public Uposlenik(string imeUposlenika, string prezimeUposlenika, Image slikaUposlenika, int brojLicence, string korisnickoIme, string lozinka) : this(imeUposlenika, prezimeUposlenika, brojLicence)
         {
             this.KorisnickoIme1 = korisnickoIme;
+            this.SlikaUposlenika = slikaUposlenika;
             this.Lozinka1 = GetMd5Hash(MD5.Create(), lozinka); //OSIGURAVA MD5 algoritam
         }
 
@@ -46,6 +50,7 @@ namespace Doktori
         public int BrojLicence2 { get => brojLicence; set => brojLicence = value; }
         public string KorisnickoIme1 { get => korisnickoIme; set => korisnickoIme = value; }
         public string Lozinka1 { get => lozinka; set => lozinka = value; }
+        public Image SlikaUposlenika { get => slikaUposlenika; set => slikaUposlenika = value; }
 
         static string GetMd5Hash(MD5 md5Hash, string input) //sluzbena dokumentacija
         {
