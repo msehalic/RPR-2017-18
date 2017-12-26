@@ -18,6 +18,8 @@ namespace SehalicMirza17324_Z2
     public partial class Klinika : Form
     {
         Zadaca1RPR_17324.KlinikaKontejner klinika17324 = new Zadaca1RPR_17324.KlinikaKontejner();
+        Zadaca1RPR_17324.Pacijent pacijent17324_1 = new Pacijent();
+        bool JePacijent = false;
         Uposlenik uposlenik17324_1 = new Uposlenik();
         public Klinika()
         {
@@ -35,7 +37,7 @@ namespace SehalicMirza17324_Z2
         {
             //logo
             Graphics g = e.Graphics;
-            g.SmoothingMode=SmoothingMode.AntiAlias; //da bude ljepse
+            g.SmoothingMode = SmoothingMode.AntiAlias; //da bude ljepse
             Rectangle rect = new Rectangle(60, 40, 60, 100);
             Rectangle rect1 = new Rectangle(40, 60, 100, 60);
             Pen pen = new Pen(Color.White, 40);
@@ -76,9 +78,18 @@ namespace SehalicMirza17324_Z2
         {
             if (errorProvider1.GetError(textBoxUnosSifre) == "")
             {
-                glavniMeni17324 glavniMeni17324 = new glavniMeni17324(uposlenik17324_1);
-                this.Hide();
-                glavniMeni17324.Show();
+                if (JePacijent)
+                {
+                    glavniMeni17324 glavniMeni17324 = new glavniMeni17324(pacijent17324_1);
+                    this.Hide();
+                    glavniMeni17324.Show();
+                }
+                else
+                {
+                    glavniMeni17324 glavniMeni17324 = new glavniMeni17324(uposlenik17324_1);
+                    this.Hide();
+                    glavniMeni17324.Show();
+                }
             }
         }
         static string GetMd5Hash(MD5 md5Hash, string input)
@@ -127,7 +138,18 @@ namespace SehalicMirza17324_Z2
                 {
                     uposlenik17324_1 = u;
                     ispravan = true;
+                    break;
                 }
+            foreach (Zadaca1RPR_17324.Pacijent p in klinika17324.Pacijenti)
+            {
+                if (p.KorisnickoIme == textboxUnosImena.Text && VerifyMd5Hash(MD5.Create(), textBoxUnosSifre.Text, p.Lozinka))
+                {
+                    pacijent17324_1 = p;
+                    ispravan = true;
+                    JePacijent = true;
+                    break;
+                }
+            }
             if (textBoxUnosSifre.Text == "") ispravan = false; // prazan string
             if (!ispravan)
             {

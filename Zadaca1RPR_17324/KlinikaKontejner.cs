@@ -47,6 +47,7 @@ namespace Zadaca1RPR_17324
             Uposlenici.Add(new Administrator("Klinika", "Admin", null, 9999, "admin", "admin"));
             Uposlenici.Add(new Tehnicar("Samir", "Samirovic", null, 1000, "samir", "samir1"));
             Uposlenici.Add(new Doktor("Doktor", "Doktorcic", null, 2000, "doktor", "doktor1", 0, "dermatolog"));
+          
         }
         public Tuple<int, int, int, int> UnosPodataka(Pacijent p, bool dermatolog, bool kardiolog, bool ortoped, bool stomatolog)
         {

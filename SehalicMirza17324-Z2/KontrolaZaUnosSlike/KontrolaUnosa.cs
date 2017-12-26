@@ -27,6 +27,10 @@ namespace KontrolaZaUnosSlike
             errorProvider1.SetError(dateTimePicker1, "");
             toolStripStatusLabel1.Text = "";
         }
+        public void postaviSliku(Image i)
+        {
+            pictureBox1.Image = i;
+        }
         private void dateTimePicker1_Validating(object sender, CancelEventArgs e)
         {
             if (dateTimePicker1.Value.AddMonths(6) < DateTime.Now) //ako ima preko 6 mjeseci
@@ -97,6 +101,11 @@ namespace KontrolaZaUnosSlike
             {
                 contextMenuStripSlika.Show(Cursor.Position);
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

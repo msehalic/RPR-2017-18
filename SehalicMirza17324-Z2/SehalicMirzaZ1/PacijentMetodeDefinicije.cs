@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Collections.Generic;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace Zadaca1RPR_17324
 {
@@ -17,6 +19,8 @@ namespace Zadaca1RPR_17324
         private char spol;
         private int posjetioKliniku = 0; //broji koliko je puta odredjeni pacijent bio u klinici, kada dostigne 3 idu popusti itd.
         private UInt64 maticniBroj;
+       private string korisnickoIme;
+       private string lozinka;
         private List<Pregled> karton = new List<Pregled>();
 
         public bool IspravanKarton = false;
@@ -56,6 +60,8 @@ namespace Zadaca1RPR_17324
         public DateTime DatumPrijema { get => datumPrijema; set => datumPrijema = value; }
         public DateTime DatumRodjenja { get => datumRodjenja; set => datumRodjenja = value; }
         public Image SlikaPacijenta { get => slikaPacijenta; set => slikaPacijenta = value; }
+        public string KorisnickoIme { get => korisnickoIme; set => korisnickoIme = value; }
+        public string Lozinka { get => lozinka; set => lozinka = value; }
 
         public override string ToString()
         {
@@ -72,6 +78,26 @@ namespace Zadaca1RPR_17324
                 generisaniBroj = rand.Next(1, 1000);
             } while (listaRandomBrojeva.Contains(generisaniBroj));
             IdPacijenta = generisaniBroj;
+        }
+        static string GetMd5Hash(MD5 md5Hash, string input) //sluzbena dokumentacija
+        {
+
+            // Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            // Create a new Stringbuilder to collect the bytes
+            // and create a string.
+            StringBuilder sBuilder = new StringBuilder();
+
+            // Loop through each byte of the hashed data 
+            // and format each one as a hexadecimal string.
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+
+            // Return the hexadecimal string.
+            return sBuilder.ToString();
         }
     }
 }

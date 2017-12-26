@@ -33,11 +33,38 @@ namespace SehalicMirza17324_Z2
                 this.tabPagePretragaKartona.Dispose();
                 labelGreskaUPristupu.Text = "Nemate privilegije za pristup ovom modulu!";
             }
+
+            if (u is Doktor)
+            {
+                ((Control)this.tabPageUnosPacijenata).Enabled = false; //nije posao doktora da unosi pacijente niti da ih brise
+                this.tabPageUnosPacijenata.Dispose();
+                ((Control)this.tabPageNaplata).Enabled = false; //nema potrebe da doktori naplacuju
+                this.tabPageNaplata.Dispose();
+                ((Control)this.tabPageKreiranjeKartona).Enabled = false; //nije posao doktora da kreira kartone
+                this.tabPageKreiranjeKartona.Dispose();
+            }
             if (!(u is Administrator)) //samo admini vide dio za administraciju
             {
                 ((Control)this.tabPageAdministracija).Enabled = false;
                 this.tabPageAdministracija.Dispose();
             }
+        }
+        public glavniMeni17324(Zadaca1RPR_17324.Pacijent p)
+        {
+            InitializeComponent();
+            Zadaca1RPR_17324.Pacijent pacijent17324 = p;
+            ((Control)this.tabPageNaplata).Enabled = false;
+            this.tabPageNaplata.Dispose();
+            ((Control)this.tabPageAnaliza).Enabled = false;
+            this.tabPageAnaliza.Dispose();
+            ((Control)this.tabPageKreiranjeKartona).Enabled = false;
+            this.tabPageKreiranjeKartona.Dispose();
+            ((Control)this.tabPageUnosPacijenata).Enabled = false;
+            this.tabPageUnosPacijenata.Dispose();
+            ((Control)this.tabPagePretragaKartona).Enabled = false;
+            this.tabPagePretragaKartona.Dispose();
+            ((Control)this.tabPageAdministracija).Enabled = false;
+            this.tabPageAdministracija.Dispose();
         }
         private void DodajCvorove()
         {
@@ -81,6 +108,7 @@ namespace SehalicMirza17324_Z2
             if (radioButtonZiv.Checked == false) groupBoxZiv.Enabled = false;
             if (radioButtonMrtav.Checked == false) groupBoxMrtav.Enabled = false;
             if (radioButtonDoktor.Checked == false) textBoxSpecijalizacija.Enabled = false;
+            groupBoxPrikazKartona.Enabled = false;
             DodajCvorove();
 
         }
@@ -195,7 +223,10 @@ namespace SehalicMirza17324_Z2
                 toolStripStatusLabel2.ForeColor = Color.Red;
             }
         }
-
+        private string stvoriUsername (TextBox prvi, TextBox drugi)
+        {
+            return prvi.Text.ToLower().Trim().Substring(0, 1) + drugi.Text.Trim().ToLower();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             textBox1_Validating(textBox1, new CancelEventArgs());
@@ -227,7 +258,8 @@ namespace SehalicMirza17324_Z2
                 string pogresniMaticniBroj = "";
                 char pol = 'M';
                 if (radioButtonZ.Checked) pol = 'Z';
-                Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt64(maskedTextBox1.Text), userControlUnosSlike1.vratiSliku.Image);
+                Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(stvoriUsername(textBox1, textBox2), maskedTextBox1.Text, textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt64(maskedTextBox1.Text), userControlUnosSlike1.vratiSliku.Image);
+                labelUsername.Text = stvoriUsername(textBox1, textBox2) + "\nŠifra je matični broj pacijenta.";
                 foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.Pacijenti)
                 {
                     if (pacijent17324.MaticniBroj == Convert.ToUInt64(maskedTextBox1.Text))
@@ -1211,7 +1243,7 @@ namespace SehalicMirza17324_Z2
 
         private void textBoxImeUposlenik_Validating(object sender, CancelEventArgs e)
         {
-            if (textBoxImeUposlenik.Text.Length==0)
+            if (textBoxImeUposlenik.Text.Length == 0)
             {
                 errorProvider2.SetError(textBoxImeUposlenik, "Niste unijeli ime uposlenika!");
                 toolStripStatusLabel2.Text = "Niste unijeli ime uposlenika!";
@@ -1287,7 +1319,7 @@ namespace SehalicMirza17324_Z2
 
         private void textBoxPotvrdaLozinkeUposlenik_Validating(object sender, CancelEventArgs e)
         {
-            if (textBoxLozinkaUposlenik.Text!=textBoxPotvrdaLozinkeUposlenik.Text)
+            if (textBoxLozinkaUposlenik.Text != textBoxPotvrdaLozinkeUposlenik.Text)
             {
                 errorProvider2.SetError(textBoxPotvrdaLozinkeUposlenik, "Lozinke se ne podudaraju!");
                 toolStripStatusLabel2.Text = "Lozinke se ne podudaraju!";
@@ -1341,7 +1373,7 @@ namespace SehalicMirza17324_Z2
             textBoxPotvrdaLozinkeUposlenik_Validating(textBoxPotvrdaLozinkeUposlenik, new CancelEventArgs());
             userControlUnosSlikeUposlenik_Validating(userControlUnosSlikeUposlenik, new CancelEventArgs());
             textBoxSpecijalizacija_Validating(textBoxSpecijalizacija, new CancelEventArgs());
-            if (errorProvider2.GetError(textBoxSpecijalizacija)=="" && errorProvider2.GetError(textBoxImeUposlenik)=="" && errorProvider2.GetError(textBoxPotvrdaLozinkeUposlenik)=="" && errorProvider2.GetError(textBoxLozinkaUposlenik)=="" && errorProvider2.GetError(textBoxPrezimeUposlenik)=="" && errorProvider2.GetError(userControlUnosSlikeUposlenik)=="")
+            if (errorProvider2.GetError(textBoxSpecijalizacija) == "" && errorProvider2.GetError(textBoxImeUposlenik) == "" && errorProvider2.GetError(textBoxPotvrdaLozinkeUposlenik) == "" && errorProvider2.GetError(textBoxLozinkaUposlenik) == "" && errorProvider2.GetError(textBoxPrezimeUposlenik) == "" && errorProvider2.GetError(userControlUnosSlikeUposlenik) == "")
             {
                 if (radioButtonTehnicar.Checked)
                 {
@@ -1369,7 +1401,7 @@ namespace SehalicMirza17324_Z2
 
         private void textBoxSpecijalizacija_Validating(object sender, CancelEventArgs e)
         {
-            if (textBoxSpecijalizacija.Text.Length==0 && radioButtonDoktor.Enabled==true)
+            if (textBoxSpecijalizacija.Text.Length == 0 && radioButtonDoktor.Enabled == true)
             {
                 this.errorProvider2.SetError(textBoxSpecijalizacija, "Niste unijeli specijalizaciju doktora!");
                 toolStripStatusLabel2.Text = "Niste unijeli specijalizaciju doktora!";
@@ -1391,7 +1423,7 @@ namespace SehalicMirza17324_Z2
 
         private void buttonBrisanjeImePrezime_Click(object sender, EventArgs e)
         {
-            if (listBoxPretragaImePrezime.SelectedIndex!=-1)
+            if (listBoxPretragaImePrezime.SelectedIndex != -1)
             {
                 Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxPretragaImePrezime.SelectedItem;
                 klinika17324.Pacijenti.Remove(pacijent17324);
@@ -1466,6 +1498,47 @@ namespace SehalicMirza17324_Z2
                 toolStripStatusLabel2.ForeColor = Color.Green;
                 DodajCvorove();
             }
+        }
+
+        private void podešavanjeBojeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                menuStrip1.BackColor = colorDialog1.Color;
+            }
+        }
+
+        private void textBoxPrikazKartona_TextChanged(object sender, EventArgs e)
+        {
+            listBoxPrikazKartona.Items.Clear();
+            if (textBoxPrikazKartona.Text.Length != 0) //ne zelimo izlistavati na prazno
+                foreach (Zadaca1RPR_17324.Pacijent p in klinika17324.Pacijenti)
+                {
+                    if ((p.Ime + " " + p.Prezime).IndexOf(textBoxPrikazKartona.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        listBoxPrikazKartona.Items.Add(p);
+                    }
+                }
+        }
+
+        private void listBoxPrikazKartona_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxPrikazKartona.SelectedIndex != -1)
+            {
+                Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxPrikazKartona.SelectedItem;
+                textBoxPrikazKartonaIme.Text = pacijent17324.Ime;
+                textBoxPrikazKartonaPrezime.Text = pacijent17324.Prezime;
+                dateTimePickerPrikazKartona.Value = pacijent17324.DatumRodjenja;
+                maskedTextBoxPrikazKartona.Text = pacijent17324.MaticniBroj.ToString();
+                pictureBoxPrikazSlikePacijenta.Image = pacijent17324.SlikaPacijenta;
+                radioButtonPrikazZensko.Checked = pacijent17324.Spol == 'Z';
+                textBoxAdresaPrikaz.Text = pacijent17324.AdresaStanovanja;
+            }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

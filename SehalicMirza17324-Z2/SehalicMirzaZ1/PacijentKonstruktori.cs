@@ -24,8 +24,10 @@ namespace Zadaca1RPR_17324
             //idPacijenta++;
         }
 
-        public Pacijent(string ime, string prezime, string adresaStanovanja, string bracnoStanje, DateTime datumRodjenja, char spol, ulong maticniBroj, Image slika)
+        public Pacijent(string korisnickoIme, string lozinka, string ime, string prezime, string adresaStanovanja, string bracnoStanje, DateTime datumRodjenja, char spol, ulong maticniBroj, Image slika)
         {
+            KorisnickoIme = korisnickoIme;
+            Lozinka = lozinka;
             this.Ime = ime;
             this.Prezime = prezime;
             this.AdresaStanovanja = adresaStanovanja;
