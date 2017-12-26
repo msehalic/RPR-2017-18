@@ -181,13 +181,13 @@
             this.tabPageAdministracija = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.listBoxBrisanjeLicenca = new System.Windows.Forms.ListBox();
+            this.labelBrisanjeUposlenikLicenca = new System.Windows.Forms.Label();
+            this.textBoxBrisanjeLicenca = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBoxBrisanjeImeUposlenik = new System.Windows.Forms.ListBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxBrisanjeImePrezimeUposlenik = new System.Windows.Forms.TextBox();
             this.groupBoxUnosOsoblja = new System.Windows.Forms.GroupBox();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.buttonOdustaniUposlenik = new System.Windows.Forms.Button();
@@ -212,6 +212,10 @@
             this.radioButtonAdmin = new System.Windows.Forms.RadioButton();
             this.textBoxSpecijalizacija = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.buttonBrisanjeImePrezime = new System.Windows.Forms.Button();
+            this.buttonBrisanjeJMBG = new System.Windows.Forms.Button();
+            this.buttonBrisiLicenca = new System.Windows.Forms.Button();
+            this.buttonBrisiUposlenikIme = new System.Windows.Forms.Button();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -1222,6 +1226,7 @@
             // 
             // groupBoxBrisanjeJMBG
             // 
+            this.groupBoxBrisanjeJMBG.Controls.Add(this.buttonBrisanjeJMBG);
             this.groupBoxBrisanjeJMBG.Controls.Add(this.listBoxBrisanjeJMBG);
             this.groupBoxBrisanjeJMBG.Controls.Add(this.labelBrisanjeJMBG);
             this.groupBoxBrisanjeJMBG.Controls.Add(this.textBoxBrisanjeJMBG);
@@ -1237,7 +1242,7 @@
             this.listBoxBrisanjeJMBG.FormattingEnabled = true;
             this.listBoxBrisanjeJMBG.Location = new System.Drawing.Point(84, 59);
             this.listBoxBrisanjeJMBG.Name = "listBoxBrisanjeJMBG";
-            this.listBoxBrisanjeJMBG.Size = new System.Drawing.Size(308, 212);
+            this.listBoxBrisanjeJMBG.Size = new System.Drawing.Size(308, 199);
             this.listBoxBrisanjeJMBG.TabIndex = 2;
             // 
             // labelBrisanjeJMBG
@@ -1259,6 +1264,7 @@
             // 
             // groupBoxBrisanjeImePrezime
             // 
+            this.groupBoxBrisanjeImePrezime.Controls.Add(this.buttonBrisanjeImePrezime);
             this.groupBoxBrisanjeImePrezime.Controls.Add(this.listBoxPretragaImePrezime);
             this.groupBoxBrisanjeImePrezime.Controls.Add(this.labelImePrezimeBrisanje);
             this.groupBoxBrisanjeImePrezime.Controls.Add(this.textBoxBrisanjeImePrezime);
@@ -1842,45 +1848,49 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.listBox1);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.buttonBrisiLicenca);
+            this.groupBox2.Controls.Add(this.listBoxBrisanjeLicenca);
+            this.groupBox2.Controls.Add(this.labelBrisanjeUposlenikLicenca);
+            this.groupBox2.Controls.Add(this.textBoxBrisanjeLicenca);
             this.groupBox2.Location = new System.Drawing.Point(0, 317);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(578, 295);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Brisanje po JMBG";
+            this.groupBox2.Text = "Brisanje po broju licence";
             // 
-            // listBox1
+            // listBoxBrisanjeLicenca
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(84, 59);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(308, 212);
-            this.listBox1.TabIndex = 2;
+            this.listBoxBrisanjeLicenca.FormattingEnabled = true;
+            this.listBoxBrisanjeLicenca.Location = new System.Drawing.Point(84, 59);
+            this.listBoxBrisanjeLicenca.Name = "listBoxBrisanjeLicenca";
+            this.listBoxBrisanjeLicenca.Size = new System.Drawing.Size(308, 199);
+            this.listBoxBrisanjeLicenca.TabIndex = 2;
             // 
-            // label10
+            // labelBrisanjeUposlenikLicenca
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(81, 26);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(39, 13);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "JMBG:";
+            this.labelBrisanjeUposlenikLicenca.AutoSize = true;
+            this.labelBrisanjeUposlenikLicenca.Location = new System.Drawing.Point(67, 26);
+            this.labelBrisanjeUposlenikLicenca.Name = "labelBrisanjeUposlenikLicenca";
+            this.labelBrisanjeUposlenikLicenca.Size = new System.Drawing.Size(65, 13);
+            this.labelBrisanjeUposlenikLicenca.TabIndex = 1;
+            this.labelBrisanjeUposlenikLicenca.Text = "Broj licence:";
+            this.labelBrisanjeUposlenikLicenca.Click += new System.EventHandler(this.labelBrisanjeUposlenikLicenca_Click);
             // 
-            // textBox3
+            // textBoxBrisanjeLicenca
             // 
-            this.textBox3.Location = new System.Drawing.Point(138, 23);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(254, 20);
-            this.textBox3.TabIndex = 0;
+            this.textBoxBrisanjeLicenca.Location = new System.Drawing.Point(138, 23);
+            this.textBoxBrisanjeLicenca.Name = "textBoxBrisanjeLicenca";
+            this.textBoxBrisanjeLicenca.Size = new System.Drawing.Size(254, 20);
+            this.textBoxBrisanjeLicenca.TabIndex = 0;
+            this.textBoxBrisanjeLicenca.TextChanged += new System.EventHandler(this.textBoxBrisanjeLicenca_TextChanged);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.listBox2);
+            this.groupBox3.Controls.Add(this.buttonBrisiUposlenikIme);
+            this.groupBox3.Controls.Add(this.listBoxBrisanjeImeUposlenik);
             this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.textBoxBrisanjeImePrezimeUposlenik);
             this.groupBox3.Location = new System.Drawing.Point(0, 26);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(578, 285);
@@ -1888,13 +1898,13 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Brisanje po imenu i prezimenu";
             // 
-            // listBox2
+            // listBoxBrisanjeImeUposlenik
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(84, 59);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(308, 186);
-            this.listBox2.TabIndex = 2;
+            this.listBoxBrisanjeImeUposlenik.FormattingEnabled = true;
+            this.listBoxBrisanjeImeUposlenik.Location = new System.Drawing.Point(84, 59);
+            this.listBoxBrisanjeImeUposlenik.Name = "listBoxBrisanjeImeUposlenik";
+            this.listBoxBrisanjeImeUposlenik.Size = new System.Drawing.Size(308, 186);
+            this.listBoxBrisanjeImeUposlenik.TabIndex = 2;
             // 
             // label13
             // 
@@ -1905,12 +1915,13 @@
             this.label13.TabIndex = 1;
             this.label13.Text = "Ime/Prezime:";
             // 
-            // textBox4
+            // textBoxBrisanjeImePrezimeUposlenik
             // 
-            this.textBox4.Location = new System.Drawing.Point(172, 23);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(220, 20);
-            this.textBox4.TabIndex = 0;
+            this.textBoxBrisanjeImePrezimeUposlenik.Location = new System.Drawing.Point(172, 23);
+            this.textBoxBrisanjeImePrezimeUposlenik.Name = "textBoxBrisanjeImePrezimeUposlenik";
+            this.textBoxBrisanjeImePrezimeUposlenik.Size = new System.Drawing.Size(220, 20);
+            this.textBoxBrisanjeImePrezimeUposlenik.TabIndex = 0;
+            this.textBoxBrisanjeImePrezimeUposlenik.TextChanged += new System.EventHandler(this.textBoxBrisanjeImePrezimeUposlenik_TextChanged);
             // 
             // groupBoxUnosOsoblja
             // 
@@ -2170,6 +2181,46 @@
             this.label14.TabIndex = 29;
             this.label14.Text = "Specijalizacija: ";
             // 
+            // buttonBrisanjeImePrezime
+            // 
+            this.buttonBrisanjeImePrezime.Location = new System.Drawing.Point(317, 251);
+            this.buttonBrisanjeImePrezime.Name = "buttonBrisanjeImePrezime";
+            this.buttonBrisanjeImePrezime.Size = new System.Drawing.Size(75, 23);
+            this.buttonBrisanjeImePrezime.TabIndex = 3;
+            this.buttonBrisanjeImePrezime.Text = "Briši!";
+            this.buttonBrisanjeImePrezime.UseVisualStyleBackColor = true;
+            this.buttonBrisanjeImePrezime.Click += new System.EventHandler(this.buttonBrisanjeImePrezime_Click);
+            // 
+            // buttonBrisanjeJMBG
+            // 
+            this.buttonBrisanjeJMBG.Location = new System.Drawing.Point(317, 264);
+            this.buttonBrisanjeJMBG.Name = "buttonBrisanjeJMBG";
+            this.buttonBrisanjeJMBG.Size = new System.Drawing.Size(75, 23);
+            this.buttonBrisanjeJMBG.TabIndex = 4;
+            this.buttonBrisanjeJMBG.Text = "Briši!";
+            this.buttonBrisanjeJMBG.UseVisualStyleBackColor = true;
+            this.buttonBrisanjeJMBG.Click += new System.EventHandler(this.buttonBrisanjeJMBG_Click);
+            // 
+            // buttonBrisiLicenca
+            // 
+            this.buttonBrisiLicenca.Location = new System.Drawing.Point(317, 264);
+            this.buttonBrisiLicenca.Name = "buttonBrisiLicenca";
+            this.buttonBrisiLicenca.Size = new System.Drawing.Size(75, 23);
+            this.buttonBrisiLicenca.TabIndex = 3;
+            this.buttonBrisiLicenca.Text = "Briši!";
+            this.buttonBrisiLicenca.UseVisualStyleBackColor = true;
+            this.buttonBrisiLicenca.Click += new System.EventHandler(this.buttonBrisiLicenca_Click);
+            // 
+            // buttonBrisiUposlenikIme
+            // 
+            this.buttonBrisiUposlenikIme.Location = new System.Drawing.Point(317, 251);
+            this.buttonBrisiUposlenikIme.Name = "buttonBrisiUposlenikIme";
+            this.buttonBrisiUposlenikIme.Size = new System.Drawing.Size(75, 23);
+            this.buttonBrisiUposlenikIme.TabIndex = 4;
+            this.buttonBrisiUposlenikIme.Text = "Briši!";
+            this.buttonBrisiUposlenikIme.UseVisualStyleBackColor = true;
+            this.buttonBrisiUposlenikIme.Click += new System.EventHandler(this.buttonBrisiUposlenikIme_Click);
+            // 
             // glavniMeni17324
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2411,13 +2462,13 @@
         private System.Windows.Forms.TabPage tabPageAdministracija;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ListBox listBoxBrisanjeLicenca;
+        private System.Windows.Forms.Label labelBrisanjeUposlenikLicenca;
+        private System.Windows.Forms.TextBox textBoxBrisanjeLicenca;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBoxBrisanjeImeUposlenik;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxBrisanjeImePrezimeUposlenik;
         private System.Windows.Forms.GroupBox groupBoxUnosOsoblja;
         private System.Windows.Forms.Button buttonOdustaniUposlenik;
         private System.Windows.Forms.Button buttonUnesiUposlenika;
@@ -2441,5 +2492,9 @@
         private System.Windows.Forms.RadioButton radioButtonTehnicar;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBoxSpecijalizacija;
+        private System.Windows.Forms.Button buttonBrisanjeImePrezime;
+        private System.Windows.Forms.Button buttonBrisanjeJMBG;
+        private System.Windows.Forms.Button buttonBrisiLicenca;
+        private System.Windows.Forms.Button buttonBrisiUposlenikIme;
     }
 }

@@ -1383,5 +1383,84 @@ namespace SehalicMirza17324_Z2
             if (radioButtonDoktor.Checked == true) textBoxSpecijalizacija.Enabled = true;
             else textBoxSpecijalizacija.Enabled = false;
         }
+
+        private void buttonBrisanjeImePrezime_Click(object sender, EventArgs e)
+        {
+            if (listBoxPretragaImePrezime.SelectedIndex!=-1)
+            {
+                Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxPretragaImePrezime.SelectedItem;
+                klinika17324.Pacijenti.Remove(pacijent17324);
+                toolStripStatusLabel2.Text = "Uspjesno obrisan pacijent!";
+                toolStripStatusLabel2.ForeColor = Color.Green;
+                DodajCvorove();
+            }
+        }
+
+        private void buttonBrisanjeJMBG_Click(object sender, EventArgs e)
+        {
+            if (listBoxBrisanjeJMBG.SelectedIndex != -1)
+            {
+                Zadaca1RPR_17324.Pacijent pacijent17324 = (Zadaca1RPR_17324.Pacijent)listBoxBrisanjeJMBG.SelectedItem;
+                klinika17324.Pacijenti.Remove(pacijent17324);
+                toolStripStatusLabel2.Text = "Uspjesno obrisan pacijent!";
+                toolStripStatusLabel2.ForeColor = Color.Green;
+                DodajCvorove();
+            }
+        }
+
+        private void textBoxBrisanjeImePrezimeUposlenik_TextChanged(object sender, EventArgs e)
+        {
+            listBoxBrisanjeImeUposlenik.Items.Clear();
+            if (textBoxBrisanjeImePrezimeUposlenik.Text.Length != 0) //ne zelimo izlistavati na prazno
+                foreach (Uposlenik u in klinika17324.Uposlenici)
+                {
+                    if ((u.ImeUposlenika + " " + u.PrezimeUposlenika).IndexOf(textBoxBrisanjeImePrezimeUposlenik.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        listBoxBrisanjeImeUposlenik.Items.Add(u);
+                    }
+                }
+        }
+
+        private void labelBrisanjeUposlenikLicenca_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBrisanjeLicenca_TextChanged(object sender, EventArgs e)
+        {
+            listBoxBrisanjeLicenca.Items.Clear();
+            if (textBoxBrisanjeLicenca.Text.Length != 0) //ne zelimo izlistavati na prazno
+                foreach (Uposlenik u in klinika17324.Uposlenici)
+                {
+                    if ((u.BrojLicence.ToString()).Equals(textBoxBrisanjeLicenca.Text))
+                    {
+                        listBoxBrisanjeLicenca.Items.Add(u);
+                    }
+                }
+        }
+
+        private void buttonBrisiUposlenikIme_Click(object sender, EventArgs e)
+        {
+            if (listBoxBrisanjeImeUposlenik.SelectedIndex != -1)
+            {
+                Uposlenik u17324 = (Uposlenik)listBoxBrisanjeImeUposlenik.SelectedItem;
+                klinika17324.Uposlenici.Remove(u17324);
+                toolStripStatusLabel2.Text = "Uspjesno obrisan uposlenik!";
+                toolStripStatusLabel2.ForeColor = Color.Green;
+                DodajCvorove();
+            }
+        }
+
+        private void buttonBrisiLicenca_Click(object sender, EventArgs e)
+        {
+            if (listBoxBrisanjeLicenca.SelectedIndex != -1)
+            {
+                Uposlenik u17324 = (Uposlenik)listBoxBrisanjeLicenca.SelectedItem;
+                klinika17324.Uposlenici.Remove(u17324);
+                toolStripStatusLabel2.Text = "Uspjesno obrisan uposlenik!";
+                toolStripStatusLabel2.ForeColor = Color.Green;
+                DodajCvorove();
+            }
+        }
     }
 }
