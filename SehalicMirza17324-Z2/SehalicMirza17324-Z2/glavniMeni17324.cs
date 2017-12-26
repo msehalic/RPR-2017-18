@@ -258,7 +258,7 @@ namespace SehalicMirza17324_Z2
                 string pogresniMaticniBroj = "";
                 char pol = 'M';
                 if (radioButtonZ.Checked) pol = 'Z';
-                Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(stvoriUsername(textBox1, textBox2), maskedTextBox1.Text, textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt64(maskedTextBox1.Text), userControlUnosSlike1.vratiSliku.Image);
+                Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(stvoriUsername(textBox1, textBox2), maskedTextBox1.Text, textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt64(maskedTextBox1.Text), userControlUnosSlike1.vratiSliku);
                 labelUsername.Text = stvoriUsername(textBox1, textBox2) + "\nŠifra je matični broj pacijenta.";
                 foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.Pacijenti)
                 {
@@ -760,7 +760,7 @@ namespace SehalicMirza17324_Z2
                 toolStripStatusLabel2.Text = "Datum slike ne smije biti stariji od 6 mjeseci!";
                 toolStripStatusLabel2.ForeColor = Color.Red;
             }
-            if (userControlUnosSlike1.vratiSliku.Image == null)
+            if (userControlUnosSlike1.vratiSliku == null)
             {
                 this.errorProvider2.SetError(userControlUnosSlike1, "Niste odabrali sliku!");
                 toolStripStatusLabel2.Text = "Niste odabrali sliku!";
@@ -1340,7 +1340,7 @@ namespace SehalicMirza17324_Z2
                 toolStripStatusLabel2.Text = "Datum slike ne smije biti stariji od 6 mjeseci!";
                 toolStripStatusLabel2.ForeColor = Color.Red;
             }
-            if (userControlUnosSlikeUposlenik.vratiSliku.Image == null)
+            if (userControlUnosSlikeUposlenik.vratiSliku == null)
             {
                 this.errorProvider2.SetError(userControlUnosSlikeUposlenik, "Niste odabrali sliku!");
                 toolStripStatusLabel2.Text = "Niste odabrali sliku!";
@@ -1377,21 +1377,21 @@ namespace SehalicMirza17324_Z2
             {
                 if (radioButtonTehnicar.Checked)
                 {
-                    klinika17324.Uposlenici.Add(new Tehnicar(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku.Image, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text));
+                    klinika17324.Uposlenici.Add(new Tehnicar(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text));
                     DodajCvorove();
                     toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
                     toolStripStatusLabel2.ForeColor = Color.Green;
                 }
                 else if (radioButtonAdmin.Checked)
                 {
-                    klinika17324.Uposlenici.Add(new Administrator(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku.Image, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text));
+                    klinika17324.Uposlenici.Add(new Administrator(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text));
                     DodajCvorove();
                     toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
                     toolStripStatusLabel2.ForeColor = Color.Green;
                 }
                 else if (radioButtonDoktor.Checked)
                 {
-                    klinika17324.Uposlenici.Add(new Doktor(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku.Image, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text, 0, textBoxSpecijalizacija.Text));
+                    klinika17324.Uposlenici.Add(new Doktor(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text, 0, textBoxSpecijalizacija.Text));
                     DodajCvorove();
                     toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
                     toolStripStatusLabel2.ForeColor = Color.Green;

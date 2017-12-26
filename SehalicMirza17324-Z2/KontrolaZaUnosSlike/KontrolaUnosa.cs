@@ -17,7 +17,7 @@ namespace KontrolaZaUnosSlike
             InitializeComponent();
         }
         public ErrorProvider vratiErrorProvider() => errorProvider1;
-        public PictureBox vratiSliku => pictureBox1;
+        public Image vratiSliku => pictureBox1.Image;
         public bool ispravanDatum => (dateTimePicker1.Value.AddMonths(6) > DateTime.Now);
         public Control vratiDateTimePicker() => dateTimePicker1;
         public void Resetiraj()

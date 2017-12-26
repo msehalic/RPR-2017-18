@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Doktori;
+using System.Security.Cryptography;
 
 namespace Zadaca1RPR_17324
 {
@@ -27,7 +28,7 @@ namespace Zadaca1RPR_17324
         public Pacijent(string korisnickoIme, string lozinka, string ime, string prezime, string adresaStanovanja, string bracnoStanje, DateTime datumRodjenja, char spol, ulong maticniBroj, Image slika)
         {
             KorisnickoIme = korisnickoIme;
-            Lozinka = lozinka;
+            this.Lozinka = GetMd5Hash(MD5.Create(), lozinka);
             this.Ime = ime;
             this.Prezime = prezime;
             this.AdresaStanovanja = adresaStanovanja;
