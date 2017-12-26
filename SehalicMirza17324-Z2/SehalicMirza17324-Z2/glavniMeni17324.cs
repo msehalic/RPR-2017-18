@@ -1395,7 +1395,7 @@ namespace SehalicMirza17324_Z2
                     DodajCvorove();
                     toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
                     toolStripStatusLabel2.ForeColor = Color.Green;
-                }
+                } 
             }
         }
 
