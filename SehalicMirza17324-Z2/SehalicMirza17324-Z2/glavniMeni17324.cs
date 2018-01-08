@@ -1567,5 +1567,31 @@ namespace SehalicMirza17324_Z2
             }
             else textBoxInfoSerijalizacijaUposlenika.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
         }
+
+        private void buttonSerijalizujPacijenteBinarno_Click(object sender, EventArgs e)
+        {
+            textBoxInfoBinarnoPacijenti.Text = "";
+            SaveFileDialog sfd = new SaveFileDialog() { FileName = "pacijenti.bin", AddExtension = true, DefaultExt = ".bin", };
+            if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.EndsWith(".bin"))
+            {
+                klinika17324.BinSerial(sfd.FileName, klinika17324.Pacijenti);
+                textBoxInfoBinarnoPacijenti.Text = "Serijalizacija uspješna!";
+            }
+            else textBoxInfoBinarnoPacijenti.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+
+        }
+
+        private void buttonSerijalizujUposlenikeBinarno_Click(object sender, EventArgs e)
+        {
+            textBoxInfoBinarnoUposlenici.Text = "";
+            SaveFileDialog sfd = new SaveFileDialog() { FileName = "uposlenici.bin", AddExtension = true, DefaultExt = ".bin", };
+            if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.EndsWith(".bin"))
+            {
+                klinika17324.BinSerial(sfd.FileName, klinika17324.Uposlenici);
+                textBoxInfoBinarnoUposlenici.Text = "Serijalizacija uspješna!";
+            }
+            else textBoxInfoBinarnoUposlenici.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+
+        }
     }
 }

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Xml.Serialization;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Zadaca1RPR_17324
 {
@@ -284,6 +286,14 @@ namespace Zadaca1RPR_17324
             using (Stream s = File.Create(lokacija))
                 xs.Serialize(s, objekat);
         }
+        public void BinSerial(string lokacija, object objekat)
+        {
+            IFormatter serijalizer = new BinaryFormatter();
+            FileStream stream = new FileStream(lokacija, FileMode.Create);
+            serijalizer.Serialize(stream, objekat);
+            stream.Close();
+        }
+
     }
 }
 

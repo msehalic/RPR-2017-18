@@ -9,7 +9,8 @@ using System.Drawing;
 namespace Doktori
 {
 
-   public class Uposlenik
+    [Serializable]
+    public class Uposlenik
     {
         string imeUposlenika;
         string prezimeUposlenika;

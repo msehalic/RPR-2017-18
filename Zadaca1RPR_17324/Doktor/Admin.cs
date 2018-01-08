@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 namespace Doktori
 {
+    [Serializable]
     public class Administrator : Uposlenik
     {
         //da postoji funkcionalnost

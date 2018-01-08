@@ -271,7 +271,7 @@
             this.buttonSerijalizujUposlenike = new System.Windows.Forms.Button();
             this.textBoxInfoBinarnoPacijenti = new System.Windows.Forms.TextBox();
             this.buttonSerijalizujPacijenteBinarno = new System.Windows.Forms.Button();
-            this.textBoxInfoBinarnaDatoteka = new System.Windows.Forms.TextBox();
+            this.textBoxInfoBinarnoUposlenici = new System.Windows.Forms.TextBox();
             this.buttonSerijalizujUposlenikeBinarno = new System.Windows.Forms.Button();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
@@ -2753,7 +2753,7 @@
             // 
             // tabPageSerijalizacija
             // 
-            this.tabPageSerijalizacija.Controls.Add(this.textBoxInfoBinarnaDatoteka);
+            this.tabPageSerijalizacija.Controls.Add(this.textBoxInfoBinarnoUposlenici);
             this.tabPageSerijalizacija.Controls.Add(this.buttonSerijalizujUposlenikeBinarno);
             this.tabPageSerijalizacija.Controls.Add(this.textBoxInfoBinarnoPacijenti);
             this.tabPageSerijalizacija.Controls.Add(this.buttonSerijalizujPacijenteBinarno);
@@ -2837,14 +2837,15 @@
             this.buttonSerijalizujPacijenteBinarno.TabIndex = 4;
             this.buttonSerijalizujPacijenteBinarno.Text = "Serijalizuj pacijente u binarnu datoteku!";
             this.buttonSerijalizujPacijenteBinarno.UseVisualStyleBackColor = true;
+            this.buttonSerijalizujPacijenteBinarno.Click += new System.EventHandler(this.buttonSerijalizujPacijenteBinarno_Click);
             // 
-            // textBoxInfoBinarnaDatoteka
+            // textBoxInfoBinarnoUposlenici
             // 
-            this.textBoxInfoBinarnaDatoteka.Enabled = false;
-            this.textBoxInfoBinarnaDatoteka.Location = new System.Drawing.Point(724, 351);
-            this.textBoxInfoBinarnaDatoteka.Name = "textBoxInfoBinarnaDatoteka";
-            this.textBoxInfoBinarnaDatoteka.Size = new System.Drawing.Size(344, 20);
-            this.textBoxInfoBinarnaDatoteka.TabIndex = 7;
+            this.textBoxInfoBinarnoUposlenici.Enabled = false;
+            this.textBoxInfoBinarnoUposlenici.Location = new System.Drawing.Point(724, 351);
+            this.textBoxInfoBinarnoUposlenici.Name = "textBoxInfoBinarnoUposlenici";
+            this.textBoxInfoBinarnoUposlenici.Size = new System.Drawing.Size(344, 20);
+            this.textBoxInfoBinarnoUposlenici.TabIndex = 7;
             // 
             // buttonSerijalizujUposlenikeBinarno
             // 
@@ -2856,6 +2857,7 @@
             this.buttonSerijalizujUposlenikeBinarno.TabIndex = 6;
             this.buttonSerijalizujUposlenikeBinarno.Text = "Serijalizuj uposlenike u binarnu datoteku!";
             this.buttonSerijalizujUposlenikeBinarno.UseVisualStyleBackColor = true;
+            this.buttonSerijalizujUposlenikeBinarno.Click += new System.EventHandler(this.buttonSerijalizujUposlenikeBinarno_Click);
             // 
             // glavniMeni17324
             // 
@@ -3205,7 +3207,7 @@
         private System.Windows.Forms.TextBox textBoxInfoSerijalizacijaPacijenti;
         private System.Windows.Forms.TextBox textBoxInfoSerijalizacijaUposlenika;
         private System.Windows.Forms.Button buttonSerijalizujUposlenike;
-        private System.Windows.Forms.TextBox textBoxInfoBinarnaDatoteka;
+        private System.Windows.Forms.TextBox textBoxInfoBinarnoUposlenici;
         private System.Windows.Forms.Button buttonSerijalizujUposlenikeBinarno;
         private System.Windows.Forms.TextBox textBoxInfoBinarnoPacijenti;
         private System.Windows.Forms.Button buttonSerijalizujPacijenteBinarno;

@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 
 namespace Zadaca1RPR_17324
 {
+    [Serializable]
     public partial class Pacijent//partial dio sa metodama
     {
         private string ime;
