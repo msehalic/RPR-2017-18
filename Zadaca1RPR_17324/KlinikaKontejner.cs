@@ -280,10 +280,10 @@ namespace Zadaca1RPR_17324
             using (Stream s = File.Create(lokacija))
                 xs.Serialize(s, objekat);
         }
-        public void XMLSerialNasljedjivanje(string lokacija, object objekat, Type tipObjekta, List<Type> listica)
+        public void XMLSerialNasljedjivanje(string lokacija, object objekat, Type tip, List<Type> listica)
         {
             XmlSerializer xs;
-            xs = new XmlSerializer(tipObjekta, listica.ToArray());
+            xs = new XmlSerializer(tip, listica.ToArray());
             using (Stream s = File.Create(lokacija))
                 xs.Serialize(s, objekat);
         }

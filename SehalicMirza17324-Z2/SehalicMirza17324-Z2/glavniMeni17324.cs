@@ -1602,6 +1602,7 @@ namespace SehalicMirza17324_Z2
             {
                 dataGridViewPacijenti.DataSource = klinika17324.XMLDeSerial(ofd.FileName,typeof(List<Zadaca1RPR_17324.Pacijent>));
                 klinika17324.Pacijenti =  klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>)) as List<Zadaca1RPR_17324.Pacijent>;
+                DodajCvorove(treeViewDeserijalizacija);
                 textBoxInfoDesXMLPac.Text = "Deserijalizacija uspješna!";
             }
             else textBoxInfoDesXMLPac.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
@@ -1614,7 +1615,8 @@ namespace SehalicMirza17324_Z2
             if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".xml"))
             {
                 dataGridViewUposlenici.DataSource = klinika17324.XMLDeSerialNasljedjivanje(ofd.FileName, typeof(List<Uposlenik>), new List<Type>() { typeof(Doktor), typeof(Administrator), typeof(Tehnicar), typeof(Uposlenik) });
-                klinika17324.Uposlenici = klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>)) as List<Uposlenik>;
+                klinika17324.Uposlenici =dataGridViewUposlenici.DataSource as List<Uposlenik>;
+                DodajCvorove(treeViewDeserijalizacija);
                 textBoxInfoXMLUpo.Text = "Deserijalizacija uspješna!";
             }
             else textBoxInfoXMLUpo.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
@@ -1628,6 +1630,7 @@ namespace SehalicMirza17324_Z2
             {
                 dataGridViewPacijenti.DataSource = klinika17324.BinDeSerial(ofd.FileName);
                 klinika17324.Pacijenti = klinika17324.BinDeSerial(ofd.FileName) as List<Zadaca1RPR_17324.Pacijent>;
+                DodajCvorove(treeViewDeserijalizacija);
                 textBoxInfoDesPacBin.Text = "Deserijalizacija uspješna!";
             }
             else textBoxInfoDesPacBin.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
@@ -1641,6 +1644,7 @@ namespace SehalicMirza17324_Z2
             {
                 dataGridViewUposlenici.DataSource = klinika17324.BinDeSerial(ofd.FileName);
                 klinika17324.Uposlenici = klinika17324.BinDeSerial(ofd.FileName) as List<Uposlenik>;
+                DodajCvorove(treeViewDeserijalizacija);
                 textBoxInfoBinUpo.Text = "Deserijalizacija uspješna!";
             }
             else textBoxInfoBinUpo.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
