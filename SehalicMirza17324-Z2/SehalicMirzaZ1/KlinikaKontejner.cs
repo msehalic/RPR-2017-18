@@ -6,6 +6,12 @@ using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Xml.Serialization;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
+
 namespace Zadaca1RPR_17324
 {
 
@@ -267,89 +273,56 @@ namespace Zadaca1RPR_17324
             else throw new Exception("Neuspjesno brisanje! Provjerite ID broj pacijenta koji ste unijeli.");
         }
 
-        /*  public void Naplata(ref List<Pacijent> pacijenti, ref List<Tuple<Pregled, decimal>> pregledIznosNaplate, ref List<decimal> naplaceno)
-          {
-              decimal saldoUkupni = 0M;
-              string temp;
-              int unos;
-              bool pronadjen = false;
-              bool dobarUnos = true;
-              do
-              {
-                  if (!dobarUnos) ("Neispravan unos. Pokusajte ponovo: "); //ako smo u petlji 1+ puta neispravan je unos
-                  ("Dobro dosli u modul za printanje racuna. Molimo izaberite vrstu placanja: \n1. Gotovinsko placanje\n2. Placanje na rate");
-                  temp = ;
-                  dobarUnos = Int32.TryParse(temp, out unos);
-                  if (unos < 1 || unos > 2) dobarUnos = false;
-              } while (!dobarUnos);
-              do
-              {
+        public void XMLSerial(string lokacija, object objekat, Type tipObjekta)
+        {
+            XmlSerializer xs;
+                xs = new XmlSerializer(tipObjekta);
+            using (Stream s = File.Create(lokacija))
+                xs.Serialize(s, objekat);
+        }
+        public void XMLSerialNasljedjivanje(string lokacija, object objekat, Type tip, List<Type> listica)
+        {
+            XmlSerializer xs;
+            xs = new XmlSerializer(tip, listica.ToArray());
+            using (Stream s = File.Create(lokacija))
+                xs.Serialize(s, objekat);
+        }
+        public object XMLDeSerial(string lokacija, Type tip)
+        {
+            using (FileStream fs = new FileStream(lokacija, FileMode.Open))
+            {
+                XmlReader reader = XmlReader.Create(fs);
+                XmlSerializer xs;
+                    xs = new XmlSerializer(tip);
+                return xs.Deserialize(reader);
+            }
+        }
+        public object XMLDeSerialNasljedjivanje(string lokacija, Type tip, List<Type> listica)
+        {
+            using (FileStream fs = new FileStream(lokacija, FileMode.Open))
+            {
+                XmlReader reader = XmlReader.Create(fs);
+                XmlSerializer xs;
+                xs = new XmlSerializer(tip, listica.ToArray());
+                return xs.Deserialize(reader);
+            }
+        }
+        public void BinSerial(string lokacija, object objekat)
+        {
+            IFormatter serijalizer = new BinaryFormatter();
+            FileStream stream = new FileStream(lokacija, FileMode.Create);
+            serijalizer.Serialize(stream, objekat);
+            stream.Close();
+        }
+        public object BinDeSerial(string lokacija)
+        {
+            IFormatter serijalizer = new BinaryFormatter();
+            FileStream stream = new FileStream(lokacija, FileMode.Open);
+            object o = serijalizer.Deserialize(stream);
+            stream.Close();
+            return o;
+        }
 
-                  ("Unesite ime pacijenta kojem printate racun: ");
-                  string ime = ;
-                  ("Unesite prezime pacijenta kojem printate racun: ");
-                  string prezime = ;
-                  if (!pacijenti.Exists(x => String.Equals(x.Ime, ime, StringComparison.OrdinalIgnoreCase)) && !pacijenti.Exists(x => String.Equals(x.Ime, ime, StringComparison.OrdinalIgnoreCase)))
-                  //case insensitive
-                  {
-                      ("Pacijent sa tim imenom i prezimenom nije pronadjen\nDa li zelite:\n1. Pokusati ponovo\n2. Odustati od naplate");
-                      temp = ;
-                      dobarUnos = Int32.TryParse(temp, out int unosPonovo);
-                      if (unosPonovo != 2) dobarUnos = false;
-                  }
-                  else
-                  {
-                      var pacijent17324 = pacijenti.Find(x => String.Equals(x.Ime, ime, StringComparison.OrdinalIgnoreCase) && String.Equals(x.Prezime, prezime, StringComparison.OrdinalIgnoreCase));
-                      //case insensitive
-                      if (pregledIznosNaplate.Count == 0)
-                      {
-                          ("Opcenito nema evidentiranih pregleda koji nisu placeni.");
-                          break;
-                      }
-                      foreach (Tuple<Pregled, decimal> t in pregledIznosNaplate)
-                      {
-                          if (t.Item1.P == pacijent17324)
-                          {
-                              ("Pregled \"{0}\", iznos {1}", t.Item1.Postupak, t.Item2);
-                              saldoUkupni += t.Item2;
-                              pronadjen = true;
-                          }
-                      }
-                      if (!pronadjen)
-                      {
-                          ("Nema evidentiranih pregleda za placanje kod pacijenta {0} {1}.", pacijent17324.Ime, pacijent17324.Prezime);
-                          break;
-                      }
-                      pacijent17324.PosjetioKliniku++; //inkrementacija nakon placanja;
-                      if (unos == 2 && pacijent17324.PosjetioKliniku < 3)
-                      {
-                          saldoUkupni *= 1.15M; //ako novi pacijent placa na rate onda je cijena veca za 15%
-                          ("Cijena je uvecana za 15% jer je pacijent platio na rate, a nije redovan u klinici.");
-                      }
-                      if (unos == 1 && pacijent17324.PosjetioKliniku >= 3)
-                      {
-                          saldoUkupni *= 0.9M; //ako novi pacijent placa na rate onda je cijena veca za 15%
-                          ("Cijena je smanjena za 10% jer je pacijent platio u gotovini, kao redovan u klinici.");
-                      }
-                      ("\nUkupni saldo za pacijenta {0} {1} je {2} KM.", pacijent17324.Ime, pacijent17324.Prezime, saldoUkupni);
-                      if (unos == 2) //sredjujemo broj rata
-                      {
-                          do
-                          {
-                              ("Obzirom da ste izabrali placanje na rate molimo unesite broj zeljenih rata (max 12): ");
-                              var unosBrojaRata = ;
-                              dobarUnos = Int32.TryParse(unosBrojaRata, out int brojRata);
-                              if (brojRata > 12) dobarUnos = false;
-                              if (!dobarUnos) ("Pogresan unos. Pokusajte ponovo: ");
-                              else ("Mjesecna rata iznosi {0} KM, izabrali ste placanje na {1} rata. ", Decimal.Round(saldoUkupni / brojRata, 2), brojRata); //zaokruzimo na 2 decimale
-                          } while (!dobarUnos);
-                      }
-                      naplaceno.Add(saldoUkupni);
-                      saldoUkupni = 0; //resetujemo saldo
-                  }
-
-              } while (!dobarUnos);
-              */
     }
 }
 
