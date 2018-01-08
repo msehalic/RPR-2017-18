@@ -94,6 +94,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\Doktori.Administrator.datasource" />
+    <None Include="Properties\DataSources\Doktori.Doktor.datasource" />
+    <None Include="Properties\DataSources\Doktori.Tehnicar.datasource" />
+    <None Include="Properties\DataSources\Doktori.Uposlenik.datasource" />
+    <None Include="Properties\DataSources\Zadaca1RPR_17324.KlinikaKontejner.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

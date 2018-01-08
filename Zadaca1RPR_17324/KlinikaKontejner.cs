@@ -10,6 +10,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
 
 namespace Zadaca1RPR_17324
 {
@@ -286,12 +287,40 @@ namespace Zadaca1RPR_17324
             using (Stream s = File.Create(lokacija))
                 xs.Serialize(s, objekat);
         }
+        public object XMLDeSerial(string lokacija, Type tip)
+        {
+            using (FileStream fs = new FileStream(lokacija, FileMode.Open))
+            {
+                XmlReader reader = XmlReader.Create(fs);
+                XmlSerializer xs;
+                    xs = new XmlSerializer(tip);
+                return xs.Deserialize(reader);
+            }
+        }
+        public object XMLDeSerialNasljedjivanje(string lokacija, Type tip, List<Type> listica)
+        {
+            using (FileStream fs = new FileStream(lokacija, FileMode.Open))
+            {
+                XmlReader reader = XmlReader.Create(fs);
+                XmlSerializer xs;
+                xs = new XmlSerializer(tip, listica.ToArray());
+                return xs.Deserialize(reader);
+            }
+        }
         public void BinSerial(string lokacija, object objekat)
         {
             IFormatter serijalizer = new BinaryFormatter();
             FileStream stream = new FileStream(lokacija, FileMode.Create);
             serijalizer.Serialize(stream, objekat);
             stream.Close();
+        }
+        public object BinDeSerial(string lokacija)
+        {
+            IFormatter serijalizer = new BinaryFormatter();
+            FileStream stream = new FileStream(lokacija, FileMode.Open);
+            object o = serijalizer.Deserialize(stream);
+            stream.Close();
+            return o;
         }
 
     }

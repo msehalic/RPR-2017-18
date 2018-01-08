@@ -273,6 +273,41 @@
             this.buttonSerijalizujPacijenteBinarno = new System.Windows.Forms.Button();
             this.textBoxInfoBinarnoUposlenici = new System.Windows.Forms.TextBox();
             this.buttonSerijalizujUposlenikeBinarno = new System.Windows.Forms.Button();
+            this.labelPregledDeserijalizacija = new System.Windows.Forms.Label();
+            this.treeViewDeserijalizacija = new System.Windows.Forms.TreeView();
+            this.buttonDeserijalizujXMLPac = new System.Windows.Forms.Button();
+            this.buttonDeserijalizacijaBinPac = new System.Windows.Forms.Button();
+            this.buttonDesXMLUpo = new System.Windows.Forms.Button();
+            this.buttonDesBinUpo = new System.Windows.Forms.Button();
+            this.textBoxInfoDesXMLPac = new System.Windows.Forms.TextBox();
+            this.textBoxInfoBinUpo = new System.Windows.Forms.TextBox();
+            this.textBoxInfoXMLUpo = new System.Windows.Forms.TextBox();
+            this.textBoxInfoDesPacBin = new System.Windows.Forms.TextBox();
+            this.dataGridViewPacijenti = new System.Windows.Forms.DataGridView();
+            this.klinikaKontejnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pacijentiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewUposlenici = new System.Windows.Forms.DataGridView();
+            this.uposlenikBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.uposlenikBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.uposlenikBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.ImeUposlenika = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrezimeUposlenika = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojLicence = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prezimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maticniBrojDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.spolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adresaStanovanjaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bracnoStanjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.posjetioKlinikuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datumPrijemaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datumRodjenjaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.korisnickoImeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lozinkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -325,6 +360,14 @@
             this.groupBoxTipUposlenika.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLicenca)).BeginInit();
             this.tabPageSerijalizacija.SuspendLayout();
+            this.tabPageDeserijalizacija.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacijenti)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.klinikaKontejnerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pacijentiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUposlenici)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip2
@@ -2771,6 +2814,20 @@
             // 
             // tabPageDeserijalizacija
             // 
+            this.tabPageDeserijalizacija.Controls.Add(this.label27);
+            this.tabPageDeserijalizacija.Controls.Add(this.label26);
+            this.tabPageDeserijalizacija.Controls.Add(this.dataGridViewUposlenici);
+            this.tabPageDeserijalizacija.Controls.Add(this.dataGridViewPacijenti);
+            this.tabPageDeserijalizacija.Controls.Add(this.textBoxInfoDesPacBin);
+            this.tabPageDeserijalizacija.Controls.Add(this.textBoxInfoXMLUpo);
+            this.tabPageDeserijalizacija.Controls.Add(this.textBoxInfoBinUpo);
+            this.tabPageDeserijalizacija.Controls.Add(this.textBoxInfoDesXMLPac);
+            this.tabPageDeserijalizacija.Controls.Add(this.buttonDesBinUpo);
+            this.tabPageDeserijalizacija.Controls.Add(this.buttonDesXMLUpo);
+            this.tabPageDeserijalizacija.Controls.Add(this.buttonDeserijalizacijaBinPac);
+            this.tabPageDeserijalizacija.Controls.Add(this.buttonDeserijalizujXMLPac);
+            this.tabPageDeserijalizacija.Controls.Add(this.labelPregledDeserijalizacija);
+            this.tabPageDeserijalizacija.Controls.Add(this.treeViewDeserijalizacija);
             this.tabPageDeserijalizacija.Location = new System.Drawing.Point(4, 22);
             this.tabPageDeserijalizacija.Name = "tabPageDeserijalizacija";
             this.tabPageDeserijalizacija.Padding = new System.Windows.Forms.Padding(3);
@@ -2858,6 +2915,271 @@
             this.buttonSerijalizujUposlenikeBinarno.Text = "Serijalizuj uposlenike u binarnu datoteku!";
             this.buttonSerijalizujUposlenikeBinarno.UseVisualStyleBackColor = true;
             this.buttonSerijalizujUposlenikeBinarno.Click += new System.EventHandler(this.buttonSerijalizujUposlenikeBinarno_Click);
+            // 
+            // labelPregledDeserijalizacija
+            // 
+            this.labelPregledDeserijalizacija.AutoSize = true;
+            this.labelPregledDeserijalizacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelPregledDeserijalizacija.Location = new System.Drawing.Point(746, 18);
+            this.labelPregledDeserijalizacija.Name = "labelPregledDeserijalizacija";
+            this.labelPregledDeserijalizacija.Size = new System.Drawing.Size(359, 20);
+            this.labelPregledDeserijalizacija.TabIndex = 32;
+            this.labelPregledDeserijalizacija.Text = "Pregled registrovanih korisnika po grupama:";
+            // 
+            // treeViewDeserijalizacija
+            // 
+            this.treeViewDeserijalizacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.treeViewDeserijalizacija.Location = new System.Drawing.Point(750, 49);
+            this.treeViewDeserijalizacija.Name = "treeViewDeserijalizacija";
+            this.treeViewDeserijalizacija.Size = new System.Drawing.Size(346, 230);
+            this.treeViewDeserijalizacija.TabIndex = 31;
+            // 
+            // buttonDeserijalizujXMLPac
+            // 
+            this.buttonDeserijalizujXMLPac.Location = new System.Drawing.Point(140, 49);
+            this.buttonDeserijalizujXMLPac.Name = "buttonDeserijalizujXMLPac";
+            this.buttonDeserijalizujXMLPac.Size = new System.Drawing.Size(167, 63);
+            this.buttonDeserijalizujXMLPac.TabIndex = 33;
+            this.buttonDeserijalizujXMLPac.Text = "Deserijalizuj pacijente iz XML!";
+            this.buttonDeserijalizujXMLPac.UseVisualStyleBackColor = true;
+            this.buttonDeserijalizujXMLPac.Click += new System.EventHandler(this.buttonDeserijalizujXMLPac_Click);
+            // 
+            // buttonDeserijalizacijaBinPac
+            // 
+            this.buttonDeserijalizacijaBinPac.Location = new System.Drawing.Point(495, 49);
+            this.buttonDeserijalizacijaBinPac.Name = "buttonDeserijalizacijaBinPac";
+            this.buttonDeserijalizacijaBinPac.Size = new System.Drawing.Size(167, 63);
+            this.buttonDeserijalizacijaBinPac.TabIndex = 34;
+            this.buttonDeserijalizacijaBinPac.Text = "Deserijalizuj pacijente iz binarne datoteke!";
+            this.buttonDeserijalizacijaBinPac.UseVisualStyleBackColor = true;
+            this.buttonDeserijalizacijaBinPac.Click += new System.EventHandler(this.buttonDeserijalizacijaBinPac_Click);
+            // 
+            // buttonDesXMLUpo
+            // 
+            this.buttonDesXMLUpo.Location = new System.Drawing.Point(140, 166);
+            this.buttonDesXMLUpo.Name = "buttonDesXMLUpo";
+            this.buttonDesXMLUpo.Size = new System.Drawing.Size(167, 63);
+            this.buttonDesXMLUpo.TabIndex = 35;
+            this.buttonDesXMLUpo.Text = "Deserijalizuj uposlenike iz XML!";
+            this.buttonDesXMLUpo.UseVisualStyleBackColor = true;
+            this.buttonDesXMLUpo.Click += new System.EventHandler(this.buttonDesXMLUpo_Click);
+            // 
+            // buttonDesBinUpo
+            // 
+            this.buttonDesBinUpo.Location = new System.Drawing.Point(495, 166);
+            this.buttonDesBinUpo.Name = "buttonDesBinUpo";
+            this.buttonDesBinUpo.Size = new System.Drawing.Size(167, 63);
+            this.buttonDesBinUpo.TabIndex = 36;
+            this.buttonDesBinUpo.Text = "Deserijalizuj uposlenike iz binarne datoteke!";
+            this.buttonDesBinUpo.UseVisualStyleBackColor = true;
+            this.buttonDesBinUpo.Click += new System.EventHandler(this.buttonDesBinUpo_Click);
+            // 
+            // textBoxInfoDesXMLPac
+            // 
+            this.textBoxInfoDesXMLPac.Enabled = false;
+            this.textBoxInfoDesXMLPac.Location = new System.Drawing.Point(140, 119);
+            this.textBoxInfoDesXMLPac.Name = "textBoxInfoDesXMLPac";
+            this.textBoxInfoDesXMLPac.Size = new System.Drawing.Size(167, 20);
+            this.textBoxInfoDesXMLPac.TabIndex = 37;
+            // 
+            // textBoxInfoBinUpo
+            // 
+            this.textBoxInfoBinUpo.Enabled = false;
+            this.textBoxInfoBinUpo.Location = new System.Drawing.Point(495, 238);
+            this.textBoxInfoBinUpo.Name = "textBoxInfoBinUpo";
+            this.textBoxInfoBinUpo.Size = new System.Drawing.Size(167, 20);
+            this.textBoxInfoBinUpo.TabIndex = 38;
+            // 
+            // textBoxInfoXMLUpo
+            // 
+            this.textBoxInfoXMLUpo.Enabled = false;
+            this.textBoxInfoXMLUpo.Location = new System.Drawing.Point(140, 238);
+            this.textBoxInfoXMLUpo.Name = "textBoxInfoXMLUpo";
+            this.textBoxInfoXMLUpo.Size = new System.Drawing.Size(167, 20);
+            this.textBoxInfoXMLUpo.TabIndex = 39;
+            // 
+            // textBoxInfoDesPacBin
+            // 
+            this.textBoxInfoDesPacBin.Enabled = false;
+            this.textBoxInfoDesPacBin.Location = new System.Drawing.Point(495, 119);
+            this.textBoxInfoDesPacBin.Name = "textBoxInfoDesPacBin";
+            this.textBoxInfoDesPacBin.Size = new System.Drawing.Size(167, 20);
+            this.textBoxInfoDesPacBin.TabIndex = 40;
+            // 
+            // dataGridViewPacijenti
+            // 
+            this.dataGridViewPacijenti.AutoGenerateColumns = false;
+            this.dataGridViewPacijenti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPacijenti.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.imeDataGridViewTextBoxColumn,
+            this.prezimeDataGridViewTextBoxColumn,
+            this.maticniBrojDataGridViewTextBoxColumn,
+            this.spolDataGridViewTextBoxColumn,
+            this.adresaStanovanjaDataGridViewTextBoxColumn,
+            this.bracnoStanjeDataGridViewTextBoxColumn,
+            this.posjetioKlinikuDataGridViewTextBoxColumn,
+            this.datumPrijemaDataGridViewTextBoxColumn,
+            this.datumRodjenjaDataGridViewTextBoxColumn,
+            this.korisnickoImeDataGridViewTextBoxColumn,
+            this.lozinkaDataGridViewTextBoxColumn});
+            this.dataGridViewPacijenti.DataSource = this.pacijentiBindingSource;
+            this.dataGridViewPacijenti.Location = new System.Drawing.Point(13, 285);
+            this.dataGridViewPacijenti.Name = "dataGridViewPacijenti";
+            this.dataGridViewPacijenti.Size = new System.Drawing.Size(1136, 150);
+            this.dataGridViewPacijenti.TabIndex = 41;
+            // 
+            // klinikaKontejnerBindingSource
+            // 
+            this.klinikaKontejnerBindingSource.DataSource = typeof(Zadaca1RPR_17324.KlinikaKontejner);
+            // 
+            // pacijentiBindingSource
+            // 
+            this.pacijentiBindingSource.DataMember = "Pacijenti";
+            this.pacijentiBindingSource.DataSource = this.klinikaKontejnerBindingSource;
+            // 
+            // dataGridViewUposlenici
+            // 
+            this.dataGridViewUposlenici.AutoGenerateColumns = false;
+            this.dataGridViewUposlenici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUposlenici.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ImeUposlenika,
+            this.PrezimeUposlenika,
+            this.BrojLicence,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11});
+            this.dataGridViewUposlenici.DataSource = this.uposlenikBindingSource2;
+            this.dataGridViewUposlenici.Location = new System.Drawing.Point(13, 462);
+            this.dataGridViewUposlenici.Name = "dataGridViewUposlenici";
+            this.dataGridViewUposlenici.Size = new System.Drawing.Size(1136, 150);
+            this.dataGridViewUposlenici.TabIndex = 42;
+            // 
+            // uposlenikBindingSource
+            // 
+            this.uposlenikBindingSource.DataSource = typeof(Doktori.Uposlenik);
+            // 
+            // uposlenikBindingSource1
+            // 
+            this.uposlenikBindingSource1.DataSource = typeof(Doktori.Uposlenik);
+            // 
+            // uposlenikBindingSource2
+            // 
+            this.uposlenikBindingSource2.DataSource = typeof(Doktori.Uposlenik);
+            // 
+            // ImeUposlenika
+            // 
+            this.ImeUposlenika.DataPropertyName = "ImeUposlenika";
+            this.ImeUposlenika.HeaderText = "ImeUposlenika";
+            this.ImeUposlenika.Name = "ImeUposlenika";
+            // 
+            // PrezimeUposlenika
+            // 
+            this.PrezimeUposlenika.DataPropertyName = "PrezimeUposlenika";
+            this.PrezimeUposlenika.HeaderText = "PrezimeUposlenika";
+            this.PrezimeUposlenika.Name = "PrezimeUposlenika";
+            // 
+            // BrojLicence
+            // 
+            this.BrojLicence.DataPropertyName = "BrojLicence";
+            this.BrojLicence.HeaderText = "BrojLicence";
+            this.BrojLicence.Name = "BrojLicence";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "KorisnickoIme";
+            this.dataGridViewTextBoxColumn10.HeaderText = "KorisnickoIme";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "Lozinka";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Lozinka";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // imeDataGridViewTextBoxColumn
+            // 
+            this.imeDataGridViewTextBoxColumn.DataPropertyName = "Ime";
+            this.imeDataGridViewTextBoxColumn.HeaderText = "Ime";
+            this.imeDataGridViewTextBoxColumn.Name = "imeDataGridViewTextBoxColumn";
+            // 
+            // prezimeDataGridViewTextBoxColumn
+            // 
+            this.prezimeDataGridViewTextBoxColumn.DataPropertyName = "Prezime";
+            this.prezimeDataGridViewTextBoxColumn.HeaderText = "Prezime";
+            this.prezimeDataGridViewTextBoxColumn.Name = "prezimeDataGridViewTextBoxColumn";
+            // 
+            // maticniBrojDataGridViewTextBoxColumn
+            // 
+            this.maticniBrojDataGridViewTextBoxColumn.DataPropertyName = "MaticniBroj";
+            this.maticniBrojDataGridViewTextBoxColumn.HeaderText = "MaticniBroj";
+            this.maticniBrojDataGridViewTextBoxColumn.Name = "maticniBrojDataGridViewTextBoxColumn";
+            // 
+            // spolDataGridViewTextBoxColumn
+            // 
+            this.spolDataGridViewTextBoxColumn.DataPropertyName = "Spol";
+            this.spolDataGridViewTextBoxColumn.HeaderText = "Spol";
+            this.spolDataGridViewTextBoxColumn.Name = "spolDataGridViewTextBoxColumn";
+            // 
+            // adresaStanovanjaDataGridViewTextBoxColumn
+            // 
+            this.adresaStanovanjaDataGridViewTextBoxColumn.DataPropertyName = "AdresaStanovanja";
+            this.adresaStanovanjaDataGridViewTextBoxColumn.HeaderText = "AdresaStanovanja";
+            this.adresaStanovanjaDataGridViewTextBoxColumn.Name = "adresaStanovanjaDataGridViewTextBoxColumn";
+            // 
+            // bracnoStanjeDataGridViewTextBoxColumn
+            // 
+            this.bracnoStanjeDataGridViewTextBoxColumn.DataPropertyName = "BracnoStanje";
+            this.bracnoStanjeDataGridViewTextBoxColumn.HeaderText = "BracnoStanje";
+            this.bracnoStanjeDataGridViewTextBoxColumn.Name = "bracnoStanjeDataGridViewTextBoxColumn";
+            // 
+            // posjetioKlinikuDataGridViewTextBoxColumn
+            // 
+            this.posjetioKlinikuDataGridViewTextBoxColumn.DataPropertyName = "PosjetioKliniku";
+            this.posjetioKlinikuDataGridViewTextBoxColumn.HeaderText = "PosjetioKliniku";
+            this.posjetioKlinikuDataGridViewTextBoxColumn.Name = "posjetioKlinikuDataGridViewTextBoxColumn";
+            // 
+            // datumPrijemaDataGridViewTextBoxColumn
+            // 
+            this.datumPrijemaDataGridViewTextBoxColumn.DataPropertyName = "DatumPrijema";
+            this.datumPrijemaDataGridViewTextBoxColumn.HeaderText = "DatumPrijema";
+            this.datumPrijemaDataGridViewTextBoxColumn.Name = "datumPrijemaDataGridViewTextBoxColumn";
+            // 
+            // datumRodjenjaDataGridViewTextBoxColumn
+            // 
+            this.datumRodjenjaDataGridViewTextBoxColumn.DataPropertyName = "DatumRodjenja";
+            this.datumRodjenjaDataGridViewTextBoxColumn.HeaderText = "DatumRodjenja";
+            this.datumRodjenjaDataGridViewTextBoxColumn.Name = "datumRodjenjaDataGridViewTextBoxColumn";
+            // 
+            // korisnickoImeDataGridViewTextBoxColumn
+            // 
+            this.korisnickoImeDataGridViewTextBoxColumn.DataPropertyName = "KorisnickoIme";
+            this.korisnickoImeDataGridViewTextBoxColumn.HeaderText = "KorisnickoIme";
+            this.korisnickoImeDataGridViewTextBoxColumn.Name = "korisnickoImeDataGridViewTextBoxColumn";
+            // 
+            // lozinkaDataGridViewTextBoxColumn
+            // 
+            this.lozinkaDataGridViewTextBoxColumn.DataPropertyName = "Lozinka";
+            this.lozinkaDataGridViewTextBoxColumn.HeaderText = "Lozinka";
+            this.lozinkaDataGridViewTextBoxColumn.Name = "lozinkaDataGridViewTextBoxColumn";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label26.Location = new System.Drawing.Point(18, 435);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(269, 24);
+            this.label26.TabIndex = 43;
+            this.label26.Text = "Pregled učitanih uposlenika";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label27.Location = new System.Drawing.Point(9, 261);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(263, 24);
+            this.label27.TabIndex = 44;
+            this.label27.Text = "Pregled učitanih pacijenata";
             // 
             // glavniMeni17324
             // 
@@ -2962,6 +3284,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLicenca)).EndInit();
             this.tabPageSerijalizacija.ResumeLayout(false);
             this.tabPageSerijalizacija.PerformLayout();
+            this.tabPageDeserijalizacija.ResumeLayout(false);
+            this.tabPageDeserijalizacija.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacijenti)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.klinikaKontejnerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pacijentiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUposlenici)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3211,5 +3542,40 @@
         private System.Windows.Forms.Button buttonSerijalizujUposlenikeBinarno;
         private System.Windows.Forms.TextBox textBoxInfoBinarnoPacijenti;
         private System.Windows.Forms.Button buttonSerijalizujPacijenteBinarno;
+        private System.Windows.Forms.Label labelPregledDeserijalizacija;
+        private System.Windows.Forms.TreeView treeViewDeserijalizacija;
+        private System.Windows.Forms.TextBox textBoxInfoDesXMLPac;
+        private System.Windows.Forms.Button buttonDesBinUpo;
+        private System.Windows.Forms.Button buttonDesXMLUpo;
+        private System.Windows.Forms.Button buttonDeserijalizacijaBinPac;
+        private System.Windows.Forms.Button buttonDeserijalizujXMLPac;
+        private System.Windows.Forms.TextBox textBoxInfoDesPacBin;
+        private System.Windows.Forms.TextBox textBoxInfoXMLUpo;
+        private System.Windows.Forms.TextBox textBoxInfoBinUpo;
+        private System.Windows.Forms.DataGridView dataGridViewPacijenti;
+        private System.Windows.Forms.BindingSource klinikaKontejnerBindingSource;
+        private System.Windows.Forms.BindingSource pacijentiBindingSource;
+        private System.Windows.Forms.DataGridView dataGridViewUposlenici;
+        private System.Windows.Forms.BindingSource uposlenikBindingSource1;
+        private System.Windows.Forms.BindingSource uposlenikBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImeUposlenika;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrezimeUposlenika;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojLicence;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.BindingSource uposlenikBindingSource2;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prezimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maticniBrojDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn spolDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adresaStanovanjaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bracnoStanjeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn posjetioKlinikuDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datumPrijemaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datumRodjenjaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn korisnickoImeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lozinkaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label27;
     }
 }

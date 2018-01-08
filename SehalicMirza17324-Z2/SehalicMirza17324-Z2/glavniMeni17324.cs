@@ -68,17 +68,17 @@ namespace SehalicMirza17324_Z2
             ((Control)this.tabPageAdministracija).Enabled = false;
             this.tabPageAdministracija.Dispose();
         }
-        private void DodajCvorove()
+        private void DodajCvorove(TreeView t)
         {
-            treeView1.Nodes.Clear();
+            t.Nodes.Clear();
             TreeNode doktori = new TreeNode("Doktori");
             TreeNode tehnicari = new TreeNode("Tehnicari");
             TreeNode pacijenti = new TreeNode("Pacijenti");
             TreeNode admin = new TreeNode("Administratori");
-            treeView1.Nodes.Add(admin);
-            treeView1.Nodes.Add(doktori);
-            treeView1.Nodes.Add(tehnicari);
-            treeView1.Nodes.Add(pacijenti);
+            t.Nodes.Add(admin);
+            t.Nodes.Add(doktori);
+            t.Nodes.Add(tehnicari);
+            t.Nodes.Add(pacijenti);
             if (klinika17324.Uposlenici.Count != 0) //dodaje vec postojece iz kontejnerske
             {
                 doktori.Nodes.Clear();
@@ -111,7 +111,7 @@ namespace SehalicMirza17324_Z2
             if (radioButtonMrtav.Checked == false) groupBoxMrtav.Enabled = false;
             if (radioButtonDoktor.Checked == false) textBoxSpecijalizacija.Enabled = false;
             groupBoxPrikazKartona.Enabled = false;
-            DodajCvorove();
+            DodajCvorove(treeView1);
 
         }
         private void Izadji(object sender, EventArgs e)
@@ -279,7 +279,7 @@ namespace SehalicMirza17324_Z2
                     klinika17324.UnosPodataka(p, checkBoxDermatolog.Checked, checkBoxKardiolog.Checked, checkBoxOrtoped.Checked, checkBoxStomatolog.Checked);
                     toolStripStatusLabel2.Text = "Uspjesno dodan pacijent " + p.Ime + " " + p.Prezime;
                     toolStripStatusLabel2.ForeColor = Color.Green; //malo lijepog dizajna
-                    DodajCvorove();
+                    DodajCvorove(treeView1);
                 }
                 //TREBA JOS U SETTERE DODATI 
                 //VALIDACIJU
@@ -1380,21 +1380,21 @@ namespace SehalicMirza17324_Z2
                 if (radioButtonTehnicar.Checked)
                 {
                     klinika17324.Uposlenici.Add(new Tehnicar(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text));
-                    DodajCvorove();
+                    DodajCvorove(treeView1);
                     toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
                     toolStripStatusLabel2.ForeColor = Color.Green;
                 }
                 else if (radioButtonAdmin.Checked)
                 {
                     klinika17324.Uposlenici.Add(new Administrator(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text));
-                    DodajCvorove();
+                    DodajCvorove(treeView1);
                     toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
                     toolStripStatusLabel2.ForeColor = Color.Green;
                 }
                 else if (radioButtonDoktor.Checked)
                 {
                     klinika17324.Uposlenici.Add(new Doktor(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text, 0, textBoxSpecijalizacija.Text));
-                    DodajCvorove();
+                    DodajCvorove(treeView1);
                     toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
                     toolStripStatusLabel2.ForeColor = Color.Green;
                 } 
@@ -1431,7 +1431,7 @@ namespace SehalicMirza17324_Z2
                 klinika17324.Pacijenti.Remove(pacijent17324);
                 toolStripStatusLabel2.Text = "Uspjesno obrisan pacijent!";
                 toolStripStatusLabel2.ForeColor = Color.Green;
-                DodajCvorove();
+                DodajCvorove(treeView1);
             }
         }
 
@@ -1443,7 +1443,7 @@ namespace SehalicMirza17324_Z2
                 klinika17324.Pacijenti.Remove(pacijent17324);
                 toolStripStatusLabel2.Text = "Uspjesno obrisan pacijent!";
                 toolStripStatusLabel2.ForeColor = Color.Green;
-                DodajCvorove();
+                DodajCvorove(treeView1);
             }
         }
 
@@ -1486,7 +1486,7 @@ namespace SehalicMirza17324_Z2
                 klinika17324.Uposlenici.Remove(u17324);
                 toolStripStatusLabel2.Text = "Uspjesno obrisan uposlenik!";
                 toolStripStatusLabel2.ForeColor = Color.Green;
-                DodajCvorove();
+                DodajCvorove(treeView1);
             }
         }
 
@@ -1498,7 +1498,7 @@ namespace SehalicMirza17324_Z2
                 klinika17324.Uposlenici.Remove(u17324);
                 toolStripStatusLabel2.Text = "Uspjesno obrisan uposlenik!";
                 toolStripStatusLabel2.ForeColor = Color.Green;
-                DodajCvorove();
+                DodajCvorove(treeView1);
             }
         }
 
@@ -1592,6 +1592,58 @@ namespace SehalicMirza17324_Z2
             }
             else textBoxInfoBinarnoUposlenici.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
 
+        }
+
+        private void buttonDeserijalizujXMLPac_Click(object sender, EventArgs e)
+        {
+            textBoxInfoDesXMLPac.Text = "";
+            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, CheckFileExists = true };
+            if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".xml"))
+            {
+                dataGridViewPacijenti.DataSource = klinika17324.XMLDeSerial(ofd.FileName,typeof(List<Zadaca1RPR_17324.Pacijent>));
+                klinika17324.Pacijenti =  klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>)) as List<Zadaca1RPR_17324.Pacijent>;
+                textBoxInfoDesXMLPac.Text = "Deserijalizacija uspješna!";
+            }
+            else textBoxInfoDesXMLPac.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+        }
+
+        private void buttonDesXMLUpo_Click(object sender, EventArgs e)
+        {
+            textBoxInfoXMLUpo.Text = "";
+            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, CheckFileExists = true };
+            if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".xml"))
+            {
+                dataGridViewUposlenici.DataSource = klinika17324.XMLDeSerialNasljedjivanje(ofd.FileName, typeof(List<Uposlenik>), new List<Type>() { typeof(Doktor), typeof(Administrator), typeof(Tehnicar), typeof(Uposlenik) });
+                klinika17324.Uposlenici = klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>)) as List<Uposlenik>;
+                textBoxInfoXMLUpo.Text = "Deserijalizacija uspješna!";
+            }
+            else textBoxInfoXMLUpo.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+        }
+
+        private void buttonDeserijalizacijaBinPac_Click(object sender, EventArgs e)
+        {
+            textBoxInfoDesPacBin.Text = "";
+            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, CheckFileExists = true };
+            if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".bin"))
+            {
+                dataGridViewPacijenti.DataSource = klinika17324.BinDeSerial(ofd.FileName);
+                klinika17324.Pacijenti = klinika17324.BinDeSerial(ofd.FileName) as List<Zadaca1RPR_17324.Pacijent>;
+                textBoxInfoDesPacBin.Text = "Deserijalizacija uspješna!";
+            }
+            else textBoxInfoDesPacBin.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+        }
+
+        private void buttonDesBinUpo_Click(object sender, EventArgs e)
+        {
+            textBoxInfoBinUpo.Text = "";
+            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, CheckFileExists = true };
+            if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".bin"))
+            {
+                dataGridViewUposlenici.DataSource = klinika17324.BinDeSerial(ofd.FileName);
+                klinika17324.Uposlenici = klinika17324.BinDeSerial(ofd.FileName) as List<Uposlenik>;
+                textBoxInfoBinUpo.Text = "Deserijalizacija uspješna!";
+            }
+            else textBoxInfoBinUpo.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
         }
     }
 }
