@@ -66,5 +66,10 @@ namespace Doktori
             // Return the hexadecimal string.
             return sBuilder.ToString();
         }
+
+        public override string ToString()
+        {
+            return ImeUposlenika + " " + PrezimeUposlenika + ", broj licence: " + BrojLicence;
+        }
     }
 }
