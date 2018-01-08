@@ -27,14 +27,7 @@ namespace Zadaca1RPR_17324
 
         public int IdPacijenta { get => idPacijenta; set => idPacijenta = value; }
         public char Spol { get => spol; set => spol = value; }
-        public ulong MaticniBroj
-        {
-            get => maticniBroj; set
-            {
-                maticniBroj = value;
-                if (maticniBroj.ToString().Length != 13) throw new Exception(("Maticni broj nema 13 cifara vec " + maticniBroj.ToString().Length));
-            }
-        }
+
         public int PosjetioKliniku { get => posjetioKliniku; set => posjetioKliniku = value; }
         public List<Pregled> Karton { get => karton; set => karton = value; }
         public string Ime
@@ -62,6 +55,7 @@ namespace Zadaca1RPR_17324
         public Image SlikaPacijenta { get => slikaPacijenta; set => slikaPacijenta = value; }
         public string KorisnickoIme { get => korisnickoIme; set => korisnickoIme = value; }
         public string Lozinka { get => lozinka; set => lozinka = value; }
+        public ulong MaticniBroj { get => maticniBroj; set => maticniBroj = value; }
 
         public override string ToString()
         {

@@ -42,40 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GlobalSuppressions.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="IOrdinacije.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Ordinacija.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="PacijentAnamneza.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="PacijentKonstruktori.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="PacijentMetodeDefinicije.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Pacijent_HitnaProcedura.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Pacijent_NormalnaProcedura.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Pregled.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="IOrdinacije.cs" />
+    <Compile Include="Ordinacija.cs" />
+    <Compile Include="PacijentAnamneza.cs" />
+    <Compile Include="PacijentKonstruktori.cs" />
+    <Compile Include="PacijentMetodeDefinicije.cs" />
+    <Compile Include="Pacijent_HitnaProcedura.cs" />
+    <Compile Include="Pacijent_NormalnaProcedura.cs" />
+    <Compile Include="Pregled.cs" />
     <Compile Include="..\..\Zadaca1RPR_17324\KlinikaKontejner.cs">
       <Link>KlinikaKontejner.cs</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Program.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

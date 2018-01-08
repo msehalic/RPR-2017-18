@@ -53,7 +53,12 @@ namespace Zadaca1RPR_17324
             P = pac;
             D.BrojPregledanihPacijenata++;
         }
-       public override string ToString()
+
+        public Pregled()
+        {
+        }
+
+        public override string ToString()
         {
             if (IdPregleda==0) return ("Pacijent trenutno nema evidentiranih izvršenih pregleda.");
             return(DatumVrijemePregleda + " Pacijent " + P.Ime + P.Prezime + ", procedura: " + Postupak + ". Misljenje ljekara je " + MisljenjeLjekara + ", propisana terapija: " + Terapija + ".");

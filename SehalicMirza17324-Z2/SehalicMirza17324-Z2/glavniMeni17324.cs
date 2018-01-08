@@ -11,6 +11,8 @@ using Doktori;
 using System.Collections;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace SehalicMirza17324_Z2
 {
@@ -1539,6 +1541,31 @@ namespace SehalicMirza17324_Z2
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonSerijalizujPacijente_Click(object sender, EventArgs e)
+        {
+            textBoxInfoSerijalizacijaPacijenti.Text = "";
+            SaveFileDialog sfd = new SaveFileDialog() { FileName = "pacijenti.xml", AddExtension = true, DefaultExt = ".xml", };
+            if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.EndsWith(".xml"))
+            {
+                klinika17324.XMLSerial(sfd.FileName, klinika17324.Pacijenti, typeof(List<Zadaca1RPR_17324.Pacijent>));
+                textBoxInfoSerijalizacijaPacijenti.Text = "Serijalizacija uspješna!";
+            }
+            else textBoxInfoSerijalizacijaPacijenti.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+
+        }
+
+        private void buttonSerijalizujUposlenike_Click(object sender, EventArgs e)
+        {
+            textBoxInfoSerijalizacijaUposlenika.Text = "";
+            SaveFileDialog sfd = new SaveFileDialog() { FileName = "uposlenici.xml", AddExtension = true, DefaultExt = ".xml", };
+            if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.EndsWith(".xml"))
+            {
+                klinika17324.XMLSerialNasljedjivanje(sfd.FileName, klinika17324.Uposlenici, typeof(List<Uposlenik>), new List<Type>() { typeof(Doktor), typeof(Administrator), typeof(Tehnicar), typeof(Uposlenik) });
+                textBoxInfoSerijalizacijaUposlenika.Text = "Serijalizacija uspješna!";
+            }
+            else textBoxInfoSerijalizacijaUposlenika.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
         }
     }
 }
