@@ -262,39 +262,26 @@
             this.textBoxImeUposlenik = new System.Windows.Forms.TextBox();
             this.labelPrezimeUposlenika = new System.Windows.Forms.Label();
             this.labelImeUposlenika = new System.Windows.Forms.Label();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tabPageSerijalizacija = new System.Windows.Forms.TabPage();
-            this.tabPageDeserijalizacija = new System.Windows.Forms.TabPage();
-            this.buttonSerijalizujPacijente = new System.Windows.Forms.Button();
-            this.textBoxInfoSerijalizacijaPacijenti = new System.Windows.Forms.TextBox();
-            this.textBoxInfoSerijalizacijaUposlenika = new System.Windows.Forms.TextBox();
-            this.buttonSerijalizujUposlenike = new System.Windows.Forms.Button();
-            this.textBoxInfoBinarnoPacijenti = new System.Windows.Forms.TextBox();
-            this.buttonSerijalizujPacijenteBinarno = new System.Windows.Forms.Button();
             this.textBoxInfoBinarnoUposlenici = new System.Windows.Forms.TextBox();
             this.buttonSerijalizujUposlenikeBinarno = new System.Windows.Forms.Button();
-            this.labelPregledDeserijalizacija = new System.Windows.Forms.Label();
-            this.treeViewDeserijalizacija = new System.Windows.Forms.TreeView();
-            this.buttonDeserijalizujXMLPac = new System.Windows.Forms.Button();
-            this.buttonDeserijalizacijaBinPac = new System.Windows.Forms.Button();
-            this.buttonDesXMLUpo = new System.Windows.Forms.Button();
-            this.buttonDesBinUpo = new System.Windows.Forms.Button();
-            this.textBoxInfoDesXMLPac = new System.Windows.Forms.TextBox();
-            this.textBoxInfoBinUpo = new System.Windows.Forms.TextBox();
-            this.textBoxInfoXMLUpo = new System.Windows.Forms.TextBox();
-            this.textBoxInfoDesPacBin = new System.Windows.Forms.TextBox();
-            this.dataGridViewPacijenti = new System.Windows.Forms.DataGridView();
-            this.klinikaKontejnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pacijentiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textBoxInfoBinarnoPacijenti = new System.Windows.Forms.TextBox();
+            this.buttonSerijalizujPacijenteBinarno = new System.Windows.Forms.Button();
+            this.textBoxInfoSerijalizacijaUposlenika = new System.Windows.Forms.TextBox();
+            this.buttonSerijalizujUposlenike = new System.Windows.Forms.Button();
+            this.textBoxInfoSerijalizacijaPacijenti = new System.Windows.Forms.TextBox();
+            this.buttonSerijalizujPacijente = new System.Windows.Forms.Button();
+            this.tabPageDeserijalizacija = new System.Windows.Forms.TabPage();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.dataGridViewUposlenici = new System.Windows.Forms.DataGridView();
-            this.uposlenikBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.uposlenikBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.uposlenikBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.ImeUposlenika = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrezimeUposlenika = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrojLicence = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uposlenikBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewPacijenti = new System.Windows.Forms.DataGridView();
             this.imeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prezimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maticniBrojDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -306,8 +293,24 @@
             this.datumRodjenjaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.korisnickoImeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lozinkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
+            this.pacijentiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.klinikaKontejnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textBoxInfoDesPacBin = new System.Windows.Forms.TextBox();
+            this.textBoxInfoXMLUpo = new System.Windows.Forms.TextBox();
+            this.textBoxInfoBinUpo = new System.Windows.Forms.TextBox();
+            this.textBoxInfoDesXMLPac = new System.Windows.Forms.TextBox();
+            this.buttonDesBinUpo = new System.Windows.Forms.Button();
+            this.buttonDesXMLUpo = new System.Windows.Forms.Button();
+            this.buttonDeserijalizacijaBinPac = new System.Windows.Forms.Button();
+            this.buttonDeserijalizujXMLPac = new System.Windows.Forms.Button();
+            this.labelPregledDeserijalizacija = new System.Windows.Forms.Label();
+            this.treeViewDeserijalizacija = new System.Windows.Forms.TreeView();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.uposlenikBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.uposlenikBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tabPageLogovi = new System.Windows.Forms.TabPage();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.buttonUcitajLogove = new System.Windows.Forms.Button();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -361,13 +364,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLicenca)).BeginInit();
             this.tabPageSerijalizacija.SuspendLayout();
             this.tabPageDeserijalizacija.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacijenti)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.klinikaKontejnerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pacijentiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUposlenici)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacijenti)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pacijentiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.klinikaKontejnerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource2)).BeginInit();
+            this.tabPageLogovi.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip2
@@ -1972,6 +1976,7 @@
             this.tabControlGlavniMeni.Controls.Add(this.tabPageAdministracija);
             this.tabControlGlavniMeni.Controls.Add(this.tabPageSerijalizacija);
             this.tabControlGlavniMeni.Controls.Add(this.tabPageDeserijalizacija);
+            this.tabControlGlavniMeni.Controls.Add(this.tabPageLogovi);
             this.tabControlGlavniMeni.Location = new System.Drawing.Point(0, 25);
             this.tabControlGlavniMeni.Name = "tabControlGlavniMeni";
             this.tabControlGlavniMeni.SelectedIndex = 0;
@@ -2809,8 +2814,88 @@
             this.tabPageSerijalizacija.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageSerijalizacija.Size = new System.Drawing.Size(1155, 618);
             this.tabPageSerijalizacija.TabIndex = 9;
-            this.tabPageSerijalizacija.Text = " Serijalizacija u datoteku";
+            this.tabPageSerijalizacija.Text = " Serijalizacija";
             this.tabPageSerijalizacija.UseVisualStyleBackColor = true;
+            // 
+            // textBoxInfoBinarnoUposlenici
+            // 
+            this.textBoxInfoBinarnoUposlenici.Enabled = false;
+            this.textBoxInfoBinarnoUposlenici.Location = new System.Drawing.Point(724, 351);
+            this.textBoxInfoBinarnoUposlenici.Name = "textBoxInfoBinarnoUposlenici";
+            this.textBoxInfoBinarnoUposlenici.Size = new System.Drawing.Size(344, 20);
+            this.textBoxInfoBinarnoUposlenici.TabIndex = 7;
+            // 
+            // buttonSerijalizujUposlenikeBinarno
+            // 
+            this.buttonSerijalizujUposlenikeBinarno.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonSerijalizujUposlenikeBinarno.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.buttonSerijalizujUposlenikeBinarno.Location = new System.Drawing.Point(724, 250);
+            this.buttonSerijalizujUposlenikeBinarno.Name = "buttonSerijalizujUposlenikeBinarno";
+            this.buttonSerijalizujUposlenikeBinarno.Size = new System.Drawing.Size(344, 95);
+            this.buttonSerijalizujUposlenikeBinarno.TabIndex = 6;
+            this.buttonSerijalizujUposlenikeBinarno.Text = "Serijalizuj uposlenike u binarnu datoteku!";
+            this.buttonSerijalizujUposlenikeBinarno.UseVisualStyleBackColor = true;
+            this.buttonSerijalizujUposlenikeBinarno.Click += new System.EventHandler(this.buttonSerijalizujUposlenikeBinarno_Click);
+            // 
+            // textBoxInfoBinarnoPacijenti
+            // 
+            this.textBoxInfoBinarnoPacijenti.Enabled = false;
+            this.textBoxInfoBinarnoPacijenti.Location = new System.Drawing.Point(724, 123);
+            this.textBoxInfoBinarnoPacijenti.Name = "textBoxInfoBinarnoPacijenti";
+            this.textBoxInfoBinarnoPacijenti.Size = new System.Drawing.Size(344, 20);
+            this.textBoxInfoBinarnoPacijenti.TabIndex = 5;
+            // 
+            // buttonSerijalizujPacijenteBinarno
+            // 
+            this.buttonSerijalizujPacijenteBinarno.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonSerijalizujPacijenteBinarno.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.buttonSerijalizujPacijenteBinarno.Location = new System.Drawing.Point(724, 22);
+            this.buttonSerijalizujPacijenteBinarno.Name = "buttonSerijalizujPacijenteBinarno";
+            this.buttonSerijalizujPacijenteBinarno.Size = new System.Drawing.Size(344, 95);
+            this.buttonSerijalizujPacijenteBinarno.TabIndex = 4;
+            this.buttonSerijalizujPacijenteBinarno.Text = "Serijalizuj pacijente u binarnu datoteku!";
+            this.buttonSerijalizujPacijenteBinarno.UseVisualStyleBackColor = true;
+            this.buttonSerijalizujPacijenteBinarno.Click += new System.EventHandler(this.buttonSerijalizujPacijenteBinarno_Click);
+            // 
+            // textBoxInfoSerijalizacijaUposlenika
+            // 
+            this.textBoxInfoSerijalizacijaUposlenika.Enabled = false;
+            this.textBoxInfoSerijalizacijaUposlenika.Location = new System.Drawing.Point(58, 353);
+            this.textBoxInfoSerijalizacijaUposlenika.Name = "textBoxInfoSerijalizacijaUposlenika";
+            this.textBoxInfoSerijalizacijaUposlenika.Size = new System.Drawing.Size(344, 20);
+            this.textBoxInfoSerijalizacijaUposlenika.TabIndex = 3;
+            // 
+            // buttonSerijalizujUposlenike
+            // 
+            this.buttonSerijalizujUposlenike.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonSerijalizujUposlenike.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.buttonSerijalizujUposlenike.Location = new System.Drawing.Point(58, 252);
+            this.buttonSerijalizujUposlenike.Name = "buttonSerijalizujUposlenike";
+            this.buttonSerijalizujUposlenike.Size = new System.Drawing.Size(344, 95);
+            this.buttonSerijalizujUposlenike.TabIndex = 2;
+            this.buttonSerijalizujUposlenike.Text = "Serijalizuj uposlenike u XML datoteku!";
+            this.buttonSerijalizujUposlenike.UseVisualStyleBackColor = true;
+            this.buttonSerijalizujUposlenike.Click += new System.EventHandler(this.buttonSerijalizujUposlenike_Click);
+            // 
+            // textBoxInfoSerijalizacijaPacijenti
+            // 
+            this.textBoxInfoSerijalizacijaPacijenti.Enabled = false;
+            this.textBoxInfoSerijalizacijaPacijenti.Location = new System.Drawing.Point(58, 123);
+            this.textBoxInfoSerijalizacijaPacijenti.Name = "textBoxInfoSerijalizacijaPacijenti";
+            this.textBoxInfoSerijalizacijaPacijenti.Size = new System.Drawing.Size(344, 20);
+            this.textBoxInfoSerijalizacijaPacijenti.TabIndex = 1;
+            // 
+            // buttonSerijalizujPacijente
+            // 
+            this.buttonSerijalizujPacijente.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonSerijalizujPacijente.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.buttonSerijalizujPacijente.Location = new System.Drawing.Point(58, 22);
+            this.buttonSerijalizujPacijente.Name = "buttonSerijalizujPacijente";
+            this.buttonSerijalizujPacijente.Size = new System.Drawing.Size(344, 95);
+            this.buttonSerijalizujPacijente.TabIndex = 0;
+            this.buttonSerijalizujPacijente.Text = "Serijalizuj pacijente u XML datoteku!";
+            this.buttonSerijalizujPacijente.UseVisualStyleBackColor = true;
+            this.buttonSerijalizujPacijente.Click += new System.EventHandler(this.buttonSerijalizujPacijente_Click);
             // 
             // tabPageDeserijalizacija
             // 
@@ -2833,209 +2918,28 @@
             this.tabPageDeserijalizacija.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageDeserijalizacija.Size = new System.Drawing.Size(1155, 618);
             this.tabPageDeserijalizacija.TabIndex = 10;
-            this.tabPageDeserijalizacija.Text = "Deserijalizacija iz datoteke";
+            this.tabPageDeserijalizacija.Text = "Deserijalizacija";
             this.tabPageDeserijalizacija.UseVisualStyleBackColor = true;
             // 
-            // buttonSerijalizujPacijente
+            // label27
             // 
-            this.buttonSerijalizujPacijente.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonSerijalizujPacijente.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.buttonSerijalizujPacijente.Location = new System.Drawing.Point(58, 22);
-            this.buttonSerijalizujPacijente.Name = "buttonSerijalizujPacijente";
-            this.buttonSerijalizujPacijente.Size = new System.Drawing.Size(344, 95);
-            this.buttonSerijalizujPacijente.TabIndex = 0;
-            this.buttonSerijalizujPacijente.Text = "Serijalizuj pacijente u XML datoteku!";
-            this.buttonSerijalizujPacijente.UseVisualStyleBackColor = true;
-            this.buttonSerijalizujPacijente.Click += new System.EventHandler(this.buttonSerijalizujPacijente_Click);
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label27.Location = new System.Drawing.Point(9, 261);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(263, 24);
+            this.label27.TabIndex = 44;
+            this.label27.Text = "Pregled učitanih pacijenata";
             // 
-            // textBoxInfoSerijalizacijaPacijenti
+            // label26
             // 
-            this.textBoxInfoSerijalizacijaPacijenti.Enabled = false;
-            this.textBoxInfoSerijalizacijaPacijenti.Location = new System.Drawing.Point(58, 123);
-            this.textBoxInfoSerijalizacijaPacijenti.Name = "textBoxInfoSerijalizacijaPacijenti";
-            this.textBoxInfoSerijalizacijaPacijenti.Size = new System.Drawing.Size(344, 20);
-            this.textBoxInfoSerijalizacijaPacijenti.TabIndex = 1;
-            // 
-            // textBoxInfoSerijalizacijaUposlenika
-            // 
-            this.textBoxInfoSerijalizacijaUposlenika.Enabled = false;
-            this.textBoxInfoSerijalizacijaUposlenika.Location = new System.Drawing.Point(58, 353);
-            this.textBoxInfoSerijalizacijaUposlenika.Name = "textBoxInfoSerijalizacijaUposlenika";
-            this.textBoxInfoSerijalizacijaUposlenika.Size = new System.Drawing.Size(344, 20);
-            this.textBoxInfoSerijalizacijaUposlenika.TabIndex = 3;
-            // 
-            // buttonSerijalizujUposlenike
-            // 
-            this.buttonSerijalizujUposlenike.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonSerijalizujUposlenike.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.buttonSerijalizujUposlenike.Location = new System.Drawing.Point(58, 252);
-            this.buttonSerijalizujUposlenike.Name = "buttonSerijalizujUposlenike";
-            this.buttonSerijalizujUposlenike.Size = new System.Drawing.Size(344, 95);
-            this.buttonSerijalizujUposlenike.TabIndex = 2;
-            this.buttonSerijalizujUposlenike.Text = "Serijalizuj uposlenike u XML datoteku!";
-            this.buttonSerijalizujUposlenike.UseVisualStyleBackColor = true;
-            this.buttonSerijalizujUposlenike.Click += new System.EventHandler(this.buttonSerijalizujUposlenike_Click);
-            // 
-            // textBoxInfoBinarnoPacijenti
-            // 
-            this.textBoxInfoBinarnoPacijenti.Enabled = false;
-            this.textBoxInfoBinarnoPacijenti.Location = new System.Drawing.Point(724, 123);
-            this.textBoxInfoBinarnoPacijenti.Name = "textBoxInfoBinarnoPacijenti";
-            this.textBoxInfoBinarnoPacijenti.Size = new System.Drawing.Size(344, 20);
-            this.textBoxInfoBinarnoPacijenti.TabIndex = 5;
-            // 
-            // buttonSerijalizujPacijenteBinarno
-            // 
-            this.buttonSerijalizujPacijenteBinarno.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonSerijalizujPacijenteBinarno.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.buttonSerijalizujPacijenteBinarno.Location = new System.Drawing.Point(724, 22);
-            this.buttonSerijalizujPacijenteBinarno.Name = "buttonSerijalizujPacijenteBinarno";
-            this.buttonSerijalizujPacijenteBinarno.Size = new System.Drawing.Size(344, 95);
-            this.buttonSerijalizujPacijenteBinarno.TabIndex = 4;
-            this.buttonSerijalizujPacijenteBinarno.Text = "Serijalizuj pacijente u binarnu datoteku!";
-            this.buttonSerijalizujPacijenteBinarno.UseVisualStyleBackColor = true;
-            this.buttonSerijalizujPacijenteBinarno.Click += new System.EventHandler(this.buttonSerijalizujPacijenteBinarno_Click);
-            // 
-            // textBoxInfoBinarnoUposlenici
-            // 
-            this.textBoxInfoBinarnoUposlenici.Enabled = false;
-            this.textBoxInfoBinarnoUposlenici.Location = new System.Drawing.Point(724, 351);
-            this.textBoxInfoBinarnoUposlenici.Name = "textBoxInfoBinarnoUposlenici";
-            this.textBoxInfoBinarnoUposlenici.Size = new System.Drawing.Size(344, 20);
-            this.textBoxInfoBinarnoUposlenici.TabIndex = 7;
-            // 
-            // buttonSerijalizujUposlenikeBinarno
-            // 
-            this.buttonSerijalizujUposlenikeBinarno.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonSerijalizujUposlenikeBinarno.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.buttonSerijalizujUposlenikeBinarno.Location = new System.Drawing.Point(724, 250);
-            this.buttonSerijalizujUposlenikeBinarno.Name = "buttonSerijalizujUposlenikeBinarno";
-            this.buttonSerijalizujUposlenikeBinarno.Size = new System.Drawing.Size(344, 95);
-            this.buttonSerijalizujUposlenikeBinarno.TabIndex = 6;
-            this.buttonSerijalizujUposlenikeBinarno.Text = "Serijalizuj uposlenike u binarnu datoteku!";
-            this.buttonSerijalizujUposlenikeBinarno.UseVisualStyleBackColor = true;
-            this.buttonSerijalizujUposlenikeBinarno.Click += new System.EventHandler(this.buttonSerijalizujUposlenikeBinarno_Click);
-            // 
-            // labelPregledDeserijalizacija
-            // 
-            this.labelPregledDeserijalizacija.AutoSize = true;
-            this.labelPregledDeserijalizacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelPregledDeserijalizacija.Location = new System.Drawing.Point(746, 18);
-            this.labelPregledDeserijalizacija.Name = "labelPregledDeserijalizacija";
-            this.labelPregledDeserijalizacija.Size = new System.Drawing.Size(359, 20);
-            this.labelPregledDeserijalizacija.TabIndex = 32;
-            this.labelPregledDeserijalizacija.Text = "Pregled registrovanih korisnika po grupama:";
-            // 
-            // treeViewDeserijalizacija
-            // 
-            this.treeViewDeserijalizacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.treeViewDeserijalizacija.Location = new System.Drawing.Point(750, 49);
-            this.treeViewDeserijalizacija.Name = "treeViewDeserijalizacija";
-            this.treeViewDeserijalizacija.Size = new System.Drawing.Size(346, 230);
-            this.treeViewDeserijalizacija.TabIndex = 31;
-            // 
-            // buttonDeserijalizujXMLPac
-            // 
-            this.buttonDeserijalizujXMLPac.Location = new System.Drawing.Point(140, 49);
-            this.buttonDeserijalizujXMLPac.Name = "buttonDeserijalizujXMLPac";
-            this.buttonDeserijalizujXMLPac.Size = new System.Drawing.Size(167, 63);
-            this.buttonDeserijalizujXMLPac.TabIndex = 33;
-            this.buttonDeserijalizujXMLPac.Text = "Deserijalizuj pacijente iz XML!";
-            this.buttonDeserijalizujXMLPac.UseVisualStyleBackColor = true;
-            this.buttonDeserijalizujXMLPac.Click += new System.EventHandler(this.buttonDeserijalizujXMLPac_Click);
-            // 
-            // buttonDeserijalizacijaBinPac
-            // 
-            this.buttonDeserijalizacijaBinPac.Location = new System.Drawing.Point(495, 49);
-            this.buttonDeserijalizacijaBinPac.Name = "buttonDeserijalizacijaBinPac";
-            this.buttonDeserijalizacijaBinPac.Size = new System.Drawing.Size(167, 63);
-            this.buttonDeserijalizacijaBinPac.TabIndex = 34;
-            this.buttonDeserijalizacijaBinPac.Text = "Deserijalizuj pacijente iz binarne datoteke!";
-            this.buttonDeserijalizacijaBinPac.UseVisualStyleBackColor = true;
-            this.buttonDeserijalizacijaBinPac.Click += new System.EventHandler(this.buttonDeserijalizacijaBinPac_Click);
-            // 
-            // buttonDesXMLUpo
-            // 
-            this.buttonDesXMLUpo.Location = new System.Drawing.Point(140, 166);
-            this.buttonDesXMLUpo.Name = "buttonDesXMLUpo";
-            this.buttonDesXMLUpo.Size = new System.Drawing.Size(167, 63);
-            this.buttonDesXMLUpo.TabIndex = 35;
-            this.buttonDesXMLUpo.Text = "Deserijalizuj uposlenike iz XML!";
-            this.buttonDesXMLUpo.UseVisualStyleBackColor = true;
-            this.buttonDesXMLUpo.Click += new System.EventHandler(this.buttonDesXMLUpo_Click);
-            // 
-            // buttonDesBinUpo
-            // 
-            this.buttonDesBinUpo.Location = new System.Drawing.Point(495, 166);
-            this.buttonDesBinUpo.Name = "buttonDesBinUpo";
-            this.buttonDesBinUpo.Size = new System.Drawing.Size(167, 63);
-            this.buttonDesBinUpo.TabIndex = 36;
-            this.buttonDesBinUpo.Text = "Deserijalizuj uposlenike iz binarne datoteke!";
-            this.buttonDesBinUpo.UseVisualStyleBackColor = true;
-            this.buttonDesBinUpo.Click += new System.EventHandler(this.buttonDesBinUpo_Click);
-            // 
-            // textBoxInfoDesXMLPac
-            // 
-            this.textBoxInfoDesXMLPac.Enabled = false;
-            this.textBoxInfoDesXMLPac.Location = new System.Drawing.Point(140, 119);
-            this.textBoxInfoDesXMLPac.Name = "textBoxInfoDesXMLPac";
-            this.textBoxInfoDesXMLPac.Size = new System.Drawing.Size(167, 20);
-            this.textBoxInfoDesXMLPac.TabIndex = 37;
-            // 
-            // textBoxInfoBinUpo
-            // 
-            this.textBoxInfoBinUpo.Enabled = false;
-            this.textBoxInfoBinUpo.Location = new System.Drawing.Point(495, 238);
-            this.textBoxInfoBinUpo.Name = "textBoxInfoBinUpo";
-            this.textBoxInfoBinUpo.Size = new System.Drawing.Size(167, 20);
-            this.textBoxInfoBinUpo.TabIndex = 38;
-            // 
-            // textBoxInfoXMLUpo
-            // 
-            this.textBoxInfoXMLUpo.Enabled = false;
-            this.textBoxInfoXMLUpo.Location = new System.Drawing.Point(140, 238);
-            this.textBoxInfoXMLUpo.Name = "textBoxInfoXMLUpo";
-            this.textBoxInfoXMLUpo.Size = new System.Drawing.Size(167, 20);
-            this.textBoxInfoXMLUpo.TabIndex = 39;
-            // 
-            // textBoxInfoDesPacBin
-            // 
-            this.textBoxInfoDesPacBin.Enabled = false;
-            this.textBoxInfoDesPacBin.Location = new System.Drawing.Point(495, 119);
-            this.textBoxInfoDesPacBin.Name = "textBoxInfoDesPacBin";
-            this.textBoxInfoDesPacBin.Size = new System.Drawing.Size(167, 20);
-            this.textBoxInfoDesPacBin.TabIndex = 40;
-            // 
-            // dataGridViewPacijenti
-            // 
-            this.dataGridViewPacijenti.AutoGenerateColumns = false;
-            this.dataGridViewPacijenti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPacijenti.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.imeDataGridViewTextBoxColumn,
-            this.prezimeDataGridViewTextBoxColumn,
-            this.maticniBrojDataGridViewTextBoxColumn,
-            this.spolDataGridViewTextBoxColumn,
-            this.adresaStanovanjaDataGridViewTextBoxColumn,
-            this.bracnoStanjeDataGridViewTextBoxColumn,
-            this.posjetioKlinikuDataGridViewTextBoxColumn,
-            this.datumPrijemaDataGridViewTextBoxColumn,
-            this.datumRodjenjaDataGridViewTextBoxColumn,
-            this.korisnickoImeDataGridViewTextBoxColumn,
-            this.lozinkaDataGridViewTextBoxColumn});
-            this.dataGridViewPacijenti.DataSource = this.pacijentiBindingSource;
-            this.dataGridViewPacijenti.Location = new System.Drawing.Point(13, 285);
-            this.dataGridViewPacijenti.Name = "dataGridViewPacijenti";
-            this.dataGridViewPacijenti.Size = new System.Drawing.Size(1136, 150);
-            this.dataGridViewPacijenti.TabIndex = 41;
-            // 
-            // klinikaKontejnerBindingSource
-            // 
-            this.klinikaKontejnerBindingSource.DataSource = typeof(Zadaca1RPR_17324.KlinikaKontejner);
-            // 
-            // pacijentiBindingSource
-            // 
-            this.pacijentiBindingSource.DataMember = "Pacijenti";
-            this.pacijentiBindingSource.DataSource = this.klinikaKontejnerBindingSource;
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label26.Location = new System.Drawing.Point(18, 435);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(269, 24);
+            this.label26.TabIndex = 43;
+            this.label26.Text = "Pregled učitanih uposlenika";
             // 
             // dataGridViewUposlenici
             // 
@@ -3052,18 +2956,6 @@
             this.dataGridViewUposlenici.Name = "dataGridViewUposlenici";
             this.dataGridViewUposlenici.Size = new System.Drawing.Size(1136, 150);
             this.dataGridViewUposlenici.TabIndex = 42;
-            // 
-            // uposlenikBindingSource
-            // 
-            this.uposlenikBindingSource.DataSource = typeof(Doktori.Uposlenik);
-            // 
-            // uposlenikBindingSource1
-            // 
-            this.uposlenikBindingSource1.DataSource = typeof(Doktori.Uposlenik);
-            // 
-            // uposlenikBindingSource2
-            // 
-            this.uposlenikBindingSource2.DataSource = typeof(Doktori.Uposlenik);
             // 
             // ImeUposlenika
             // 
@@ -3094,6 +2986,32 @@
             this.dataGridViewTextBoxColumn11.DataPropertyName = "Lozinka";
             this.dataGridViewTextBoxColumn11.HeaderText = "Lozinka";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // uposlenikBindingSource2
+            // 
+            this.uposlenikBindingSource2.DataSource = typeof(Doktori.Uposlenik);
+            // 
+            // dataGridViewPacijenti
+            // 
+            this.dataGridViewPacijenti.AutoGenerateColumns = false;
+            this.dataGridViewPacijenti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPacijenti.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.imeDataGridViewTextBoxColumn,
+            this.prezimeDataGridViewTextBoxColumn,
+            this.maticniBrojDataGridViewTextBoxColumn,
+            this.spolDataGridViewTextBoxColumn,
+            this.adresaStanovanjaDataGridViewTextBoxColumn,
+            this.bracnoStanjeDataGridViewTextBoxColumn,
+            this.posjetioKlinikuDataGridViewTextBoxColumn,
+            this.datumPrijemaDataGridViewTextBoxColumn,
+            this.datumRodjenjaDataGridViewTextBoxColumn,
+            this.korisnickoImeDataGridViewTextBoxColumn,
+            this.lozinkaDataGridViewTextBoxColumn});
+            this.dataGridViewPacijenti.DataSource = this.pacijentiBindingSource;
+            this.dataGridViewPacijenti.Location = new System.Drawing.Point(13, 285);
+            this.dataGridViewPacijenti.Name = "dataGridViewPacijenti";
+            this.dataGridViewPacijenti.Size = new System.Drawing.Size(1136, 150);
+            this.dataGridViewPacijenti.TabIndex = 41;
             // 
             // imeDataGridViewTextBoxColumn
             // 
@@ -3161,25 +3079,141 @@
             this.lozinkaDataGridViewTextBoxColumn.HeaderText = "Lozinka";
             this.lozinkaDataGridViewTextBoxColumn.Name = "lozinkaDataGridViewTextBoxColumn";
             // 
-            // label26
+            // pacijentiBindingSource
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label26.Location = new System.Drawing.Point(18, 435);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(269, 24);
-            this.label26.TabIndex = 43;
-            this.label26.Text = "Pregled učitanih uposlenika";
+            this.pacijentiBindingSource.DataMember = "Pacijenti";
+            this.pacijentiBindingSource.DataSource = this.klinikaKontejnerBindingSource;
             // 
-            // label27
+            // klinikaKontejnerBindingSource
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label27.Location = new System.Drawing.Point(9, 261);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(263, 24);
-            this.label27.TabIndex = 44;
-            this.label27.Text = "Pregled učitanih pacijenata";
+            this.klinikaKontejnerBindingSource.DataSource = typeof(Zadaca1RPR_17324.KlinikaKontejner);
+            // 
+            // textBoxInfoDesPacBin
+            // 
+            this.textBoxInfoDesPacBin.Enabled = false;
+            this.textBoxInfoDesPacBin.Location = new System.Drawing.Point(495, 119);
+            this.textBoxInfoDesPacBin.Name = "textBoxInfoDesPacBin";
+            this.textBoxInfoDesPacBin.Size = new System.Drawing.Size(167, 20);
+            this.textBoxInfoDesPacBin.TabIndex = 40;
+            // 
+            // textBoxInfoXMLUpo
+            // 
+            this.textBoxInfoXMLUpo.Enabled = false;
+            this.textBoxInfoXMLUpo.Location = new System.Drawing.Point(140, 238);
+            this.textBoxInfoXMLUpo.Name = "textBoxInfoXMLUpo";
+            this.textBoxInfoXMLUpo.Size = new System.Drawing.Size(167, 20);
+            this.textBoxInfoXMLUpo.TabIndex = 39;
+            // 
+            // textBoxInfoBinUpo
+            // 
+            this.textBoxInfoBinUpo.Enabled = false;
+            this.textBoxInfoBinUpo.Location = new System.Drawing.Point(495, 238);
+            this.textBoxInfoBinUpo.Name = "textBoxInfoBinUpo";
+            this.textBoxInfoBinUpo.Size = new System.Drawing.Size(167, 20);
+            this.textBoxInfoBinUpo.TabIndex = 38;
+            // 
+            // textBoxInfoDesXMLPac
+            // 
+            this.textBoxInfoDesXMLPac.Enabled = false;
+            this.textBoxInfoDesXMLPac.Location = new System.Drawing.Point(140, 119);
+            this.textBoxInfoDesXMLPac.Name = "textBoxInfoDesXMLPac";
+            this.textBoxInfoDesXMLPac.Size = new System.Drawing.Size(167, 20);
+            this.textBoxInfoDesXMLPac.TabIndex = 37;
+            // 
+            // buttonDesBinUpo
+            // 
+            this.buttonDesBinUpo.Location = new System.Drawing.Point(495, 166);
+            this.buttonDesBinUpo.Name = "buttonDesBinUpo";
+            this.buttonDesBinUpo.Size = new System.Drawing.Size(167, 63);
+            this.buttonDesBinUpo.TabIndex = 36;
+            this.buttonDesBinUpo.Text = "Deserijalizuj uposlenike iz binarne datoteke!";
+            this.buttonDesBinUpo.UseVisualStyleBackColor = true;
+            this.buttonDesBinUpo.Click += new System.EventHandler(this.buttonDesBinUpo_Click);
+            // 
+            // buttonDesXMLUpo
+            // 
+            this.buttonDesXMLUpo.Location = new System.Drawing.Point(140, 166);
+            this.buttonDesXMLUpo.Name = "buttonDesXMLUpo";
+            this.buttonDesXMLUpo.Size = new System.Drawing.Size(167, 63);
+            this.buttonDesXMLUpo.TabIndex = 35;
+            this.buttonDesXMLUpo.Text = "Deserijalizuj uposlenike iz XML!";
+            this.buttonDesXMLUpo.UseVisualStyleBackColor = true;
+            this.buttonDesXMLUpo.Click += new System.EventHandler(this.buttonDesXMLUpo_Click);
+            // 
+            // buttonDeserijalizacijaBinPac
+            // 
+            this.buttonDeserijalizacijaBinPac.Location = new System.Drawing.Point(495, 49);
+            this.buttonDeserijalizacijaBinPac.Name = "buttonDeserijalizacijaBinPac";
+            this.buttonDeserijalizacijaBinPac.Size = new System.Drawing.Size(167, 63);
+            this.buttonDeserijalizacijaBinPac.TabIndex = 34;
+            this.buttonDeserijalizacijaBinPac.Text = "Deserijalizuj pacijente iz binarne datoteke!";
+            this.buttonDeserijalizacijaBinPac.UseVisualStyleBackColor = true;
+            this.buttonDeserijalizacijaBinPac.Click += new System.EventHandler(this.buttonDeserijalizacijaBinPac_Click);
+            // 
+            // buttonDeserijalizujXMLPac
+            // 
+            this.buttonDeserijalizujXMLPac.Location = new System.Drawing.Point(140, 49);
+            this.buttonDeserijalizujXMLPac.Name = "buttonDeserijalizujXMLPac";
+            this.buttonDeserijalizujXMLPac.Size = new System.Drawing.Size(167, 63);
+            this.buttonDeserijalizujXMLPac.TabIndex = 33;
+            this.buttonDeserijalizujXMLPac.Text = "Deserijalizuj pacijente iz XML!";
+            this.buttonDeserijalizujXMLPac.UseVisualStyleBackColor = true;
+            this.buttonDeserijalizujXMLPac.Click += new System.EventHandler(this.buttonDeserijalizujXMLPac_Click);
+            // 
+            // labelPregledDeserijalizacija
+            // 
+            this.labelPregledDeserijalizacija.AutoSize = true;
+            this.labelPregledDeserijalizacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelPregledDeserijalizacija.Location = new System.Drawing.Point(746, 18);
+            this.labelPregledDeserijalizacija.Name = "labelPregledDeserijalizacija";
+            this.labelPregledDeserijalizacija.Size = new System.Drawing.Size(359, 20);
+            this.labelPregledDeserijalizacija.TabIndex = 32;
+            this.labelPregledDeserijalizacija.Text = "Pregled registrovanih korisnika po grupama:";
+            // 
+            // treeViewDeserijalizacija
+            // 
+            this.treeViewDeserijalizacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.treeViewDeserijalizacija.Location = new System.Drawing.Point(750, 49);
+            this.treeViewDeserijalizacija.Name = "treeViewDeserijalizacija";
+            this.treeViewDeserijalizacija.Size = new System.Drawing.Size(346, 230);
+            this.treeViewDeserijalizacija.TabIndex = 31;
+            // 
+            // uposlenikBindingSource
+            // 
+            this.uposlenikBindingSource.DataSource = typeof(Doktori.Uposlenik);
+            // 
+            // uposlenikBindingSource1
+            // 
+            this.uposlenikBindingSource1.DataSource = typeof(Doktori.Uposlenik);
+            // 
+            // tabPageLogovi
+            // 
+            this.tabPageLogovi.Controls.Add(this.buttonUcitajLogove);
+            this.tabPageLogovi.Controls.Add(this.richTextBox3);
+            this.tabPageLogovi.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLogovi.Name = "tabPageLogovi";
+            this.tabPageLogovi.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLogovi.Size = new System.Drawing.Size(1155, 618);
+            this.tabPageLogovi.TabIndex = 11;
+            this.tabPageLogovi.Text = "Logovi";
+            this.tabPageLogovi.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Location = new System.Drawing.Point(440, 18);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(316, 230);
+            this.richTextBox3.TabIndex = 0;
+            this.richTextBox3.Text = "";
+            // 
+            // buttonUcitajLogove
+            // 
+            this.buttonUcitajLogove.Location = new System.Drawing.Point(440, 254);
+            this.buttonUcitajLogove.Name = "buttonUcitajLogove";
+            this.buttonUcitajLogove.Size = new System.Drawing.Size(316, 23);
+            this.buttonUcitajLogove.TabIndex = 1;
+            this.buttonUcitajLogove.Text = "Učitaj logove iz datoteke...";
+            this.buttonUcitajLogove.UseVisualStyleBackColor = true;
             // 
             // glavniMeni17324
             // 
@@ -3286,13 +3320,14 @@
             this.tabPageSerijalizacija.PerformLayout();
             this.tabPageDeserijalizacija.ResumeLayout(false);
             this.tabPageDeserijalizacija.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacijenti)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.klinikaKontejnerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pacijentiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUposlenici)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacijenti)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pacijentiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.klinikaKontejnerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource2)).EndInit();
+            this.tabPageLogovi.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3577,5 +3612,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn korisnickoImeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lozinkaDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TabPage tabPageLogovi;
+        private System.Windows.Forms.Button buttonUcitajLogove;
+        private System.Windows.Forms.RichTextBox richTextBox3;
     }
 }
