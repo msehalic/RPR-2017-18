@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Doktori;
 namespace Zadaca1RPR_17324
 {
+    [Serializable]
     sealed public class Pregled
     {
         private DateTime datumVrijemePregleda; //dan i vrijeme pregleda

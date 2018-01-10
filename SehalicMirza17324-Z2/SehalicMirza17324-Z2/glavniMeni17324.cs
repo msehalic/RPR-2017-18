@@ -1624,10 +1624,19 @@ namespace SehalicMirza17324_Z2
             OpenFileDialog ofd = new OpenFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
             if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".xml"))
             {
-                dataGridViewPacijenti.DataSource = klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>));
-                klinika17324.Pacijenti = klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>)) as List<Zadaca1RPR_17324.Pacijent>;
-                DodajCvorove(treeViewDeserijalizacija);
-                textBoxInfoDesXMLPac.Text = "Deserijalizacija uspješna!";
+                try
+                {
+                    dataGridViewPacijenti.DataSource = klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>));
+                    klinika17324.Pacijenti = klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>)) as List<Zadaca1RPR_17324.Pacijent>;
+                    DodajCvorove(treeViewDeserijalizacija);
+                    textBoxInfoDesXMLPac.Text = "Deserijalizacija uspješna!";
+                }
+                catch (Exception)
+                {
+                    dataGridViewPacijenti.Refresh();
+                    textBoxInfoDesXMLPac.Text = "Greška pri deserijalizaciji! Pogrešan format datoteke, provjerite da učitavate pacijente!";
+                    SacuvajLogIzuzetka("Neuspjela deserijalizacija liste pacijenata iz XML datoteke! Pogrešan format datoteke!");
+                }
             }
             else
             {
@@ -1642,10 +1651,19 @@ namespace SehalicMirza17324_Z2
             OpenFileDialog ofd = new OpenFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
             if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".xml"))
             {
-                dataGridViewUposlenici.DataSource = klinika17324.XMLDeSerialNasljedjivanje(ofd.FileName, typeof(List<Uposlenik>), new List<Type>() { typeof(Doktor), typeof(Administrator), typeof(Tehnicar), typeof(Uposlenik) });
-                klinika17324.Uposlenici = dataGridViewUposlenici.DataSource as List<Uposlenik>;
-                DodajCvorove(treeViewDeserijalizacija);
-                textBoxInfoXMLUpo.Text = "Deserijalizacija uspješna!";
+                try
+                {
+                    dataGridViewUposlenici.DataSource = klinika17324.XMLDeSerialNasljedjivanje(ofd.FileName, typeof(List<Uposlenik>), new List<Type>() { typeof(Doktor), typeof(Administrator), typeof(Tehnicar), typeof(Uposlenik) });
+                    klinika17324.Uposlenici = dataGridViewUposlenici.DataSource as List<Uposlenik>;
+                    DodajCvorove(treeViewDeserijalizacija);
+                    textBoxInfoXMLUpo.Text = "Deserijalizacija uspješna!";
+                }
+                catch (Exception)
+                {
+                    dataGridViewUposlenici.Refresh();
+                    textBoxInfoXMLUpo.Text = "Greška pri deserijalizaciji! Pogrešan format datoteke, provjerite da učitavate uposlenike!";
+                    SacuvajLogIzuzetka("Neuspjela deserijalizacija liste uposlenika iz XML datoteke! Pogrešan format datoteke!");
+                }
             }
             else
             {
@@ -1656,18 +1674,27 @@ namespace SehalicMirza17324_Z2
 
         private void buttonDeserijalizacijaBinPac_Click(object sender, EventArgs e)
         {
-            textBoxInfoDesPacBin.Text = "";
+            RichTextBoxInfoDesPacBin.Text = "";
             OpenFileDialog ofd = new OpenFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
             if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".bin"))
             {
-                dataGridViewPacijenti.DataSource = klinika17324.BinDeSerial(ofd.FileName);
-                klinika17324.Pacijenti = klinika17324.BinDeSerial(ofd.FileName) as List<Zadaca1RPR_17324.Pacijent>;
-                DodajCvorove(treeViewDeserijalizacija);
-                textBoxInfoDesPacBin.Text = "Deserijalizacija uspješna!";
+                try
+                {
+                    dataGridViewPacijenti.DataSource = klinika17324.BinDeSerial(ofd.FileName);
+                    klinika17324.Pacijenti = klinika17324.BinDeSerial(ofd.FileName) as List<Zadaca1RPR_17324.Pacijent>;
+                    DodajCvorove(treeViewDeserijalizacija);
+                    RichTextBoxInfoDesPacBin.Text = "Deserijalizacija uspješna!";
+                }
+                catch (Exception)
+                {
+                    dataGridViewPacijenti.Refresh();
+                    RichTextBoxInfoDesPacBin.Text = "Greška pri deserijalizaciji! Pogrešan format datoteke, provjerite da učitavate pacijente!";
+                    SacuvajLogIzuzetka("Neuspjela deserijalizacija liste pacijenata iz binarne datoteke! Pogrešan format datoteke!");
+                }
             }
             else
             {
-                textBoxInfoDesPacBin.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+                RichTextBoxInfoDesPacBin.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
                 SacuvajLogIzuzetka("Neuspjela deserijalizacija liste pacijenata iz binarne datoteke!");
             }
         }
@@ -1678,10 +1705,19 @@ namespace SehalicMirza17324_Z2
             OpenFileDialog ofd = new OpenFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
             if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".bin"))
             {
-                dataGridViewUposlenici.DataSource = klinika17324.BinDeSerial(ofd.FileName);
-                klinika17324.Uposlenici = klinika17324.BinDeSerial(ofd.FileName) as List<Uposlenik>;
-                DodajCvorove(treeViewDeserijalizacija);
-                textBoxInfoBinUpo.Text = "Deserijalizacija uspješna!";
+                try
+                {
+                    dataGridViewUposlenici.DataSource = klinika17324.BinDeSerial(ofd.FileName);
+                    klinika17324.Uposlenici = klinika17324.BinDeSerial(ofd.FileName) as List<Uposlenik>;
+                    DodajCvorove(treeViewDeserijalizacija);
+                    textBoxInfoBinUpo.Text = "Deserijalizacija uspješna!";
+                }
+                catch (Exception)
+                {
+                    dataGridViewUposlenici.Refresh();
+                    textBoxInfoBinUpo.Text = "Greška pri deserijalizaciji! Pogrešan format datoteke, provjerite da učitavate uposlenike!";
+                    SacuvajLogIzuzetka("Neuspjela deserijalizacija liste uposlenika iz binarne datoteke! Pogrešan format datoteke!");
+                }
             }
             else
             {

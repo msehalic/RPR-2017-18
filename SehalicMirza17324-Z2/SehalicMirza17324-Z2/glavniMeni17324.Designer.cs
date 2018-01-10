@@ -295,7 +295,6 @@
             this.lozinkaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pacijentiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.klinikaKontejnerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.textBoxInfoDesPacBin = new System.Windows.Forms.TextBox();
             this.textBoxInfoXMLUpo = new System.Windows.Forms.TextBox();
             this.textBoxInfoBinUpo = new System.Windows.Forms.TextBox();
             this.textBoxInfoDesXMLPac = new System.Windows.Forms.TextBox();
@@ -306,13 +305,14 @@
             this.labelPregledDeserijalizacija = new System.Windows.Forms.Label();
             this.treeViewDeserijalizacija = new System.Windows.Forms.TreeView();
             this.tabPageLogovi = new System.Windows.Forms.TabPage();
+            this.buttonUcitajDruguDatoteku = new System.Windows.Forms.Button();
+            this.buttonObrisiSveLogove = new System.Windows.Forms.Button();
             this.buttonUcitajLogove = new System.Windows.Forms.Button();
             this.richTextBoxLogovi = new System.Windows.Forms.RichTextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.uposlenikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uposlenikBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonObrisiSveLogove = new System.Windows.Forms.Button();
-            this.buttonUcitajDruguDatoteku = new System.Windows.Forms.Button();
+            this.RichTextBoxInfoDesPacBin = new System.Windows.Forms.RichTextBox();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -2901,11 +2901,11 @@
             // 
             // tabPageDeserijalizacija
             // 
+            this.tabPageDeserijalizacija.Controls.Add(this.RichTextBoxInfoDesPacBin);
             this.tabPageDeserijalizacija.Controls.Add(this.label27);
             this.tabPageDeserijalizacija.Controls.Add(this.label26);
             this.tabPageDeserijalizacija.Controls.Add(this.dataGridViewUposlenici);
             this.tabPageDeserijalizacija.Controls.Add(this.dataGridViewPacijenti);
-            this.tabPageDeserijalizacija.Controls.Add(this.textBoxInfoDesPacBin);
             this.tabPageDeserijalizacija.Controls.Add(this.textBoxInfoXMLUpo);
             this.tabPageDeserijalizacija.Controls.Add(this.textBoxInfoBinUpo);
             this.tabPageDeserijalizacija.Controls.Add(this.textBoxInfoDesXMLPac);
@@ -3090,14 +3090,6 @@
             // 
             this.klinikaKontejnerBindingSource.DataSource = typeof(Zadaca1RPR_17324.KlinikaKontejner);
             // 
-            // textBoxInfoDesPacBin
-            // 
-            this.textBoxInfoDesPacBin.Enabled = false;
-            this.textBoxInfoDesPacBin.Location = new System.Drawing.Point(495, 119);
-            this.textBoxInfoDesPacBin.Name = "textBoxInfoDesPacBin";
-            this.textBoxInfoDesPacBin.Size = new System.Drawing.Size(167, 20);
-            this.textBoxInfoDesPacBin.TabIndex = 40;
-            // 
             // textBoxInfoXMLUpo
             // 
             this.textBoxInfoXMLUpo.Enabled = false;
@@ -3194,6 +3186,26 @@
             this.tabPageLogovi.Text = "Logovi";
             this.tabPageLogovi.UseVisualStyleBackColor = true;
             // 
+            // buttonUcitajDruguDatoteku
+            // 
+            this.buttonUcitajDruguDatoteku.Location = new System.Drawing.Point(440, 312);
+            this.buttonUcitajDruguDatoteku.Name = "buttonUcitajDruguDatoteku";
+            this.buttonUcitajDruguDatoteku.Size = new System.Drawing.Size(316, 23);
+            this.buttonUcitajDruguDatoteku.TabIndex = 3;
+            this.buttonUcitajDruguDatoteku.Text = "Učitaj neku drugu datoteku...";
+            this.buttonUcitajDruguDatoteku.UseVisualStyleBackColor = true;
+            this.buttonUcitajDruguDatoteku.Click += new System.EventHandler(this.buttonUcitajDruguDatoteku_Click);
+            // 
+            // buttonObrisiSveLogove
+            // 
+            this.buttonObrisiSveLogove.Location = new System.Drawing.Point(440, 283);
+            this.buttonObrisiSveLogove.Name = "buttonObrisiSveLogove";
+            this.buttonObrisiSveLogove.Size = new System.Drawing.Size(316, 23);
+            this.buttonObrisiSveLogove.TabIndex = 2;
+            this.buttonObrisiSveLogove.Text = "Obriši sve logove iz defaultne datoteke...";
+            this.buttonObrisiSveLogove.UseVisualStyleBackColor = true;
+            this.buttonObrisiSveLogove.Click += new System.EventHandler(this.buttonObrisiSveLogove_Click);
+            // 
             // buttonUcitajLogove
             // 
             this.buttonUcitajLogove.Location = new System.Drawing.Point(440, 254);
@@ -3220,25 +3232,13 @@
             // 
             this.uposlenikBindingSource1.DataSource = typeof(Doktori.Uposlenik);
             // 
-            // buttonObrisiSveLogove
+            // RichTextBoxInfoDesPacBin
             // 
-            this.buttonObrisiSveLogove.Location = new System.Drawing.Point(440, 283);
-            this.buttonObrisiSveLogove.Name = "buttonObrisiSveLogove";
-            this.buttonObrisiSveLogove.Size = new System.Drawing.Size(316, 23);
-            this.buttonObrisiSveLogove.TabIndex = 2;
-            this.buttonObrisiSveLogove.Text = "Obriši sve logove iz defaultne datoteke...";
-            this.buttonObrisiSveLogove.UseVisualStyleBackColor = true;
-            this.buttonObrisiSveLogove.Click += new System.EventHandler(this.buttonObrisiSveLogove_Click);
-            // 
-            // buttonUcitajDruguDatoteku
-            // 
-            this.buttonUcitajDruguDatoteku.Location = new System.Drawing.Point(440, 312);
-            this.buttonUcitajDruguDatoteku.Name = "buttonUcitajDruguDatoteku";
-            this.buttonUcitajDruguDatoteku.Size = new System.Drawing.Size(316, 23);
-            this.buttonUcitajDruguDatoteku.TabIndex = 3;
-            this.buttonUcitajDruguDatoteku.Text = "Učitaj neku drugu datoteku...";
-            this.buttonUcitajDruguDatoteku.UseVisualStyleBackColor = true;
-            this.buttonUcitajDruguDatoteku.Click += new System.EventHandler(this.buttonUcitajDruguDatoteku_Click);
+            this.RichTextBoxInfoDesPacBin.Location = new System.Drawing.Point(495, 118);
+            this.RichTextBoxInfoDesPacBin.Name = "RichTextBoxInfoDesPacBin";
+            this.RichTextBoxInfoDesPacBin.Size = new System.Drawing.Size(167, 42);
+            this.RichTextBoxInfoDesPacBin.TabIndex = 45;
+            this.RichTextBoxInfoDesPacBin.Text = "";
             // 
             // glavniMeni17324
             // 
@@ -3609,7 +3609,6 @@
         private System.Windows.Forms.Button buttonDesXMLUpo;
         private System.Windows.Forms.Button buttonDeserijalizacijaBinPac;
         private System.Windows.Forms.Button buttonDeserijalizujXMLPac;
-        private System.Windows.Forms.TextBox textBoxInfoDesPacBin;
         private System.Windows.Forms.TextBox textBoxInfoXMLUpo;
         private System.Windows.Forms.TextBox textBoxInfoBinUpo;
         private System.Windows.Forms.DataGridView dataGridViewPacijenti;
@@ -3642,5 +3641,6 @@
         private System.Windows.Forms.RichTextBox richTextBoxLogovi;
         private System.Windows.Forms.Button buttonObrisiSveLogove;
         private System.Windows.Forms.Button buttonUcitajDruguDatoteku;
+        private System.Windows.Forms.RichTextBox RichTextBoxInfoDesPacBin;
     }
 }
