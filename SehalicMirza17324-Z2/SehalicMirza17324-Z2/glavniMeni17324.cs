@@ -1555,7 +1555,7 @@ namespace SehalicMirza17324_Z2
         private void buttonSerijalizujPacijente_Click(object sender, EventArgs e)
         {
             textBoxInfoSerijalizacijaPacijenti.Text = "";
-            SaveFileDialog sfd = new SaveFileDialog() { FileName = "pacijenti.xml", AddExtension = true, DefaultExt = ".xml", };
+            SaveFileDialog sfd = new SaveFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", FileName = "pacijenti.xml", AddExtension = true, DefaultExt = ".xml", };
             if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.EndsWith(".xml"))
             {
                 klinika17324.XMLSerial(sfd.FileName, klinika17324.Pacijenti, typeof(List<Zadaca1RPR_17324.Pacijent>));
@@ -1572,7 +1572,7 @@ namespace SehalicMirza17324_Z2
         private void buttonSerijalizujUposlenike_Click(object sender, EventArgs e)
         {
             textBoxInfoSerijalizacijaUposlenika.Text = "";
-            SaveFileDialog sfd = new SaveFileDialog() { FileName = "uposlenici.xml", AddExtension = true, DefaultExt = ".xml", };
+            SaveFileDialog sfd = new SaveFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", FileName = "uposlenici.xml", AddExtension = true, DefaultExt = ".xml", };
             if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.EndsWith(".xml"))
             {
                 klinika17324.XMLSerialNasljedjivanje(sfd.FileName, klinika17324.Uposlenici, typeof(List<Uposlenik>), new List<Type>() { typeof(Doktor), typeof(Administrator), typeof(Tehnicar), typeof(Uposlenik) });
@@ -1588,7 +1588,7 @@ namespace SehalicMirza17324_Z2
         private void buttonSerijalizujPacijenteBinarno_Click(object sender, EventArgs e)
         {
             textBoxInfoBinarnoPacijenti.Text = "";
-            SaveFileDialog sfd = new SaveFileDialog() { FileName = "pacijenti.bin", AddExtension = true, DefaultExt = ".bin", };
+            SaveFileDialog sfd = new SaveFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", FileName = "pacijenti.bin", AddExtension = true, DefaultExt = ".bin", };
             if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.EndsWith(".bin"))
             {
                 klinika17324.BinSerial(sfd.FileName, klinika17324.Pacijenti);
@@ -1604,7 +1604,7 @@ namespace SehalicMirza17324_Z2
         private void buttonSerijalizujUposlenikeBinarno_Click(object sender, EventArgs e)
         {
             textBoxInfoBinarnoUposlenici.Text = "";
-            SaveFileDialog sfd = new SaveFileDialog() { FileName = "uposlenici.bin", AddExtension = true, DefaultExt = ".bin", };
+            SaveFileDialog sfd = new SaveFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", FileName = "uposlenici.bin", AddExtension = true, DefaultExt = ".bin", };
             if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.EndsWith(".bin"))
             {
                 klinika17324.BinSerial(sfd.FileName, klinika17324.Uposlenici);
@@ -1621,7 +1621,7 @@ namespace SehalicMirza17324_Z2
         private void buttonDeserijalizujXMLPac_Click(object sender, EventArgs e)
         {
             textBoxInfoDesXMLPac.Text = "";
-            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, CheckFileExists = true };
+            OpenFileDialog ofd = new OpenFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
             if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".xml"))
             {
                 dataGridViewPacijenti.DataSource = klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>));
@@ -1639,7 +1639,7 @@ namespace SehalicMirza17324_Z2
         private void buttonDesXMLUpo_Click(object sender, EventArgs e)
         {
             textBoxInfoXMLUpo.Text = "";
-            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, CheckFileExists = true };
+            OpenFileDialog ofd = new OpenFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
             if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".xml"))
             {
                 dataGridViewUposlenici.DataSource = klinika17324.XMLDeSerialNasljedjivanje(ofd.FileName, typeof(List<Uposlenik>), new List<Type>() { typeof(Doktor), typeof(Administrator), typeof(Tehnicar), typeof(Uposlenik) });
@@ -1657,7 +1657,7 @@ namespace SehalicMirza17324_Z2
         private void buttonDeserijalizacijaBinPac_Click(object sender, EventArgs e)
         {
             textBoxInfoDesPacBin.Text = "";
-            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, CheckFileExists = true };
+            OpenFileDialog ofd = new OpenFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
             if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".bin"))
             {
                 dataGridViewPacijenti.DataSource = klinika17324.BinDeSerial(ofd.FileName);
@@ -1675,7 +1675,7 @@ namespace SehalicMirza17324_Z2
         private void buttonDesBinUpo_Click(object sender, EventArgs e)
         {
             textBoxInfoBinUpo.Text = "";
-            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, CheckFileExists = true };
+            OpenFileDialog ofd = new OpenFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
             if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".bin"))
             {
                 dataGridViewUposlenici.DataSource = klinika17324.BinDeSerial(ofd.FileName);
@@ -1709,7 +1709,7 @@ namespace SehalicMirza17324_Z2
         private void buttonUcitajDruguDatoteku_Click(object sender, EventArgs e)
         {
             richTextBoxLogovi.Text = "";
-            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, CheckFileExists = true };
+            OpenFileDialog ofd = new OpenFileDialog() { Filter = "text files(*.txt)|*.txt|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
             if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".txt"))
             {
                 string[] sadrzaj = System.IO.File.ReadAllLines(ofd.FileName);
