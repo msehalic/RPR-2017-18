@@ -20,6 +20,7 @@ namespace SehalicMirza17324_Z2
     {
         Zadaca1RPR_17324.KlinikaKontejner klinika17324 = new Zadaca1RPR_17324.KlinikaKontejner();
         Uposlenik uposlenik17324_1 = new Uposlenik();
+        List<string> GlobalniLogovi = new List<string>();
         public glavniMeni17324(Uposlenik u)
         {
             uposlenik17324_1 = u;
@@ -225,7 +226,7 @@ namespace SehalicMirza17324_Z2
                 toolStripStatusLabel2.ForeColor = Color.Red;
             }
         }
-        private string stvoriUsername (TextBox prvi, TextBox drugi)
+        private string stvoriUsername(TextBox prvi, TextBox drugi)
         {
             return prvi.Text.ToLower().Trim().Substring(0, 1) + drugi.Text.Trim().ToLower();
         }
@@ -1397,7 +1398,7 @@ namespace SehalicMirza17324_Z2
                     DodajCvorove(treeView1);
                     toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
                     toolStripStatusLabel2.ForeColor = Color.Green;
-                } 
+                }
             }
         }
 
@@ -1542,7 +1543,15 @@ namespace SehalicMirza17324_Z2
         {
 
         }
-
+        private void SacuvajLogIzuzetka(string log)
+        {
+            GlobalniLogovi.Add(DateTime.Now.ToString() + " " + log); //spasava vrijeme nastanka izuzetka
+            using (System.IO.StreamWriter file =new System.IO.StreamWriter(@".\logIzuzetaka.txt",false))
+            {
+                foreach(string s in GlobalniLogovi)
+                file.WriteLine(s); //zapisuje u txt fajl
+            }
+        }
         private void buttonSerijalizujPacijente_Click(object sender, EventArgs e)
         {
             textBoxInfoSerijalizacijaPacijenti.Text = "";
@@ -1552,7 +1561,11 @@ namespace SehalicMirza17324_Z2
                 klinika17324.XMLSerial(sfd.FileName, klinika17324.Pacijenti, typeof(List<Zadaca1RPR_17324.Pacijent>));
                 textBoxInfoSerijalizacijaPacijenti.Text = "Serijalizacija uspješna!";
             }
-            else textBoxInfoSerijalizacijaPacijenti.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+            else
+            {
+                textBoxInfoSerijalizacijaPacijenti.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+                SacuvajLogIzuzetka("Neuspjela serijalizacija liste pacijenata u XML datoteku!");
+            }
 
         }
 
@@ -1565,7 +1578,11 @@ namespace SehalicMirza17324_Z2
                 klinika17324.XMLSerialNasljedjivanje(sfd.FileName, klinika17324.Uposlenici, typeof(List<Uposlenik>), new List<Type>() { typeof(Doktor), typeof(Administrator), typeof(Tehnicar), typeof(Uposlenik) });
                 textBoxInfoSerijalizacijaUposlenika.Text = "Serijalizacija uspješna!";
             }
-            else textBoxInfoSerijalizacijaUposlenika.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+            else
+            {
+                textBoxInfoSerijalizacijaUposlenika.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+                SacuvajLogIzuzetka("Neuspjela serijalizacija liste uposlenika u XML datoteku!");
+            }
         }
 
         private void buttonSerijalizujPacijenteBinarno_Click(object sender, EventArgs e)
@@ -1577,8 +1594,11 @@ namespace SehalicMirza17324_Z2
                 klinika17324.BinSerial(sfd.FileName, klinika17324.Pacijenti);
                 textBoxInfoBinarnoPacijenti.Text = "Serijalizacija uspješna!";
             }
-            else textBoxInfoBinarnoPacijenti.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
-
+            else
+            {
+                textBoxInfoBinarnoPacijenti.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+                SacuvajLogIzuzetka("Neuspjela serijalizacija liste pacijenata u binarnu datoteku!");
+            }
         }
 
         private void buttonSerijalizujUposlenikeBinarno_Click(object sender, EventArgs e)
@@ -1590,7 +1610,11 @@ namespace SehalicMirza17324_Z2
                 klinika17324.BinSerial(sfd.FileName, klinika17324.Uposlenici);
                 textBoxInfoBinarnoUposlenici.Text = "Serijalizacija uspješna!";
             }
-            else textBoxInfoBinarnoUposlenici.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+            else
+            {
+                textBoxInfoBinarnoUposlenici.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+                SacuvajLogIzuzetka("Neuspjela serijalizacija liste uposlenika u binarnu datoteku!");
+            }
 
         }
 
@@ -1600,12 +1624,16 @@ namespace SehalicMirza17324_Z2
             OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, CheckFileExists = true };
             if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".xml"))
             {
-                dataGridViewPacijenti.DataSource = klinika17324.XMLDeSerial(ofd.FileName,typeof(List<Zadaca1RPR_17324.Pacijent>));
-                klinika17324.Pacijenti =  klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>)) as List<Zadaca1RPR_17324.Pacijent>;
+                dataGridViewPacijenti.DataSource = klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>));
+                klinika17324.Pacijenti = klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>)) as List<Zadaca1RPR_17324.Pacijent>;
                 DodajCvorove(treeViewDeserijalizacija);
                 textBoxInfoDesXMLPac.Text = "Deserijalizacija uspješna!";
             }
-            else textBoxInfoDesXMLPac.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+            else
+            {
+                textBoxInfoDesXMLPac.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+                SacuvajLogIzuzetka("Neuspjela deserijalizacija liste pacijenata iz XML datoteke!");
+            }
         }
 
         private void buttonDesXMLUpo_Click(object sender, EventArgs e)
@@ -1615,12 +1643,16 @@ namespace SehalicMirza17324_Z2
             if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".xml"))
             {
                 dataGridViewUposlenici.DataSource = klinika17324.XMLDeSerialNasljedjivanje(ofd.FileName, typeof(List<Uposlenik>), new List<Type>() { typeof(Doktor), typeof(Administrator), typeof(Tehnicar), typeof(Uposlenik) });
-                klinika17324.Uposlenici =dataGridViewUposlenici.DataSource as List<Uposlenik>;
+                klinika17324.Uposlenici = dataGridViewUposlenici.DataSource as List<Uposlenik>;
                 DodajCvorove(treeViewDeserijalizacija);
                 textBoxInfoXMLUpo.Text = "Deserijalizacija uspješna!";
             }
-            else textBoxInfoXMLUpo.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
-        }
+            else
+            {
+                textBoxInfoXMLUpo.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+                SacuvajLogIzuzetka("Neuspjela deserijalizacija liste uposlenika iz XML datoteke!");
+            }
+            }
 
         private void buttonDeserijalizacijaBinPac_Click(object sender, EventArgs e)
         {
@@ -1633,7 +1665,11 @@ namespace SehalicMirza17324_Z2
                 DodajCvorove(treeViewDeserijalizacija);
                 textBoxInfoDesPacBin.Text = "Deserijalizacija uspješna!";
             }
-            else textBoxInfoDesPacBin.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+            else
+            {
+                textBoxInfoDesPacBin.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+                SacuvajLogIzuzetka("Neuspjela deserijalizacija liste pacijenata iz binarne datoteke!");
+            }
         }
 
         private void buttonDesBinUpo_Click(object sender, EventArgs e)
@@ -1647,7 +1683,60 @@ namespace SehalicMirza17324_Z2
                 DodajCvorove(treeViewDeserijalizacija);
                 textBoxInfoBinUpo.Text = "Deserijalizacija uspješna!";
             }
-            else textBoxInfoBinUpo.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+            else
+            {
+                textBoxInfoBinUpo.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+                SacuvajLogIzuzetka("Neuspjela deserijalizacija liste uposlenika iz binarne datoteke!");
+            }
+        }
+
+        private void buttonUcitajLogove_Click(object sender, EventArgs e)
+        {
+            richTextBoxLogovi.Text = "";
+            if (File.Exists(@".\logIzuzetaka.txt"))
+            {
+                string[] sadrzaj = System.IO.File.ReadAllLines(@".\logIzuzetaka.txt");
+                foreach (string s in sadrzaj)
+                    richTextBoxLogovi.Text += s +'\n';
+            }
+            else
+            {
+                richTextBoxLogovi.Text = "Otvaranje defaultne datoteke s logovima nije uspjelo";
+                SacuvajLogIzuzetka("Otvaranje defaultne datoteke s logovima nije uspjelo");
+            }
+        }
+
+        private void buttonUcitajDruguDatoteku_Click(object sender, EventArgs e)
+        {
+            richTextBoxLogovi.Text = "";
+            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, CheckFileExists = true };
+            if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".txt"))
+            {
+                string[] sadrzaj = System.IO.File.ReadAllLines(ofd.FileName);
+                foreach (string s in sadrzaj)
+                    richTextBoxLogovi.Text += s;
+            }
+            else
+            {
+                richTextBoxLogovi.Text = "Otvaranje zeljene datoteke s logovima nije uspjelo";
+                SacuvajLogIzuzetka("Otvaranje zeljene datoteke s logovima nije uspjelo");
+            }
+        }
+
+        private void buttonObrisiSveLogove_Click(object sender, EventArgs e)
+        {
+            richTextBoxLogovi.Text = "";
+            if (File.Exists(@".\logIzuzetaka.txt"))
+            {
+                System.IO.File.WriteAllText(@".\logIzuzetaka.txt", string.Empty);
+                GlobalniLogovi = new List<string>(); //treba pocistiti i globalni zapis gresaka
+                richTextBoxLogovi.Text = "Uspjesno obrisan sadrzaj defaultne datoteke s logovima";
+            }
+            else
+            {
+                richTextBoxLogovi.Text = "Pokusaj brisanja sadrzaja defaultne datoteke s logovima nije uspio";
+                SacuvajLogIzuzetka("Pokusaj brisanja sadrzaja defaultne datoteke s logovima nije uspio");
+            }
         }
     }
 }

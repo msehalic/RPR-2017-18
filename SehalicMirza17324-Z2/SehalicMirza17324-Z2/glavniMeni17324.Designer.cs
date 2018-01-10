@@ -305,12 +305,14 @@
             this.buttonDeserijalizujXMLPac = new System.Windows.Forms.Button();
             this.labelPregledDeserijalizacija = new System.Windows.Forms.Label();
             this.treeViewDeserijalizacija = new System.Windows.Forms.TreeView();
+            this.tabPageLogovi = new System.Windows.Forms.TabPage();
+            this.buttonUcitajLogove = new System.Windows.Forms.Button();
+            this.richTextBoxLogovi = new System.Windows.Forms.RichTextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.uposlenikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uposlenikBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tabPageLogovi = new System.Windows.Forms.TabPage();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.buttonUcitajLogove = new System.Windows.Forms.Button();
+            this.buttonObrisiSveLogove = new System.Windows.Forms.Button();
+            this.buttonUcitajDruguDatoteku = new System.Windows.Forms.Button();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -369,9 +371,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacijenti)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pacijentiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.klinikaKontejnerBindingSource)).BeginInit();
+            this.tabPageLogovi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource1)).BeginInit();
-            this.tabPageLogovi.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip2
@@ -3178,18 +3180,12 @@
             this.treeViewDeserijalizacija.Size = new System.Drawing.Size(346, 230);
             this.treeViewDeserijalizacija.TabIndex = 31;
             // 
-            // uposlenikBindingSource
-            // 
-            this.uposlenikBindingSource.DataSource = typeof(Doktori.Uposlenik);
-            // 
-            // uposlenikBindingSource1
-            // 
-            this.uposlenikBindingSource1.DataSource = typeof(Doktori.Uposlenik);
-            // 
             // tabPageLogovi
             // 
+            this.tabPageLogovi.Controls.Add(this.buttonUcitajDruguDatoteku);
+            this.tabPageLogovi.Controls.Add(this.buttonObrisiSveLogove);
             this.tabPageLogovi.Controls.Add(this.buttonUcitajLogove);
-            this.tabPageLogovi.Controls.Add(this.richTextBox3);
+            this.tabPageLogovi.Controls.Add(this.richTextBoxLogovi);
             this.tabPageLogovi.Location = new System.Drawing.Point(4, 22);
             this.tabPageLogovi.Name = "tabPageLogovi";
             this.tabPageLogovi.Padding = new System.Windows.Forms.Padding(3);
@@ -3198,22 +3194,51 @@
             this.tabPageLogovi.Text = "Logovi";
             this.tabPageLogovi.UseVisualStyleBackColor = true;
             // 
-            // richTextBox3
-            // 
-            this.richTextBox3.Location = new System.Drawing.Point(440, 18);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(316, 230);
-            this.richTextBox3.TabIndex = 0;
-            this.richTextBox3.Text = "";
-            // 
             // buttonUcitajLogove
             // 
             this.buttonUcitajLogove.Location = new System.Drawing.Point(440, 254);
             this.buttonUcitajLogove.Name = "buttonUcitajLogove";
             this.buttonUcitajLogove.Size = new System.Drawing.Size(316, 23);
             this.buttonUcitajLogove.TabIndex = 1;
-            this.buttonUcitajLogove.Text = "Učitaj logove iz datoteke...";
+            this.buttonUcitajLogove.Text = "Učitaj logove iz defaultne datoteke...";
             this.buttonUcitajLogove.UseVisualStyleBackColor = true;
+            this.buttonUcitajLogove.Click += new System.EventHandler(this.buttonUcitajLogove_Click);
+            // 
+            // richTextBoxLogovi
+            // 
+            this.richTextBoxLogovi.Location = new System.Drawing.Point(213, 18);
+            this.richTextBoxLogovi.Name = "richTextBoxLogovi";
+            this.richTextBoxLogovi.Size = new System.Drawing.Size(770, 230);
+            this.richTextBoxLogovi.TabIndex = 0;
+            this.richTextBoxLogovi.Text = "";
+            // 
+            // uposlenikBindingSource
+            // 
+            this.uposlenikBindingSource.DataSource = typeof(Doktori.Uposlenik);
+            // 
+            // uposlenikBindingSource1
+            // 
+            this.uposlenikBindingSource1.DataSource = typeof(Doktori.Uposlenik);
+            // 
+            // buttonObrisiSveLogove
+            // 
+            this.buttonObrisiSveLogove.Location = new System.Drawing.Point(440, 283);
+            this.buttonObrisiSveLogove.Name = "buttonObrisiSveLogove";
+            this.buttonObrisiSveLogove.Size = new System.Drawing.Size(316, 23);
+            this.buttonObrisiSveLogove.TabIndex = 2;
+            this.buttonObrisiSveLogove.Text = "Obriši sve logove iz defaultne datoteke...";
+            this.buttonObrisiSveLogove.UseVisualStyleBackColor = true;
+            this.buttonObrisiSveLogove.Click += new System.EventHandler(this.buttonObrisiSveLogove_Click);
+            // 
+            // buttonUcitajDruguDatoteku
+            // 
+            this.buttonUcitajDruguDatoteku.Location = new System.Drawing.Point(440, 312);
+            this.buttonUcitajDruguDatoteku.Name = "buttonUcitajDruguDatoteku";
+            this.buttonUcitajDruguDatoteku.Size = new System.Drawing.Size(316, 23);
+            this.buttonUcitajDruguDatoteku.TabIndex = 3;
+            this.buttonUcitajDruguDatoteku.Text = "Učitaj neku drugu datoteku...";
+            this.buttonUcitajDruguDatoteku.UseVisualStyleBackColor = true;
+            this.buttonUcitajDruguDatoteku.Click += new System.EventHandler(this.buttonUcitajDruguDatoteku_Click);
             // 
             // glavniMeni17324
             // 
@@ -3325,9 +3350,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacijenti)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pacijentiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.klinikaKontejnerBindingSource)).EndInit();
+            this.tabPageLogovi.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource1)).EndInit();
-            this.tabPageLogovi.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3614,6 +3639,8 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TabPage tabPageLogovi;
         private System.Windows.Forms.Button buttonUcitajLogove;
-        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.RichTextBox richTextBoxLogovi;
+        private System.Windows.Forms.Button buttonObrisiSveLogove;
+        private System.Windows.Forms.Button buttonUcitajDruguDatoteku;
     }
 }
