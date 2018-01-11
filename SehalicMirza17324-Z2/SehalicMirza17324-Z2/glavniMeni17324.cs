@@ -13,6 +13,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Xml.Serialization;
+using System.Globalization;
 
 namespace SehalicMirza17324_Z2
 {
@@ -1546,10 +1547,10 @@ namespace SehalicMirza17324_Z2
         private void SacuvajLogIzuzetka(string log)
         {
             GlobalniLogovi.Add(DateTime.Now.ToString() + " " + log); //spasava vrijeme nastanka izuzetka
-            using (System.IO.StreamWriter file =new System.IO.StreamWriter(@".\logIzuzetaka.txt",false))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@".\logIzuzetaka.txt", false))
             {
-                foreach(string s in GlobalniLogovi)
-                file.WriteLine(s); //zapisuje u txt fajl
+                foreach (string s in GlobalniLogovi)
+                    file.WriteLine(s); //zapisuje u txt fajl
             }
         }
         private void buttonSerijalizujPacijente_Click(object sender, EventArgs e)
@@ -1670,7 +1671,7 @@ namespace SehalicMirza17324_Z2
                 textBoxInfoXMLUpo.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
                 SacuvajLogIzuzetka("Neuspjela deserijalizacija liste uposlenika iz XML datoteke!");
             }
-            }
+        }
 
         private void buttonDeserijalizacijaBinPac_Click(object sender, EventArgs e)
         {
@@ -1733,7 +1734,7 @@ namespace SehalicMirza17324_Z2
             {
                 string[] sadrzaj = System.IO.File.ReadAllLines(@".\logIzuzetaka.txt");
                 foreach (string s in sadrzaj)
-                    richTextBoxLogovi.Text += s +'\n';
+                    richTextBoxLogovi.Text += s + '\n';
             }
             else
             {
@@ -1773,6 +1774,83 @@ namespace SehalicMirza17324_Z2
                 richTextBoxLogovi.Text = "Pokusaj brisanja sadrzaja defaultne datoteke s logovima nije uspio";
                 SacuvajLogIzuzetka("Pokusaj brisanja sadrzaja defaultne datoteke s logovima nije uspio");
             }
+        }
+
+        private void radioButtonVrstaIzuzetka_CheckedChanged(object sender, EventArgs e)
+        {
+            richTextBoxStatistikaIzuzeci.Text = ""; //ocisti sve sto je mozda tu jer se mijenja nacin pregleda
+            if (radioButtonVrstaIzuzetka.Checked == false) groupBoxTipIzuzetka.Enabled = false;
+            else if (radioButtonVrstaIzuzetka.Checked == true) groupBoxTipIzuzetka.Enabled = true;
+        }
+
+        private void radioButtonDatumIzuzetka_CheckedChanged(object sender, EventArgs e)
+        {
+            richTextBoxStatistikaIzuzeci.Text = "";
+            string[] razdvojiNaDatumIOpis;
+            DateTime datum;
+            TimeSpan sat;
+            if (radioButtonDatumIzuzetka.Checked == false) groupBoxIntervalDatuma.Enabled = false;
+            else if (radioButtonDatumIzuzetka.Checked == true)
+            {
+                groupBoxIntervalDatuma.Enabled = true;
+                foreach (string s in GlobalniLogovi)
+                {
+                    razdvojiNaDatumIOpis = s.Split(null);
+                    datum = Convert.ToDateTime(razdvojiNaDatumIOpis[0]); //vadi datum iz izuzetka
+                    sat=TimeSpan.ParseExact(razdvojiNaDatumIOpis[1], "hh\\:mm\\:ss", CultureInfo.InvariantCulture);
+                    datum += sat; //dodaje i sate na datum da se mogu porediti i minute i sekunde na pickerima
+                    if (dateTimePickerIzuzetak1.Value <= datum && datum <= dateTimePickerIzuzetak2.Value) //ako je u intervalu
+                        richTextBoxStatistikaIzuzeci.Text += s + '\n';
+                }
+            }
+        }
+
+        private void radioButtonXMLIzuzetak_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonXMLIzuzetak.Checked == true && radioButtonVrstaIzuzetka.Checked == true)
+            {
+                foreach (string s in GlobalniLogovi)
+                 if (s.Contains("XML")) richTextBoxStatistikaIzuzeci.Text += s +'\n'; //provjerava da li je XML izuzetak sto smo naglasili kod kreiranja istih
+            }
+            if (radioButtonVrstaIzuzetka.Checked == false || radioButtonXMLIzuzetak.Checked == false)
+                richTextBoxStatistikaIzuzeci.Text = ""; //brise sve ako se deselektuje
+        }
+
+        private void radioButtonBazePodataka_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonBazePodataka.Checked == true && radioButtonVrstaIzuzetka.Checked == true)
+            {
+                foreach (string s in GlobalniLogovi)
+                    if (s.Contains("DB")) richTextBoxStatistikaIzuzeci.Text += s +'\n'; //provjerava da li je DB izuzetak sto smo naglasili kod kreiranja istih
+            }
+            if (radioButtonVrstaIzuzetka.Checked == false || radioButtonBazePodataka.Checked == false)
+                richTextBoxStatistikaIzuzeci.Text = ""; //brise sve ako se deselektuje
+        }
+
+        private void radioButtonUIIzuzetak_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonUIIzuzetak.Checked == true && radioButtonVrstaIzuzetka.Checked == true)
+            {
+                foreach (string s in GlobalniLogovi)
+                    if (s.Contains("UI")) richTextBoxStatistikaIzuzeci.Text += s + '\n'; //provjerava da li je UI izuzetak sto smo naglasili kod kreiranja istih
+            }
+            if (radioButtonVrstaIzuzetka.Checked == false || radioButtonUIIzuzetak.Checked == false)
+                richTextBoxStatistikaIzuzeci.Text = ""; //brise sve ako se deselektuje
+        }
+
+        private void dateTimePickerIzuzetak1_ValueChanged(object sender, EventArgs e)
+        {
+            radioButtonDatumIzuzetka_CheckedChanged(sender, e);
+            if (dateTimePickerIzuzetak1.Value > dateTimePickerIzuzetak2.Value)
+                dateTimePickerIzuzetak1.Value = dateTimePickerIzuzetak2.Value; //ne smije pocetak intervala biti iza kraja 
+
+        }
+
+        private void dateTimePickerIzuzetak2_ValueChanged(object sender, EventArgs e)
+        {
+            radioButtonDatumIzuzetka_CheckedChanged(sender, e);
+            if (dateTimePickerIzuzetak2.Value < dateTimePickerIzuzetak1.Value)
+                dateTimePickerIzuzetak2.Value = dateTimePickerIzuzetak1.Value; //ne smije kraj intervala biti prije pocetka
         }
     }
 }
