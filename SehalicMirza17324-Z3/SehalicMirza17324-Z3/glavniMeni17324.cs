@@ -51,6 +51,14 @@ namespace SehalicMirza17324_Z2
             {
                 ((Control)this.tabPageAdministracija).Enabled = false;
                 this.tabPageAdministracija.Dispose();
+                ((Control)this.tabPageSerijalizacija).Enabled = false;
+                this.tabPageSerijalizacija.Dispose();
+                ((Control)this.tabPageDeserijalizacija).Enabled = false;
+                this.tabPageDeserijalizacija.Dispose();
+                ((Control)this.tabPageLogovi).Enabled = false;
+                this.tabPageLogovi.Dispose();
+                ((Control)this.tabPageStatistikaIzuzeci).Enabled = false;
+                this.tabPageStatistikaIzuzeci.Dispose();
             }
         }
         public glavniMeni17324(Zadaca1RPR_17324.Pacijent p)

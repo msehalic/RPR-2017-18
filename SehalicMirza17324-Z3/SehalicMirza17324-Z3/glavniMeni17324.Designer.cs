@@ -310,22 +310,22 @@
             this.buttonObrisiSveLogove = new System.Windows.Forms.Button();
             this.buttonUcitajLogove = new System.Windows.Forms.Button();
             this.richTextBoxLogovi = new System.Windows.Forms.RichTextBox();
+            this.tabPageStatistikaIzuzeci = new System.Windows.Forms.TabPage();
+            this.richTextBoxStatistikaIzuzeci = new System.Windows.Forms.RichTextBox();
+            this.groupBoxIntervalDatuma = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.dateTimePickerIzuzetak2 = new System.Windows.Forms.DateTimePicker();
+            this.label28 = new System.Windows.Forms.Label();
+            this.dateTimePickerIzuzetak1 = new System.Windows.Forms.DateTimePicker();
+            this.groupBoxTipIzuzetka = new System.Windows.Forms.GroupBox();
+            this.radioButtonUIIzuzetak = new System.Windows.Forms.RadioButton();
+            this.radioButtonBazePodataka = new System.Windows.Forms.RadioButton();
+            this.radioButtonXMLIzuzetak = new System.Windows.Forms.RadioButton();
+            this.radioButtonDatumIzuzetka = new System.Windows.Forms.RadioButton();
+            this.radioButtonVrstaIzuzetka = new System.Windows.Forms.RadioButton();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.uposlenikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uposlenikBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.radioButtonVrstaIzuzetka = new System.Windows.Forms.RadioButton();
-            this.radioButtonDatumIzuzetka = new System.Windows.Forms.RadioButton();
-            this.groupBoxTipIzuzetka = new System.Windows.Forms.GroupBox();
-            this.groupBoxIntervalDatuma = new System.Windows.Forms.GroupBox();
-            this.radioButtonXMLIzuzetak = new System.Windows.Forms.RadioButton();
-            this.radioButtonBazePodataka = new System.Windows.Forms.RadioButton();
-            this.radioButtonUIIzuzetak = new System.Windows.Forms.RadioButton();
-            this.dateTimePickerIzuzetak1 = new System.Windows.Forms.DateTimePicker();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.dateTimePickerIzuzetak2 = new System.Windows.Forms.DateTimePicker();
-            this.richTextBoxStatistikaIzuzeci = new System.Windows.Forms.RichTextBox();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -385,11 +385,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pacijentiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.klinikaKontejnerBindingSource)).BeginInit();
             this.tabPageLogovi.SuspendLayout();
+            this.tabPageStatistikaIzuzeci.SuspendLayout();
+            this.groupBoxIntervalDatuma.SuspendLayout();
+            this.groupBoxTipIzuzetka.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource1)).BeginInit();
-            this.tabPage1.SuspendLayout();
-            this.groupBoxTipIzuzetka.SuspendLayout();
-            this.groupBoxIntervalDatuma.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip2
@@ -1995,7 +1995,7 @@
             this.tabControlGlavniMeni.Controls.Add(this.tabPageSerijalizacija);
             this.tabControlGlavniMeni.Controls.Add(this.tabPageDeserijalizacija);
             this.tabControlGlavniMeni.Controls.Add(this.tabPageLogovi);
-            this.tabControlGlavniMeni.Controls.Add(this.tabPage1);
+            this.tabControlGlavniMeni.Controls.Add(this.tabPageStatistikaIzuzeci);
             this.tabControlGlavniMeni.Location = new System.Drawing.Point(0, 25);
             this.tabControlGlavniMeni.Name = "tabControlGlavniMeni";
             this.tabControlGlavniMeni.SelectedIndex = 0;
@@ -3249,66 +3249,28 @@
             this.richTextBoxLogovi.TabIndex = 0;
             this.richTextBoxLogovi.Text = "";
             // 
-            // uposlenikBindingSource
+            // tabPageStatistikaIzuzeci
             // 
-            this.uposlenikBindingSource.DataSource = typeof(Doktori.Uposlenik);
+            this.tabPageStatistikaIzuzeci.Controls.Add(this.richTextBoxStatistikaIzuzeci);
+            this.tabPageStatistikaIzuzeci.Controls.Add(this.groupBoxIntervalDatuma);
+            this.tabPageStatistikaIzuzeci.Controls.Add(this.groupBoxTipIzuzetka);
+            this.tabPageStatistikaIzuzeci.Controls.Add(this.radioButtonDatumIzuzetka);
+            this.tabPageStatistikaIzuzeci.Controls.Add(this.radioButtonVrstaIzuzetka);
+            this.tabPageStatistikaIzuzeci.Location = new System.Drawing.Point(4, 22);
+            this.tabPageStatistikaIzuzeci.Name = "tabPageStatistikaIzuzeci";
+            this.tabPageStatistikaIzuzeci.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageStatistikaIzuzeci.Size = new System.Drawing.Size(1155, 618);
+            this.tabPageStatistikaIzuzeci.TabIndex = 12;
+            this.tabPageStatistikaIzuzeci.Text = "StatistikaIzuzeci";
+            this.tabPageStatistikaIzuzeci.UseVisualStyleBackColor = true;
             // 
-            // uposlenikBindingSource1
+            // richTextBoxStatistikaIzuzeci
             // 
-            this.uposlenikBindingSource1.DataSource = typeof(Doktori.Uposlenik);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.richTextBoxStatistikaIzuzeci);
-            this.tabPage1.Controls.Add(this.groupBoxIntervalDatuma);
-            this.tabPage1.Controls.Add(this.groupBoxTipIzuzetka);
-            this.tabPage1.Controls.Add(this.radioButtonDatumIzuzetka);
-            this.tabPage1.Controls.Add(this.radioButtonVrstaIzuzetka);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1155, 618);
-            this.tabPage1.TabIndex = 12;
-            this.tabPage1.Text = "StatistikaIzuzeci";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonVrstaIzuzetka
-            // 
-            this.radioButtonVrstaIzuzetka.AutoSize = true;
-            this.radioButtonVrstaIzuzetka.Checked = true;
-            this.radioButtonVrstaIzuzetka.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.radioButtonVrstaIzuzetka.Location = new System.Drawing.Point(395, 77);
-            this.radioButtonVrstaIzuzetka.Name = "radioButtonVrstaIzuzetka";
-            this.radioButtonVrstaIzuzetka.Size = new System.Drawing.Size(203, 24);
-            this.radioButtonVrstaIzuzetka.TabIndex = 0;
-            this.radioButtonVrstaIzuzetka.TabStop = true;
-            this.radioButtonVrstaIzuzetka.Text = "Pretraga po tipu izuzetka";
-            this.radioButtonVrstaIzuzetka.UseVisualStyleBackColor = true;
-            this.radioButtonVrstaIzuzetka.CheckedChanged += new System.EventHandler(this.radioButtonVrstaIzuzetka_CheckedChanged);
-            // 
-            // radioButtonDatumIzuzetka
-            // 
-            this.radioButtonDatumIzuzetka.AutoSize = true;
-            this.radioButtonDatumIzuzetka.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.radioButtonDatumIzuzetka.Location = new System.Drawing.Point(703, 77);
-            this.radioButtonDatumIzuzetka.Name = "radioButtonDatumIzuzetka";
-            this.radioButtonDatumIzuzetka.Size = new System.Drawing.Size(173, 24);
-            this.radioButtonDatumIzuzetka.TabIndex = 1;
-            this.radioButtonDatumIzuzetka.Text = "Pretraga po intervalu";
-            this.radioButtonDatumIzuzetka.UseVisualStyleBackColor = true;
-            this.radioButtonDatumIzuzetka.CheckedChanged += new System.EventHandler(this.radioButtonDatumIzuzetka_CheckedChanged);
-            // 
-            // groupBoxTipIzuzetka
-            // 
-            this.groupBoxTipIzuzetka.Controls.Add(this.radioButtonUIIzuzetak);
-            this.groupBoxTipIzuzetka.Controls.Add(this.radioButtonBazePodataka);
-            this.groupBoxTipIzuzetka.Controls.Add(this.radioButtonXMLIzuzetak);
-            this.groupBoxTipIzuzetka.Location = new System.Drawing.Point(398, 107);
-            this.groupBoxTipIzuzetka.Name = "groupBoxTipIzuzetka";
-            this.groupBoxTipIzuzetka.Size = new System.Drawing.Size(200, 121);
-            this.groupBoxTipIzuzetka.TabIndex = 2;
-            this.groupBoxTipIzuzetka.TabStop = false;
-            this.groupBoxTipIzuzetka.Text = "Tip izuzetka";
+            this.richTextBoxStatistikaIzuzeci.Location = new System.Drawing.Point(398, 234);
+            this.richTextBoxStatistikaIzuzeci.Name = "richTextBoxStatistikaIzuzeci";
+            this.richTextBoxStatistikaIzuzeci.Size = new System.Drawing.Size(589, 206);
+            this.richTextBoxStatistikaIzuzeci.TabIndex = 4;
+            this.richTextBoxStatistikaIzuzeci.Text = "";
             // 
             // groupBoxIntervalDatuma
             // 
@@ -3322,62 +3284,6 @@
             this.groupBoxIntervalDatuma.TabIndex = 3;
             this.groupBoxIntervalDatuma.TabStop = false;
             this.groupBoxIntervalDatuma.Text = "Interval";
-            // 
-            // radioButtonXMLIzuzetak
-            // 
-            this.radioButtonXMLIzuzetak.AutoSize = true;
-            this.radioButtonXMLIzuzetak.Location = new System.Drawing.Point(32, 35);
-            this.radioButtonXMLIzuzetak.Name = "radioButtonXMLIzuzetak";
-            this.radioButtonXMLIzuzetak.Size = new System.Drawing.Size(89, 17);
-            this.radioButtonXMLIzuzetak.TabIndex = 0;
-            this.radioButtonXMLIzuzetak.TabStop = true;
-            this.radioButtonXMLIzuzetak.Text = "XML izuzetak";
-            this.radioButtonXMLIzuzetak.UseVisualStyleBackColor = true;
-            this.radioButtonXMLIzuzetak.CheckedChanged += new System.EventHandler(this.radioButtonXMLIzuzetak_CheckedChanged);
-            // 
-            // radioButtonBazePodataka
-            // 
-            this.radioButtonBazePodataka.AutoSize = true;
-            this.radioButtonBazePodataka.Location = new System.Drawing.Point(32, 58);
-            this.radioButtonBazePodataka.Name = "radioButtonBazePodataka";
-            this.radioButtonBazePodataka.Size = new System.Drawing.Size(97, 17);
-            this.radioButtonBazePodataka.TabIndex = 1;
-            this.radioButtonBazePodataka.TabStop = true;
-            this.radioButtonBazePodataka.Text = "Baze podataka";
-            this.radioButtonBazePodataka.UseVisualStyleBackColor = true;
-            this.radioButtonBazePodataka.CheckedChanged += new System.EventHandler(this.radioButtonBazePodataka_CheckedChanged);
-            // 
-            // radioButtonUIIzuzetak
-            // 
-            this.radioButtonUIIzuzetak.AutoSize = true;
-            this.radioButtonUIIzuzetak.Location = new System.Drawing.Point(32, 81);
-            this.radioButtonUIIzuzetak.Name = "radioButtonUIIzuzetak";
-            this.radioButtonUIIzuzetak.Size = new System.Drawing.Size(82, 17);
-            this.radioButtonUIIzuzetak.TabIndex = 2;
-            this.radioButtonUIIzuzetak.TabStop = true;
-            this.radioButtonUIIzuzetak.Text = "U/I kontrole";
-            this.radioButtonUIIzuzetak.UseVisualStyleBackColor = true;
-            this.radioButtonUIIzuzetak.CheckedChanged += new System.EventHandler(this.radioButtonUIIzuzetak_CheckedChanged);
-            // 
-            // dateTimePickerIzuzetak1
-            // 
-            this.dateTimePickerIzuzetak1.CustomFormat = "dd/MM/yyyy HH:mm:ss";
-            this.dateTimePickerIzuzetak1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerIzuzetak1.Location = new System.Drawing.Point(136, 32);
-            this.dateTimePickerIzuzetak1.Name = "dateTimePickerIzuzetak1";
-            this.dateTimePickerIzuzetak1.ShowUpDown = true;
-            this.dateTimePickerIzuzetak1.Size = new System.Drawing.Size(142, 20);
-            this.dateTimePickerIzuzetak1.TabIndex = 0;
-            this.dateTimePickerIzuzetak1.ValueChanged += new System.EventHandler(this.dateTimePickerIzuzetak1_ValueChanged);
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(17, 38);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(102, 13);
-            this.label28.TabIndex = 1;
-            this.label28.Text = "Pretraži izuzetke od:";
             // 
             // label29
             // 
@@ -3399,13 +3305,107 @@
             this.dateTimePickerIzuzetak2.TabIndex = 2;
             this.dateTimePickerIzuzetak2.ValueChanged += new System.EventHandler(this.dateTimePickerIzuzetak2_ValueChanged);
             // 
-            // richTextBoxStatistikaIzuzeci
+            // label28
             // 
-            this.richTextBoxStatistikaIzuzeci.Location = new System.Drawing.Point(398, 234);
-            this.richTextBoxStatistikaIzuzeci.Name = "richTextBoxStatistikaIzuzeci";
-            this.richTextBoxStatistikaIzuzeci.Size = new System.Drawing.Size(589, 206);
-            this.richTextBoxStatistikaIzuzeci.TabIndex = 4;
-            this.richTextBoxStatistikaIzuzeci.Text = "";
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(17, 38);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(102, 13);
+            this.label28.TabIndex = 1;
+            this.label28.Text = "Pretraži izuzetke od:";
+            // 
+            // dateTimePickerIzuzetak1
+            // 
+            this.dateTimePickerIzuzetak1.CustomFormat = "dd/MM/yyyy HH:mm:ss";
+            this.dateTimePickerIzuzetak1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerIzuzetak1.Location = new System.Drawing.Point(136, 32);
+            this.dateTimePickerIzuzetak1.Name = "dateTimePickerIzuzetak1";
+            this.dateTimePickerIzuzetak1.ShowUpDown = true;
+            this.dateTimePickerIzuzetak1.Size = new System.Drawing.Size(142, 20);
+            this.dateTimePickerIzuzetak1.TabIndex = 0;
+            this.dateTimePickerIzuzetak1.ValueChanged += new System.EventHandler(this.dateTimePickerIzuzetak1_ValueChanged);
+            // 
+            // groupBoxTipIzuzetka
+            // 
+            this.groupBoxTipIzuzetka.Controls.Add(this.radioButtonUIIzuzetak);
+            this.groupBoxTipIzuzetka.Controls.Add(this.radioButtonBazePodataka);
+            this.groupBoxTipIzuzetka.Controls.Add(this.radioButtonXMLIzuzetak);
+            this.groupBoxTipIzuzetka.Location = new System.Drawing.Point(398, 107);
+            this.groupBoxTipIzuzetka.Name = "groupBoxTipIzuzetka";
+            this.groupBoxTipIzuzetka.Size = new System.Drawing.Size(200, 121);
+            this.groupBoxTipIzuzetka.TabIndex = 2;
+            this.groupBoxTipIzuzetka.TabStop = false;
+            this.groupBoxTipIzuzetka.Text = "Tip izuzetka";
+            // 
+            // radioButtonUIIzuzetak
+            // 
+            this.radioButtonUIIzuzetak.AutoSize = true;
+            this.radioButtonUIIzuzetak.Location = new System.Drawing.Point(32, 81);
+            this.radioButtonUIIzuzetak.Name = "radioButtonUIIzuzetak";
+            this.radioButtonUIIzuzetak.Size = new System.Drawing.Size(82, 17);
+            this.radioButtonUIIzuzetak.TabIndex = 2;
+            this.radioButtonUIIzuzetak.TabStop = true;
+            this.radioButtonUIIzuzetak.Text = "U/I kontrole";
+            this.radioButtonUIIzuzetak.UseVisualStyleBackColor = true;
+            this.radioButtonUIIzuzetak.CheckedChanged += new System.EventHandler(this.radioButtonUIIzuzetak_CheckedChanged);
+            // 
+            // radioButtonBazePodataka
+            // 
+            this.radioButtonBazePodataka.AutoSize = true;
+            this.radioButtonBazePodataka.Location = new System.Drawing.Point(32, 58);
+            this.radioButtonBazePodataka.Name = "radioButtonBazePodataka";
+            this.radioButtonBazePodataka.Size = new System.Drawing.Size(97, 17);
+            this.radioButtonBazePodataka.TabIndex = 1;
+            this.radioButtonBazePodataka.TabStop = true;
+            this.radioButtonBazePodataka.Text = "Baze podataka";
+            this.radioButtonBazePodataka.UseVisualStyleBackColor = true;
+            this.radioButtonBazePodataka.CheckedChanged += new System.EventHandler(this.radioButtonBazePodataka_CheckedChanged);
+            // 
+            // radioButtonXMLIzuzetak
+            // 
+            this.radioButtonXMLIzuzetak.AutoSize = true;
+            this.radioButtonXMLIzuzetak.Location = new System.Drawing.Point(32, 35);
+            this.radioButtonXMLIzuzetak.Name = "radioButtonXMLIzuzetak";
+            this.radioButtonXMLIzuzetak.Size = new System.Drawing.Size(89, 17);
+            this.radioButtonXMLIzuzetak.TabIndex = 0;
+            this.radioButtonXMLIzuzetak.TabStop = true;
+            this.radioButtonXMLIzuzetak.Text = "XML izuzetak";
+            this.radioButtonXMLIzuzetak.UseVisualStyleBackColor = true;
+            this.radioButtonXMLIzuzetak.CheckedChanged += new System.EventHandler(this.radioButtonXMLIzuzetak_CheckedChanged);
+            // 
+            // radioButtonDatumIzuzetka
+            // 
+            this.radioButtonDatumIzuzetka.AutoSize = true;
+            this.radioButtonDatumIzuzetka.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioButtonDatumIzuzetka.Location = new System.Drawing.Point(703, 77);
+            this.radioButtonDatumIzuzetka.Name = "radioButtonDatumIzuzetka";
+            this.radioButtonDatumIzuzetka.Size = new System.Drawing.Size(173, 24);
+            this.radioButtonDatumIzuzetka.TabIndex = 1;
+            this.radioButtonDatumIzuzetka.Text = "Pretraga po intervalu";
+            this.radioButtonDatumIzuzetka.UseVisualStyleBackColor = true;
+            this.radioButtonDatumIzuzetka.CheckedChanged += new System.EventHandler(this.radioButtonDatumIzuzetka_CheckedChanged);
+            // 
+            // radioButtonVrstaIzuzetka
+            // 
+            this.radioButtonVrstaIzuzetka.AutoSize = true;
+            this.radioButtonVrstaIzuzetka.Checked = true;
+            this.radioButtonVrstaIzuzetka.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioButtonVrstaIzuzetka.Location = new System.Drawing.Point(395, 77);
+            this.radioButtonVrstaIzuzetka.Name = "radioButtonVrstaIzuzetka";
+            this.radioButtonVrstaIzuzetka.Size = new System.Drawing.Size(203, 24);
+            this.radioButtonVrstaIzuzetka.TabIndex = 0;
+            this.radioButtonVrstaIzuzetka.TabStop = true;
+            this.radioButtonVrstaIzuzetka.Text = "Pretraga po tipu izuzetka";
+            this.radioButtonVrstaIzuzetka.UseVisualStyleBackColor = true;
+            this.radioButtonVrstaIzuzetka.CheckedChanged += new System.EventHandler(this.radioButtonVrstaIzuzetka_CheckedChanged);
+            // 
+            // uposlenikBindingSource
+            // 
+            this.uposlenikBindingSource.DataSource = typeof(Doktori.Uposlenik);
+            // 
+            // uposlenikBindingSource1
+            // 
+            this.uposlenikBindingSource1.DataSource = typeof(Doktori.Uposlenik);
             // 
             // glavniMeni17324
             // 
@@ -3518,14 +3518,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pacijentiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.klinikaKontejnerBindingSource)).EndInit();
             this.tabPageLogovi.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource1)).EndInit();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.groupBoxTipIzuzetka.ResumeLayout(false);
-            this.groupBoxTipIzuzetka.PerformLayout();
+            this.tabPageStatistikaIzuzeci.ResumeLayout(false);
+            this.tabPageStatistikaIzuzeci.PerformLayout();
             this.groupBoxIntervalDatuma.ResumeLayout(false);
             this.groupBoxIntervalDatuma.PerformLayout();
+            this.groupBoxTipIzuzetka.ResumeLayout(false);
+            this.groupBoxTipIzuzetka.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uposlenikBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3815,7 +3815,7 @@
         private System.Windows.Forms.RichTextBox textBoxInfoBinUpo;
         private System.Windows.Forms.RichTextBox textBoxInfoXMLUpo;
         private System.Windows.Forms.RichTextBox textBoxInfoDesXMLPac;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPageStatistikaIzuzeci;
         private System.Windows.Forms.RadioButton radioButtonDatumIzuzetka;
         private System.Windows.Forms.RadioButton radioButtonVrstaIzuzetka;
         private System.Windows.Forms.GroupBox groupBoxIntervalDatuma;
