@@ -1,26 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Doktori;
 using System.Collections;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Xml.Serialization;
 using System.Globalization;
-
+using Oracle.ManagedDataAccess.Client;
 namespace SehalicMirza17324_Z2
 {
     public partial class glavniMeni17324 : Form
     {
         Zadaca1RPR_17324.KlinikaKontejner klinika17324 = new Zadaca1RPR_17324.KlinikaKontejner();
         Uposlenik uposlenik17324_1 = new Uposlenik();
+        BazaPodataka mojaBaza = new BazaPodataka();
         List<string> GlobalniLogovi = new List<string>();
         public glavniMeni17324(Uposlenik u)
         {
@@ -59,6 +55,18 @@ namespace SehalicMirza17324_Z2
                 this.tabPageLogovi.Dispose();
                 ((Control)this.tabPageStatistikaIzuzeci).Enabled = false;
                 this.tabPageStatistikaIzuzeci.Dispose();
+            }
+            try
+            {
+                mojaBaza.UspostaviKonekciju();
+                toolStripStatusLabel2.ForeColor = Color.Green;
+                toolStripStatusLabel2.Text = "Uspjesno povezivanje sa bazom!";
+            }
+            catch(Exception)
+            {
+                SacuvajLogIzuzetka("DB izuzetak: Neuspjesno povezivanje sa bazom!"); //spasi u fajl
+                toolStripStatusLabel2.ForeColor = Color.Red;
+                toolStripStatusLabel2.Text = "Neuspjesno povezivanje sa bazom!";
             }
         }
         public glavniMeni17324(Zadaca1RPR_17324.Pacijent p)
@@ -241,59 +249,66 @@ namespace SehalicMirza17324_Z2
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox1_Validating(textBox1, new CancelEventArgs());
-            textBox2_Validating(textBox2, new CancelEventArgs());
-            userControlUnosSlike1_Validating(userControlUnosSlike1, new CancelEventArgs());
-            maskedTextBox1_Validating(maskedTextBox1, new CancelEventArgs());
-            textBoxAdresa_Validating(textBoxAdresa, new CancelEventArgs());
-            textBoxMisljenjeDoktora_Validating(textBoxMisljenjeDoktora, new CancelEventArgs());
-            textBoxPostupak_Validating(textBoxPostupak, new CancelEventArgs());
-            textBoxTerapija_Validating(textBoxTerapija, new CancelEventArgs());
-            textBoxUzrokSmrti_Validating(textBoxUzrokSmrti, new CancelEventArgs());
-            groupBoxBracnoStanje_Validating(groupBoxBracnoStanje, new CancelEventArgs());
-            groupBoxZivMrtav_Validating(groupBoxZivMrtav, new CancelEventArgs());
-            //DODATI
-            //SVE
-            //KONTROLE
-            //KOJE
-            //TREBA
-            //VALIDIRATI!
-            if (errorProvider2.GetError(userControlUnosSlike1) == "" && errorProvider2.GetError(textBox1) == "" && errorProvider2.GetError(textBox2) == "" && errorProvider2.GetError(maskedTextBox1) == "" && errorProvider2.GetError(textBoxAdresa) == "" && errorProvider2.GetError(textBoxUzrokSmrti) == "" && errorProvider2.GetError(textBoxMisljenjeDoktora) == "" && errorProvider2.GetError(textBoxPostupak) == "" && errorProvider2.GetError(textBoxTerapija) == "" && errorProvider2.GetError(groupBoxZivMrtav) == "")
+            try
             {
-                string bracnoStanjePacijenta = "";
+                textBox1_Validating(textBox1, new CancelEventArgs());
+                textBox2_Validating(textBox2, new CancelEventArgs());
+                userControlUnosSlike1_Validating(userControlUnosSlike1, new CancelEventArgs());
+                maskedTextBox1_Validating(maskedTextBox1, new CancelEventArgs());
+                textBoxAdresa_Validating(textBoxAdresa, new CancelEventArgs());
+                textBoxMisljenjeDoktora_Validating(textBoxMisljenjeDoktora, new CancelEventArgs());
+                textBoxPostupak_Validating(textBoxPostupak, new CancelEventArgs());
+                textBoxTerapija_Validating(textBoxTerapija, new CancelEventArgs());
+                textBoxUzrokSmrti_Validating(textBoxUzrokSmrti, new CancelEventArgs());
+                groupBoxBracnoStanje_Validating(groupBoxBracnoStanje, new CancelEventArgs());
+                groupBoxZivMrtav_Validating(groupBoxZivMrtav, new CancelEventArgs());
+                //DODATI
+                //SVE
+                //KONTROLE
+                //KOJE
+                //TREBA
+                //VALIDIRATI!
+                if (errorProvider2.GetError(userControlUnosSlike1) == "" && errorProvider2.GetError(textBox1) == "" && errorProvider2.GetError(textBox2) == "" && errorProvider2.GetError(maskedTextBox1) == "" && errorProvider2.GetError(textBoxAdresa) == "" && errorProvider2.GetError(textBoxUzrokSmrti) == "" && errorProvider2.GetError(textBoxMisljenjeDoktora) == "" && errorProvider2.GetError(textBoxPostupak) == "" && errorProvider2.GetError(textBoxTerapija) == "" && errorProvider2.GetError(groupBoxZivMrtav) == "")
+                {
+                    string bracnoStanjePacijenta = "";
 
-                if (radioButtonUdovac.Checked) bracnoStanjePacijenta = radioButtonUdovac.Text;
-                else if (radioButtonRazveden.Checked) bracnoStanjePacijenta = radioButtonRazveden.Text;
-                else if (radioButtonOzenjen.Checked) bracnoStanjePacijenta = radioButtonOzenjen.Text;
-                else if (radioButtonNeozenjen.Checked) bracnoStanjePacijenta = radioButtonNeozenjen.Text;
-                bool greska = false;
-                string pogresniMaticniBroj = "";
-                char pol = 'M';
-                if (radioButtonZ.Checked) pol = 'Z';
-                Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(stvoriUsername(textBox1, textBox2), maskedTextBox1.Text, textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt64(maskedTextBox1.Text), userControlUnosSlike1.vratiSliku);
-                labelUsername.Text = stvoriUsername(textBox1, textBox2) + "\nŠifra je matični broj pacijenta.";
-                foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.Pacijenti)
-                {
-                    if (pacijent17324.MaticniBroj == Convert.ToUInt64(maskedTextBox1.Text))
+                    if (radioButtonUdovac.Checked) bracnoStanjePacijenta = radioButtonUdovac.Text;
+                    else if (radioButtonRazveden.Checked) bracnoStanjePacijenta = radioButtonRazveden.Text;
+                    else if (radioButtonOzenjen.Checked) bracnoStanjePacijenta = radioButtonOzenjen.Text;
+                    else if (radioButtonNeozenjen.Checked) bracnoStanjePacijenta = radioButtonNeozenjen.Text;
+                    bool greska = false;
+                    string pogresniMaticniBroj = "";
+                    char pol = 'M';
+                    if (radioButtonZ.Checked) pol = 'Z';
+                    Zadaca1RPR_17324.Pacijent p = new Zadaca1RPR_17324.Pacijent(stvoriUsername(textBox1, textBox2), maskedTextBox1.Text, textBox1.Text, textBox2.Text, textBoxAdresa.Text, bracnoStanjePacijenta, dateTimePicker1.Value.Date, pol, Convert.ToUInt64(maskedTextBox1.Text), userControlUnosSlike1.vratiSliku);
+                    labelUsername.Text = stvoriUsername(textBox1, textBox2) + "\nŠifra je matični broj pacijenta.";
+                    foreach (Zadaca1RPR_17324.Pacijent pacijent17324 in klinika17324.Pacijenti)
                     {
-                        toolStripStatusLabel2.Text = "Vec postoji pacijent sa identicnim JMBG kao " + textBox1.Text + " " + textBox2.Text;
-                        toolStripStatusLabel2.ForeColor = Color.Red;
-                        greska = true;
-                        pogresniMaticniBroj = maskedTextBox1.Text;
+                        if (pacijent17324.MaticniBroj == Convert.ToUInt64(maskedTextBox1.Text))
+                        {
+                            toolStripStatusLabel2.Text = "Vec postoji pacijent sa identicnim JMBG kao " + textBox1.Text + " " + textBox2.Text;
+                            toolStripStatusLabel2.ForeColor = Color.Red;
+                            greska = true;
+                            pogresniMaticniBroj = maskedTextBox1.Text;
+                        }
                     }
+                    if (maskedTextBox1.Text != pogresniMaticniBroj) greska = false;
+                    if (greska == false)
+                    {
+                        klinika17324.Pacijenti.Add(p);
+                        klinika17324.UnosPodataka(p, checkBoxDermatolog.Checked, checkBoxKardiolog.Checked, checkBoxOrtoped.Checked, checkBoxStomatolog.Checked);
+                        toolStripStatusLabel2.Text = "Uspjesno dodan pacijent " + p.Ime + " " + p.Prezime;
+                        toolStripStatusLabel2.ForeColor = Color.Green; //malo lijepog dizajna
+                        DodajCvorove(treeView1);
+                    }
+                    //TREBA JOS U SETTERE DODATI 
+                    //VALIDACIJU
+                    //OBAVEZNO
                 }
-                if (maskedTextBox1.Text != pogresniMaticniBroj) greska = false;
-                if (greska == false)
-                {
-                    klinika17324.Pacijenti.Add(p);
-                    klinika17324.UnosPodataka(p, checkBoxDermatolog.Checked, checkBoxKardiolog.Checked, checkBoxOrtoped.Checked, checkBoxStomatolog.Checked);
-                    toolStripStatusLabel2.Text = "Uspjesno dodan pacijent " + p.Ime + " " + p.Prezime;
-                    toolStripStatusLabel2.ForeColor = Color.Green; //malo lijepog dizajna
-                    DodajCvorove(treeView1);
-                }
-                //TREBA JOS U SETTERE DODATI 
-                //VALIDACIJU
-                //OBAVEZNO
+            }
+            catch(Exception ex)
+            {
+                SacuvajLogIzuzetka("Greska kod rada sa UI: " + ex.Message);
             }
         }
 
