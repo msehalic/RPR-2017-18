@@ -124,14 +124,14 @@ namespace SehalicMirza17324_Z2
                             Bitmap bmp = new Bitmap(stream);
                             Slika = bmp;
                         }
-                    } 
+                    }
                     klinika17324.Uposlenici.Add(new Doktori.Doktor(row["imeUposlenika"].ToString(), row["prezimeUposlenika"].ToString(),
                        Slika, Convert.ToInt32(row["brojLicence"]), row["korisnickoIme"].ToString(), row["lozinka"].ToString(), Convert.ToInt32(row["brojPregledanihPacijenata"]), row["specijalizacija"].ToString()));
                     klinika17324.Uposlenici.Last().Lozinka = row["lozinka"].ToString();
-                    klinika17324.Uposlenici.Last().BrojLicence = Int32.Parse(row["brojLicence"].ToString());                   
+                    klinika17324.Uposlenici.Last().BrojLicence = Int32.Parse(row["brojLicence"].ToString());
                 }
             }
-                   
+
         }
         private void SacuvajUposlenike()
         {
@@ -163,8 +163,31 @@ namespace SehalicMirza17324_Z2
                 using (OracleCommand cmd = spajanjeSaBazom.CreateCommand())
                 {
                     string sqlInsert = String.Format("insert into Doktor (brojLicence, imeUposlenika, prezimeUposlenika, slikaUposlenika, korisnickoIme, lozinka, brojPregledanihPacijenata, specijalizacija) values " +
-                        "({0}, '{1}', {2}, {3}, {4}, {5}, {6}, {7})", d.BrojLicence, d.ImeUposlenika, d.PrezimeUposlenika,d.SlikaUposlenika, d.KorisnickoIme, d.Lozinka, d.BrojPregledanihPacijenata.ToString(), d.Specijalizacija);
+                        "({0}, '{1}', {2}, {3}, {4}, {5}, {6}, {7})", d.BrojLicence, d.ImeUposlenika, d.PrezimeUposlenika, d.SlikaUposlenika, d.KorisnickoIme, d.Lozinka, d.BrojPregledanihPacijenata.ToString(), d.Specijalizacija);
                     cmd.CommandText = sqlInsert;
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        private void ObrisiSve()
+        {
+            List<string> listaKomandi = new List<string>
+            {
+                "delete from DOKTOR",
+                "delete from TEHNICAR",
+                "delete from ORDINACIJA",
+                "delete from ADMINISTRATOR",
+                "delete from UPOSLENIK",
+                "delete from PREGLED",
+                "delete from PACIJENT",
+                "delete from PACIJENT_NORMALNAPROCEDURA",
+                "delete from PACIJENT_HITNAPROCEDURA"
+            };
+            foreach (string s in listaKomandi)
+            {
+                using (OracleCommand cmd = spajanjeSaBazom.CreateCommand())
+                {
+                    cmd.CommandText = s;
                     cmd.ExecuteNonQuery();
                 }
             }
