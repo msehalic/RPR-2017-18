@@ -169,6 +169,82 @@ namespace SehalicMirza17324_Z2
                 }
             }
         }
+        private void ObrisiDoktore()
+        {
+            using (OracleCommand cmd = spajanjeSaBazom.CreateCommand())
+            {
+                cmd.CommandText = "delete from DOKTOR";
+                cmd.ExecuteNonQuery();
+            }
+        }
+        private void ObrisiTehnicare()
+        {
+            using (OracleCommand cmd = spajanjeSaBazom.CreateCommand())
+            {
+                cmd.CommandText = "delete from TEHNICAR";
+                cmd.ExecuteNonQuery();
+            }
+        }
+        private void ObrisiAdministratore()
+        {
+            using (OracleCommand cmd = spajanjeSaBazom.CreateCommand())
+            {
+                cmd.CommandText = "delete from ADMINISTRATOR";
+                cmd.ExecuteNonQuery();
+            }
+        }
+        private void ObrisiPreglede()
+        {
+            using (OracleCommand cmd = spajanjeSaBazom.CreateCommand())
+            {
+                cmd.CommandText = "delete from PREGLED";
+                cmd.ExecuteNonQuery();
+            }
+        }
+        private void ObrisiSveUposlenike()
+        {
+            using (OracleCommand cmd = spajanjeSaBazom.CreateCommand())
+            {
+                cmd.CommandText = "delete from ADMINISTRATOR";
+                cmd.ExecuteNonQuery();
+            }
+            using (OracleCommand cmd = spajanjeSaBazom.CreateCommand())
+            {
+                cmd.CommandText = "delete from DOKTOR";
+                cmd.ExecuteNonQuery();
+            }
+            using (OracleCommand cmd = spajanjeSaBazom.CreateCommand())
+            {
+                cmd.CommandText = "delete from TEHNICAR";
+                cmd.ExecuteNonQuery();
+            }
+        }
+        private void ObrisiSvePacijente()
+        {
+            using (OracleCommand cmd = spajanjeSaBazom.CreateCommand())
+            {
+                cmd.CommandText = "delete from PACIJENT";
+                cmd.ExecuteNonQuery();
+            }
+            using (OracleCommand cmd = spajanjeSaBazom.CreateCommand())
+            {
+                cmd.CommandText = "delete from PACIJENT_NORMALNAPROCEDURA";
+                cmd.ExecuteNonQuery();
+            }
+            using (OracleCommand cmd = spajanjeSaBazom.CreateCommand())
+            {
+                cmd.CommandText = "delete from PACIJENT_HITNAPROCEDURA";
+                cmd.ExecuteNonQuery();
+            }
+        }
+        private void ObrisiOrdinacije()
+        {
+            using (OracleCommand cmd = spajanjeSaBazom.CreateCommand())
+            {
+                cmd.CommandText = "delete from ORDINACIJA";
+                cmd.ExecuteNonQuery();
+            }
+        }
         private void ObrisiSve()
         {
             List<string> listaKomandi = new List<string>
