@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Text;
 using System.Security.Cryptography;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace Zadaca1RPR_17324
 {
@@ -23,7 +25,34 @@ namespace Zadaca1RPR_17324
        private string korisnickoIme;
        private string lozinka;
         private List<Pregled> karton = new List<Pregled>();
-
+        public byte[] SlikaZaBazu
+        {
+            get
+            {
+                if (SlikaPacijenta != null)
+                {
+                    MemoryStream tmpStream = new MemoryStream();
+                    SlikaPacijenta.Save(tmpStream, ImageFormat.Png);
+                    return tmpStream.ToArray();
+                }
+                return null;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    SlikaPacijenta = null;
+                }
+                else
+                {
+                    using (var stream = new MemoryStream(value))
+                    {
+                        Bitmap bmp = new Bitmap(stream);
+                        SlikaPacijenta = bmp;
+                    }
+                }
+            }
+        }
         public bool IspravanKarton = false;
 
         public int IdPacijenta { get => idPacijenta; set => idPacijenta = value; }

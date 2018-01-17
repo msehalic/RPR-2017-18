@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Drawing;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace Doktori
 {
@@ -17,6 +19,34 @@ namespace Doktori
         int brojLicence;
         Image slikaUposlenika;
         string korisnickoIme;
+        public byte[] SlikaZaBazu
+        {
+            get
+            {
+                if (SlikaUposlenika != null)
+                {
+                    MemoryStream tmpStream = new MemoryStream();
+                    SlikaUposlenika.Save(tmpStream, ImageFormat.Png);
+                    return tmpStream.ToArray();
+                }
+                return null;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    SlikaUposlenika = null;
+                }
+                else
+                {
+                    using (var stream = new MemoryStream(value))
+                    {
+                        Bitmap bmp = new Bitmap(stream);
+                        SlikaUposlenika = bmp;
+                    }
+                }
+            }
+        }
         string lozinka;
         public Uposlenik()
         {

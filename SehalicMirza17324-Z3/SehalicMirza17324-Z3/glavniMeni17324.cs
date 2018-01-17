@@ -18,6 +18,7 @@ namespace SehalicMirza17324_Z2
         Uposlenik uposlenik17324_1 = new Uposlenik();
         BazaPodataka mojaBaza = new BazaPodataka();
         List<string> GlobalniLogovi = new List<string>();
+        bool povezanNaBazu; //definira da li je uspjesna konekcija na bazu
         public glavniMeni17324(Uposlenik u)
         {
             uposlenik17324_1 = u;
@@ -61,12 +62,14 @@ namespace SehalicMirza17324_Z2
                 mojaBaza.UspostaviKonekciju();
                 toolStripStatusLabel2.ForeColor = Color.Green;
                 toolStripStatusLabel2.Text = "Uspjesno povezivanje sa bazom!";
+                povezanNaBazu = true;
             }
             catch(Exception)
             {
                 SacuvajLogIzuzetka("DB izuzetak: Neuspjesno povezivanje sa bazom!"); //spasi u fajl
                 toolStripStatusLabel2.ForeColor = Color.Red;
                 toolStripStatusLabel2.Text = "Neuspjesno povezivanje sa bazom!";
+                povezanNaBazu = false;
             }
         }
         public glavniMeni17324(Zadaca1RPR_17324.Pacijent p)
@@ -296,6 +299,14 @@ namespace SehalicMirza17324_Z2
                     if (greska == false)
                     {
                         klinika17324.Pacijenti.Add(p);
+                        if (povezanNaBazu)
+                        {
+                            mojaBaza.SacuvajPacijente(); //spasava u bazu
+                            toolStripStatusLabel2.Text += " Podaci uspjesno spaseni u bazu podataka";
+                        }
+                        else toolStripStatusLabel2.Text += " Podaci NISU spaseni u bazu podataka jer konekcija nije uspostavljena";
+
+
                         klinika17324.UnosPodataka(p, checkBoxDermatolog.Checked, checkBoxKardiolog.Checked, checkBoxOrtoped.Checked, checkBoxStomatolog.Checked);
                         toolStripStatusLabel2.Text = "Uspjesno dodan pacijent " + p.Ime + " " + p.Prezime;
                         toolStripStatusLabel2.ForeColor = Color.Green; //malo lijepog dizajna
@@ -1407,6 +1418,13 @@ namespace SehalicMirza17324_Z2
                     klinika17324.Uposlenici.Add(new Tehnicar(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text));
                     DodajCvorove(treeView1);
                     toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
+                    if (povezanNaBazu)
+                    {
+                        mojaBaza.SacuvajUposlenike(); //spasava u bazu
+                        toolStripStatusLabel2.Text += " Podaci uspjesno spaseni u bazu podataka";
+                    }
+                    else toolStripStatusLabel2.Text += " Podaci NISU spaseni u bazu podataka jer konekcija nije uspostavljena";
+
                     toolStripStatusLabel2.ForeColor = Color.Green;
                 }
                 else if (radioButtonAdmin.Checked)
@@ -1414,6 +1432,13 @@ namespace SehalicMirza17324_Z2
                     klinika17324.Uposlenici.Add(new Administrator(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text));
                     DodajCvorove(treeView1);
                     toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
+                    if (povezanNaBazu)
+                    {
+                        mojaBaza.SacuvajUposlenike(); //spasava u bazu
+                        toolStripStatusLabel2.Text += " Podaci uspjesno spaseni u bazu podataka";
+                    }
+                    else toolStripStatusLabel2.Text += " Podaci NISU spaseni u bazu podataka jer konekcija nije uspostavljena";
+
                     toolStripStatusLabel2.ForeColor = Color.Green;
                 }
                 else if (radioButtonDoktor.Checked)
@@ -1421,6 +1446,12 @@ namespace SehalicMirza17324_Z2
                     klinika17324.Uposlenici.Add(new Doktor(textBoxImeUposlenik.Text, textBoxPrezimeUposlenik.Text, userControlUnosSlikeUposlenik.vratiSliku, (int)numericUpDownLicenca.Value, textBoxKorisnickoImeUposlenik.Text, textBoxPotvrdaLozinkeUposlenik.Text, 0, textBoxSpecijalizacija.Text));
                     DodajCvorove(treeView1);
                     toolStripStatusLabel2.Text = "Uspjesno dodan uposlenik!";
+                    if (povezanNaBazu)
+                    {
+                        mojaBaza.SacuvajUposlenike(); //spasava u bazu
+                        toolStripStatusLabel2.Text += " Podaci uspjesno spaseni u bazu podataka";
+                    }
+                    else toolStripStatusLabel2.Text += " Podaci NISU spaseni u bazu podataka jer konekcija nije uspostavljena";
                     toolStripStatusLabel2.ForeColor = Color.Green;
                 }
             }
