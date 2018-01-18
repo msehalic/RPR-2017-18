@@ -12,6 +12,8 @@ using System.Security.Cryptography;
 using Zadaca1RPR_17324;
 using Doktori;
 using System.Drawing.Text;
+using System.Threading;
+using System.Reflection;
 
 namespace SehalicMirza17324_Z2
 {
@@ -33,13 +35,35 @@ namespace SehalicMirza17324_Z2
             this.Text = "Klinika 'Dr. Sehalic'";
 
         }
+        Rectangle rect = new Rectangle(60, 40, 60, 100);
+        Rectangle rect1 = new Rectangle(40, 60, 100, 60);
+        static int brojac = 0;
+        private void AnimirajPuls()
+        {
+            brojac++;
+            if (brojac % 2 == 0)
+            {
+                rect.Inflate(3, 5); //malo animacije
+                rect1.Inflate(5, 3);
+            }
+            else
+            {
+                rect = new Rectangle(60, 40, 60, 100);
+                rect1 = new Rectangle(40, 60, 100, 60);
+            }
+        }
+
+        private void RefreshTimer(object o)
+        {
+            AnimirajPuls();
+            Invalidate();
+        }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             //logo
             Graphics g = e.Graphics;
+            Thread t;
             g.SmoothingMode = SmoothingMode.AntiAlias; //da bude ljepse
-            Rectangle rect = new Rectangle(60, 40, 60, 100);
-            Rectangle rect1 = new Rectangle(40, 60, 100, 60);
             Pen pen = new Pen(Color.White, 40);
             g.DrawEllipse(pen, rect1);
             g.DrawArc(pen, 50, 50, 80, 80, 90, 360);
@@ -51,6 +75,12 @@ namespace SehalicMirza17324_Z2
             g.TextRenderingHint = TextRenderingHint.AntiAlias; //da bude ljepse
             g.DrawString("Klinika", fnt, new SolidBrush(Color.IndianRed), 57, 150);
             g.DrawString("Dr 'Šehalić'", fnt, new SolidBrush(Color.IndianRed), 42, 170);
+            t = (new Thread(() =>
+            {
+                AnimirajPuls();
+                System.Threading.Timer mTimer = new System.Threading.Timer(RefreshTimer, null, 100, 100);
+            }));
+                t.Start();
         }
         private void label1_Click(object sender, EventArgs e)
         {

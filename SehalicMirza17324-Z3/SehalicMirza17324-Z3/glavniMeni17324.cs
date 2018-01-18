@@ -10,6 +10,8 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Globalization;
 using Oracle.ManagedDataAccess.Client;
+using System.Threading;
+
 namespace SehalicMirza17324_Z2
 {
     public partial class glavniMeni17324 : Form
@@ -59,7 +61,7 @@ namespace SehalicMirza17324_Z2
             }
             try
             {
-                mojaBaza.UspostaviKonekciju();
+               Thread t = new Thread(() => mojaBaza.UspostaviKonekciju()); //u zasebnom threadu
                 toolStripStatusLabel2.ForeColor = Color.Green;
                 toolStripStatusLabel2.Text = "Uspjesno povezivanje sa bazom!";
                 povezanNaBazu = true;
