@@ -11,6 +11,7 @@ using System.IO;
 using System.Globalization;
 using Oracle.ManagedDataAccess.Client;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace SehalicMirza17324_Z2
 {
@@ -23,6 +24,7 @@ namespace SehalicMirza17324_Z2
         bool povezanNaBazu; //definira da li je uspjesna konekcija na bazu
         public glavniMeni17324(Uposlenik u)
         {
+            CheckForIllegalCrossThreadCalls  = false;
             uposlenik17324_1 = u;
             InitializeComponent();
             //  toolStripStatusLabel1.Text = "Dobro došli " + u.ImeUposlenika + " " + u.PrezimeUposlenika;
@@ -59,20 +61,24 @@ namespace SehalicMirza17324_Z2
                 ((Control)this.tabPageStatistikaIzuzeci).Enabled = false;
                 this.tabPageStatistikaIzuzeci.Dispose();
             }
-            try
+            var t = Task.Factory.StartNew(() =>
             {
-               Thread t = new Thread(() => mojaBaza.UspostaviKonekciju()); //u zasebnom threadu
-                toolStripStatusLabel2.ForeColor = Color.Green;
-                toolStripStatusLabel2.Text = "Uspjesno povezivanje sa bazom!";
-                povezanNaBazu = true;
-            }
-            catch(Exception)
-            {
-                SacuvajLogIzuzetka("DB izuzetak: Neuspjesno povezivanje sa bazom!"); //spasi u fajl
-                toolStripStatusLabel2.ForeColor = Color.Red;
-                toolStripStatusLabel2.Text = "Neuspjesno povezivanje sa bazom!";
-                povezanNaBazu = false;
-            }
+                try
+                {
+                    mojaBaza.UspostaviKonekciju(); //u zasebnom threadu
+                    toolStripStatusLabel2.ForeColor = Color.Green;
+                    toolStripStatusLabel2.Text = "Uspjesno povezivanje sa bazom!";
+                    povezanNaBazu = true;
+
+                }
+                catch (Exception)
+                {
+                    SacuvajLogIzuzetka("DB izuzetak: Neuspjesno povezivanje sa bazom!"); //spasi u fajl
+                    toolStripStatusLabel2.ForeColor = Color.Red;
+                    toolStripStatusLabel2.Text = "Neuspjesno povezivanje sa bazom!";
+                    povezanNaBazu = false;
+                }
+            });
         }
         public glavniMeni17324(Zadaca1RPR_17324.Pacijent p)
         {
@@ -319,7 +325,7 @@ namespace SehalicMirza17324_Z2
                     //OBAVEZNO
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 SacuvajLogIzuzetka("Greska kod rada sa UI: " + ex.Message);
             }
@@ -1609,211 +1615,308 @@ namespace SehalicMirza17324_Z2
                     file.WriteLine(s); //zapisuje u txt fajl
             }
         }
-        private void buttonSerijalizujPacijente_Click(object sender, EventArgs e)
+        private async void buttonSerijalizujPacijente_Click(object sender, EventArgs e)
         {
             textBoxInfoSerijalizacijaPacijenti.Text = "";
-            SaveFileDialog sfd = new SaveFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", FileName = "pacijenti.xml", AddExtension = true, DefaultExt = ".xml", };
-            if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.EndsWith(".xml"))
+            DialogResult rezultatDialoga = DialogResult.No;
+            await Task.Factory.StartNew(() =>
             {
-                klinika17324.XMLSerial(sfd.FileName, klinika17324.Pacijenti, typeof(List<Zadaca1RPR_17324.Pacijent>));
-                textBoxInfoSerijalizacijaPacijenti.Text = "Serijalizacija uspješna!";
-            }
-            else
-            {
-                textBoxInfoSerijalizacijaPacijenti.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
-                SacuvajLogIzuzetka("Neuspjela serijalizacija liste pacijenata u XML datoteku!");
-            }
-
+                SaveFileDialog sfd = new SaveFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", FileName = "pacijenti.xml", AddExtension = true, DefaultExt = ".xml", };
+                Invoke(new Action(() => rezultatDialoga = sfd.ShowDialog()));
+                if (rezultatDialoga == DialogResult.OK && sfd.FileName.EndsWith(".xml"))
+                {
+                    Invoke(new Action(() =>
+                    {
+                        klinika17324.XMLSerial(sfd.FileName, klinika17324.Pacijenti, typeof(List<Zadaca1RPR_17324.Pacijent>));
+                        textBoxInfoSerijalizacijaPacijenti.Text = "Serijalizacija uspješna!";
+                    }));
+                }
+                else
+                {
+                    Invoke(new Action(() =>
+                    {
+                        textBoxInfoSerijalizacijaPacijenti.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+                        SacuvajLogIzuzetka("Neuspjela serijalizacija liste pacijenata u XML datoteku!");
+                    }));
+                }
+            });
         }
 
-        private void buttonSerijalizujUposlenike_Click(object sender, EventArgs e)
+        private async void buttonSerijalizujUposlenike_Click(object sender, EventArgs e)
         {
             textBoxInfoSerijalizacijaUposlenika.Text = "";
-            SaveFileDialog sfd = new SaveFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", FileName = "uposlenici.xml", AddExtension = true, DefaultExt = ".xml", };
-            if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.EndsWith(".xml"))
+            DialogResult rezultatDialoga = DialogResult.No;
+            await Task.Factory.StartNew(() =>
             {
-                klinika17324.XMLSerialNasljedjivanje(sfd.FileName, klinika17324.Uposlenici, typeof(List<Uposlenik>), new List<Type>() { typeof(Doktor), typeof(Administrator), typeof(Tehnicar), typeof(Uposlenik) });
-                textBoxInfoSerijalizacijaUposlenika.Text = "Serijalizacija uspješna!";
-            }
-            else
-            {
-                textBoxInfoSerijalizacijaUposlenika.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
-                SacuvajLogIzuzetka("Neuspjela serijalizacija liste uposlenika u XML datoteku!");
-            }
+                SaveFileDialog sfd = new SaveFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", FileName = "uposlenici.xml", AddExtension = true, DefaultExt = ".xml", };
+                Invoke(new Action(() => rezultatDialoga = sfd.ShowDialog()));
+                if (rezultatDialoga == DialogResult.OK && sfd.FileName.EndsWith(".xml"))
+                {
+                    Invoke(new Action(() =>
+                    {
+                        klinika17324.XMLSerialNasljedjivanje(sfd.FileName, klinika17324.Uposlenici, typeof(List<Uposlenik>), new List<Type>() { typeof(Doktor), typeof(Administrator), typeof(Tehnicar), typeof(Uposlenik) });
+                        textBoxInfoSerijalizacijaUposlenika.Text = "Serijalizacija uspješna!";
+                    }));
+                }
+                else
+                {
+                    Invoke(new Action(() =>
+                    {
+                        textBoxInfoSerijalizacijaUposlenika.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+                        SacuvajLogIzuzetka("Neuspjela serijalizacija liste uposlenika u XML datoteku!");
+                    }));
+                }
+            });
         }
 
-        private void buttonSerijalizujPacijenteBinarno_Click(object sender, EventArgs e)
+        private async void buttonSerijalizujPacijenteBinarno_Click(object sender, EventArgs e)
         {
+
             textBoxInfoBinarnoPacijenti.Text = "";
-            SaveFileDialog sfd = new SaveFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", FileName = "pacijenti.bin", AddExtension = true, DefaultExt = ".bin", };
-            if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.EndsWith(".bin"))
+            DialogResult rezultatDialoga = DialogResult.No;
+            await Task.Factory.StartNew(() =>
             {
-                klinika17324.BinSerial(sfd.FileName, klinika17324.Pacijenti);
-                textBoxInfoBinarnoPacijenti.Text = "Serijalizacija uspješna!";
-            }
-            else
-            {
-                textBoxInfoBinarnoPacijenti.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
-                SacuvajLogIzuzetka("Neuspjela serijalizacija liste pacijenata u binarnu datoteku!");
-            }
+                SaveFileDialog sfd = new SaveFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", FileName = "pacijenti.bin", AddExtension = true, DefaultExt = ".bin", };
+                Invoke(new Action(() => rezultatDialoga = sfd.ShowDialog()));
+                if (rezultatDialoga == DialogResult.OK && sfd.FileName.EndsWith(".bin"))
+                {
+                    Invoke(new Action(() =>
+                    {
+                        klinika17324.BinSerial(sfd.FileName, klinika17324.Pacijenti);
+                        textBoxInfoBinarnoPacijenti.Text = "Serijalizacija uspješna!";
+                    }));
+                }
+                else
+                {
+                    Invoke(new Action(() =>
+                    {
+                        textBoxInfoBinarnoPacijenti.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+                        SacuvajLogIzuzetka("Neuspjela serijalizacija liste pacijenata u binarnu datoteku!");
+                    }));
+                }
+            });
+
         }
 
-        private void buttonSerijalizujUposlenikeBinarno_Click(object sender, EventArgs e)
+        private async void buttonSerijalizujUposlenikeBinarno_Click(object sender, EventArgs e)
         {
-            textBoxInfoBinarnoUposlenici.Text = "";
-            SaveFileDialog sfd = new SaveFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", FileName = "uposlenici.bin", AddExtension = true, DefaultExt = ".bin", };
-            if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.EndsWith(".bin"))
-            {
-                klinika17324.BinSerial(sfd.FileName, klinika17324.Uposlenici);
-                textBoxInfoBinarnoUposlenici.Text = "Serijalizacija uspješna!";
-            }
-            else
-            {
-                textBoxInfoBinarnoUposlenici.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
-                SacuvajLogIzuzetka("Neuspjela serijalizacija liste uposlenika u binarnu datoteku!");
-            }
 
+            textBoxInfoBinarnoUposlenici.Text = "";
+            DialogResult rezultatDialoga = DialogResult.No;
+            await Task.Factory.StartNew(() =>
+            {
+                SaveFileDialog sfd = new SaveFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", FileName = "uposlenici.bin", AddExtension = true, DefaultExt = ".bin", };
+                Invoke(new Action(() => rezultatDialoga = sfd.ShowDialog()));
+                if (rezultatDialoga == DialogResult.OK && sfd.FileName.EndsWith(".bin"))
+                {
+                    Invoke(new Action(() =>
+                    {
+                        klinika17324.BinSerial(sfd.FileName, klinika17324.Uposlenici);
+                        textBoxInfoBinarnoUposlenici.Text = "Serijalizacija uspješna!";
+                    }));
+                }
+                else
+                {
+                    Invoke(new Action(() =>
+                    {
+                        textBoxInfoBinarnoUposlenici.Text = "Greška pri serijalizaciji! Provjerite ekstenziju datoteke.";
+                        SacuvajLogIzuzetka("Neuspjela serijalizacija liste uposlenika u binarnu datoteku!");
+                    }));
+                }
+            });
         }
 
-        private void buttonDeserijalizujXMLPac_Click(object sender, EventArgs e)
+        private async void buttonDeserijalizujXMLPac_Click(object sender, EventArgs e)
         {
             textBoxInfoDesXMLPac.Text = "";
-            OpenFileDialog ofd = new OpenFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
-            if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".xml"))
+            DialogResult rezultatDialoga = DialogResult.No;
+            await Task.Factory.StartNew(() =>
             {
-                try
+                OpenFileDialog ofd = new OpenFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
+                Invoke(new Action(() => rezultatDialoga = ofd.ShowDialog()));
+                if (rezultatDialoga == DialogResult.OK && ofd.FileName.EndsWith(".xml"))
                 {
-                    dataGridViewPacijenti.DataSource = klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>));
-                    klinika17324.Pacijenti = klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>)) as List<Zadaca1RPR_17324.Pacijent>;
-                    DodajCvorove(treeViewDeserijalizacija);
-                    textBoxInfoDesXMLPac.Text = "Deserijalizacija uspješna!";
+                    Invoke(new Action(() =>
+                    {
+                        try
+                        {
+                            dataGridViewPacijenti.DataSource = klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>));
+                            klinika17324.Pacijenti = klinika17324.XMLDeSerial(ofd.FileName, typeof(List<Zadaca1RPR_17324.Pacijent>)) as List<Zadaca1RPR_17324.Pacijent>;
+                            DodajCvorove(treeViewDeserijalizacija);
+                            textBoxInfoDesXMLPac.Text = "Deserijalizacija uspješna!";
+                        }
+                        catch (Exception)
+                        {
+                            dataGridViewPacijenti.Refresh();
+                            textBoxInfoDesXMLPac.Text = "Greška pri deserijalizaciji! Pogrešan format datoteke, provjerite da učitavate pacijente!";
+                            SacuvajLogIzuzetka("Neuspjela deserijalizacija liste pacijenata iz XML datoteke! Pogrešan format datoteke!");
+                        }
+                    }));
                 }
-                catch (Exception)
+                else
                 {
-                    dataGridViewPacijenti.Refresh();
-                    textBoxInfoDesXMLPac.Text = "Greška pri deserijalizaciji! Pogrešan format datoteke, provjerite da učitavate pacijente!";
-                    SacuvajLogIzuzetka("Neuspjela deserijalizacija liste pacijenata iz XML datoteke! Pogrešan format datoteke!");
+                    textBoxInfoDesXMLPac.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+                    SacuvajLogIzuzetka("Neuspjela deserijalizacija liste pacijenata iz XML datoteke!");
                 }
-            }
-            else
-            {
-                textBoxInfoDesXMLPac.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
-                SacuvajLogIzuzetka("Neuspjela deserijalizacija liste pacijenata iz XML datoteke!");
-            }
+            });
         }
 
-        private void buttonDesXMLUpo_Click(object sender, EventArgs e)
+        private async void buttonDesXMLUpo_Click(object sender, EventArgs e)
         {
             textBoxInfoXMLUpo.Text = "";
-            OpenFileDialog ofd = new OpenFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
-            if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".xml"))
+            DialogResult rezultatDialoga = DialogResult.No;
+            await Task.Factory.StartNew(() =>
             {
-                try
+                OpenFileDialog ofd = new OpenFileDialog() { Filter = "xml files(*.xml)|*.xml|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
+                Invoke(new Action(() => rezultatDialoga = ofd.ShowDialog()));
+                if (rezultatDialoga == DialogResult.OK && ofd.FileName.EndsWith(".xml"))
                 {
-                    dataGridViewUposlenici.DataSource = klinika17324.XMLDeSerialNasljedjivanje(ofd.FileName, typeof(List<Uposlenik>), new List<Type>() { typeof(Doktor), typeof(Administrator), typeof(Tehnicar), typeof(Uposlenik) });
-                    klinika17324.Uposlenici = dataGridViewUposlenici.DataSource as List<Uposlenik>;
-                    DodajCvorove(treeViewDeserijalizacija);
-                    textBoxInfoXMLUpo.Text = "Deserijalizacija uspješna!";
+                    Invoke(new Action(() =>
+                    {
+                        try
+                        {
+                            dataGridViewUposlenici.DataSource = klinika17324.XMLDeSerialNasljedjivanje(ofd.FileName, typeof(List<Uposlenik>), new List<Type>() { typeof(Doktor), typeof(Administrator), typeof(Tehnicar), typeof(Uposlenik) });
+                            klinika17324.Uposlenici = dataGridViewUposlenici.DataSource as List<Uposlenik>;
+                            DodajCvorove(treeViewDeserijalizacija);
+                            textBoxInfoXMLUpo.Text = "Deserijalizacija uspješna!";
+                        }
+                        catch (Exception)
+                        {
+                            dataGridViewUposlenici.Refresh();
+                            textBoxInfoXMLUpo.Text = "Greška pri deserijalizaciji! Pogrešan format datoteke, provjerite da učitavate uposlenike!";
+                            SacuvajLogIzuzetka("Neuspjela deserijalizacija liste uposlenika iz XML datoteke! Pogrešan format datoteke!");
+                        }
+                    }));
                 }
-                catch (Exception)
+                else
                 {
-                    dataGridViewUposlenici.Refresh();
-                    textBoxInfoXMLUpo.Text = "Greška pri deserijalizaciji! Pogrešan format datoteke, provjerite da učitavate uposlenike!";
-                    SacuvajLogIzuzetka("Neuspjela deserijalizacija liste uposlenika iz XML datoteke! Pogrešan format datoteke!");
+                    textBoxInfoXMLUpo.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+                    SacuvajLogIzuzetka("Neuspjela deserijalizacija liste uposlenika iz XML datoteke!");
                 }
-            }
-            else
-            {
-                textBoxInfoXMLUpo.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
-                SacuvajLogIzuzetka("Neuspjela deserijalizacija liste uposlenika iz XML datoteke!");
-            }
+            });
         }
 
-        private void buttonDeserijalizacijaBinPac_Click(object sender, EventArgs e)
+        private async void buttonDeserijalizacijaBinPac_Click(object sender, EventArgs e)
         {
+
             RichTextBoxInfoDesPacBin.Text = "";
-            OpenFileDialog ofd = new OpenFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
-            if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".bin"))
+            DialogResult rezultatDialoga = DialogResult.No;
+            await Task.Factory.StartNew(() =>
             {
-                try
+                OpenFileDialog ofd = new OpenFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
+                Invoke(new Action(() => rezultatDialoga = ofd.ShowDialog()));
+                if (rezultatDialoga == DialogResult.OK && ofd.FileName.EndsWith(".bin"))
                 {
-                    dataGridViewPacijenti.DataSource = klinika17324.BinDeSerial(ofd.FileName);
-                    klinika17324.Pacijenti = klinika17324.BinDeSerial(ofd.FileName) as List<Zadaca1RPR_17324.Pacijent>;
-                    DodajCvorove(treeViewDeserijalizacija);
-                    RichTextBoxInfoDesPacBin.Text = "Deserijalizacija uspješna!";
+                    Invoke(new Action(() =>
+                    {
+                        try
+                        {
+                            dataGridViewPacijenti.DataSource = klinika17324.BinDeSerial(ofd.FileName);
+                            klinika17324.Pacijenti = klinika17324.BinDeSerial(ofd.FileName) as List<Zadaca1RPR_17324.Pacijent>;
+                            DodajCvorove(treeViewDeserijalizacija);
+                            RichTextBoxInfoDesPacBin.Text = "Deserijalizacija uspješna!";
+                        }
+                        catch (Exception)
+                        {
+                            dataGridViewPacijenti.Refresh();
+                            RichTextBoxInfoDesPacBin.Text = "Greška pri deserijalizaciji! Pogrešan format datoteke, provjerite da učitavate pacijente!";
+                            SacuvajLogIzuzetka("Neuspjela deserijalizacija liste pacijenata iz binarne datoteke! Pogrešan format datoteke!");
+                        }
+                    }));
                 }
-                catch (Exception)
+                else
                 {
-                    dataGridViewPacijenti.Refresh();
-                    RichTextBoxInfoDesPacBin.Text = "Greška pri deserijalizaciji! Pogrešan format datoteke, provjerite da učitavate pacijente!";
-                    SacuvajLogIzuzetka("Neuspjela deserijalizacija liste pacijenata iz binarne datoteke! Pogrešan format datoteke!");
+                    RichTextBoxInfoDesPacBin.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+                    SacuvajLogIzuzetka("Neuspjela deserijalizacija liste pacijenata iz binarne datoteke!");
                 }
-            }
-            else
-            {
-                RichTextBoxInfoDesPacBin.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
-                SacuvajLogIzuzetka("Neuspjela deserijalizacija liste pacijenata iz binarne datoteke!");
-            }
+            });
         }
 
-        private void buttonDesBinUpo_Click(object sender, EventArgs e)
+        private async void buttonDesBinUpo_Click(object sender, EventArgs e)
         {
             textBoxInfoBinUpo.Text = "";
-            OpenFileDialog ofd = new OpenFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
-            if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".bin"))
+            DialogResult rezultatDialoga = DialogResult.No;
+            await Task.Factory.StartNew(() =>
             {
-                try
+                OpenFileDialog ofd = new OpenFileDialog() { Filter = "binary files(*.bin)|*.bin|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
+                Invoke(new Action(() => rezultatDialoga = ofd.ShowDialog()));
+                if (rezultatDialoga == DialogResult.OK && ofd.FileName.EndsWith(".bin"))
                 {
-                    dataGridViewUposlenici.DataSource = klinika17324.BinDeSerial(ofd.FileName);
-                    klinika17324.Uposlenici = klinika17324.BinDeSerial(ofd.FileName) as List<Uposlenik>;
-                    DodajCvorove(treeViewDeserijalizacija);
-                    textBoxInfoBinUpo.Text = "Deserijalizacija uspješna!";
+                    Invoke(new Action(() =>
+                    {
+                        try
+                        {
+                            dataGridViewUposlenici.DataSource = klinika17324.BinDeSerial(ofd.FileName);
+                            klinika17324.Uposlenici = klinika17324.BinDeSerial(ofd.FileName) as List<Uposlenik>;
+                            DodajCvorove(treeViewDeserijalizacija);
+                            textBoxInfoBinUpo.Text = "Deserijalizacija uspješna!";
+                        }
+                        catch (Exception)
+                        {
+                            dataGridViewUposlenici.Refresh();
+                            textBoxInfoBinUpo.Text = "Greška pri deserijalizaciji! Pogrešan format datoteke, provjerite da učitavate uposlenike!";
+                            SacuvajLogIzuzetka("Neuspjela deserijalizacija liste uposlenika iz binarne datoteke! Pogrešan format datoteke!");
+                        }
+                    }));
                 }
-                catch (Exception)
+                else
                 {
-                    dataGridViewUposlenici.Refresh();
-                    textBoxInfoBinUpo.Text = "Greška pri deserijalizaciji! Pogrešan format datoteke, provjerite da učitavate uposlenike!";
-                    SacuvajLogIzuzetka("Neuspjela deserijalizacija liste uposlenika iz binarne datoteke! Pogrešan format datoteke!");
+                    textBoxInfoBinUpo.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
+                    SacuvajLogIzuzetka("Neuspjela deserijalizacija liste uposlenika iz binarne datoteke!");
                 }
-            }
-            else
-            {
-                textBoxInfoBinUpo.Text = "Greška pri deserijalizaciji!. Provjerite ekstenziju datoteke.";
-                SacuvajLogIzuzetka("Neuspjela deserijalizacija liste uposlenika iz binarne datoteke!");
-            }
+            });
+
         }
 
-        private void buttonUcitajLogove_Click(object sender, EventArgs e)
+        private async void buttonUcitajLogove_Click(object sender, EventArgs e)
         {
             richTextBoxLogovi.Text = "";
-            if (File.Exists(@".\logIzuzetaka.txt"))
+            await Task.Factory.StartNew(() =>
             {
-                string[] sadrzaj = System.IO.File.ReadAllLines(@".\logIzuzetaka.txt");
-                foreach (string s in sadrzaj)
-                    richTextBoxLogovi.Text += s + '\n';
-            }
-            else
-            {
-                richTextBoxLogovi.Text = "Otvaranje defaultne datoteke s logovima nije uspjelo";
-                SacuvajLogIzuzetka("Otvaranje defaultne datoteke s logovima nije uspjelo");
-            }
+                Invoke(new Action(() =>
+                {
+                    if (File.Exists(@".\logIzuzetaka.txt"))
+                    {
+                        string[] sadrzaj = System.IO.File.ReadAllLines(@".\logIzuzetaka.txt");
+                        foreach (string s in sadrzaj)
+                            richTextBoxLogovi.Text += s + '\n';
+                    }
+                    else
+                    {
+                        richTextBoxLogovi.Text = "Otvaranje defaultne datoteke s logovima nije uspjelo";
+                        SacuvajLogIzuzetka("Otvaranje defaultne datoteke s logovima nije uspjelo");
+                    }
+                }));
+            });
         }
 
-        private void buttonUcitajDruguDatoteku_Click(object sender, EventArgs e)
+        private async void buttonUcitajDruguDatoteku_Click(object sender, EventArgs e)
         {
             richTextBoxLogovi.Text = "";
-            OpenFileDialog ofd = new OpenFileDialog() { Filter = "text files(*.txt)|*.txt|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
-            if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.EndsWith(".txt"))
+            DialogResult rezultatDialoga = DialogResult.No;
+            await Task.Factory.StartNew(() =>
             {
-                string[] sadrzaj = System.IO.File.ReadAllLines(ofd.FileName);
-                foreach (string s in sadrzaj)
-                    richTextBoxLogovi.Text += s;
-            }
-            else
-            {
-                richTextBoxLogovi.Text = "Otvaranje zeljene datoteke s logovima nije uspjelo";
-                SacuvajLogIzuzetka("Otvaranje zeljene datoteke s logovima nije uspjelo");
-            }
+                OpenFileDialog ofd = new OpenFileDialog() { Filter = "text files(*.txt)|*.txt|All files (*.*)|*.*", Multiselect = false, CheckFileExists = true };
+                Invoke(new Action(() => rezultatDialoga = ofd.ShowDialog()));
+                if (rezultatDialoga == DialogResult.OK && ofd.FileName.EndsWith(".txt"))
+                {
+                    Invoke(new Action(() =>
+                    {
+                        string[] sadrzaj = System.IO.File.ReadAllLines(ofd.FileName);
+                        foreach (string s in sadrzaj)
+                            richTextBoxLogovi.Text += s;
+                    }));
+                }
+                else
+                {
+                    Invoke(new Action(() =>
+                    {
+                        richTextBoxLogovi.Text = "Otvaranje zeljene datoteke s logovima nije uspjelo";
+                        SacuvajLogIzuzetka("Otvaranje zeljene datoteke s logovima nije uspjelo");
+                    }));
+                }
+
+            });
         }
 
         private void buttonObrisiSveLogove_Click(object sender, EventArgs e)
@@ -1853,7 +1956,7 @@ namespace SehalicMirza17324_Z2
                 {
                     razdvojiNaDatumIOpis = s.Split(null);
                     datum = Convert.ToDateTime(razdvojiNaDatumIOpis[0]); //vadi datum iz izuzetka
-                    sat=TimeSpan.ParseExact(razdvojiNaDatumIOpis[1], "hh\\:mm\\:ss", CultureInfo.InvariantCulture);
+                    sat = TimeSpan.ParseExact(razdvojiNaDatumIOpis[1], "hh\\:mm\\:ss", CultureInfo.InvariantCulture);
                     datum += sat; //dodaje i sate na datum da se mogu porediti i minute i sekunde na pickerima
                     if (dateTimePickerIzuzetak1.Value <= datum && datum <= dateTimePickerIzuzetak2.Value) //ako je u intervalu
                         richTextBoxStatistikaIzuzeci.Text += s + '\n';
@@ -1866,7 +1969,7 @@ namespace SehalicMirza17324_Z2
             if (radioButtonXMLIzuzetak.Checked == true && radioButtonVrstaIzuzetka.Checked == true)
             {
                 foreach (string s in GlobalniLogovi)
-                 if (s.Contains("XML")) richTextBoxStatistikaIzuzeci.Text += s +'\n'; //provjerava da li je XML izuzetak sto smo naglasili kod kreiranja istih
+                    if (s.Contains("XML")) richTextBoxStatistikaIzuzeci.Text += s + '\n'; //provjerava da li je XML izuzetak sto smo naglasili kod kreiranja istih
             }
             if (radioButtonVrstaIzuzetka.Checked == false || radioButtonXMLIzuzetak.Checked == false)
                 richTextBoxStatistikaIzuzeci.Text = ""; //brise sve ako se deselektuje
@@ -1877,7 +1980,7 @@ namespace SehalicMirza17324_Z2
             if (radioButtonBazePodataka.Checked == true && radioButtonVrstaIzuzetka.Checked == true)
             {
                 foreach (string s in GlobalniLogovi)
-                    if (s.Contains("DB")) richTextBoxStatistikaIzuzeci.Text += s +'\n'; //provjerava da li je DB izuzetak sto smo naglasili kod kreiranja istih
+                    if (s.Contains("DB")) richTextBoxStatistikaIzuzeci.Text += s + '\n'; //provjerava da li je DB izuzetak sto smo naglasili kod kreiranja istih
             }
             if (radioButtonVrstaIzuzetka.Checked == false || radioButtonBazePodataka.Checked == false)
                 richTextBoxStatistikaIzuzeci.Text = ""; //brise sve ako se deselektuje
