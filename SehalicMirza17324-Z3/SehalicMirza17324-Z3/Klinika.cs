@@ -63,11 +63,13 @@ namespace SehalicMirza17324_Z2
             //logo
             Graphics g = e.Graphics;
             Thread t;
+            HatchBrush myHatchBrush = new HatchBrush(HatchStyle.LargeConfetti, Color.White, Color.Red);
             g.SmoothingMode = SmoothingMode.AntiAlias; //da bude ljepse
             Pen pen = new Pen(Color.White, 40);
             g.DrawEllipse(pen, rect1);
             g.DrawArc(pen, 50, 50, 80, 80, 90, 360);
-            HatchBrush myHatchBrush = new HatchBrush(HatchStyle.LargeConfetti, Color.White, Color.Red);
+            if (brojac%2!=0) //malo promjene boja kod reloada
+            myHatchBrush = new HatchBrush(HatchStyle.LargeConfetti, Color.Red, Color.White);
             LinearGradientBrush lBrush = new LinearGradientBrush(rect, Color.Red, Color.MintCream, LinearGradientMode.BackwardDiagonal);
             g.FillRectangle(myHatchBrush, rect);
             g.FillRectangle(myHatchBrush, rect1);
@@ -78,7 +80,7 @@ namespace SehalicMirza17324_Z2
             t = (new Thread(() =>
             {
                 AnimirajPuls();
-                System.Threading.Timer mTimer = new System.Threading.Timer(RefreshTimer, null, 100, 100);
+                System.Threading.Timer mTimer = new System.Threading.Timer(RefreshTimer, null, 1000, 1000);
             }));
                 t.Start();
         }
