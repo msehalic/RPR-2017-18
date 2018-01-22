@@ -998,6 +998,7 @@
             this.listBoxRezultatPretrage.Name = "listBoxRezultatPretrage";
             this.listBoxRezultatPretrage.Size = new System.Drawing.Size(360, 212);
             this.listBoxRezultatPretrage.TabIndex = 11;
+            this.listBoxRezultatPretrage.SelectedIndexChanged += new System.EventHandler(this.listBoxRezultatPretrage_SelectedIndexChanged);
             // 
             // labelKriterijPretrage
             // 

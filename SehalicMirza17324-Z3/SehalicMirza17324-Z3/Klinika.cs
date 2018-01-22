@@ -33,7 +33,8 @@ namespace SehalicMirza17324_Z2
             this.AutoSize = true;
             this.AutoSizeMode = AutoSizeMode.GrowOnly;
             this.Text = "Klinika 'Dr. Sehalic'";
-
+            Z4_Zadatak2_Pretraga z2 = new Z4_Zadatak2_Pretraga();
+            z2.Show();
         }
         Rectangle rect = new Rectangle(60, 40, 60, 100);
         Rectangle rect1 = new Rectangle(40, 60, 100, 60);

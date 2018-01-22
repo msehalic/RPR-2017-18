@@ -1161,35 +1161,35 @@ namespace SehalicMirza17324_Z2
                 if (comboBoxKriterijPretrage.SelectedIndex == 1)
                 {
                     listBoxRezultatPretrage.Items.Clear();
-                    foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
+                    Parallel.ForEach(pacijent17324.Karton, (p) =>
                     {
                         if (p.MisljenjeLjekara.Contains(textBoxSadrzajPretrage.Text))
                         {
                             listBoxRezultatPretrage.Items.Add(p.ToString());
                         }
-                    }
+                    });
                 }
                 else if (comboBoxKriterijPretrage.SelectedIndex == 2)
                 {
                     listBoxRezultatPretrage.Items.Clear();
-                    foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
+                    Parallel.ForEach(pacijent17324.Karton, (p) =>
                     {
                         if (p.Terapija.Contains(textBoxSadrzajPretrage.Text))
                         {
                             listBoxRezultatPretrage.Items.Add(p.ToString());
                         }
-                    }
+                    });
                 }
                 else if (comboBoxKriterijPretrage.SelectedIndex == 3)
                 {
                     listBoxRezultatPretrage.Items.Clear();
-                    foreach (Zadaca1RPR_17324.Pregled p in pacijent17324.Karton)
+                    Parallel.ForEach(pacijent17324.Karton, (p) =>
                     {
                         if (p.Postupak.Contains(textBoxSadrzajPretrage.Text))
                         {
                             listBoxRezultatPretrage.Items.Add(p.ToString());
                         }
-                    }
+                    });
                 }
             }
         }
@@ -2010,6 +2010,11 @@ namespace SehalicMirza17324_Z2
             radioButtonDatumIzuzetka_CheckedChanged(sender, e);
             if (dateTimePickerIzuzetak2.Value < dateTimePickerIzuzetak1.Value)
                 dateTimePickerIzuzetak2.Value = dateTimePickerIzuzetak1.Value; //ne smije kraj intervala biti prije pocetka
+        }
+
+        private void listBoxRezultatPretrage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

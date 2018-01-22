@@ -81,6 +81,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Z4_Zadatak2_Pretraga.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Z4_Zadatak2_Pretraga.Designer.cs">
+      <DependentUpon>Z4_Zadatak2_Pretraga.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="glavniMeni17324.resx">
       <DependentUpon>glavniMeni17324.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +102,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Z4_Zadatak2_Pretraga.resx">
+      <DependentUpon>Z4_Zadatak2_Pretraga.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\Doktori.Administrator.datasource" />
     <None Include="Properties\DataSources\Doktori.Doktor.datasource" />
     <None Include="Properties\DataSources\Doktori.Tehnicar.datasource" />
