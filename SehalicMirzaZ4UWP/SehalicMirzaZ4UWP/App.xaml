@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="SehalicMirzaZ4UWP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SehalicMirzaZ4UWP"
+    RequestedTheme="Light">
+
+</Application>
