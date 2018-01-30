@@ -8,6 +8,55 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <FlyoutBase.AttachedFlyout>
+            <MenuFlyout/>
+        </FlyoutBase.AttachedFlyout>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="192*"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left" Height="279" Margin="191,16,0,-295" VerticalAlignment="Top" Width="150" Grid.Row="4" RenderTransformOrigin="0.593,1.332">
+            <StackPanel.RenderTransform>
+                <CompositeTransform SkewY="0" TranslateY="0"/>
+            </StackPanel.RenderTransform>
+            <TextBox Text=""/>
+            <TextBox Text=""/>
+            <TextBox Text=""/>
+            <TextBox Text=""/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="288" Margin="11,16,0,-112" VerticalAlignment="Top" Width="150" Grid.Row="4">
+            <TextBox Text="Ime: " IsReadOnly="True" FontWeight="Bold"/>
+            <TextBox Text="Prezime:" IsReadOnly="True" FontWeight="Bold"/>
+            <TextBox Text="Adresa stanovanja:" FontWeight="Bold"/>
+            <TextBox Text="Matični broj:" IsReadOnly="True" FontWeight="Bold"/>
+            <TextBox Text="Datum rođenja:" IsReadOnly="True" FontWeight="Bold" Margin="0,0,0,0" Height="19"/>
+        </StackPanel>
+        <TextBox Text="Slika:" IsReadOnly="True" FontWeight="Bold" FontSize="48" RenderTransformOrigin="1.947,-0.073" Margin="0,21,1035,-1448" HorizontalAlignment="Right" Width="127" Grid.Row="4" Height="508"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="529,76,0,-176" Grid.RowSpan="5" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.61,-0.14"/>
+        <Image HorizontalAlignment="Left" Height="105" Margin="385,23,0,-128" Grid.RowSpan="5" VerticalAlignment="Top" Width="100"/>
+        <PersonPicture HorizontalAlignment="Left" Margin="383,23,0,-173" Grid.RowSpan="5" VerticalAlignment="Top" Height="150"/>
+        <RadioButton Content="Žensko" HorizontalAlignment="Left" Margin="194,195,0,-227" Grid.RowSpan="5" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton Content="Muško" HorizontalAlignment="Left" Margin="24,194,0,-226" VerticalAlignment="Top" Grid.Row="4" RenderTransformOrigin="0.517,0.406"/>
+        <DatePicker HorizontalAlignment="Left" Margin="194,153,0,-185" Grid.RowSpan="5" VerticalAlignment="Top" Width="242"/>
+        <ToggleSwitch Header="Pregled kod stomatologa" HorizontalAlignment="Left" Margin="182,236,0,-296" Grid.RowSpan="5" VerticalAlignment="Top"/>
+        <ToggleSwitch x:Name="Ortoped" Header="Pregled kod kardiologa" HorizontalAlignment="Left" Margin="2,239,0,-299" Grid.RowSpan="5" VerticalAlignment="Top" IsOn="False"/>
+        <ToggleSwitch Header="Pregled kod ortopeda" HorizontalAlignment="Left" Margin="183,298,0,-353" Grid.RowSpan="5" VerticalAlignment="Top"/>
+        <ToggleSwitch Header="Pregled kod dermatologa" HorizontalAlignment="Left" Margin="3,301,0,-356" Grid.RowSpan="5" VerticalAlignment="Top"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="569,41,0,-92" Grid.RowSpan="5" VerticalAlignment="Top" Foreground="Green" Height="51" Width="64">
+            <Button.Flyout>
+                <MenuFlyout>
+                <MenuFlyoutItem Text="Brisanje Pacijenata" />
+                </MenuFlyout>
+            </Button.Flyout>
+            <Button.Background>
+                <ImageBrush ImageSource="Assets/threelines.png"/>
+            </Button.Background>
+            <Button.BorderBrush>
+                <ImageBrush ImageSource="Assets/LockScreenLogo.png"/>
+            </Button.BorderBrush>
+        </Button>
     </Grid>
 </Page>

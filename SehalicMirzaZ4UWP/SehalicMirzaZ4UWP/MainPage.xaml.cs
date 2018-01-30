@@ -26,5 +26,15 @@ namespace SehalicMirzaZ4UWP
         {
             this.InitializeComponent();
         }
+
+        private void Frame_Navigated(object sender, NavigationEventArgs e)
+        {
+
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
