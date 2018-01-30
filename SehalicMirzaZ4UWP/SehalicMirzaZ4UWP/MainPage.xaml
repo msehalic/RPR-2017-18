@@ -18,16 +18,16 @@
             <RowDefinition Height="0*"/>
             <RowDefinition Height="192*"/>
         </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Left" Height="279" Margin="191,16,0,-295" VerticalAlignment="Top" Width="150" Grid.Row="4" RenderTransformOrigin="0.593,1.332">
+        <StackPanel HorizontalAlignment="Left" Height="279" Margin="219,48,0,-327" VerticalAlignment="Top" Width="150" Grid.Row="4" RenderTransformOrigin="0.593,1.332">
             <StackPanel.RenderTransform>
                 <CompositeTransform SkewY="0" TranslateY="0"/>
             </StackPanel.RenderTransform>
-            <TextBox Text=""/>
-            <TextBox Text=""/>
-            <TextBox Text=""/>
-            <TextBox Text=""/>
+            <TextBox x:Name="ImePacijenta" Text=""/>
+            <TextBox x:Name="PrezimePacijenta" Text=""/>
+            <TextBox x:Name="AdresaStanovanja" Text=""/>
+            <TextBox x:Name="MaticniBroj" Text="" MaxLength="13"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="288" Margin="11,16,0,-112" VerticalAlignment="Top" Width="150" Grid.Row="4">
+        <StackPanel HorizontalAlignment="Left" Height="288" Margin="39,48,0,-336" VerticalAlignment="Top" Width="150" Grid.Row="4">
             <TextBox Text="Ime: " IsReadOnly="True" FontWeight="Bold"/>
             <TextBox Text="Prezime:" IsReadOnly="True" FontWeight="Bold"/>
             <TextBox Text="Adresa stanovanja:" FontWeight="Bold"/>
@@ -37,18 +37,17 @@
         <TextBox Text="Slika:" IsReadOnly="True" FontWeight="Bold" FontSize="48" RenderTransformOrigin="1.947,-0.073" Margin="0,21,1035,-1448" HorizontalAlignment="Right" Width="127" Grid.Row="4" Height="508"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="529,76,0,-176" Grid.RowSpan="5" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.61,-0.14"/>
         <Image HorizontalAlignment="Left" Height="105" Margin="385,23,0,-128" Grid.RowSpan="5" VerticalAlignment="Top" Width="100"/>
-        <PersonPicture HorizontalAlignment="Left" Margin="383,23,0,-173" Grid.RowSpan="5" VerticalAlignment="Top" Height="150"/>
-        <RadioButton Content="Žensko" HorizontalAlignment="Left" Margin="194,195,0,-227" Grid.RowSpan="5" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
-        <RadioButton Content="Muško" HorizontalAlignment="Left" Margin="24,194,0,-226" VerticalAlignment="Top" Grid.Row="4" RenderTransformOrigin="0.517,0.406"/>
-        <DatePicker HorizontalAlignment="Left" Margin="194,153,0,-185" Grid.RowSpan="5" VerticalAlignment="Top" Width="242"/>
-        <ToggleSwitch Header="Pregled kod stomatologa" HorizontalAlignment="Left" Margin="182,236,0,-296" Grid.RowSpan="5" VerticalAlignment="Top"/>
-        <ToggleSwitch x:Name="Ortoped" Header="Pregled kod kardiologa" HorizontalAlignment="Left" Margin="2,239,0,-299" Grid.RowSpan="5" VerticalAlignment="Top" IsOn="False"/>
-        <ToggleSwitch Header="Pregled kod ortopeda" HorizontalAlignment="Left" Margin="183,298,0,-353" Grid.RowSpan="5" VerticalAlignment="Top"/>
-        <ToggleSwitch Header="Pregled kod dermatologa" HorizontalAlignment="Left" Margin="3,301,0,-356" Grid.RowSpan="5" VerticalAlignment="Top"/>
-        <Button Content="" HorizontalAlignment="Left" Margin="569,41,0,-92" Grid.RowSpan="5" VerticalAlignment="Top" Foreground="Green" Height="51" Width="64">
+        <RadioButton x:Name="Zensko" Content="Žensko" HorizontalAlignment="Left" Margin="222,221,0,-253" Grid.RowSpan="5" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton x:Name="Musko" Content="Muško" HorizontalAlignment="Left" Margin="40,210,0,-242" VerticalAlignment="Top" Grid.Row="4" RenderTransformOrigin="0.517,0.406" IsChecked="True"/>
+        <DatePicker x:Name="DatumRodjenja" HorizontalAlignment="Left" Margin="218,188,0,-220" Grid.RowSpan="5" VerticalAlignment="Top" Width="242"/>
+        <ToggleSwitch x:Name="Stomatolog" Header="Pregled kod stomatologa" HorizontalAlignment="Left" Margin="221,254,0,-314" Grid.RowSpan="5" VerticalAlignment="Top"/>
+        <ToggleSwitch x:Name="Kardiolog" Header="Pregled kod kardiologa" HorizontalAlignment="Left" Margin="34,254,0,-314" Grid.RowSpan="5" VerticalAlignment="Top" IsOn="False" RenderTransformOrigin="0.355,0.483"/>
+        <ToggleSwitch x:Name="Ortoped" Header="Pregled kod ortopeda" HorizontalAlignment="Left" Margin="222,315,0,-375" Grid.RowSpan="5" VerticalAlignment="Top"/>
+        <ToggleSwitch x:Name="Dermatolog" Header="Pregled kod dermatologa" HorizontalAlignment="Left" Margin="29,314,0,-374" Grid.RowSpan="5" VerticalAlignment="Top"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="577,20,0,-71" Grid.RowSpan="5" VerticalAlignment="Top" Foreground="Green" Height="51" Width="64">
             <Button.Flyout>
                 <MenuFlyout>
-                <MenuFlyoutItem Text="Brisanje Pacijenata" />
+                    <MenuFlyoutItem Text="Brisanje Pacijenata" />
                 </MenuFlyout>
             </Button.Flyout>
             <Button.Background>
@@ -58,5 +57,17 @@
                 <ImageBrush ImageSource="Assets/LockScreenLogo.png"/>
             </Button.BorderBrush>
         </Button>
+        <Image HorizontalAlignment="Left" Height="100" Margin="444,118,0,-218" Grid.RowSpan="5" VerticalAlignment="Top" Width="100"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="442,89,0,-189" Grid.RowSpan="5" VerticalAlignment="Top" Width="100"/>
+        <PersonPicture HorizontalAlignment="Left" Margin="399,60,0,-160" Grid.RowSpan="5" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="42,9,0,-57" Grid.RowSpan="5" Text="Unos pacijenata" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="36" TextDecorations="Underline"/>
+        <Button Content="Unesi!" HorizontalAlignment="Left" Margin="367,458,0,-490" Grid.RowSpan="5" VerticalAlignment="Top" Width="140" FontWeight="Bold" Click="Button_Click"/>
+        <ComboBox x:Name="bracnoStanje" HorizontalAlignment="Left" Margin="221,377,0,-409" Grid.RowSpan="5" VerticalAlignment="Top" Width="215">
+            <ComboBoxItem Content="Ozenjen/Udata" Height="100" Width="100"/>
+            <ComboBoxItem Content="Slobodan/Slobodna" Height="100" Width="100"/>
+            <ComboBoxItem Content="Razveden/Razvedena" Height="100" Width="100"/>
+            <ComboBoxItem Content="Udovac/Udovica" Height="100" Width="100"/>
+        </ComboBox>
+        <TextBox HorizontalAlignment="Left" Margin="38,377,0,-409" Grid.RowSpan="5" Text="Bračno stanje:" VerticalAlignment="Top" Width="146"/>
     </Grid>
 </Page>

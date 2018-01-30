@@ -124,8 +124,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Doktor.dll" />
     <Content Include="fallout_1_2_icon__ico_by_viskasil-d9wrfrf.ico" />
     <Content Include="hospital.ico" />
+    <Content Include="SehalicMirzaZ1.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Zadaca1RPR_17324\Doktor\Doktori.csproj">

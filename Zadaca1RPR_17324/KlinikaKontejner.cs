@@ -1,17 +1,6 @@
-﻿using Doktori;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Globalization;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.Xml.Serialization;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml;
-
 namespace Zadaca1RPR_17324
 {
 
@@ -272,7 +261,7 @@ namespace Zadaca1RPR_17324
             if (uspjeh) pacijenti.Remove(temp);
             else throw new Exception("Neuspjesno brisanje! Provjerite ID broj pacijenta koji ste unijeli.");
         }
-
+        /*
         public void XMLSerial(string lokacija, object objekat, Type tipObjekta)
         {
             XmlSerializer xs;
@@ -322,7 +311,7 @@ namespace Zadaca1RPR_17324
             stream.Close();
             return o;
         }
-
+        */
     }
 }
 

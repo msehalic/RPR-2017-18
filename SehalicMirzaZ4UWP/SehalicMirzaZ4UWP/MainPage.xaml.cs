@@ -12,9 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using Zadaca1RPR_17324;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace SehalicMirzaZ4UWP
 {
     /// <summary>
@@ -22,6 +21,7 @@ namespace SehalicMirzaZ4UWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        KlinikaKontejner klinika17324 = new KlinikaKontejner();
         public MainPage()
         {
             this.InitializeComponent();
@@ -35,6 +35,16 @@ namespace SehalicMirzaZ4UWP
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            char spol;
+            string bracnoStanjePacijenta = "Ozenjen";
+            if (bracnoStanje.SelectedIndex != -1) bracnoStanjePacijenta = bracnoStanje.SelectedItem.ToString();
+            if ((bool)Musko.IsChecked) spol = 'm';
+            else spol = 'z';
+            klinika17324.Pacijenti.Add(new Pacijent(Convert.ToUInt64(MaticniBroj.Text), ImePacijenta.Text, PrezimePacijenta.Text, DatumRodjenja.Date.DateTime, spol, AdresaStanovanja.Text, bracnoStanjePacijenta, DateTime.Now));
         }
     }
 }
