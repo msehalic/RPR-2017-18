@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="SehalicMirzaZ4UWP.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SehalicMirzaZ4UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Image HorizontalAlignment="Left" Height="100" Margin="376,228,0,0" VerticalAlignment="Top" Width="100"/>
+        <Image HorizontalAlignment="Left" Height="230" Margin="164,64,0,0" VerticalAlignment="Top" Width="306"/>
+        <Image HorizontalAlignment="Left" Height="222" Margin="40,20,0,0" VerticalAlignment="Top" Width="218" Source="Assets/logo.jpg"/>
+        <TextBlock HorizontalAlignment="Left" Margin="246,128,0,0" Text="Korisničko ime:" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <TextBlock x:Name="Lozinka" HorizontalAlignment="Left" Margin="247,163,0,0" Text="Lozinka:" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="textKorisnicko" HorizontalAlignment="Left" Margin="392,122,0,0" Text="" VerticalAlignment="Top" Width="250"/>
+        <TextBox x:Name="textLozinka" HorizontalAlignment="Left" Margin="392,160,0,0" Text="" VerticalAlignment="Top" Width="250" KeyDown="textLozinka_KeyDown" TextChanged="textLozinka_TextChanged"/>
+        <Button x:Name="Prijava" Content="Prijavi se!" HorizontalAlignment="Left" Margin="421,204,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.146,0.406" Click="Prijava_Click"/>
+        <Button x:Name="Odustajanje" Content="Odustani" HorizontalAlignment="Left" Margin="560,203,0,0" VerticalAlignment="Top" Click="Odustajanje_Click"/>
+        <TextBox x:Name="IspisGreskeLogin" HorizontalAlignment="Left" Margin="394,245,0,0" Text="TextBox" VerticalAlignment="Top" Width="246" IsReadOnly="True"/>
+
+    </Grid>
+</Page>
