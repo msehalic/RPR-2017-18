@@ -14,10 +14,10 @@
         <TextBlock HorizontalAlignment="Left" Margin="246,128,0,0" Text="Korisničko ime:" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
         <TextBlock x:Name="Lozinka" HorizontalAlignment="Left" Margin="247,163,0,0" Text="Lozinka:" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
         <TextBox x:Name="textKorisnicko" HorizontalAlignment="Left" Margin="392,122,0,0" Text="" VerticalAlignment="Top" Width="250"/>
-        <TextBox x:Name="textLozinka" HorizontalAlignment="Left" Margin="392,160,0,0" Text="" VerticalAlignment="Top" Width="250" TextChanged="textLozinka_TextChanged"/>
         <Button x:Name="Prijava" Content="Prijavi se!" HorizontalAlignment="Left" Margin="421,204,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.146,0.406" Click="Prijava_Click"/>
         <Button x:Name="Odustajanje" Content="Odustani" HorizontalAlignment="Left" Margin="560,203,0,0" VerticalAlignment="Top" Click="Odustajanje_Click"/>
-        <TextBox x:Name="IspisGreskeLogin" HorizontalAlignment="Left" Margin="394,245,0,0" Text="TextBox" VerticalAlignment="Top" Width="246" IsReadOnly="True"/>
+        <TextBox x:Name="IspisGreskeLogin" HorizontalAlignment="Left" Margin="394,245,0,0" Text="" VerticalAlignment="Top" Width="246" IsReadOnly="True"/>
+        <PasswordBox x:Name="textLozinka" HorizontalAlignment="Left" Margin="392,160,0,0" VerticalAlignment="Top" Width="250" PasswordChanged="PasswordBox_PasswordChanged"/>
 
     </Grid>
 </Page>

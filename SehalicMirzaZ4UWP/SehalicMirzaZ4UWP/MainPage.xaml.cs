@@ -83,7 +83,7 @@ namespace SehalicMirzaZ4UWP
         private bool PodaciOkej()
         {
             bool ispravan = false;
-            foreach (Zadaca1RPR_17324.Uposlenik u in klinika17324.Uposlenici) if (u.KorisnickoIme == textKorisnicko.Text && VerifyMd5Hash(MD5.Create(), textLozinka.Text, u.Lozinka))
+            foreach (Zadaca1RPR_17324.Uposlenik u in klinika17324.Uposlenici) if (u.KorisnickoIme == textKorisnicko.Text && VerifyMd5Hash(MD5.Create(), textLozinka.Password, u.Lozinka))
                 {
                     uposlenik17324_1 = u;
                     ispravan = true;
@@ -91,14 +91,14 @@ namespace SehalicMirzaZ4UWP
                 }
             foreach (Zadaca1RPR_17324.Pacijent p in klinika17324.Pacijenti)
             {
-                if (p.KorisnickoIme == textKorisnicko.Text && VerifyMd5Hash(MD5.Create(), textLozinka.Text, p.Lozinka))
+                if (p.KorisnickoIme == textKorisnicko.Text && VerifyMd5Hash(MD5.Create(), textLozinka.Password, p.Lozinka))
                 {
                     pacijent17324_1 = p;
                     ispravan = true;
                     return true;
                 }
             }
-            if (textLozinka.Text == "") ispravan = false; // prazan string
+            if (textLozinka.Password == "") ispravan = false; // prazan string
             if (!ispravan)
             {
                 IspisGreskeLogin.Text = "Neispravan unos!";
@@ -108,15 +108,15 @@ namespace SehalicMirzaZ4UWP
             return false;
         }
 
-        private void textLozinka_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            IspisGreskeLogin.Text = "";
-        }
-
         private void Odustajanje_Click(object sender, RoutedEventArgs e)
         {
             textKorisnicko.Text = "";
-            textLozinka.Text = "";
+            textLozinka.Password = "";
+            IspisGreskeLogin.Text = "";
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
             IspisGreskeLogin.Text = "";
         }
     }

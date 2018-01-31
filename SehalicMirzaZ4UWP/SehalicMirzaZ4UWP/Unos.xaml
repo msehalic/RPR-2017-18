@@ -30,7 +30,7 @@
         <StackPanel HorizontalAlignment="Left" Height="288" Margin="39,48,0,-336" VerticalAlignment="Top" Width="150" Grid.Row="4">
             <TextBox Text="Ime: " IsReadOnly="True" FontWeight="Bold"/>
             <TextBox Text="Prezime:" IsReadOnly="True" FontWeight="Bold"/>
-            <TextBox Text="Adresa stanovanja:" FontWeight="Bold"/>
+            <TextBox Text="Adresa stanovanja:" FontWeight="Bold" IsReadOnly="True"/>
             <TextBox Text="Matični broj:" IsReadOnly="True" FontWeight="Bold"/>
             <TextBox Text="Datum rođenja:" IsReadOnly="True" FontWeight="Bold" Margin="0,0,0,0" Height="19"/>
         </StackPanel>
@@ -39,7 +39,7 @@
         <Image HorizontalAlignment="Left" Height="105" Margin="385,23,0,-128" Grid.RowSpan="5" VerticalAlignment="Top" Width="100"/>
         <RadioButton x:Name="Zensko" Content="Žensko" HorizontalAlignment="Left" Margin="222,221,0,-253" Grid.RowSpan="5" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
         <RadioButton x:Name="Musko" Content="Muško" HorizontalAlignment="Left" Margin="40,210,0,-242" VerticalAlignment="Top" Grid.Row="4" RenderTransformOrigin="0.517,0.406" IsChecked="True"/>
-        <DatePicker x:Name="DatumRodjenja" HorizontalAlignment="Left" Margin="218,183,0,-220" Grid.RowSpan="5" VerticalAlignment="Top" Width="242"/>
+        <DatePicker x:Name="DatumRodjenja" HorizontalAlignment="Left" Margin="218,183,0,-220" Grid.RowSpan="5" VerticalAlignment="Top" Width="242" DayFormat="{}{day.integer}"/>
         <ToggleSwitch x:Name="Stomatolog" Header="Pregled kod stomatologa" HorizontalAlignment="Left" Margin="221,254,0,-314" Grid.RowSpan="5" VerticalAlignment="Top"/>
         <ToggleSwitch x:Name="Kardiolog" Header="Pregled kod kardiologa" HorizontalAlignment="Left" Margin="34,254,0,-314" Grid.RowSpan="5" VerticalAlignment="Top" IsOn="False" RenderTransformOrigin="0.355,0.483"/>
         <ToggleSwitch x:Name="Ortoped" Header="Pregled kod ortopeda" HorizontalAlignment="Left" Margin="222,315,0,-375" Grid.RowSpan="5" VerticalAlignment="Top"/>
