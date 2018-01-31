@@ -8,67 +8,16 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <FlyoutBase.AttachedFlyout>
-            <MenuFlyout/>
-        </FlyoutBase.AttachedFlyout>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0*"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="0*"/>
-            <RowDefinition Height="192*"/>
-        </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Left" Height="279" Margin="219,48,0,-327" VerticalAlignment="Top" Width="150" Grid.Row="4" RenderTransformOrigin="0.593,1.332">
-            <StackPanel.RenderTransform>
-                <CompositeTransform SkewY="0" TranslateY="0"/>
-            </StackPanel.RenderTransform>
-            <TextBox x:Name="ImePacijenta" Text=""/>
-            <TextBox x:Name="PrezimePacijenta" Text=""/>
-            <TextBox x:Name="AdresaStanovanja" Text=""/>
-            <TextBox x:Name="MaticniBroj" Text="" MaxLength="13"/>
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="288" Margin="39,48,0,-336" VerticalAlignment="Top" Width="150" Grid.Row="4">
-            <TextBox Text="Ime: " IsReadOnly="True" FontWeight="Bold"/>
-            <TextBox Text="Prezime:" IsReadOnly="True" FontWeight="Bold"/>
-            <TextBox Text="Adresa stanovanja:" FontWeight="Bold"/>
-            <TextBox Text="Matični broj:" IsReadOnly="True" FontWeight="Bold"/>
-            <TextBox Text="Datum rođenja:" IsReadOnly="True" FontWeight="Bold" Margin="0,0,0,0" Height="19"/>
-        </StackPanel>
-        <TextBox Text="Slika:" IsReadOnly="True" FontWeight="Bold" FontSize="48" RenderTransformOrigin="1.947,-0.073" Margin="0,21,1035,-1448" HorizontalAlignment="Right" Width="127" Grid.Row="4" Height="508"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="529,76,0,-176" Grid.RowSpan="5" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.61,-0.14"/>
-        <Image HorizontalAlignment="Left" Height="105" Margin="385,23,0,-128" Grid.RowSpan="5" VerticalAlignment="Top" Width="100"/>
-        <RadioButton x:Name="Zensko" Content="Žensko" HorizontalAlignment="Left" Margin="222,221,0,-253" Grid.RowSpan="5" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
-        <RadioButton x:Name="Musko" Content="Muško" HorizontalAlignment="Left" Margin="40,210,0,-242" VerticalAlignment="Top" Grid.Row="4" RenderTransformOrigin="0.517,0.406" IsChecked="True"/>
-        <DatePicker x:Name="DatumRodjenja" HorizontalAlignment="Left" Margin="218,183,0,-220" Grid.RowSpan="5" VerticalAlignment="Top" Width="242"/>
-        <ToggleSwitch x:Name="Stomatolog" Header="Pregled kod stomatologa" HorizontalAlignment="Left" Margin="221,254,0,-314" Grid.RowSpan="5" VerticalAlignment="Top"/>
-        <ToggleSwitch x:Name="Kardiolog" Header="Pregled kod kardiologa" HorizontalAlignment="Left" Margin="34,254,0,-314" Grid.RowSpan="5" VerticalAlignment="Top" IsOn="False" RenderTransformOrigin="0.355,0.483"/>
-        <ToggleSwitch x:Name="Ortoped" Header="Pregled kod ortopeda" HorizontalAlignment="Left" Margin="222,315,0,-375" Grid.RowSpan="5" VerticalAlignment="Top"/>
-        <ToggleSwitch x:Name="Dermatolog" Header="Pregled kod dermatologa" HorizontalAlignment="Left" Margin="35,314,0,-374" Grid.RowSpan="5" VerticalAlignment="Top"/>
-        <Button Content="" HorizontalAlignment="Left" Margin="577,20,0,-71" Grid.RowSpan="5" VerticalAlignment="Top" Foreground="Green" Height="51" Width="64">
-            <Button.Flyout>
-                <MenuFlyout>
-                    <MenuFlyoutItem Text="Brisanje Pacijenata" Click="MenuFlyoutItem_Click" />
-                </MenuFlyout>
-            </Button.Flyout>
-            <Button.Background>
-                <ImageBrush ImageSource="Assets/threelines.png"/>
-            </Button.Background>
-            <Button.BorderBrush>
-                <ImageBrush ImageSource="Assets/LockScreenLogo.png"/>
-            </Button.BorderBrush>
-        </Button>
-        <Image HorizontalAlignment="Left" Height="100" Margin="444,118,0,-218" Grid.RowSpan="5" VerticalAlignment="Top" Width="100"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="442,89,0,-189" Grid.RowSpan="5" VerticalAlignment="Top" Width="100"/>
-        <PersonPicture HorizontalAlignment="Left" Margin="399,60,0,-160" Grid.RowSpan="5" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="42,9,0,-57" Grid.RowSpan="5" Text="Unos pacijenata" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="36" TextDecorations="Underline"/>
-        <Button Content="Unesi!" HorizontalAlignment="Left" Margin="367,458,0,-490" Grid.RowSpan="5" VerticalAlignment="Top" Width="140" FontWeight="Bold" Click="Button_Click"/>
-        <ComboBox x:Name="bracnoStanje" HorizontalAlignment="Left" Margin="221,377,0,-409" Grid.RowSpan="5" VerticalAlignment="Top" Width="215">
-            <ComboBoxItem Content="Ozenjen/Udata" Height="100" Width="100"/>
-            <ComboBoxItem Content="Slobodan/Slobodna" Height="100" Width="100"/>
-            <ComboBoxItem Content="Razveden/Razvedena" Height="100" Width="100"/>
-            <ComboBoxItem Content="Udovac/Udovica" Height="100" Width="100"/>
-        </ComboBox>
-        <TextBox HorizontalAlignment="Left" Margin="38,377,0,-409" Grid.RowSpan="5" Text="Bračno stanje:" VerticalAlignment="Top" Width="146"/>
-        <TextBox x:Name="IspisGresaka" HorizontalAlignment="Left" Margin="46,492,0,-524" Grid.RowSpan="5" Text="" VerticalAlignment="Top" Height="21" Width="462" FontWeight="Bold" IsReadOnly="True"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="376,228,0,0" VerticalAlignment="Top" Width="100"/>
+        <Image HorizontalAlignment="Left" Height="230" Margin="164,64,0,0" VerticalAlignment="Top" Width="306"/>
+        <Image HorizontalAlignment="Left" Height="222" Margin="40,20,0,0" VerticalAlignment="Top" Width="218" Source="Assets/logo.jpg"/>
+        <TextBlock HorizontalAlignment="Left" Margin="246,128,0,0" Text="Korisničko ime:" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <TextBlock x:Name="Lozinka" HorizontalAlignment="Left" Margin="247,163,0,0" Text="Lozinka:" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="textKorisnicko" HorizontalAlignment="Left" Margin="392,122,0,0" Text="" VerticalAlignment="Top" Width="250"/>
+        <TextBox x:Name="textLozinka" HorizontalAlignment="Left" Margin="392,160,0,0" Text="" VerticalAlignment="Top" Width="250" TextChanged="textLozinka_TextChanged"/>
+        <Button x:Name="Prijava" Content="Prijavi se!" HorizontalAlignment="Left" Margin="421,204,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.146,0.406" Click="Prijava_Click"/>
+        <Button x:Name="Odustajanje" Content="Odustani" HorizontalAlignment="Left" Margin="560,203,0,0" VerticalAlignment="Top" Click="Odustajanje_Click"/>
+        <TextBox x:Name="IspisGreskeLogin" HorizontalAlignment="Left" Margin="394,245,0,0" Text="TextBox" VerticalAlignment="Top" Width="246" IsReadOnly="True"/>
+
     </Grid>
 </Page>

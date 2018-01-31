@@ -44,7 +44,7 @@ namespace SehalicMirzaZ4UWP
 
         private void MenuFlyoutItem2_Click(object sender, RoutedEventArgs e)
         {
-            MainPage unos = new MainPage(klinika17324);
+            Unos unos = new Unos(klinika17324);
             this.Content = unos;
         }
 
