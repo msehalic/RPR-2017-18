@@ -36,7 +36,55 @@ namespace SehalicMirzaZ4UWP
         {
 
         }
-
+        private bool ProvjeriIme()
+        {
+            bool imaSamoSlova = ImePacijenta.Text.Any(char.IsLetter);
+            if (imaSamoSlova == false) IspisGresaka.Text = "Uneseno ime sadrzi nedozvoljene znakove!";
+            return imaSamoSlova;
+        }
+        private bool ProvjeriPrezime()
+        {
+            bool imaSamoSlova = PrezimePacijenta.Text.Any(char.IsLetter);
+            if (imaSamoSlova == false) IspisGresaka.Text = "Uneseno prezime sadrzi nedozvoljene znakove!";
+            return imaSamoSlova;
+        }
+        private bool ProvjeriAdresu()
+        {
+            bool imaSamoSlova = AdresaStanovanja.Text.Any(char.IsLetter);
+            if (imaSamoSlova == false) IspisGresaka.Text = "Unesena adresa sadrzi nedozvoljene znakove!";
+            return imaSamoSlova;
+        }
+        private bool ProvjeriMaticniBroj()
+        {
+            if (!(MaticniBroj.Text.Length == 13))
+            {
+                IspisGresaka.Text = "Neispravan maticni broj!";
+                return false;
+            }
+            else
+            {
+                //provjerimo sada prvi dio maticnog broja
+                string datumUString = DatumRodjenja.Date.DateTime.ToString("ddMMyyyy");
+                datumUString = datumUString.Remove(4, 1); //cifra hiljadica godine rodjenja
+                string maticniUString = MaticniBroj.Text.Substring(0, MaticniBroj.Text.Length - 6); //skratimo 6 posljednjih cifara
+                //ImePacijenta.Text = datumUString + " " + maticniUString + " " + MaticniBroj.Text.Length;
+                if (datumUString.Equals(maticniUString) == false)
+                {
+                    IspisGresaka.Text = "Neispravan maticni broj!";
+                    return false;
+                }
+            }
+            return true;
+        }
+        private bool ProvjeriBracnoStanje()
+        {
+            if (bracnoStanje.SelectedIndex == -1)
+            {
+                IspisGresaka.Text = "Niste selektirali bracno stanje pacijenta!";
+                return false;
+            }
+            return true;
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             char spol;
@@ -44,7 +92,11 @@ namespace SehalicMirzaZ4UWP
             if (bracnoStanje.SelectedIndex != -1) bracnoStanjePacijenta = bracnoStanje.SelectedItem.ToString();
             if ((bool)Musko.IsChecked) spol = 'm';
             else spol = 'z';
-            klinika17324.Pacijenti.Add(new Pacijent(Convert.ToUInt64(MaticniBroj.Text), ImePacijenta.Text, PrezimePacijenta.Text, DatumRodjenja.Date.DateTime, spol, AdresaStanovanja.Text, bracnoStanjePacijenta, DateTime.Now));
+            if (ProvjeriAdresu() && ProvjeriIme() && ProvjeriPrezime() && ProvjeriMaticniBroj() && ProvjeriBracnoStanje()) //ako je sve ok
+            {
+                klinika17324.Pacijenti.Add(new Pacijent(Convert.ToUInt64(MaticniBroj.Text), ImePacijenta.Text, PrezimePacijenta.Text, DatumRodjenja.Date.DateTime, spol, AdresaStanovanja.Text, bracnoStanjePacijenta, DateTime.Now));
+                IspisGresaka.Text = "Uspjesno dodan pacijent " + ImePacijenta.Text + " " + PrezimePacijenta.Text;
+            }
         }
     }
 }

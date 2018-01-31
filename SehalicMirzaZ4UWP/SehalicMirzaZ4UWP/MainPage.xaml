@@ -39,11 +39,11 @@
         <Image HorizontalAlignment="Left" Height="105" Margin="385,23,0,-128" Grid.RowSpan="5" VerticalAlignment="Top" Width="100"/>
         <RadioButton x:Name="Zensko" Content="Žensko" HorizontalAlignment="Left" Margin="222,221,0,-253" Grid.RowSpan="5" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
         <RadioButton x:Name="Musko" Content="Muško" HorizontalAlignment="Left" Margin="40,210,0,-242" VerticalAlignment="Top" Grid.Row="4" RenderTransformOrigin="0.517,0.406" IsChecked="True"/>
-        <DatePicker x:Name="DatumRodjenja" HorizontalAlignment="Left" Margin="218,188,0,-220" Grid.RowSpan="5" VerticalAlignment="Top" Width="242"/>
+        <DatePicker x:Name="DatumRodjenja" HorizontalAlignment="Left" Margin="218,183,0,-220" Grid.RowSpan="5" VerticalAlignment="Top" Width="242"/>
         <ToggleSwitch x:Name="Stomatolog" Header="Pregled kod stomatologa" HorizontalAlignment="Left" Margin="221,254,0,-314" Grid.RowSpan="5" VerticalAlignment="Top"/>
         <ToggleSwitch x:Name="Kardiolog" Header="Pregled kod kardiologa" HorizontalAlignment="Left" Margin="34,254,0,-314" Grid.RowSpan="5" VerticalAlignment="Top" IsOn="False" RenderTransformOrigin="0.355,0.483"/>
         <ToggleSwitch x:Name="Ortoped" Header="Pregled kod ortopeda" HorizontalAlignment="Left" Margin="222,315,0,-375" Grid.RowSpan="5" VerticalAlignment="Top"/>
-        <ToggleSwitch x:Name="Dermatolog" Header="Pregled kod dermatologa" HorizontalAlignment="Left" Margin="29,314,0,-374" Grid.RowSpan="5" VerticalAlignment="Top"/>
+        <ToggleSwitch x:Name="Dermatolog" Header="Pregled kod dermatologa" HorizontalAlignment="Left" Margin="35,314,0,-374" Grid.RowSpan="5" VerticalAlignment="Top"/>
         <Button Content="" HorizontalAlignment="Left" Margin="577,20,0,-71" Grid.RowSpan="5" VerticalAlignment="Top" Foreground="Green" Height="51" Width="64">
             <Button.Flyout>
                 <MenuFlyout>
@@ -69,5 +69,6 @@
             <ComboBoxItem Content="Udovac/Udovica" Height="100" Width="100"/>
         </ComboBox>
         <TextBox HorizontalAlignment="Left" Margin="38,377,0,-409" Grid.RowSpan="5" Text="Bračno stanje:" VerticalAlignment="Top" Width="146"/>
+        <TextBox x:Name="IspisGresaka" HorizontalAlignment="Left" Margin="46,492,0,-524" Grid.RowSpan="5" Text="" VerticalAlignment="Top" Height="21" Width="462" FontWeight="Bold" IsReadOnly="True"/>
     </Grid>
 </Page>
