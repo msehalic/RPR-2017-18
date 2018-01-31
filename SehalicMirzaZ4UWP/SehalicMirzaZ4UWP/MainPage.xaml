@@ -47,7 +47,7 @@
         <Button Content="" HorizontalAlignment="Left" Margin="577,20,0,-71" Grid.RowSpan="5" VerticalAlignment="Top" Foreground="Green" Height="51" Width="64">
             <Button.Flyout>
                 <MenuFlyout>
-                    <MenuFlyoutItem Text="Brisanje Pacijenata" />
+                    <MenuFlyoutItem Text="Brisanje Pacijenata" Click="MenuFlyoutItem_Click" />
                 </MenuFlyout>
             </Button.Flyout>
             <Button.Background>

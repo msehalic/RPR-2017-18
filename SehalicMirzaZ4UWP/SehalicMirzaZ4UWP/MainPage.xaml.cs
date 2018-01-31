@@ -26,7 +26,11 @@ namespace SehalicMirzaZ4UWP
         {
             this.InitializeComponent();
         }
-
+        public MainPage(Zadaca1RPR_17324.KlinikaKontejner k)
+        {
+            this.InitializeComponent();
+            klinika17324 = k;
+        }
         private void Frame_Navigated(object sender, NavigationEventArgs e)
         {
 
@@ -97,6 +101,12 @@ namespace SehalicMirzaZ4UWP
                 klinika17324.Pacijenti.Add(new Pacijent(Convert.ToUInt64(MaticniBroj.Text), ImePacijenta.Text, PrezimePacijenta.Text, DatumRodjenja.Date.DateTime, spol, AdresaStanovanja.Text, bracnoStanjePacijenta, DateTime.Now));
                 IspisGresaka.Text = "Uspjesno dodan pacijent " + ImePacijenta.Text + " " + PrezimePacijenta.Text;
             }
+        }
+
+        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        {
+            BlankPage1 brisanje = new BlankPage1(klinika17324); //kreira formu i salje podatke o kontejnerskoj
+            this.Content = brisanje;
         }
     }
 }

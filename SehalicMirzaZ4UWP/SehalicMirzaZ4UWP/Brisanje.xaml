@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="SehalicMirzaZ4UWP.BlankPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SehalicMirzaZ4UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock HorizontalAlignment="Left" Margin="151,6,0,0" Text="Brisanje pacijenata" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" TextDecorations="Underline" FontSize="36"/>
+        <TextBox HorizontalAlignment="Left" Margin="13,80,0,0" Text="Unesite ime pacijenta kojeg brišete:" VerticalAlignment="Top" IsReadOnly="True"/>
+        <TextBox x:Name="PacijentZaBrisanje" HorizontalAlignment="Left" Margin="294,80,0,0" Text="" VerticalAlignment="Top" Width="193" TextChanged="PacijentZaBrisanje_TextChanged"/>
+        <ListBox x:Name="PronadjeniZaBrisanje" HorizontalAlignment="Left" Height="222" Margin="13,122,0,0" VerticalAlignment="Top" Width="472"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="577,20,0,-71" Grid.RowSpan="5" VerticalAlignment="Top" Foreground="Green" Height="51" Width="64">
+            <Button.Flyout>
+                <MenuFlyout>
+                    <MenuFlyoutItem Text="Unos Pacijenata" Click="MenuFlyoutItem2_Click" />
+                </MenuFlyout>
+            </Button.Flyout>
+            <Button.Background>
+                <ImageBrush ImageSource="Assets/threelines.png"/>
+            </Button.Background>
+            <Button.BorderBrush>
+                <ImageBrush ImageSource="Assets/LockScreenLogo.png"/>
+            </Button.BorderBrush>
+        </Button>
+        <Button Content="Obriši!" HorizontalAlignment="Left" Margin="418,367,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox x:Name="IspisGresakaBrisanje" HorizontalAlignment="Left" Margin="15,413,0,0" Text="" VerticalAlignment="Top" Width="466" IsReadOnly="True"/>
+    </Grid>
+</Page>
