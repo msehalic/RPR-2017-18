@@ -14,7 +14,7 @@ namespace Sahista
 
         public override void move(string position)
         {
-            throw new NotImplementedException();
+            if (position.Length != 2 || !IsEnglishLetter(position[0]) || position[1] < 1 || position[1] > 8) throw new Exception(); //IllegalArgumentException
         }
     }
 }

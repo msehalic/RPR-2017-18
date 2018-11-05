@@ -12,7 +12,7 @@ namespace Sahista
 
         readonly string pozicija;
         readonly Color boja;
-        bool IsEnglishLetter(char c) => (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+        public bool IsEnglishLetter(char c) => (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
         public ChessPiece(string pozicija, Color boja)
         {
             if (pozicija.Length!=2 || !IsEnglishLetter(pozicija[0]) || pozicija[1]<1 || pozicija[1]>8) throw new Exception(); //IllegalArgumentException
