@@ -10,8 +10,12 @@ namespace Sahista
     {
         public enum Color { BLACK, WHITE }; //ovdje ne moze static u C#, valjda moze u Javi
 
-        readonly string pozicija;
-        readonly Color boja;
+        private string pozicija;
+         Color boja;
+
+        protected string Pozicija { get => pozicija; set => pozicija = value; }
+        internal Color Boja { get => boja; set => boja = value; }
+
         public bool IsEnglishLetter(char c) => (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
         public ChessPiece(string pozicija, Color boja)
         {
@@ -20,11 +24,11 @@ namespace Sahista
 
         public string getPosition()
         {
-            return pozicija;
+            return Pozicija;
         }
         public Color getColor()
         {
-            return boja;
+            return Boja;
         }
         public abstract void move(string position);
     }
