@@ -16,6 +16,7 @@ namespace Sahista
         {
             if (position.Length != 2 || !IsEnglishLetter(position[0]) || position[1] < 1 || position[1] > 8) throw new Exception(); //IllegalArgumentException
             if (Pozicija[0] != position[0] && Pozicija[1] != position[1]) throw new Exception();
+            Pozicija = position;
         }
     }
 }
